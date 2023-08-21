@@ -1,11 +1,11 @@
 {
-  "name": "ejsblog",
+  "name": "lenaespositoblog",
   "version": "1.0.0",
-  "description": "Blog of Lena Esposito Web Developer",
+  "description": "Blog of Lena Esposito Web Designer and Developer",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "app.js",
+    "start": "node app.js",
     "dev": "nodemon app.js"
   },
   "author": "",
