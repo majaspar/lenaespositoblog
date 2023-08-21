@@ -62,7 +62,7 @@ twitterLink.href = `https://www.twitter.com/share?&url=${shareLink}&text=${msg}&
 
 
 const linkedinLink = document.querySelector('.linkedinLink');
-linkedinLink.href = `https://www.linkedin.com/sharing/share-offsite/?url=${shareLink}`;
+linkedinLink.href = `https://www.linkedin.com/shareArticle?mini=true&url=${shareLink}`;
 
 
 
