@@ -61,10 +61,5 @@ const twitterLink = document.querySelector('.twitterLink');
 twitterLink.href = `https://www.twitter.com/share?&url=${shareLink}&text=${msg}&hashtags=lenaesposito,lenaespositoblog,webdeveloper,webdesigner`;
 
 
-const linkedinLink = document.querySelector('.linkedinLink');
-linkedinLink.href = `https://www.linkedin.com/shareArticle?mini=true&url=${shareLink}`;
-
-
-
 const whatsappLink = document.querySelector('.whatsappLink');
 whatsappLink.href = `https://api.whatsapp.com/send?text=${shareLink}`;
