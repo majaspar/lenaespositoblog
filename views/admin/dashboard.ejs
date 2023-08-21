@@ -1,0 +1,29 @@
+<div class="dashboard">
+    <h1>Dashboard</h1>
+    <div class="">
+        <div class="flex admin-title">
+            <h2>Posts</h2>
+
+            <a href="/add-post" class="add-new">+ Add New</a>
+        </div>
+
+        
+        <ul class="admin-post dashboard-page">
+            <% data.forEach(post => { %>
+            <li>
+                <a href="/post/<%= post._id %>" class="post-title"><%= post.title %> &nearr;</a>
+
+                <div class="admin-post-controls flex">
+                    <a href="/edit-post/<%= post._id %>" class="btn-delete">Edit</a>
+
+                
+                            
+                </div>
+
+            </li>
+            <hr>
+            <% }) %>
+        </ul>
+
+    </div>
+</div>

@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lena Esposito Blog: Calculator (JavaScript)</title>
+    <link href="jquery-ui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/styles/lenaesposito.css">
+    <link rel="stylesheet" href="../public/styles/blog.css">
+
+    <script src="https://kit.fontawesome.com/c5fce3d149.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <link rel="stylesheet" href="../blog.css">
+    <link rel="stylesheet" href="newpost.css">
+    <style>
+
+    </style>
+</head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5N9M504R8"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-N5N9M504R8');
+</script>
+
+<body class="flex-column">
+    <header class="primary-header background-white flex shadow">
+
+        <div class="w70 flex header scrollWatcher">
+            <!-- 1 .header -->
+            <a href="../index.html">
+                <div class="logo flex">
+                    <img class="image image1" height="100px" src="https://lenaesposito.co.uk/assets/le-logo.svg"
+                        alt="lena esposito logo part 1">
+                    <img class="image image2 shake-horizontal" height="80px"
+                        src="https://lenaesposito.co.uk/assets/lenaesposito.svg" alt="lena esposito logo part2">
+                </div>
+
+
+                <div class="nav-blog">Blog</div>
+            </a>
+            <!-- 2 .header-->
+            <button class="mobile-nav-toggle" aria-controls="primary-navigation"><span class="sr-only"
+                    aria-expanded="false">Menu</span></button>
+            <!-- 3 .header-->
+            <nav role="navigation" class="navmenu">
+                <ul id="primary-navigation" data-visible="false" class="primary-navigation uppercase flex"
+                    nav-visible="false">
+                    <li><a class="link-nav " href="categories.html">Categories</a></li>
+                    <li><a class="shadow action-btn" href="pages/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <style>
+        p,
+        hr {
+            margin: 0;
+            padding: 0;
+        }
+
+        .geometry-table {
+            color: white;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .geometry-item {
+            border: 3px solid rgb(255, 255, 255);
+        }
+
+        .geometry-item-name {
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            background: #48aaff;
+            border-bottom: 3px solid white;
+
+        }
+
+        .geometry-item-formulas {
+            padding: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .geometry-item-formula-and-image {
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .geometry-item-shape {
+            border-left: 1px solid white;
+        }
+
+        .geometry-item-shape img {
+            padding: 0.5rem;
+            width: 100%;
+            margin: 0.5rem;
+            max-height: 150px;
+        }
+
+        .geometry-item-variables {
+            padding: 0.5rem;
+        }
+
+        .calculation-results-left {
+
+            height: 100%;
+            padding: 0.5rem;
+        }
+
+        .calculation-results-right {
+
+            border-left: 1px solid white;
+            padding: 0.5rem;
+        }
+
+        .calculation-results-right span {
+            display: inline-block;
+            font-size: 1.2rem;
+        }
+
+        .button-calculate {
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0.5rem;
+            padding: 0.5rem;
+            background-color: #8668ff;
+            color: white;
+        }
+
+        .button-calculate:hover {
+
+            background-color: #a894f9;
+        }
+
+        .variables-container {
+            justify-content: space-between;
+        }
+
+        .div-button-calculate {
+            align-items: flex-end;
+        }
+
+        .geometry-item input {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            width: 4rem;
+        }
+
+        span.pi-calc {
+            color: rgb(37, 0, 105);
+            font-size: 0.9rem;
+        }
+    </style>
+    <div class="separator mb5"></div>
+
+
+    <div class="w70">
+        <h1 class="entry-title">Geometry Formulas (JavaScript)</h1>
+
+        <h2 class="entry-subtitle"></h2>
+        <div>
+            <p class="entry-content mb1">Here is the list of the most common geometry formulas for perimeter, area,
+                volume,
+                surface areas, and circumference for different shapes like triangle, rectangle, square, parallelogram,
+                circle
+                sphere, trapezoid, pythagorean theorem triangle, cube and rectangular box.. <br>
+                You can call it a geometry cheat sheet, but it's
+                more than that. This 'cheat sheet' will make all the calculations for you!<br>
+                Everything will be calculated with simple JavaScript, including user input and DOM manipulation.
+
+            </p>
+
+        </div>
+        <hr class="hr-white mb1">
+        <div class="geometry-table grid">
+            <div class="geometry-item">
+                <div class="geometry-item-name uppercase center">Square</div>
+                <div class="geometry-item-formula-and-image flex">
+                    <div class="geometry-item-formulas">P = 4s<br> A = s<sup>2</sup></div>
+                    <div class="geometry-item-shape"><img src="/assets/geometry/square.jpg" alt="square"></div>
+                </div>
+                <hr class="hr-white">
+                <div class="variables-container flex">
+                    <div class="geometry-item-variables">
+                        <p class="mt1 mb1">Enter the value of: </p>
+                        <p>s = <input type="number" id="square-s"></p>
+                    </div>
+                    <div class="div-button-calculate flex"><button type="button" id="button-calculate-square"
+                            class="uppercase button-calculate">Calculate</button></div>
+                </div>
+                <hr class="hr-white">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="calculation-results-left">Results:</div>
+                        </td>
+                        <td>
+                            <div class="calculation-results-right">
+                                <p class="mb1">A =
+                                    <span id="square-area"></span>
+                                </p>
+                                <p>P =
+                                    <span id="square-perimeter"></span>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="geometry-item">
+                <div class="geometry-item-name uppercase center">Rectangle</div>
+                <div class="geometry-item-formula-and-image flex">
+                    <div class="geometry-item-formulas">P = 2a + 2b<br> A = ab</div>
+                    <div class="geometry-item-shape"><img src="/assets/geometry/rectangle.jpg" alt="rectangle"></div>
+                </div>
+                <hr class="hr-white">
+                <div class="variables-container flex">
+                    <div class="geometry-item-variables">
+                        <p class="mt1 mb1">Enter the value of: </p>
+                        <p>a = <input type="number" id="rectangle-a"></p>
+                        <p>b = <input type="number" id="rectangle-b"></p>
+                    </div>
+                    <div class="div-button-calculate flex"><button type="button" id="button-calculate-rectangle"
+                            class="uppercase button-calculate">Calculate</button></div>
+                </div>
+                <hr class="hr-white">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="calculation-results-left">Results:</div>
+                        </td>
+                        <td>
+                            <div class="calculation-results-right">
+                                <p class="mb1">A =
+                                    <span id="rectangle-area"></span>
+                                </p>
+                                <p>P =
+                                    <span id="rectangle-perimeter"></span>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="geometry-item">
+                <div class="geometry-item-name uppercase center">Trapezoid</div>
+                <div class="geometry-item-formula-and-image flex">
+                    <div class="geometry-item-formulas">P = a + b + c + d<br>
+                        A = <sup>1</sup>/<sub>2</sub> h (a + b)</div>
+                    <div class="geometry-item-shape"><img src="/assets/geometry/trapezoid.jpg" alt="Trapezoid"></div>
+                </div>
+                <hr class="hr-white">
+                <div class="variables-container flex">
+                    <div class="geometry-item-variables">
+                        <p class="mt1 mb1">Enter the value of: </p>
+                        <div class="grid" style="gap: 0.5rem; grid-template-columns: 1fr 1fr;">
+                            <p>a = <input type="number" id="trapezoid-a"></p>
+                            <p>b = <input type="number" id="trapezoid-b"></p>
+                            <p>c = <input type="number" id="trapezoid-c"></p>
+                            <p>d = <input type="number" id="trapezoid-d"></p>
+                            <p>h = <input type="number" id="trapezoid-h"></p>
+                        </div>
+                    </div>
+                    <div class="div-button-calculate flex"><button type="button" id="button-calculate-trapezoid"
+                            class="uppercase button-calculate">Calculate</button></div>
+                </div>
+                <hr class="hr-white">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="calculation-results-left">Results:</div>
+                        </td>
+                        <td>
+                            <div class="calculation-results-right">
+                                <p class="mb1">A =
+                                    <span id="trapezoid-area"></span>
+                                </p>
+                                <p>P =
+                                    <span id="trapezoid-perimeter"></span>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="geometry-item">
+                <div class="geometry-item-name uppercase center">Parallelogram</div>
+                <div class="geometry-item-formula-and-image flex">
+                    <div class="geometry-item-formulas">P = 2a + 2b<br> A = bh</div>
+                    <div class="geometry-item-shape"><img src="/assets/geometry/parallelogram.jpg" alt="Parallelogram">
+                    </div>
+                </div>
+                <hr class="hr-white">
+                <div class="variables-container flex">
+                    <div class="geometry-item-variables">
+                        <p class="mt1 mb1">Enter the value of: </p>
+                        <div class="grid" style="gap: 0.5rem; grid-template-columns: 1fr 1fr;">
+                            <p>a = <input type="number" id="parallelogram-a"></p>
+                            <p>b = <input type="number" id="parallelogram-b"></p>
+                            <p>h = <input type="number" id="parallelogram-h"></p>
+                        </div>
+                    </div>
+                    <div class="div-button-calculate flex"><button type="button" id="button-calculate-parallelogram"
+                            class="uppercase button-calculate">Calculate</button></div>
+                </div>
+                <hr class="hr-white">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="calculation-results-left">Results:</div>
+                        </td>
+                        <td>
+                            <div class="calculation-results-right">
+                                <p class="mb1">A =
+                                    <span id="parallelogram-area"></span>
+                                </p>
+                                <p>P =
+                                    <span id="parallelogram-perimeter"></span>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <div class="geometry-item">
+                <div class="geometry-item-name uppercase center">Triangle</div>
+                <div class="geometry-item-formula-and-image flex">
+                    <div class="geometry-item-formulas">P = a + b + c<br>A = <sup>1</sup>/<sub>2</sub> bh</div>
+                    <div class="geometry-item-shape"><img src="/assets/geometry/triangle.jpg" alt="triangle"></div>
+                </div>
+                <hr class="hr-white">
+                <div class="variables-container flex">
+                    <div class="geometry-item-variables">
+                        <p class="mt1 mb1">Enter the value of: </p>
+                        <div class="grid" style="gap: 0.5rem; grid-template-columns: 1fr 1fr;">
+                            <p>a = <input type="number" id="triangle-a"></p>
+                            <p>b = <input type="number" id="triangle-b"></p>
+                            <p>c = <input type="number" id="triangle-c"></p>
+                            <p>h = <input type="number" id="triangle-h"></p>
+                        </div>
+                    </div>
+                    <div class="div-button-calculate flex"><button type="button" id="button-calculate-triangle"
+                            class="uppercase button-calculate">Calculate</button></div>
+                </div>
+                <hr class="hr-white">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="calculation-results-left">Results:</div>
+                        </td>
+                        <td>
+                            <div class="calculation-results-right">
+                                <p class="mb1">A =
+                                    <span id="triangle-area"></span>
+                                </p>
+                                <p>P =
+                                    <span id="triangle-perimeter"></span>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="geometry-item">
+                <div class="geometry-item-name uppercase center">Pythagorean Theorem</div>
+                <div class="geometry-item-formula-and-image flex">
+                    <div class="geometry-item-formulas">a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup><br> c =
+                        &#8730<span style="border-top: 1px solid white">a<sup>2</sup> + b<sup>2</sup></span> </div>
+                    <div class="geometry-item-shape"><img src="/assets/geometry/pythagoriam-theorem.jpg"
+                            alt="Pythagorean Theorem">
+                    </div>
+                </div>
+                <hr class="hr-white">
+                <div class="variables-container flex">
+                    <div class="geometry-item-variables">
+                        <p class="mt1 mb1">Enter the value of: </p>
+                        <div class="grid" style="gap: 0.5rem; grid-template-columns: 1fr 1fr;">
+                            <p>a = <input type="number" id="pythagorean-a"></p>
+                            <p>b = <input type="number" id="pythagorean-b"></p>
+                        </div>
+                    </div>
+                    <div class="div-button-calculate flex"><button type="button" id="button-calculate-pythagorean"
+                            class="uppercase button-calculate">Calculate</button></div>
+                </div>
+                <hr class="hr-white">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="calculation-results-left">Results:</div>
+                        </td>
+                        <td>
+                            <div class="calculation-results-right">
+                                <p>c =
+                                    <span id="pythagorean-c-result"></span>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <div class="geometry-item">
+                <div class="geometry-item-name uppercase center">Circle</div>
+                <div class="geometry-item-formula-and-image flex">
+                    <div class="geometry-item-formulas">P = 2πr<br> A = πr<sup>2</sup></div>
+                    <div class="geometry-item-shape"><img src="/assets/geometry/circle.jpg" alt="circle"></div>
+                </div>
+                <hr class="hr-white">
+                <div class="variables-container flex">
+                    <div class="geometry-item-variables">
+                        <p class="mt1 mb1">Enter the value of: </p>
+                        <p>r = <input type="number" id="circle-r"></p>
+                    </div>
+                    <div class="div-button-calculate flex"><button type="button" id="button-calculate-circle"
+                            class="uppercase button-calculate">Calculate</button></div>
+                </div>
+                <hr class="hr-white">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="calculation-results-left">Results:</div>
+                        </td>
+                        <td>
+                            <div class="calculation-results-right">
+                                <p class="mb1">A =
+                                    <span id="circle-area"></span> <span class="pi-calc" id="circle-area-circa"></span>
+                                </p>
+                                <p>P =
+                                    <span id="circle-perimeter"></span> <span class="pi-calc"
+                                        id="circle-perimeter-circa"></span>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="geometry-item">
+                <div class="geometry-item-name uppercase center">Sphere</div>
+                <div class="geometry-item-formula-and-image flex">
+                    <div class="geometry-item-formulas">V = <sup>4</sup>/<sub>3</sub> * πr<sup>3</sup><br>S =
+                        4πr<sup>2</sup> </div>
+                    <div class="geometry-item-shape"><img src="/assets/geometry/sphere.jpg" alt="circle"></div>
+                </div>
+                <hr class="hr-white">
+                <div class="variables-container flex">
+                    <div class="geometry-item-variables">
+                        <p class="mt1 mb1">Enter the value of: </p>
+                        <p>r = <input type="number" id="sphere-r"></p>
+                    </div>
+                    <div class="div-button-calculate flex"><button type="button" id="button-calculate-sphere"
+                            class="uppercase button-calculate">Calculate</button></div>
+                </div>
+                <hr class="hr-white">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="calculation-results-left">Results:</div>
+                        </td>
+                        <td>
+                            <div class="calculation-results-right">
+                                <p class="mb1">Volume =
+                                    <span id="sphere-volume"></span> <span class="pi-calc"
+                                        id="sphere-volume-circa"></span>
+                                </p>
+                                <p>Surface Area =
+                                    <span id="sphere-area"></span> <span class="pi-calc" id="sphere-area-circa"></span>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="geometry-item">
+                <div class="geometry-item-name uppercase center">Cube</div>
+                <div class="geometry-item-formula-and-image flex">
+                    <div class="geometry-item-formulas">A = 6l<sup>2</sup><br>
+                        V = l<sup>3</sup></div>
+                    <div class="geometry-item-shape"><img src="/assets/geometry/cube.jpg" alt="Cube"></div>
+                </div>
+                <hr class="hr-white">
+                <div class="variables-container flex">
+                    <div class="geometry-item-variables">
+                        <p class="mt1 mb1">Enter the value of: </p>
+                        <p>l = <input type="number" id="cube-l"></p>
+                    </div>
+                    <div class="div-button-calculate flex"><button type="button" id="button-calculate-cube"
+                            class="uppercase button-calculate">Calculate</button></div>
+                </div>
+                <hr class="hr-white">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="calculation-results-left">Results:</div>
+                        </td>
+                        <td>
+                            <div class="calculation-results-right">
+                                <p class="mb1">A =
+                                    <span id="cube-area"></span>
+                                </p>
+                                <p>P =
+                                    <span id="cube-volume"></span>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <div class="geometry-item">
+                <div class="geometry-item-name uppercase center">Rectangular Box</div>
+                <div class="geometry-item-formula-and-image flex">
+                    <div class="geometry-item-formulas">P = 2ab + 2bc + 2ac<br>
+                        V = abc</div>
+                    <div class="geometry-item-shape"><img src="/assets/geometry/rectangular-box.jpg"
+                            alt="Rectangular Box">
+                    </div>
+                </div>
+                <hr class="hr-white">
+                <div class="variables-container flex">
+                    <div class="geometry-item-variables">
+                        <p class="mt1 mb1">Enter the value of: </p>
+                        <div class="grid" style="gap: 0.5rem; grid-template-columns: 1fr 1fr;">
+                            <p>a = <input type="number" id="rectangular-box-a"></p>
+                            <p>b = <input type="number" id="rectangular-box-b"></p>
+                            <p>c = <input type="number" id="rectangular-box-c"></p>
+                        </div>
+                    </div>
+                    <div class="div-button-calculate flex"><button type="button" id="button-calculate-rectangular-box"
+                            class="uppercase button-calculate">Calculate</button></div>
+                </div>
+                <hr class="hr-white">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="calculation-results-left">Results:</div>
+                        </td>
+                        <td>
+                            <div class="calculation-results-right">
+                                <p class="mb1">A =
+                                    <span id="rectangular-box-area"></span>
+                                </p>
+                                <p>V =
+                                    <span id="rectangular-box-volume"></span>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+
+            <div class="geometry-item">
+                <div class="geometry-item-name uppercase center">Cylinder</div>
+                <div class="geometry-item-formula-and-image flex">
+                    <div class="geometry-item-formulas">A = 2πr(r + h)<br>
+                        V = πr<sup>2</sup>h</div>
+                    <div class="geometry-item-shape"><img src="/assets/geometry/cylinder.jpg" alt="cylinder"></div>
+                </div>
+                <hr class="hr-white">
+                <div class="variables-container flex">
+                    <div class="geometry-item-variables">
+                        <p class="mt1 mb1">Enter the value of: </p>
+                        <p>r = <input type="number" id="cylinder-r"></p>
+                        <p>h = <input type="number" id="cylinder-h"></p>
+                    </div>
+                    <div class="div-button-calculate flex"><button type="button" id="button-calculate-cylinder"
+                            class="uppercase button-calculate">Calculate</button></div>
+                </div>
+                <hr class="hr-white">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="calculation-results-left">Results:</div>
+                        </td>
+                        <td>
+                            <div class="calculation-results-right">
+                                <p class="mb1">A =
+                                    <span id="cylinder-area"></span> <span class="pi-calc"
+                                        id="cylinder-area-circa"></span>
+                                </p>
+                                <p>V =
+                                    <span id="cylinder-volume"></span> <span class="pi-calc"
+                                        id="cylinder-volume-circa"></span>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+    <script>
+        //square
+        let squareS = document.getElementById('square-s')
+        let squereArea = document.getElementById('square-area')
+        let squarePerimeter = document.getElementById('square-perimeter')
+        let squareButtonCalculate = document.getElementById("button-calculate-square")
+
+        squareButtonCalculate.onclick = function () {
+
+            squereArea.innerHTML = 4 * squareS.value;
+            squarePerimeter.innerHTML = Math.pow(squareS.value, 2)
+        }
+
+
+
+        //cube
+        let cubeL = document.getElementById('cube-l')
+        let cubeArea = document.getElementById('cube-area')
+        let cubeVolume = document.getElementById('cube-volume')
+        let cubeButtonCalculate = document.getElementById("button-calculate-cube")
+
+        cubeButtonCalculate.onclick = function () {
+
+            cubeArea.innerHTML = 6 * (Math.pow(cubeL.value, 2))
+            cubeVolume.innerHTML = Math.pow(cubeL.value, 3)
+        }
+
+
+        //circle
+        let circleR = document.getElementById('circle-r')
+        let circleArea = document.getElementById('circle-area')
+
+        let circleAreaCirca = document.getElementById('circle-area-circa')
+        let circlePerimeter = document.getElementById('circle-perimeter')
+        let circlePerimeterCirca = document.getElementById('circle-perimeter-circa')
+        let circleButtonCalculate = document.getElementById("button-calculate-circle")
+
+        circleButtonCalculate.onclick = function () {
+
+            circleArea.innerHTML = 2 * Number(circleR.value) + "π";
+            circlePerimeter.innerHTML = Number(Math.pow(circleR.value, 2)) + "π"
+
+            circleAreaCirca.innerHTML = "= " + (2 * Number(circleR.value)) * 3.14159265359
+            circlePerimeterCirca.innerHTML = "= " + (Number(Math.pow(circleR.value, 2))) * 3.14159265359
+        }
+
+
+        //cylinder
+        let cylinderR = document.getElementById('cylinder-r')
+        let cylinderH = document.getElementById('cylinder-h')
+        let cylinderArea = document.getElementById('cylinder-area')
+
+        let cylinderAreaCirca = document.getElementById('cylinder-area-circa')
+        let cylinderVolume = document.getElementById('cylinder-volume')
+        let cylinderVolumeCirca = document.getElementById('cylinder-volume-circa')
+        let cylinderButtonCalculate = document.getElementById("button-calculate-cylinder")
+
+        cylinderButtonCalculate.onclick = function () {
+
+            cylinderArea.innerHTML = 2 * cylinderR.value * (Number(cylinderH.value) + Number(cylinderR.value)) + "π";
+            cylinderVolume.innerHTML = cylinderH.value * (Math.pow(cylinderR.value, 2)) + "π"
+
+            cylinderAreaCirca.innerHTML = "= " + (2 * Number(cylinderR.value)) * 3.14159265359
+            cylinderVolumeCirca.innerHTML = "= " + (cylinderH.value * (Math.pow(cylinderR.value, 2))) * 3.14159265359
+        }
+
+
+        //sphere
+        let sphereR = document.getElementById('sphere-r')
+        let sphereArea = document.getElementById('sphere-area')
+        let sphereVolume = document.getElementById('sphere-volume')
+        let sphereAreaCirca = document.getElementById('sphere-area-circa')
+        let sphereVolumeCirca = document.getElementById('sphere-volume-circa')
+        let sphereButtonCalculate = document.getElementById("button-calculate-sphere")
+
+
+        sphereButtonCalculate.onclick = function () {
+
+            sphereArea.innerHTML = 4 * Number(Math.pow(sphereR.value, 2)) + "π"
+            sphereAreaCirca.innerHTML = "= " + (4 * Number(Math.pow(sphereR.value, 2))) * 3.14159265359
+            sphereVolume.innerHTML = (4 * Number(Math.pow(sphereR.value, 3))) / 3 + "π"
+            sphereVolumeCirca.innerHTML = "= " + (4 * Number(Math.pow(sphereR.value, 3)) / 3) * 3.14159265359
+        }
+
+        //rectangle
+
+        let rectangleA = document.getElementById('rectangle-a')
+        let rectangleB = document.getElementById('rectangle-b')
+
+        let rectangleArea = document.getElementById('rectangle-area')
+        let rectanglePerimeter = document.getElementById('rectangle-perimeter')
+        let rectangleButtonCalculate = document.getElementById("button-calculate-rectangle")
+
+        rectangleButtonCalculate.onclick = function () {
+
+            rectangleArea.innerHTML = rectangleB.value * rectangleA.value;
+            rectanglePerimeter.innerHTML = 2 * rectangleA.value + 2 * rectangleB.value
+        }
+
+
+        //trapezoid
+
+        let trapezoidA = document.getElementById('trapezoid-a')
+        let trapezoidB = document.getElementById('trapezoid-b')
+        let trapezoidC = document.getElementById('trapezoid-c')
+        let trapezoidD = document.getElementById('trapezoid-d')
+        let trapezoidH = document.getElementById('trapezoid-h')
+
+        let trapezoidArea = document.getElementById('trapezoid-area')
+        let trapezoidPerimeter = document.getElementById('trapezoid-perimeter')
+        let trapezoidButtonCalculate = document.getElementById("button-calculate-trapezoid")
+
+        trapezoidButtonCalculate.onclick = function () {
+            trapezoidArea.innerHTML = Number(trapezoidA.value) + Number(trapezoidB.value) + Number(trapezoidC.value) + Number(trapezoidD.value)
+            trapezoidPerimeter.innerHTML = 0.5 * trapezoidH.value * (Number(trapezoidA.value) + Number(trapezoidB.value))
+        }
+
+
+        //triangle
+
+        let triangleA = document.getElementById('triangle-a')
+        let triangleB = document.getElementById('triangle-b')
+        let triangleC = document.getElementById('triangle-c')
+        let triangleH = document.getElementById('triangle-h')
+
+        let triangleArea = document.getElementById('triangle-area')
+        let trianglePerimeter = document.getElementById('triangle-perimeter')
+        let triangleButtonCalculate = document.getElementById("button-calculate-triangle")
+
+        triangleButtonCalculate.onclick = function () {
+
+
+            triangleArea.innerHTML = triangleB.value * 0.5 * triangleH.value;
+            if (triangleArea.innerHTML === "0") {
+                triangleArea.innerHTML = "Enter correct values";
+            }
+
+            trianglePerimeter.innerHTML = Number(triangleA.value) + Number(triangleB.value) + Number(triangleC.value);
+        }
+
+
+        //pythagorean theorem
+
+        let pythagoreanA = document.getElementById('pythagorean-a')
+        let pythagoreanB = document.getElementById('pythagorean-b')
+        let pythagoreanCresult = document.getElementById('pythagorean-c-result')
+
+        let pythagoreanButtonCalculate = document.getElementById("button-calculate-pythagorean")
+
+        pythagoreanButtonCalculate.onclick = function () {
+
+            pythagoreanCresult.innerHTML = Math.sqrt(Math.pow(pythagoreanA.value, 2) + Math.pow(pythagoreanB.value, 2))
+
+        }
+
+        //Parallelogram
+
+        let parallelogramA = document.getElementById('parallelogram-a')
+        let parallelogramB = document.getElementById('parallelogram-b')
+        let parallelogramH = document.getElementById('parallelogram-h')
+
+        let parallelogramArea = document.getElementById('parallelogram-area')
+        let parallelogramPerimeter = document.getElementById('parallelogram-perimeter')
+        let parallelogramButtonCalculate = document.getElementById("button-calculate-parallelogram")
+
+
+        parallelogramButtonCalculate.onclick = function () {
+
+            parallelogramArea.innerHTML = parallelogramB.value * parallelogramH.value
+            if (parallelogramArea.innerHTML === "0" || NaN) {
+                parallelogramArea.innerHTML = "Enter correct values";
+            }
+
+            parallelogramPerimeter.innerHTML = 2 * Number(parallelogramA.value) + 2 * Number(parallelogramB.value)
+        }
+
+
+
+        //rectangular-box
+
+        let rectangularBoxA = document.getElementById('rectangular-box-a')
+        let rectangularBoxB = document.getElementById('rectangular-box-b')
+        let rectangularBoxC = document.getElementById('rectangular-box-c')
+
+        let rectangularBoxArea = document.getElementById('rectangular-box-area')
+        let rectangularBoxVolume = document.getElementById('rectangular-box-volume')
+        let rectangularBoxButtonCalculate = document.getElementById("button-calculate-rectangular-box")
+
+
+        rectangularBoxButtonCalculate.onclick = function () {
+
+            rectangularBoxArea.innerHTML = (2 * rectangularBoxA.value * rectangularBoxB.value) + (2 * rectangularBoxB.value * rectangularBoxC.value) + (2 * rectangularBoxA.value * rectangularBoxC.value)
+
+
+            rectangularBoxVolume.innerHTML = rectangularBoxA.value * rectangularBoxB.value * rectangularBoxC.value
+        }
+
+
+    </script>
+
+    <!-- Footer -->
+    <div id="previous-next-loader" class="mt2"></div>
+
+    <!-- Footer -->
+    <div id="footer-loader-entry" class="mt2"></div>
+
+    <!-- Load the CDN first -->
+    <script src="//code.jquery.com/jquery-3.7.0.js"></script>
+
+    <!-- If CDN fails to load, serve up the local version -->
+    <script>window.jQuery || document.write('<script src="../jquery-2.1.4.js"><\/script>');</script>
+
+    <!-- jQuery UI -->
+    <script src="../jquery-ui.min.js"></script>
+    <script src="new-post.js"></script>
+</body>
+
+</html>

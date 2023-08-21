@@ -1,0 +1,52 @@
+<div class="tags-categories mt2 mb2">
+    <h1 class="mb2">Search by Tags</h1>
+
+    <div class="instructions mb2">Click on a <b>tag</b> to display all relevant entries. Click on the tag again to remove it from the
+        search. <Br>
+        Click on multiple <b>tags</b> to search for entries containing all the chosen tags. <br>
+        Use the <b>RESET</b> button to reset the search.<br>
+        </div>
+    <hr>
+    <div class="categories-list flex mt2 mb2">
+        <div>
+            <button class="filter-button filter-button-reset uppercase" data-filter="all">Reset</button>
+        </div>
+        <div class="flex filter-tags-column">
+            <% data.forEach(post=> { %>
+
+                <div class="tags-entry">
+
+                    <% for( let index=0; index < post.tags.length; index++ ) { %>
+                        <button class="filter-button" data-filter="<%=post.tags[index]%>">
+                            <%=post.tags[index]%>
+                        </button>
+                        <% } %>
+                </div>
+
+                <% }) %>
+        </div>
+    </div>
+    <hr>
+    <div class="objects grid mt2">
+
+
+
+        <% data.forEach(post=> { %>
+
+            <div class="filter <%=post.tags[0]%> <%=post.tags[1]%> <%=post.tags[2]%> <%=post.tags[3]%>">
+                <a href="/post/<%=post._id %>">
+                    <span class="article-list__date entry-date">
+                        <%= post.createdAt.toDateString() %>
+                    </span>
+                    <h4 style="display: inline-block;" class="">
+                        <%= post.title %>
+                    </h4>
+                </a>
+            </div>
+
+            <% }) %>
+
+
+    </div>
+
+</div>

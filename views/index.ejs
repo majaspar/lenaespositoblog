@@ -1,0 +1,62 @@
+<div class="separator mb5"></div>
+<div class="flex blog-intro">
+    <div class="center">
+        <h1 class="entry-title center">Hi, I am Lena. <br></h1>
+        <h3> Here's where I display and practice my web-developing skills &#128527;</h3>
+    </div>
+    <div class="indexejs-photo"><img class="shadow" styles="padding-left: 50%;" src="assets/lena-esposito-photo.jpg"
+            height="150" width="150" alt="photo of Lena Esposito Web Developer"></div>
+
+</div>
+<hr class="hr-white mt2 mb2">
+<div class="separator mb2"></div>
+<h3 class="articles__heading entry-title">Latest Posts</h3>
+
+
+<section class="articles blog-entries">
+
+    <ul class="article-ul grid" id="post-results">
+
+        <% data.forEach(post=> { %>
+
+
+            <li>
+                <div class="shadow blog-entry background-white">
+                    <a href="/post/<%=post._id %>"><figure><img src="<%=post.image %>" alt="Illustration for the post"></figure></a>
+                    <div class="date-readmore flex">
+                        <span class="article-list__date entry-date">
+                            <%= post.createdAt.toDateString() %>
+                        </span>
+                        <div class="read-more-btn"><a href="/post/<%=post._id %>">Read more</a></div>
+                    </div>
+
+                    <a class="flex-align" href="/post/<%=post._id %>">
+                        <h2 class="post-title-height">
+                            <%= post.title %>
+                        </h2>
+                    </a>
+                    <div class="tags-entry">
+
+                        <% for( let index=0; index < post.tags.length; index++ ) { %>
+                            <span>
+                                <a href="/categories">
+                                    <%=post.tags[index]%>
+                            </span> </a>
+                            <% } %>
+                    </div>
+                </div>
+            </li>
+
+            <% }) %>
+    </ul>
+
+
+
+    <% if (nextPage !==null) { %>
+        <a href="/?page=<%= nextPage %>" class="pagination center">&lt; View Older Posts</a>
+        <% } %>
+</section>
+
+<!-- Footer -->
+<div id="footer-loader" class="mt2"></div>
+</body>

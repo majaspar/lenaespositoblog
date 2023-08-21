@@ -1,0 +1,670 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
+/* Reseseseseseseset */
+
+:root {}
+
+
+/*
+    --clr-blue: #3b6699;
+    --clr-turqoise: #2ef9ff;
+    --clr-violet: #404191;
+    --clr-purple: #403080;
+    --clr-dark: #011055;
+    --clr-light: #e8efdd;
+
+*/
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+/**************************/
+/***   UTILITY CLASSES  ***/
+/**************************/
+
+hr.hr-white {
+    color: white;
+}
+
+.w70 {
+    width: 90%;
+}
+
+
+@media (max-width: 40rem) {
+    .w70 {
+        width: 95%;
+    }
+
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+
+.background-white {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.background-dark {
+    background: var(--clr-violet);
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+/****************************************/
+
+body {
+    color: white;
+    justify-content: space-between;
+    background: url('../assets/website-bg.jpg');
+    background-size: cover;
+    background-position: top;
+    font-family: 'Montserrat', sans-serif;
+}
+
+ul {
+    list-style: none;
+}
+
+/**************************/
+/***       header       ***/
+/**************************/
+.scrollWatcher {
+    position: relative;
+    align-items: center;
+}
+
+.nav-blog {
+    top: 4rem;
+    letter-spacing: 0.5ch;
+    left: 15rem;
+    color: var(--clr-blue-light);
+    position: absolute;
+    font-family: 'Marck Script', cursive;
+    font-size: 2rem;
+}
+
+
+/**************************/
+/***       SEARCH       ***/
+/**************************/
+
+
+button.searchBtn {
+    color: rgb(134, 132, 132);
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: 1px solid var(--clr-blue-light);
+    padding: 1rem;
+    border-radius: 7px;
+}
+
+button.searchBtn img {
+    height: 1.2rem;
+}
+
+/* button.searchBtn img:hover {
+    scale: 1.1;
+    transition: 300ms;
+} */
+.searchBar input:focus {
+    outline: none;
+}
+
+.searchBar .container {
+    align-items: center;
+}
+
+.search__form {
+    margin: auto 0;
+}
+
+.searchBar {
+    width: 8rem;
+    padding-right: 0.5rem;
+}
+
+
+.searchBar input {
+    color: white;
+    background: transparent;
+}
+
+
+
+/**************************/
+/***       admin       ***/
+/**************************/
+
+
+
+/*************************/
+/***      login page   ***/
+/**************************/
+
+.login-page,
+.dashboard-page {
+    min-height: 48vh;
+}
+
+
+
+/* Dashboard Admin */
+
+.admin-title {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-new {
+    border: 2px solid white;
+    padding: 1rem;
+}
+
+.dashboard h1 {
+    margin: 2rem 0;
+}
+
+.admin-post-controls {
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.dashboard .post-title {
+    font-size: 1rem;
+}
+
+.admin-post {
+    margin: 1rem 0;
+}
+
+/* Add-post Admin */
+
+.edit-post label,
+.edit-post input,
+.edit-post textarea {
+    display: block;
+    width: 100%;
+}
+
+.edit-post input,
+.edit-post textarea {
+    padding: 0.5rem;
+}
+
+.edit-post label {
+    margin: 1rem 0 0 0;
+}
+
+.back-arrow {
+    margin: 2rem 0;
+}
+
+.add-post-btn {
+    justify-content: flex-end;
+}
+
+.edit-post .action-btn {
+    margin: 1rem 0 2rem 0;
+    width: 10rem;
+
+}
+
+.btn-delete {
+    text-align: center;
+    border-radius: 5px;
+    padding: 0.3rem;
+    width: 5rem;
+    background: black;
+    color: white;
+}
+
+/**************************/
+/*** Categories PAGE    ***/
+/**************************/
+.tags-categories {
+    min-height: 60vh;
+}
+
+.categories-list {
+    width: 100%;
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+}
+
+/**************************/
+/***       POST PAGE    ***/
+/**************************/
+
+.go-back {}
+
+.post-title-height {
+    height: 5rem;
+}
+
+.article h2 {
+    margin: 2rem 0 1rem 0;
+    font-size: 1.5rem;
+}
+
+.article .createdAt {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.date-and-tags {
+    justify-content: space-between;
+}
+
+.post-body {
+    margin: 3rem 0;
+    text-align: justify;
+    min-height: 50vh;
+}
+
+.figure-post-body img {
+    max-width: 300px;
+}
+
+.figure-post-body {
+    float: right;
+    margin: 2rem;
+}
+
+.post-body figcaption {
+    font-size: 0.7rem;
+    text-align: right;
+    padding: 10px 0;
+}
+
+/**************************/
+/***     Share buttons  ***/
+/**************************/
+
+.share-buttons {
+    justify-content: center;
+    gap: 1rem;
+}
+
+.share-buttons i {
+    height: 2.5rem;
+    width: 2.5rem;
+    font-size: 2rem;
+}
+
+.share-buttons i:hover {
+    font-size: 2.5rem;
+}
+
+.fa-facebook:hover {
+    color: rgb(106, 176, 255);
+}
+
+.fa-twitter:hover {
+    color: rgb(104, 195, 255);
+}
+
+.fa-whatsapp:hover {
+    color: rgb(133, 255, 121);
+}
+
+.fa-linkedin:hover {
+    color: rgb(137, 165, 250);
+}
+
+/**************************/
+/***       FOOTER       ***/
+/**************************/
+
+
+.footer-content h3 {
+    margin-bottom: 2rem;
+}
+
+.text-link a {
+    line-height: 1rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.text-link h3 {
+    font-size: 1rem;
+}
+
+.text-link a:hover {
+    cursor: pointer;
+    color: var(--clr-blue-light);
+}
+
+.footer-unsplash {
+    z-index: 0;
+    position: relative;
+    display: inline-block;
+    transition: color 1s ease;
+}
+
+.footer-unsplash .credit2,
+.footer-unsplash .credit3 {
+    display: none;
+}
+
+.prev-next-loader {
+    justify-content: space-around;
+}
+
+/**************************/
+/*** BLOG ENTRIES INDEX ***/
+/**************************/
+.blog-intro {
+    padding: 0 10%;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.indexejs-photo {
+    text-align: center;
+    width: 30%;
+}
+
+@media (max-width: 500px) {
+    .blog-intro {
+        flex-direction: column-reverse;
+    }
+}
+
+.blog-intro img {
+    border-radius: 50%;
+}
+
+.blog-entries {
+    gap: 2rem;
+    justify-content: space-around;
+}
+
+.article-ul {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.blog-entries h2 {
+    padding: 0.5rem 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.blog-entry {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-entry figure {
+
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    transition: scale 500ms;
+}
+
+div.blog-entry img {
+    width: 100%;
+    margin: 0 auto;
+
+}
+
+div.blog-entry img:hover {
+    transform: scale(1.2);
+}
+
+.date-readmore {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.entry-date {
+    margin: 0.5rem 0;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: var(--clr-light);
+}
+
+.read-more-btn {
+    border-radius: 0.5rem;
+    padding: 0.4rem;
+    margin: 0.5rem 0;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: white;
+    background: var(--clr-violet);
+}
+
+.read-more-btn:hover {
+
+    background: var(--clr-blue-light);
+}
+
+
+.tags-entry span a,
+.post-tags span {
+    color: var(--clr-white);
+    padding: 0.3rem;
+    background: var(--clr-blue-light);
+    margin: 0.4rem 0.4rem 0 0;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.tags-entry span a:hover,
+.post-tags span:hover {
+
+    background: var(--clr-violet);
+}
+
+.pagination {
+    display: inline-block;
+    font-size: 1.3rem;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+/**************************/
+/***   BLOG ENTRy PAGE  ***/
+/**************************/
+
+.entry-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.entry-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.entry-content {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.entry-content a {
+    color: var(--clr-blue-light);
+}
+
+/**************************/
+/***       to-do-list   ***/
+/**************************/
+.to-do-list-section {
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+#to-do-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.7rem;
+}
+
+@media (min-width: 450px) {
+
+    #to-do-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 610px) {
+
+    #to-do-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 1250px) {
+
+    #to-do-list {
+        grid-template-columns: repeat(8, 1fr);
+    }
+}
+
+#to-do-list .emptySpace {
+    background: lightblue;
+    border: dashed 1px #777;
+    height: 1.5rem;
+}
+
+.add-item {
+    display: flex;
+    align-items: center;
+    height: 2rem;
+
+    margin: 0.7rem 0.2rem;
+}
+
+#delete-box {
+    padding: 0.2rem;
+    height: 100%;
+    margin: auto;
+}
+
+#delete-box img {
+    max-height: 100px;
+}
+
+#delete-box:hover {
+    transform: scale(1.1);
+    transition: transform 400ms;
+}
+
+
+input {
+    font-size: 0.9rem;
+    width: 90%;
+    margin: auto;
+}
+
+.to-do-column {
+    min-height: 10rem;
+    min-width: 8rem;
+    color: var(--clr-dark);
+    background: rgba(83, 181, 206, 0.5);
+    border-radius: 10px;
+}
+
+.to-do-column li:not(.day-of-the-week) {
+    font-size: 0.9rem;
+    cursor: pointer;
+    min-height: 2rem;
+    padding: 0.3rem;
+}
+
+.day-of-the-week {
+    background-color: var(--clr-purple);
+    margin: 0.1rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: white;
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+/**************************/
+/***       to-do-list   ***/
+/**************************/
+
+
+.sign-in {
+    padding: 3rem 0;
+    row-gap: 1rem;
+}
+
+
+
+/**************************/
+/***   filter tags      ***/
+/**************************/
+
+.instructions {
+    font-size: 1rem;
+}
+
+button.filter-button {
+    background: var(--clr-blue-light);
+    margin-left: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: none;
+
+}
+
+button.filter-button:active {
+    transform: translate(-3px, 3px);
+    color: white;
+}
+
+.objects .entry-date {
+    margin-right: 1rem;
+}
+
+.objects .filter {
+    margin-bottom: 1rem;
+}
+
+button.filter-button-reset {
+    display: inline-block;
+    color: white;
+    background: rgb(0, 0, 0);
+    padding: 0.5rem 1.5rem;
+    margin-right: 2rem;
+    cursor: pointer;
+}
+
+.filter-tags-column {
+    gap: 1rem;
+}
+
+.categories-list {
+    align-items: flex-start;
+}
