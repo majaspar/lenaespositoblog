@@ -2,7 +2,7 @@
 <div class="flex blog-intro">
     <div class="center">
         <h1 class="entry-title center">Hi, I am Lena. <br></h1>
-        <h3> Here's where I display and practice my web-developing skills &#128527;</h3>
+        <h3> Here's where I display and practise my web-developing skills &#128527;</h3>
     </div>
     <div class="indexejs-photo"><img class="shadow" styles="padding-left: 50%;" src="assets/lena-esposito-photo.jpg"
             height="150" width="150" alt="photo of Lena Esposito Web Developer"></div>
@@ -22,7 +22,9 @@
 
             <li>
                 <div class="shadow blog-entry background-white">
-                    <a href="/post/<%=post._id %>"><figure><img src="<%=post.image %>" alt="Illustration for the post"></figure></a>
+                    <a href="/post/<%=post._id %>">
+                        <figure><img src="<%=post.image %>" alt="Illustration for the post"></figure>
+                    </a>
                     <div class="date-readmore flex">
                         <span class="article-list__date entry-date">
                             <%= post.createdAt.toDateString() %>
