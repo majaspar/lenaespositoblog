@@ -313,6 +313,7 @@ div[data-scroll-watcher] {
 }
 
 header {
+    background-color: var(--clr-violet);
     box-sizing: content-box;
     padding-top: 0.5rem;
     height: 6rem;

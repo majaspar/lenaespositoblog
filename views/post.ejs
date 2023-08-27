@@ -2,6 +2,7 @@
   <div class="mt3"></div>
   <div class="go-back uppercase"><a href="/">&larr; Go Back</a></div>
 
+
   <h2>
     <%= data.title %>
   </h2>
@@ -24,13 +25,6 @@
   </div>
   <hr class="hr-white mb1 mt1">
 
-  <figure class="figure-post-body flex-column">
-
-    <img src="/<%= data.image %>" height="300px" alt="Illustration for thie blog post">
-    <figcaption><a href="<%= data.imageSource %>" target="_blank"><i><%- data.imageSourceDescription %></i></a>
-    </figcaption>
-
-  </figure>
   <div class="post-body">
 
 
@@ -39,7 +33,13 @@
     <%- data.body %>
 
   </div>
+  <figure class="figure-post-body flex-column center">
 
+    <img src="/<%= data.image %>" alt="Illustration for thie blog post">
+    <figcaption><a href="<%= data.imageSource %>" target="_blank"><i><%- data.imageSourceDescription %></i></a>
+    </figcaption>
+
+  </figure>
 </article>
 
 <hr class="hr-white mb2 mt2 w70">

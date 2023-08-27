@@ -60,8 +60,8 @@
     <!-- Copy from here -->
     <style>
         body {
-            background: url('../assets/bg2.jpg');
-            color: rgb(44, 44, 44);
+            text-align: left;
+            color: rgb(255, 255, 255);
         }
 
         * {
@@ -70,23 +70,28 @@
         }
 
         .console-log {
+            overflow-wrap: break-word;
+            background: rgba(137, 137, 137, 0.449);
+            padding: 1rem;
             font-family: 'Courier New', Courier, monospace;
-            color: rgb(13, 4, 191);
+            color: rgb(2, 9, 85);
             margin-left: 1rem;
             font-weight: bold;
         }
 
         .console-log span {
-            color: rgb(95, 137, 91);
+            overflow-wrap: break-word;
+            color: rgb(134, 255, 123);
             margin-top: 1rem;
             margin-left: 3rem;
         }
 
         .console-log div {
+            overflow-wrap: break-word;
             margin-top: 1rem;
             margin-left: 10rem;
 
-            color: rgb(95, 137, 91);
+            color: rgb(134, 255, 123);
 
         }
 
@@ -98,6 +103,9 @@
         }
 
         .code {
+            overflow-wrap: break-word;
+            background: rgba(137, 137, 137, 0.449);
+            padding: 1rem;
             font-weight: bold;
             font-family: 'Courier New', Courier, monospace;
             margin-top: 1rem;
@@ -106,390 +114,319 @@
         }
 
         span.method {
-            color: orangered;
+            color: rgb(217, 255, 0);
         }
 
         .transp {
             color: transparent;
         }
+
+
     </style>
     <div class="separator mb5"></div>
 
 
     <div class="w70">
-        <h1 class="entry-title">JavaScript Arrays Cheat Sheet</h1>
+        <h1 class="entry-title">JavaScript Objects Cheat Sheet</h1>
         <p class="text">
-            Let's revise on the arrays in JavaScript.
+            Let's revise on the objects in JavaScript.
         </p>
-        <h2 class="mt3 mb3 entry-subtitle">Array Methods and Loops</h2>
+        <h2 class="mt3 mb3 entry-subtitle">Objects</h2>
 
 
 
 
-        <p class="desc">This is our array.</p>
-
-        <p class="code"> let colorArray = ["red", "blue", "orange"] </p>
-
-        <div class="console-log">console.log(colorArray) <span>//(3) ['red', 'blue', 'orange']<br></span></div>
-
-        <div class="desc"> Let's access the array's individual elements. We need to type the array name, followed by
-            square brackets with the index number. </div>
-        <div class="console-log">console.log(colorArray[0]) <span>//red<br></span></div>
-
-        <div class="desc"> Let's change one of the array's elements.</div>
-        <p class="code">colorArray[0] = "green" </p>
-        <div class="console-log">console.log(colorArray) <span>//(3) ['green', 'blue', 'orange']</span></div>
-
-        <div class="desc"> Let's add an element.</div>
-        <p class="code"> colorArray.<span class="method">push</span>("purple", "black")</p>
-
-        <div class="console-log">console.log(colorArray) <span>//(5) ['green', 'blue', 'orange', 'purple',
-                'black']</span></div>
-
-
-        <div class="desc"> Let's remove an element from the end of the array.</div>
-
-        <p class="code"> colorArray.<span class="method">pop</span>()</p>
-
-        <div class="console-log">console.log(colorArray) <span>//(4) ['green', 'blue', 'orange', 'purple']</span></div>
-
-
-        <div class="desc"> Let's add an element to the beginning of the array.</div>
-        <p class="code"> colorArray.<span class="method">unshift</span>("white")</p>
-        <div class="console-log">console.log(colorArray) <span>//(5) ['white', 'green', 'blue', 'orange',
-                'purple']</span></div>
-
-
-        <div class="desc"> Let's remove an element from the beginning of the array.</div>
-        <p class="code"> colorArray.<span class="method">shift</span>()</p>
-        <div class="console-log">console.log(colorArray) <span>//(4) ['green', 'blue', 'orange', 'purple']</span></div>
-
-
-        <div class="desc"> Let's access the length of the array.</div>
-        <p class="code">let arrayLength = colorArray.<span class="method">length</span> </p>
-        <div class="console-log">console.log(arrayLength) <span>// 4</span></div>
-
-
-
-
-        <div class="desc"> Let's find the index of an element in the array.</div>
-        <p class="code"> let colorIndex = colorArray.<span class="method">indexOf</span>("orange") </p>
-        <div class="console-log">console.log(colorIndex) <span>// 2</span></div>
-        <p class="code"> let colorIndex = colorArray.indexOf("green") </p>
-        <div class="console-log">console.log(colorIndex) <span>// 0</span></div>
-
-        <div class="desc"> If we're looking for the index of an element that doesn't exist the console will print "-1"
-        </div>
-
-        <p class="code"> let colorIndex = colorArray.indexOf("gold") </p>
-        <div class="console-log">console.log(colorIndex) <span>// -1</span></div>
-
-
-
-
-
-        <div class="desc"> Let's loop through the elements of our array.</div>
-        <p class="code"> for(let index = 0; index < colorArray.length; index++) {<br>
-                <span class="transp">___</span>console.log(colorArray[index])<br>
-                } </p>
-        <div class="console-log">
-            <div>// green<br>blue<br>orange<br>purple</div>
-        </div>
-
-        <div class="desc"> OR</div>
-
-        <p class="code"> for(let everyColor of colorArray) {<br>
-            <span class="transp">___</span>console.log(everyColor)<br>
-            }
-        </p>
-        <div class="console-log">
-            <div>// green<br>blue<br>orange<br>purple</div>
-        </div>
-
-
-
-        <div class="desc"> Let's loop through the elements of our array backwards.</div>
-
-        <p class="code"> for(let index = colorArray.length - 1; index >= 0; index--) {<br>
-            <span class="transp">___</span>console.log(colorArray[index])<br>
-            }
-        </p>
-
-        <div class="console-log">
-            <div>// purple<br>orange<br>blue<br>green</div>
-        </div>
-
-
-        <div class="desc"> Let's sort our array (an array of strings) in alphabetical order.</div>
-        <p class="code"> colorArray.<span class="method">sort</span>()</p>
-        <div class="console-log">console.log(colorArray) <span>//(4) ['blue', 'green', 'orange', 'purple']</span></div>
-
-        <div class="desc"> Let's sort our array (an array of strings) in reverse alphabetical order.</div>
-        <p class="code"> colorArray.<span class="method">sort</span>().<span class="method">reverse</span>()</p>
-        <div class="console-log">console.log(colorArray) <span>//(4) ['purple', 'orange', 'green', 'blue']</span></div>
-
-
-
-        <h2 class="mt3 mb3 entry-subtitle">An Array of Arrays</h2>
-
-        <p class="desc">This is an array of warm colors.</p>
-
-        <p class="code"> let warmColors = ["red", "yellow", "orange"] </p>
-
-
-
-        <p class="desc">This is an array of cool colors.</p>
-
-        <p class="code"> let coolColors = ["green", "blue", "purple"] </p>
-
-        <p class="desc">This is an array of all colors.</p>
-
-        <p class="code"> let allColors = [warmColors, coolColors] </p>
-
-        <p class="desc">Let's display a list of every color in both arrays.</p>
-
-        <p class="code"> for (let colors of allColors) {<br>
-            <span class="transp">___</span> for(let color of colors) {<br>
-            <span class="transp">___</span> console.log(color)<br>
-            <span class="transp">___</span> }<br>
-            }
-        </p>
-        <div class="console-log">console.log(color)</div>
-        <div class="console-log">
-            <div>//
-                red<br>yellow<br>orange<br>green<br>blue<br>purple
-            </div>
-        </div>
-
-
-        <p class="desc">Let's access an element inside of an array of arrays. We need to use 2 pairs of square brackets
-            in order to do that. First pair of brackets is the index of the array we want to access. Second pair is the
-            index of the color within the array.</p>
-
-
-        <p class="desc">For example, "blue" is the second color (index 1) in the second array (index 1).</p>
-
-        <div class="console-log">console.log(allColors[1][1])<span>//blue</span></div>
-        <p class="desc">"Red" is the first color (index 0) in the first array (index 0).</p>
-
-        <div class="console-log">console.log(allColors[0][0])<span>//red</span></div>
-
-        <p class="desc">"Orange" is the third color (index 2) in the first array (index 0).</p>
-
-        <div class="console-log">console.log(allColors[0][2])<span>//orange</span></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <h2 class="mt3 mb3 entry-subtitle">Spread Operator (...)</h2>
-        <p class="desc">The spread operator will unpack the elements from within our string and array.</p>
-        <p class="desc">Let's use the spread operator on a string.</p>
-        <p class="code">let myName = "Lena Esposito"</p>
-        <div class="console-log">console.log(myName) <span>//Lena Esposito</span> </div>
-        <div class="console-log">console.log(...myName) <span>//L e n a E s p o s i t o</span> </div>
-
-        <p class="desc">Let's use the spread operator on an array.</p>
-        <p class="code">let numbers = [1, 2, 3, 4, 5]</p>
-        <div class="console-log">console.log(numbers) <span>//(5) [1, 2, 3, 4, 5]</span> </div>
-        <div class="console-log">console.log(...numbers) <span>//1 2 3 4 5</span> </div>
-
-
-        <p class="desc">Why do we need it? For example, let's find the element with the highest value.<br> If we use
-            Math.max() without the spread operator, console will print "NaN".</p>
-
-        <p class="code">let maximum = Math.max(numbers)</p>
-
-        <div class="console-log">console.log(maximum) <span>//NaN</span> </div>
-
-        <p class="code">let maximum = Math.max(...numbers)</p>
-
-        <div class="console-log">console.log(maximum) <span>//5</span> </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <h2 class="mt3 mb3 entry-subtitle">Rest Parameters (...)</h2>
-        <p class="desc"> The rest parameter syntax allows a function to accept an indefinite number of arguments as an
-            array.</p>
-        <p class="code">
-            function sum(...numbers) { <br>
-            <span class="transp">___</span>let total = 0; <br>
-            <span class="transp">___</span>for (const number of numbers) { <br>
-            <span class="transp">___</span>total += number; <br>
-            <span class="transp">___</span>} <br>
-            <span class="transp">___</span>return total; <br>
-            }
-
-        </p>
-        <div class="console-log"> console.log(sum(5,10,10)) <span>//25</span> </div>
-        <div class="console-log"> console.log(sum(5,10,10,15,25)) <span>//65</span> </div>
-
-
-        <h2 class="mt3 mb3 entry-subtitle">array.forEach()</h2>
-        <p class="desc">Let's capitalize the first letter of each element of an array.</p>
-        <p class="code">let polishCities = ["warsaw", "gdansk", "torun", "lublin", "katowice"]
-        </p>
-
-
-
-        <p class="desc">This function will capitalize the first letter of the elements of the array.</p>
-        <p class="code"> function capitalize(element, index, array){<br>
-            <span class="transp">___</span>array[index] = element[0].toUpperCase() + element.substring(1);<br>
-            }
-        <p class="desc">This function will print all the capitalized elements in the console.</p>
-        <p class="code"> function list(element) {<br>
-            <span class="transp">___</span>console.log(element)<br>
-            }
-        </p>
-        <p class="desc">Let's call both functions.</p>
-        <p class="code">polishCities.<span class="method">forEach</span>(capitalize)<br>
-            polishCities.<span class="method">forEach</span>(list)</p>
-
-        <div class="console-log">
-            <div>//
-                Warsaw<br>Gdansk<br>Torun<br>Lublin<br>Katowice
-            </div>
-        </div>
-
-
-        <h2 class="mt3 mb3 entry-subtitle">array.map()</h2>
-        <p class="desc">Let's map over every element of an array and execute a callback function on it, and therefore,
-            create a new array.</p>
-        <p class="code">let unfinishedWords = ["coffe", "latt", "cattl", "mous"]
-        </p>
-
-        <p class="code"> let finishedWords = unfinishedWords.<span class="method">map</span>(addE)</p>
-
-
-        <p class="code"> function addE(element) {<br>
-            <span class="transp">___</span>console.log(element + "e")<br>
-            }
-        </p>
-
-
-        <div class="console-log">
-            <div>//
-                cofee<br>latte<br>cattle<br>mouse
-            </div>
-        </div>
-
-
-        <h2 class="mt3 mb3 entry-subtitle">array.filter()</h2>
-        <p class="desc">Let's check which elements of an array will pass a test provided by a function, and therefore,
-            create a new array.</p>
-
-        <p class="code">let age = [3, 5, 15, 25, 35, 36, 45, 11, 101, 8]</p>
-
-        <p class="code">let adults = age.<span class="method">filter</span>(adultsCheck)<br>
-            adults.forEach(print)</p>
+        <p class="desc">An object is a group of properties (what the object has) and methods (what the object can do).
+            We can use "." to access object's methods and properties.</p>
 
         <p class="code">
-            function adultsCheck(arrayElement) {<br>
-            <span class="transp">___</span>return arrayElement >= 18;<br>
+            const house = {<br>
+            <span class="transp">____</span>address: "7 Bond Street",<br>
+            <span class="transp">____</span>builtIn: "1950",<br>
+            <span class="transp">____</span>type: "terraced",<br><br>
+
+            <span class="transp">____</span>sell : function() {<br>
+            <span class="transp">____</span>console.log("This house is for sale.")<br>
+            <span class="transp">____</span>},<br><br>
+            <span class="transp">____</span>live : function() {<br>
+            <span class="transp">____</span>console.log("Someone lives in this house.")<br>
+            <span class="transp">____</span>},<br><br>
+            <span class="transp">____</span>renovate : function() {<br>
+            <span class="transp">____</span>console.log("This house is being renovated.")<br>
+            <span class="transp">____</span>}<br>
+
             }
         </p>
+
+        <div class="console-log">console.log(house.address) <span>//7 Bond Street</span></div>
+        <div class="console-log">house.live()<span>//Someone lives in this house.</span></div>
+
+
+        <h2 class="mt3 mb3 entry-subtitle">"This" keyword</h2>
+
+        <p class="desc">"This" refrences the object based on its immediate context.</p>
+
         <p class="code">
-            function print(arrayElement){<br>
-            <span class="transp">___</span>console.log(arrayElement)<br>
+            const house = {<br>
+            <span class="transp">____</span>address: "7 Bond Street",<br>
+            <span class="transp">____</span>builtIn: "1950",<br>
+            <span class="transp">____</span>type: "terraced",<br><br>
+
+            <span class="transp">____</span>sell : function() {<br>
+            <span class="transp">____</span>console.log(`The house at ${this.address} is for sale.`)<br>
+            <span class="transp">____</span>},<br><br>
+            <span class="transp">____</span>live : function() {<br>
+            <span class="transp">____</span>console.log(`Someone lives in house at ${this.address}.`)<br>
+            <span class="transp">____</span>},<br><br>
+            <span class="transp">____</span>renovate : function() {<br>
+            <span class="transp">____</span>console.log(`The house at ${this.address} is being renovated.`)<br>
+            <span class="transp">____</span>}<br>
+
             }
         </p>
 
-        <div class="console-log">
-            <div>//
-                25<br>35<br>36<br>45<br>101
-            </div>
-        </div>
+        <div class="console-log">house.renovate()<span>//The house at Bond Street is being renovated.</span></div>
+        <div class="console-log">house.live()<span>//Someone lives in house at Bond Street.</span></div>
 
-        <h2 class="mt3 mb3 entry-subtitle">Sorting an array of numbers in ascending or descending order</h2>
-        <p class="code">let age = [3, 5, 15, 25, 35, 36, 45, 11, 101, 8]</p>
+
+        <p class="desc">If we use "this" outside of an object we reference the "Window" object. </p>
+        <div class="console-log">console.log(this)<span>//Window {window: Window, self: Window, document: document,
+                name: '', location: Location, …}</span></div>
+
+
+
+        <h2 class="mt3 mb3 entry-subtitle">Classes</h2>
+
+        <p class="desc">Classes are a template for creating objects. They encapsulate data with code to work on that
+            data.</p>
+
+        <p class="code"><span class="method">class</span> Rectangle {<br>
+            <span class="transp">____</span>height = 2;<br>
+            <span class="transp">____</span>width = 7;<br><br>
+
+            <span class="transp">____</span>areaCalc() {<br>
+            <span class="transp">____</span>return this.height * this.width<br>
+            <span class="transp">____</span>}<br>
+            }
+        </p>
+        <p class="desc">Let's create more rectangles.</p>
+        <p class="code"> const rectangle1 = new Rectangle();<br>
+            const rectangle2 = new Rectangle();
+        </p>
+        <p class="desc">We've created two identical rectangles.</p>
+        <div class="console-log"> console.log(rectangle1.areaCalc())<span>//14</span></div>
+        <div class="console-log"> console.log(rectangle2.areaCalc())<span>//14</span></div>
+
+
+        <h2 class="mt3 mb3 entry-subtitle">Classes: constructor function</h2>
+        <p class="desc">The constructor method is a special method within a class for creating and initializing an
+            object
+            instance of that class. It accepts arguments and assigns properties.</p>
+
+        <p class="code">class Book {<br>
+            <span class="transp">____</span><span class="method">constructor</span>(title, author, year) {<br>
+            <span class="transp">________</span>this.title = title;<br>
+            <span class="transp">________</span>this.author = author;<br>
+            <span class="transp">________</span>this.year = year;<br>
+            <span class="transp">____</span>}<br>
+            <span class="transp">____</span>published() {<br>
+            <span class="transp">________</span>console.log(`"${this.title}" by ${this.author} was published in
+            ${this.year}.`)<br>
+            <span class="transp">____</span><span class="transp">____</span>}<br>
+            }
+        </p>
+        <p class="code">const book1 = new Book("It", "Stephen King", 1986);
+        <div class="console-log"> book1.published()<span>//"It" by Stephen King was published in 1986.</span></div>
+        </p>
+
+
+        <h2 class="mt3 mb3 entry-subtitle">Classes: "static" keyword</h2>
+        <p class="desc">Used with variables, methods, blocks and nested classes to share the same variable or method of
+            a class. It is the same for every instance of a class.</p>
 
         <p class="code">
-            function print(element) {<br>
-            <span class="transp">___</span>console.log(element)<br>
-            }
+
+            class Game {<br><br>
+            <span class="transp">____</span><span class="method">static</span> numberOfGames = 0;<br><br>
+
+            <span class="transp">____</span> constructor(name) {<br>
+            <span class="transp">________</span> this.name = name;<br>
+            <span class="transp">________</span> Game.numberOfGames +=1;<br>
+            <span class="transp">____</span> }<br>
+            }<br><br>
+
+            const game1 = new Game("Snake");<br>
+            const game2 = new Game("Bowling");<br>
+            const game3 = new Game("Piggy in the Middle");
+        <div class="console-log"> console.log(Game.numberOfGames)<span>//3</span></div>
+
         </p>
-        <p class="desc">Let's sort our array of ages in descending order.</p>
-
-        <p class="code">aageDesc = age.sort(ageDescending).forEach(print);</p>
-        <p class="code">function ageDescending(age1, age2) {<br>
-            <span class="transp">___</span>return age2 - age1;<br>
-            }
-        </p>
-        <div class="console-log">
-            <div>//
-                101<br>
-                45<br>
-                36<br>
-                35<br>
-                25<br>
-                15<br>
-                11<br>
-                8<br>
-                5<br>
-                3
-            </div>
-        </div>
 
 
-        <p class="desc">Let's sort our array of ages in ascending order.</p>
+        <h2 class="mt3 mb3 entry-subtitle">Inheritance and "extends" keyword</h2>
 
-        <p class="code">ageAsc = age.sort(ageAscending).forEach(print)</p>
+        <p class="desc">The "extends" keyword is used in class declarations or class expressions to create a class that
+            is a child of another class. It indicates that a class is inherited from another class.</p>
+
+        <p class="code"></p>
+
+        <p class="desc">Classes Book, Magazine and Comic have all function <b>read</b> in common.</p>
+
         <p class="code">
-            function ageAscending(age1, age2) {<br>
-            <span class="transp">___</span>return age1 - age2;<br>
+            class ReadingMaterial {<br>
+            <span class="transp">____</span> read() {<br>
+            <span class="transp">________</span> console.log(`I am reading "${this.title}".`)<br>
+            <span class="transp">____</span> }<br>
+            }<br><br>
+
+            class Book <span class="method">extends</span> ReadingMaterial {<br>
+            <span class="transp">____</span> title = "It"<br>
+            }<br>
+            class Magazine <span class="method">extends</span> ReadingMaterial {<br>
+            <span class="transp">____</span> title = "Glamour"<br>
+            }<br>
+            class Comic <span class="method">extends</span> ReadingMaterial {<br>
+            <span class="transp">____</span> title = "Manga"<br>
             }
         </p>
+        <p class="code">const book = new Book()</p>
+        <div class="console-log"> book.read()<span>//I am reading "It".</span></div>
+
+        <h2 class="mt3 mb3 entry-subtitle">Classes: "super" keyword</h2>
+
+        <p class="desc">The "super" keyword is used to call parent class' variables and methods (constructors only).</p>
+        <p class="code">
+            class Animal {<br><br>
+            <span class="transp">____</span> constructor(name, age) {<br>
+            <span class="transp">________</span> this.name = name;<br>
+            <span class="transp">________</span> this.age = age;<br>
+            <span class="transp">____</span> }<br>
+            }<br><br>
+
+            class Dog extends Animal {<br><br>
+
+            <span class="transp">____</span> constructor(name, age, runningSpeed) {<br><br>
+
+            <span class="transp">________</span> <span class="method">super</span>(name, age)<br>
+            <span class="transp">________</span> this.runningSpeed = runningSpeed;<br>
+            <span class="transp">____</span> }<br>
+
+            }<br><br>
+
+            class Cat extends Animal {<br><br>
+
+            <span class="transp">____</span> constructor(name, age, runningSpeed) {<br><br>
+
+            <span class="transp">________</span> <span class="method">super</span>(name, age)<br>
+            <span class="transp">________</span> this.runningSpeed = runningSpeed;<br>
+            <span class="transp">____</span> }<br>
+
+            }<br><br>
+
+            class Bird extends Animal {<br><br>
+
+            <span class="transp">____</span> constructor(name, age, flyingSpeed) {<br><br>
+
+            <span class="transp">________</span> <span class="method">super</span>(name, age)<br>
+            <span class="transp">________</span> this.flyingSpeed = flyingSpeed;<br>
+            <span class="transp">____</span> }<br>
+
+            }<br><br>
+
+            const dog = new Dog("Rocky", 5, "40km/h")<br>
+            const cat = new Cat("Daisy", 7, "45km/h")<br>
+            const bird = new Bird("Pongo", 2, "40km/h")
+
+        </p>
+
+        <div class="console-log"> console.log(dog.name)<span>//Rocky</span></div>
+        <div class="console-log"> console.log(bird.age)<span>//2</span></div>
+
+
+        <h2 class="mt3 mb3 entry-subtitle">Getters and Setters</h2>
+        <p class="desc">The "get" method returns the variable value and makes it a "read-only" property, which should
+            not be changed. It provides additional security and lets us set up some additional logic. The "set" method
+            sets the value.</p>
+        <p class="code">
+            class Car {<br>
+                <span class="transp">____</span>  constructor (power){<br>
+                    <span class="transp">________</span>  this._gas = 25;<br>
+                    <span class="transp">________</span>  this._power = power;<br>
+                    <span class="transp">____</span>  }<br>
+                    <span class="transp">____</span> <span class="method"> get</span> power() {<br>
+                        <span class="transp">________</span>  return `${this._power}hp`<br>
+                        <span class="transp">____</span> }<br>
+                    <span class="transp">____</span> <span class="method"> get</span> gas() {<br>
+                        <span class="transp">________</span>  return `There's ${this._gas}L of gas in the tank. It's ${this._gas / 50 * 100}% full.`<br>
+                        <span class="transp">____</span> }<br><br>
+
+<p class="desc">We can set the maximum and minimum value of gas.</p>
+                     <p class="code"><span class="transp">____</span><span class="method">set</span>  gas(value) {<br><br>
+
+                            <span class="transp">____</span> if (value > 50) {<br>
+                                <span class="transp">________</span> value = 50;<br>
+                                <span class="transp">____</span> } else if (value < 0) {<br>
+                                    <span class="transp">________</span>value = 0;<br>
+                                    <span class="transp">____</span> }<br>
+                                    <span class="transp">____</span> this._gas = value;<br>
+                                    <span class="transp">____</span> }<br>
+            }
+</p>
+
+           <p class="code">let car = new Car(400);</p> 
+
+
+
+<div class="console-log">console.log(car.power)<span>//400hp</span></div>
+
+<p class="desc">If we change the value of gas to a number greater than 50, console will print the maximum value that has been set, which is 50. If the value of gas is below 0, console will print the minimum set valu, which is 0.</p>
+
+
+<p class="code">
+    car.gas = -90;
+    </p>
+
+    <div class="console-log">console.log(car.gas)<span>//There's 0L of gas in the tank. It's 0% full.</span></div>
+
+          <p class="code">  car.gas = 50;</p>
+           
+
+
+        
         <div class="console-log">
-            <div>//3<br>
-                5<br>
-                8<br>
-                11<br>
-                15<br>
-                25<br>
-                35<br>
-                36<br>
-                45<br>
-                101
-            </div>
-        </div>
+            console.log(car.gas)<span>//There's 50L of gas in the tank. It's 100% full.</span></div>
 
-
-
-        <h2 class="mt3 mb3 entry-subtitle">array.reduce()</h2>
-        <p class="desc"></p>
-        <P class="code">let prices = [3.99, 5.45, 11.99, 104.50]</P>
-
-        <p class="code">let total = prices.<span class="method">reduce</span>(addUp)</p>
-        <p class="code">function addUp(total, element) {<br>
-            <span class="transp">___</span>return total + element<br>
-            }
         </p>
-        <div class="console-log"> console.log("£"+total) <span>//£125.93</span> </div>
 
-        <hr class="mt2 hr-white mb2">
+<p class="desc">Example comes from a <a class="inside-link" href="https://www.youtube.com/@BroCodez" target="_blank">Youtube video by Bro Code</a> .</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+
+
+
+
+
 
 
     </div>

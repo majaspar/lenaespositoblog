@@ -2,10 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
 /* Reseseseseseseset */
 
-:root {}
+:root {
+
+    --clr-bluish: rgba(41,111,162,255);
+}
 
 
 /*
+    --clr-blue: #3b6699;
     --clr-blue: #3b6699;
     --clr-turqoise: #2ef9ff;
     --clr-violet: #404191;
@@ -57,7 +61,7 @@ a {
 
 
 .background-white {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.237);
 }
 
 .background-dark {
@@ -72,9 +76,10 @@ a {
 /****************************************/
 
 body {
+    text-align: left;
     color: white;
     justify-content: space-between;
-    background: url('../assets/website-bg.jpg');
+    background: url('../assets/bg.avif');
     background-size: cover;
     background-position: top;
     font-family: 'Montserrat', sans-serif;
@@ -352,6 +357,7 @@ button.searchBtn img {
 
 
 .post-title-height {
+    align-items: center;
     height: 5rem;
 }
 
@@ -376,17 +382,18 @@ button.searchBtn img {
 }
 
 .figure-post-body img {
-    max-width: 300px;
+    width: min(500px, 100%);
+
+    margin: auto;
 }
 
 .figure-post-body {
-    float: right;
-    margin: 2rem;
+    margin: 3rem 1rem;
 }
 
 .post-body figcaption {
     font-size: 0.7rem;
-    text-align: right;
+    text-align: center;
     padding: 10px 0;
 }
 
@@ -768,6 +775,7 @@ button.filter-button-reset {
 /***       FOOTER       ***/
 /**************************/
 footer {
+    background: var(--clr-violet);
     position: relative;
     padding: 0rem 15%;
     width: 100%;
