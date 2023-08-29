@@ -27,7 +27,7 @@
 
 
 * {
-    transition: 500ms;
+    transition: 200ms;
 }
 
 *,
@@ -143,15 +143,6 @@ h1 {
 /**************************/
 /***       body       ***/
 /**************************/
-
-body {
-    position: relative;
-    background: url('../assets/website-bg.jpg');
-    background-size: cover;
-    background-position: top;
-    font-family: 'Montserrat', sans-serif;
-}
-
 .body-container {
     color: white;
     flex-direction: column;

@@ -60,6 +60,8 @@
     <!-- Copy from here -->
     <style>
         body {
+            background: url('../public/assets/bg.jpg');
+            background-size: cover;
             text-align: left;
             color: rgb(255, 255, 255);
         }
@@ -120,8 +122,6 @@
         .transp {
             color: transparent;
         }
-
-
     </style>
     <div class="separator mb5"></div>
 
@@ -139,299 +139,123 @@
         <p class="desc">An object is a group of properties (what the object has) and methods (what the object can do).
             We can use "." to access object's methods and properties.</p>
 
-        <p class="code">
-            const house = {<br>
-            <span class="transp">____</span>address: "7 Bond Street",<br>
-            <span class="transp">____</span>builtIn: "1950",<br>
-            <span class="transp">____</span>type: "terraced",<br><br>
-
-            <span class="transp">____</span>sell : function() {<br>
-            <span class="transp">____</span>console.log("This house is for sale.")<br>
-            <span class="transp">____</span>},<br><br>
-            <span class="transp">____</span>live : function() {<br>
-            <span class="transp">____</span>console.log("Someone lives in this house.")<br>
-            <span class="transp">____</span>},<br><br>
-            <span class="transp">____</span>renovate : function() {<br>
-            <span class="transp">____</span>console.log("This house is being renovated.")<br>
-            <span class="transp">____</span>}<br>
-
-            }
         </p>
 
         <div class="console-log">console.log(house.address) <span>//7 Bond Street</span></div>
         <div class="console-log">house.live()<span>//Someone lives in this house.</span></div>
 
 
-        <h2 class="mt3 mb3 entry-subtitle">"This" keyword</h2>
+        <h2 class="mt3 mb3 entry-subtitle">Date() </h2>
 
-        <p class="desc">"This" refrences the object based on its immediate context.</p>
+        <p class="code">let date = new Date();</p>
 
-        <p class="code">
-            const house = {<br>
-            <span class="transp">____</span>address: "7 Bond Street",<br>
-            <span class="transp">____</span>builtIn: "1950",<br>
-            <span class="transp">____</span>type: "terraced",<br><br>
+        <div class="console-log">console.log(date)<span>//Mon Aug 28 2023 22:34:56 GMT+0100 (British Summer Time)</span>
+        </div>
 
-            <span class="transp">____</span>sell : function() {<br>
-            <span class="transp">____</span>console.log(`The house at ${this.address} is for sale.`)<br>
-            <span class="transp">____</span>},<br><br>
-            <span class="transp">____</span>live : function() {<br>
-            <span class="transp">____</span>console.log(`Someone lives in house at ${this.address}.`)<br>
-            <span class="transp">____</span>},<br><br>
-            <span class="transp">____</span>renovate : function() {<br>
-            <span class="transp">____</span>console.log(`The house at ${this.address} is being renovated.`)<br>
-            <span class="transp">____</span>}<br>
+        <p class="code"> date = date.<span class="method">toLocaleDateString()</span>;</p>
+        <div class="console-log">console.log(date)<span>//28/08/2023</span></div>
 
-            }
+        <p class="desc">JavaScript stores dates as number of milliseconds since January 01, 1970. 1st of January 1970
+            00:00:00 UTC is therefore the reference point when we pass an argument inside Date() object.</p>
+        <p class="code">let date = new Date(0);</p>
+        <div class="console-log">console.log(date)<span>//Thu Jan 01 1970 01:00:00 GMT+0100 (Greenwich Mean Time)</span>
+        </div>
+
+        <p class="code">let dateToday = new Date(2023, 7, 28, 22, 34, 1, 5);
+            let dateYesterday = new Date('August 27, 2023 22:45:00');
         </p>
 
-        <div class="console-log">house.renovate()<span>//The house at Bond Street is being renovated.</span></div>
-        <div class="console-log">house.live()<span>//Someone lives in house at Bond Street.</span></div>
+        <div class="console-log">console.log(dateToday)<span>//Sun Aug 28 2023 22:34:01 GMT+0100 (British Summer
+                Time)</span></div>
 
+        <div class="console-log">console.log(dateYesterday)<span>//Sun Aug 27 2023 22:45:00 GMT+0100 (British Summer
+                Time)</span></div>
 
-        <p class="desc">If we use "this" outside of an object we reference the "Window" object. </p>
-        <div class="console-log">console.log(this)<span>//Window {window: Window, self: Window, document: document,
-                name: '', location: Location, …}</span></div>
+        <p class="code">let date = new Date();<br><br>
+            let year = date.getFullYear(); <br>
 
+            let day = date.getDate(); <br>
+            let weekDay = date.getDay(); <br>
+            let month = date.getMonth(); <br>
+            let hour = date.getHours(); <br>
+            let minutes = date.getMinutes(); <br>
+            let seconds = date.getSeconds(); <br>
+            let milliSeconds = date.getMilliseconds(); </p>
+        <p class="desc">In <span class="method">getDay()</span> Sunday is 0, Monday is 1, etc.<br>
+            In <span class="method">getMonth()</span> January is 0, Febryary is 1, etc.</p>
 
+        <div class="console-log">console.log(year)<span>//2023</span><br>
+            console.log(day)<span>//28</span><br>
+            console.log(weekDay)<span>//1</span><br>
+            console.log(month)<span>//7</span><br>
+            console.log(hour)<span>//22</span><br>
+            console.log(seconds)<span>//25</span><br>
+            console.log(milliSeconds)<span>//701</span>
+        </div>
 
-        <h2 class="mt3 mb3 entry-subtitle">Classes</h2>
+        <p class="desc">Let's set a specific date.</p>
+        <p class="code">let date = new Date();<br><br>
 
-        <p class="desc">Classes are a template for creating objects. They encapsulate data with code to work on that
-            data.</p>
+            date.setFullYear(2025)<br>
+            date.setMonth(11)<br>
+            date.setDate(31)<br>
+            date.setHours(8)<br>
 
-        <p class="code"><span class="method">class</span> Rectangle {<br>
-            <span class="transp">____</span>height = 2;<br>
-            <span class="transp">____</span>width = 7;<br><br>
+            date.setMinutes(5)<br>
 
-            <span class="transp">____</span>areaCalc() {<br>
-            <span class="transp">____</span>return this.height * this.width<br>
-            <span class="transp">____</span>}<br>
-            }
+            date.setSeconds(0)
         </p>
-        <p class="desc">Let's create more rectangles.</p>
-        <p class="code"> const rectangle1 = new Rectangle();<br>
-            const rectangle2 = new Rectangle();
-        </p>
-        <p class="desc">We've created two identical rectangles.</p>
-        <div class="console-log"> console.log(rectangle1.areaCalc())<span>//14</span></div>
-        <div class="console-log"> console.log(rectangle2.areaCalc())<span>//14</span></div>
+        <div class="console-log">console.log(date)<span>//Wed Dec 31 2025 08:05:00 GMT+0000 (Greenwich Mean Time)</span>
+        </div>
 
+<p class="desc">Let's display your current date and time.</p>
 
-        <h2 class="mt3 mb3 entry-subtitle">Classes: constructor function</h2>
-        <p class="desc">The constructor method is a special method within a class for creating and initializing an
-            object
-            instance of that class. It accepts arguments and assigns properties.</p>
-
-        <p class="code">class Book {<br>
-            <span class="transp">____</span><span class="method">constructor</span>(title, author, year) {<br>
-            <span class="transp">________</span>this.title = title;<br>
-            <span class="transp">________</span>this.author = author;<br>
-            <span class="transp">________</span>this.year = year;<br>
-            <span class="transp">____</span>}<br>
-            <span class="transp">____</span>published() {<br>
-            <span class="transp">________</span>console.log(`"${this.title}" by ${this.author} was published in
-            ${this.year}.`)<br>
-            <span class="transp">____</span><span class="transp">____</span>}<br>
-            }
-        </p>
-        <p class="code">const book1 = new Book("It", "Stephen King", 1986);
-        <div class="console-log"> book1.published()<span>//"It" by Stephen King was published in 1986.</span></div>
-        </p>
-
-
-        <h2 class="mt3 mb3 entry-subtitle">Classes: "static" keyword</h2>
-        <p class="desc">Used with variables, methods, blocks and nested classes to share the same variable or method of
-            a class. It is the same for every instance of a class.</p>
-
-        <p class="code">
-
-            class Game {<br><br>
-            <span class="transp">____</span><span class="method">static</span> numberOfGames = 0;<br><br>
-
-            <span class="transp">____</span> constructor(name) {<br>
-            <span class="transp">________</span> this.name = name;<br>
-            <span class="transp">________</span> Game.numberOfGames +=1;<br>
-            <span class="transp">____</span> }<br>
-            }<br><br>
-
-            const game1 = new Game("Snake");<br>
-            const game2 = new Game("Bowling");<br>
-            const game3 = new Game("Piggy in the Middle");
-        <div class="console-log"> console.log(Game.numberOfGames)<span>//3</span></div>
-
-        </p>
-
-
-        <h2 class="mt3 mb3 entry-subtitle">Inheritance and "extends" keyword</h2>
-
-        <p class="desc">The "extends" keyword is used in class declarations or class expressions to create a class that
-            is a child of another class. It indicates that a class is inherited from another class.</p>
-
-        <p class="code"></p>
-
-        <p class="desc">Classes Book, Magazine and Comic have all function <b>read</b> in common.</p>
-
-        <p class="code">
-            class ReadingMaterial {<br>
-            <span class="transp">____</span> read() {<br>
-            <span class="transp">________</span> console.log(`I am reading "${this.title}".`)<br>
-            <span class="transp">____</span> }<br>
-            }<br><br>
-
-            class Book <span class="method">extends</span> ReadingMaterial {<br>
-            <span class="transp">____</span> title = "It"<br>
-            }<br>
-            class Magazine <span class="method">extends</span> ReadingMaterial {<br>
-            <span class="transp">____</span> title = "Glamour"<br>
-            }<br>
-            class Comic <span class="method">extends</span> ReadingMaterial {<br>
-            <span class="transp">____</span> title = "Manga"<br>
-            }
-        </p>
-        <p class="code">const book = new Book()</p>
-        <div class="console-log"> book.read()<span>//I am reading "It".</span></div>
-
-        <h2 class="mt3 mb3 entry-subtitle">Classes: "super" keyword</h2>
-
-        <p class="desc">The "super" keyword is used to call parent class' variables and methods (constructors only).</p>
-        <p class="code">
-            class Animal {<br><br>
-            <span class="transp">____</span> constructor(name, age) {<br>
-            <span class="transp">________</span> this.name = name;<br>
-            <span class="transp">________</span> this.age = age;<br>
-            <span class="transp">____</span> }<br>
-            }<br><br>
-
-            class Dog extends Animal {<br><br>
-
-            <span class="transp">____</span> constructor(name, age, runningSpeed) {<br><br>
-
-            <span class="transp">________</span> <span class="method">super</span>(name, age)<br>
-            <span class="transp">________</span> this.runningSpeed = runningSpeed;<br>
-            <span class="transp">____</span> }<br>
-
-            }<br><br>
-
-            class Cat extends Animal {<br><br>
-
-            <span class="transp">____</span> constructor(name, age, runningSpeed) {<br><br>
-
-            <span class="transp">________</span> <span class="method">super</span>(name, age)<br>
-            <span class="transp">________</span> this.runningSpeed = runningSpeed;<br>
-            <span class="transp">____</span> }<br>
-
-            }<br><br>
-
-            class Bird extends Animal {<br><br>
-
-            <span class="transp">____</span> constructor(name, age, flyingSpeed) {<br><br>
-
-            <span class="transp">________</span> <span class="method">super</span>(name, age)<br>
-            <span class="transp">________</span> this.flyingSpeed = flyingSpeed;<br>
-            <span class="transp">____</span> }<br>
-
-            }<br><br>
-
-            const dog = new Dog("Rocky", 5, "40km/h")<br>
-            const cat = new Cat("Daisy", 7, "45km/h")<br>
-            const bird = new Bird("Pongo", 2, "40km/h")
-
-        </p>
-
-        <div class="console-log"> console.log(dog.name)<span>//Rocky</span></div>
-        <div class="console-log"> console.log(bird.age)<span>//2</span></div>
-
-
-        <h2 class="mt3 mb3 entry-subtitle">Getters and Setters</h2>
-        <p class="desc">The "get" method returns the variable value and makes it a "read-only" property, which should
-            not be changed. It provides additional security and lets us set up some additional logic. The "set" method
-            sets the value.</p>
-        <p class="code">
-            class Car {<br>
-                <span class="transp">____</span>  constructor (power){<br>
-                    <span class="transp">________</span>  this._gas = 25;<br>
-                    <span class="transp">________</span>  this._power = power;<br>
-                    <span class="transp">____</span>  }<br>
-                    <span class="transp">____</span> <span class="method"> get</span> power() {<br>
-                        <span class="transp">________</span>  return `${this._power}hp`<br>
-                        <span class="transp">____</span> }<br>
-                    <span class="transp">____</span> <span class="method"> get</span> gas() {<br>
-                        <span class="transp">________</span>  return `There's ${this._gas}L of gas in the tank. It's ${this._gas / 50 * 100}% full.`<br>
-                        <span class="transp">____</span> }<br><br>
-
-<p class="desc">We can set the maximum and minimum value of gas.</p>
-                     <p class="code"><span class="transp">____</span><span class="method">set</span>  gas(value) {<br><br>
-
-                            <span class="transp">____</span> if (value > 50) {<br>
-                                <span class="transp">________</span> value = 50;<br>
-                                <span class="transp">____</span> } else if (value < 0) {<br>
-                                    <span class="transp">________</span>value = 0;<br>
-                                    <span class="transp">____</span> }<br>
-                                    <span class="transp">____</span> this._gas = value;<br>
-                                    <span class="transp">____</span> }<br>
-            }
-</p>
-
-           <p class="code">let car = new Car(400);</p> 
-
-
-
-<div class="console-log">console.log(car.power)<span>//400hp</span></div>
-
-<p class="desc">If we change the value of gas to a number greater than 50, console will print the maximum value that has been set, which is 50. If the value of gas is below 0, console will print the minimum set valu, which is 0.</p>
-
-
-<p class="code">
-    car.gas = -90;
+<p class="code">let date = new Date();<br><br>
+    
+    document.getElementById('currentTime').innerHTML = todaysDate(date) + currentTime(date);<br><br>
+    
+    
+    
+    function todaysDate(date) {<br>
+        <span class="transp">___</span>let year = date.getFullYear();<br>
+        <span class="transp">___</span>let day = date.getDate();<br>
+        <span class="transp">___</span>let month = date.getMonth() + 1;<br><br>
+    
+        <span class="transp">___</span>return `Today is ${day}/${month}/${year}`<br>
+    }<br><br>
+ 
+    function currentTime(date) {   <br>
+        <span class="transp">___</span>let hour = date.getHours();<br>
+        <span class="transp">___</span>let minutes = date.getMinutes();<br><br>
+        <span class="transp">___</span>return ` and the time is ${hour}:${minutes}.`<br>
+    }
+    
     </p>
 
-    <div class="console-log">console.log(car.gas)<span>//There's 0L of gas in the tank. It's 0% full.</span></div>
 
-          <p class="code">  car.gas = 50;</p>
-           
-
-
-        
-        <div class="console-log">
-            console.log(car.gas)<span>//There's 50L of gas in the tank. It's 100% full.</span></div>
-
-        </p>
-
-<p class="desc">Example comes from a <a class="inside-link" href="https://www.youtube.com/@BroCodez" target="_blank">Youtube video by Bro Code</a> .</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-
-
-
-
-
-
-
-
+<p id="currentTime" style="padding-left: 1rem; font-weight: bold;"></p>
 
     </div>
     <script>
+let date = new Date();
 
+document.getElementById('currentTime').innerHTML = todaysDate(date) + currentTime(date);
+
+
+
+function todaysDate(date) {
+    let year = date.getFullYear();
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+
+    return `Today is ${day}/${month}/${year}`
+}
+
+function currentTime(date) {
+    let hour = date.getHours();
+    let minutes = date.getMinutes();
+    return ` and the time is ${hour}:${minutes}.`
+}
     </script>
     <!-- Copy to here -->
     <!-- Footer -->

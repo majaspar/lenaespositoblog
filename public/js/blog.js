@@ -47,11 +47,41 @@ $(function () {
 });
 
 
+// const categoriesArray = ["jQuery", "Small-app", "website", "Bootstrap", "JavaScript", "DOM-Manipulation", "cheat-sheat", "JavaScript"]
+
+
+// function onlyUnique(value, index, array) {
+//     return array.indexOf(value) === index;
+// }
+
+// let unique = categoriesArray.filter(onlyUnique);
+
+// unique.sort();
+
+// // function listUnique(list) {
+// //     for (let i = 0; i > list.length; i++) {
+// //         list[i].innerHTML = `<button class="filter-button tags-array" data-filter="${list[i]}">${list[i]}</button>`;
+// //     }
+// // }
+
+// function addClass(element) {
+//     const buttonTag = document.createElement('button');
+//     buttonTag.classList.add('filter-button');
+//     buttonTag.setAttribute("data-filter", element)
+//     buttonTag.innerHTML = element;
+// }
+
+// let categoriesDom = document.getElementById('categories');
+// categoriesDom.innerHTML = listUnique(unique);
+
+
+
+
 const shareLink = encodeURI(window.location.href);
 const msg = encodeURIComponent('Hey, I found this article');
 const title = encodeURIComponent(document.querySelector('title').textContent);
 
-console.log([shareLink, msg, title])
+// console.log([shareLink, msg, title])
 
 const fb = document.querySelector('.facebook');
 fb.href = `https://www.facebook.com/share.php?u=${shareLink}`;

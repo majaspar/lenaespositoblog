@@ -76,6 +76,7 @@ a {
 /****************************************/
 
 body {
+    position: relative;
     text-align: left;
     color: white;
     justify-content: space-between;
@@ -346,10 +347,56 @@ button.searchBtn img {
 }
 
 .categories-list {
+    row-gap: 0.5rem;
+    align-items: flex-start;
+}
+
+/**************************/
+/***   filter tags      ***/
+/**************************/
+
+.instructions {
+    font-size: 1rem;
+}
+
+button.filter-button {
+    background: var(--clr-blue-light);
+    margin-left: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: none;
+
+}
+
+button.filter-button:active {
+    transform: translate(-3px, 3px);
+    color: white;
+}
+
+.objects .entry-date {
+    margin-right: 1rem;
+}
+
+.objects .filter {
+    margin-bottom: 1rem;
+}
+
+button.filter-button-reset {
+    display: inline-block;
+    color: white;
+    background: rgb(0, 0, 0);
+    padding: 0.5rem 1.5rem;
+    margin-right: 2rem;
+    cursor: pointer;
+}
+
+.filter-tags-column {
+    padding: 0.5rem;
     width: 100%;
     flex-wrap: wrap;
-    row-gap: 0.5rem;
-}
+    row-gap: 0.5rem;}
+
 
 /**************************/
 /***       POST PAGE    ***/
@@ -566,7 +613,10 @@ div.blog-entry img:hover {
     background: var(--clr-blue-light);
 }
 
-
+.tags-entry {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+}
 .tags-entry span a,
 .post-tags span {
     color: var(--clr-white);
@@ -617,158 +667,12 @@ div.blog-entry img:hover {
 /**************************/
 /***       to-do-list   ***/
 /**************************/
-.to-do-list-section {
-    border-radius: 5px;
-    padding: 1rem;
-}
-
-#to-do-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.7rem;
-}
-
-@media (min-width: 450px) {
-
-    #to-do-list {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (min-width: 610px) {
-
-    #to-do-list {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-@media (min-width: 1250px) {
-
-    #to-do-list {
-        grid-template-columns: repeat(8, 1fr);
-    }
-}
-
-#to-do-list .emptySpace {
-    background: lightblue;
-    border: dashed 1px #777;
-    height: 1.5rem;
-}
-
-.add-item {
-    display: flex;
-    align-items: center;
-    height: 2rem;
-
-    margin: 0.7rem 0.2rem;
-}
-
-#delete-box {
-    padding: 0.2rem;
-    height: 100%;
-    margin: auto;
-}
-
-#delete-box img {
-    max-height: 100px;
-}
-
-#delete-box:hover {
-    transform: scale(1.1);
-    transition: transform 400ms;
-}
-
-
-input {
-    font-size: 0.9rem;
-    width: 90%;
-    margin: auto;
-}
-
-.to-do-column {
-    min-height: 10rem;
-    min-width: 8rem;
-    color: var(--clr-dark);
-    background: rgba(83, 181, 206, 0.5);
-    border-radius: 10px;
-}
-
-.to-do-column li:not(.day-of-the-week) {
-    font-size: 0.9rem;
-    cursor: pointer;
-    min-height: 2rem;
-    padding: 0.3rem;
-}
-
-.day-of-the-week {
-    background-color: var(--clr-purple);
-    margin: 0.1rem;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    color: white;
-    padding: 1rem;
-    font-size: 1rem;
-}
-
-/**************************/
-/***       to-do-list   ***/
-/**************************/
-
 
 .sign-in {
     padding: 3rem 0;
     row-gap: 1rem;
 }
 
-
-
-/**************************/
-/***   filter tags      ***/
-/**************************/
-
-.instructions {
-    font-size: 1rem;
-}
-
-button.filter-button {
-    background: var(--clr-blue-light);
-    margin-left: 0.5rem;
-    padding: 0.5rem;
-    border-radius: 7px;
-    cursor: pointer;
-    transition: none;
-
-}
-
-button.filter-button:active {
-    transform: translate(-3px, 3px);
-    color: white;
-}
-
-.objects .entry-date {
-    margin-right: 1rem;
-}
-
-.objects .filter {
-    margin-bottom: 1rem;
-}
-
-button.filter-button-reset {
-    display: inline-block;
-    color: white;
-    background: rgb(0, 0, 0);
-    padding: 0.5rem 1.5rem;
-    margin-right: 2rem;
-    cursor: pointer;
-}
-
-.filter-tags-column {
-    gap: 1rem;
-}
-
-.categories-list {
-    align-items: flex-start;
-}
 
 
 /**************************/

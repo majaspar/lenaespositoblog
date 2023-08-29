@@ -1,30 +1,20 @@
-class Car {
-    constructor(power) {
-        this._gas = 25;
-        this._power = power;
-    }
-    get power() {
-        return `${this._power}hp`
-    }
+let date = new Date();
 
-    get gas() {
-        return `There's ${this._gas}L of gas in the tank. It's ${this._gas / 50 * 100}% full.`
-    }
-    set gas(value) {
+document.getElementById('currentTime').innerHTML = todaysDate(date) + currentTime(date);
 
-        if (value > 50) {
-            value = 50;
-        } else if (value < 0) {
-            value = 0;
-        }
-        this._gas = value;
-    }
+
+
+function todaysDate(date) {
+    let year = date.getFullYear();
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+
+    return `Today is ${day}/${month}/${year}`
 }
 
-let car = new Car(400);
+function currentTime(date) {
+    let hour = date.getHours();
+    let minutes = date.getMinutes();
+    return ` and the time is ${hour}:${minutes}.`
+}
 
-car.gas = -90;
-
-
-console.log(car.power)
-console.log(car.gas)
