@@ -21,48 +21,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-function functionEnter() {
-    var k = new Event("keydown");
-    k.key="return"; //Change this value for different keys
-    document.dispatchEvent(k);
-}
-
-// const input = document.getElementById('searchInput');
-
-// input.addEventListener('keypress', function(event) {
-//     if(event.key === '13') {
-//         event.preventDefault();
-//         document.getElementById('search-icon').click();
-//     }
-// 
+// function functionEnter() {
+//     var k = new Event("keydown");
+//     k.key="return"; //Change this value for different keys
+//     document.dispatchEvent(k);
+// }
 
 
-
-// jsdom.jQueryify(window, "https://code.jquery.com/jquery-3.7.0.min.js", function () {
-
-
-//     window.$('#to-do-list ul').sortable({
-//         items: "li:not('.day-of-the-week, .add-item')",
-//         connectWith: "ul",
-//         dropOnEmpty: true,
-//         placeholder: "emptySpace"
-//     });
-
-//     window.$('input').keydown(function (e) {
-//         if (e.keyCode == 13) {
-//             var item = $(this).val();
-
-//             $(this).parent().parent().append('<li>' + item + '</li');
-//             $(this).val('');
-//         }
-//     })
-
-//     window.$('#delete-box').droppable({
-//         drop: function (event, ui) {
-//             ui.draggable.remove();
-//         }
-//     })
-// });
 const postResults = document.getElementById('post-results');
 
 

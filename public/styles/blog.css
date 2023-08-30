@@ -342,74 +342,37 @@ button.searchBtn img {
 /**************************/
 /*** Categories PAGE    ***/
 /**************************/
-.tags-categories {
+.categories {
     min-height: 60vh;
 }
 
-.categories-list {
-    row-gap: 0.5rem;
+.categories__list {
+    gap: 0.5rem;
     align-items: flex-start;
 }
-
-/**************************/
-/***   filter tags      ***/
-/**************************/
-
-.instructions {
-    font-size: 1rem;
-}
-
-button.filter-button {
-    background: var(--clr-blue-light);
-    margin-left: 0.5rem;
-    padding: 0.5rem;
-    border-radius: 7px;
+.categories__button {
     cursor: pointer;
-    transition: none;
-
-}
-
-button.filter-button:active {
-    transform: translate(-3px, 3px);
     color: white;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid white;
 }
-
-.objects .entry-date {
-    margin-right: 1rem;
+.categories__button:hover {
+    
+    background: rgba(255, 255, 255, 0.082);
 }
-
-.objects .filter {
-    margin-bottom: 1rem;
-}
-
-button.filter-button-reset {
-    display: inline-block;
-    color: white;
-    background: rgb(0, 0, 0);
-    padding: 0.5rem 1.5rem;
-    margin-right: 2rem;
-    cursor: pointer;
-}
-
-.filter-tags-column {
-    padding: 0.5rem;
-    width: 100%;
-    flex-wrap: wrap;
-    row-gap: 0.5rem;}
-
-
 /**************************/
 /***       POST PAGE    ***/
 /**************************/
 
 
-.post-title-height {
+.blog-entry-title {
     align-items: center;
-    height: 5rem;
+    min-height: 4.5rem;
 }
 
 .article h2 {
-    margin: 2rem 0 1rem 0;
+    margin: 1.5rem 0 1rem 0;
     font-size: 1.5rem;
 }
 
@@ -554,9 +517,8 @@ button.filter-button-reset {
     gap: 1rem;
 }
 
-.blog-entries h2 {
-    padding: 0.5rem 0;
-    margin-bottom: 1rem;
+.blog-entry h2 {
+    margin-bottom: 0.5rem;
     font-size: 1.2rem;
     font-weight: normal;
 }
@@ -570,6 +532,8 @@ button.filter-button-reset {
 
 .blog-entry figure {
 
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
     width: 100%;
     display: flex;
     overflow: hidden;

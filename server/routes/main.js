@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../models/Post')
+const Category = require('../models/Category')
 /*
 * get
 * home */
@@ -114,34 +115,63 @@ router.post('/search', async (req, res) => {
 
 })
 
+/*
+* get
+* Post - categories*/
 router.get('/categories', async (req, res) => {
+    try {
 
 
-    const locals = {
-        title: "Categories",
-        description: "Search the Blog by Tags"
-    };
+        const locals = {
+            title: "Lena Esposito Blog: Categories",
+            description: "Search Lena Esposito Blog by a category"
+        };
+        const categories = await Category.find({})
 
-    const data = await Post.find();
-          
+        const data = await Post.find();
+
+        const javascript = await Post.find({ 'category': 'JavaScript' })
+        const jQuery = await Post.find({ 'category': 'jQuery' })
+        const smallApp = await Post.find({ 'category': 'Small App' })
+        const bootstrap = await Post.find({ 'category': 'Bootstrap' })
+        const website = await Post.find({ 'category': 'Website' })
+        const cheatSheet = await Post.find({ 'category': 'Cheat Sheet' })
+
+        const allCategories = { javascript, jQuery, smallApp, bootstrap, website, cheatSheet}
+
+        res.render('categories', { data, locals, categories, allCategories });
+    } catch (error) {
+        res.status(500).send({ message: error.message || "Error Occured" })
+    }
+})
+
+/////////////////////////////////////////////
 
 
-        //  const { tags } = req.body;
-        // try {
-        //     const locals = {
-        //         title: "Lena Esposito Blog: Categories",
-        //         description: "Search the Blog by Tags"
-        //     }
-
-        //     const data = await Post.findById({ _id: slug });
-
-        // } catch (error) {
-        //     console.log(error)
-        // }
-        res.render('categories', { data, locals });
-    })
 
 
+
+router.get('/categories/:id', async (req, res) => {
+    try {
+
+
+        let slug = req.params.id;
+        const data = await Category.findById({ _id: slug });
+        const locals = {
+            title: `Lena Esposito Blog: ${data.name} Category`,
+            description: `Lena Esposito Blog: Posts from  ${data.name} category`
+        };
+        res.render('categories', {
+            locals, data,
+            currentRoute: `/categories/${slug}`
+        });
+    } catch (error) {
+        res.status(500).send({ message: error.message || "Error Occured" })
+    }
+
+
+
+})
 module.exports = router;
 
 

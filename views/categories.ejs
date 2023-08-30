@@ -1,88 +1,276 @@
-<div class="tags-categories mt2 mb2">
-    <h1 class="mb2">Search by Tags</h1>
-
-    <div class="instructions mb2">Click on a <b>tag</b> to display all relevant entries. Click on the tag again to
-        remove it from the
-        search. <Br>
-        Click on multiple <b>tags</b> to search for entries containing all the chosen tags. <br>
-        Use the <b>RESET</b> button to reset the search.<br>
-    </div>
-    <hr>
-    <div class="categories-list flex mt2 mb2">
-        <div>
-            <button class="filter-button filter-button-reset uppercase" data-filter="all">Reset</button>
-        </div>
-        <div class="flex filter-tags-column">
-
-            <!-- <div class="tags-entry flex" id="categories">
+<div class="categories mt2 mb2">
+    <h1 class="mb2">Posts by Category</h1>
 
 
-            </div> -->
+    <div class="categories__list flex mt2 mb2">
 
+        <% if(categories !='' ) { %>
 
+            <% categories.forEach(function(category, index){%>
 
-            <% data.forEach(post=> { %>
-
-                <div class="tags-entry flex">
-
-                    <% for( let index=0; index < post.tags.length; index++ ) { %>
-                        <button class="filter-button tags-array" data-filter="<%=post.tags[index]%>">
-                            <%=post.tags[index]%>
-                        </button>
-                        <% } %>
-                </div>
-       <% data.sort() %>
+                <a href="#category__<%= category.searchBy%>"><button class="categories__button">
+                        <%= category.name %>
+                    </button></a>
                 <% }) %>
 
-         
-        </div>
+                    <% } %>
+
+
     </div>
-    <hr>
+
+    <div class="grid mt2">
+
+        <h1 class="mb2" id="catagory__javascript">JavaScript</h1>
+        <ul class="article-ul grid">
+            <% if(typeof allCategories.javascript !=='undefined' && allCategories.javascript.length> 0) { %>
+                <% allCategories.javascript.forEach(function(post, index) { %>
+
+                    <li>
+                        <div class="shadow blog-entry background-white">
+                            <a href="/post/<%=post._id %>">
+                                <figure><img src="<%=post.image %>" alt="Illustration for <%=post.title %>"></figure>
+                            </a>
+                            <div class="date-readmore flex">
+                                <span class="entry-date">
+                                    <%= post.createdAt.toDateString() %>
+                                </span>
+                                <div class="read-more-btn"><a href="/post/<%=post._id %>">Read more</a></div>
+                            </div>
+
+                            <a class="flex-align" href="/post/<%=post._id %>">
+                                <h2 class="blog-entry-title flex">
+                                    <%= post.title %>
+                                </h2>
+                            </a>
+                            <div class="tags-entry">
+
+                                <% for( let index=0; index < post.tags.length; index++ ) { %>
+                                    <span>
+                                        <a href="/categories">
+                                            <%=post.tags[index]%>
+                                    </span> </a>
+                                    <% } %>
+                            </div>
+                        </div>
+                    </li>
+
+                    <% }) %>
+                        <% }%>
+        </ul>
+
+    </div>
+<hr class="mt3">
+    <div class="grid mt2">
+
+        <h1 class="mb2" id="category__smallApp">Small Apps</h1>
+        <ul class="article-ul grid">
+            <% if(typeof allCategories.smallApp !=='undefined' && allCategories.smallApp.length> 0) { %>
+                <% allCategories.smallApp.forEach(function(post, index) { %>
+
+                    <li>
+                        <div class="shadow blog-entry background-white">
+                            <a href="/post/<%=post._id %>">
+                                <figure><img src="<%=post.image %>" alt="Illustration for <%=post.title %>"></figure>
+                            </a>
+                            <div class="date-readmore flex">
+                                <span class="entry-date">
+                                    <%= post.createdAt.toDateString() %>
+                                </span>
+                                <div class="read-more-btn"><a href="/post/<%=post._id %>">Read more</a></div>
+                            </div>
+
+                            <a class="flex-align" href="/post/<%=post._id %>">
+                                <h2 class="blog-entry-title flex">
+                                    <%= post.title %>
+                                </h2>
+                            </a>
+                            <div class="tags-entry">
+
+                                <% for( let index=0; index < post.tags.length; index++ ) { %>
+                                    <span>
+                                        <a href="/categories">
+                                            <%=post.tags[index]%>
+                                    </span> </a>
+                                    <% } %>
+                            </div>
+                        </div>
+                    </li>
+
+                    <% }) %>
+                        <% }%>
+        </ul>
+
+    </div>
+<hr class="mt3">
+    <div class="grid mt2">
+
+        <h1 class="mb2" id="category__website">Websites</h1>
+        <ul class="article-ul grid">
+            <% if(typeof allCategories.website !=='undefined' && allCategories.website.length> 0) { %>
+                <% allCategories.website.forEach(function(post, index) { %>
+
+                    <li>
+                        <div class="shadow blog-entry background-white">
+                            <a href="/post/<%=post._id %>">
+                                <figure><img src="<%=post.image %>" alt="Illustration for <%=post.title %>"></figure>
+                            </a>
+                            <div class="date-readmore flex">
+                                <span class="entry-date">
+                                    <%= post.createdAt.toDateString() %>
+                                </span>
+                                <div class="read-more-btn"><a href="/post/<%=post._id %>">Read more</a></div>
+                            </div>
+
+                            <a class="flex-align" href="/post/<%=post._id %>">
+                                <h2 class="blog-entry-title flex">
+                                    <%= post.title %>
+                                </h2>
+                            </a>
+                            <div class="tags-entry">
+
+                                <% for( let index=0; index < post.tags.length; index++ ) { %>
+                                    <span>
+                                        <a href="/categories">
+                                            <%=post.tags[index]%>
+                                    </span> </a>
+                                    <% } %>
+                            </div>
+                        </div>
+                    </li>
+
+                    <% }) %>
+                        <% }%>
+        </ul>
+
+    </div>
+
+<hr class="mt3">
+    <div class="grid mt2">
+
+        <h1 class="mb2" id="category__bootstrap">Bootstrap</h1>
+        <ul class="article-ul grid">
+            <% if(typeof allCategories.bootstrap !=='undefined' && allCategories.bootstrap.length> 0) { %>
+                <% allCategories.bootstrap.forEach(function(post, index) { %>
+
+                    <li>
+                        <div class="shadow blog-entry background-white">
+                            <a href="/post/<%=post._id %>">
+                                <figure><img src="<%=post.image %>" alt="Illustration for <%=post.title %>"></figure>
+                            </a>
+                            <div class="date-readmore flex">
+                                <span class="entry-date">
+                                    <%= post.createdAt.toDateString() %>
+                                </span>
+                                <div class="read-more-btn"><a href="/post/<%=post._id %>">Read more</a></div>
+                            </div>
+
+                            <a class="flex-align" href="/post/<%=post._id %>">
+                                <h2 class="blog-entry-title flex">
+                                    <%= post.title %>
+                                </h2>
+                            </a>
+                            <div class="tags-entry">
+
+                                <% for( let index=0; index < post.tags.length; index++ ) { %>
+                                    <span>
+                                        <a href="/categories">
+                                            <%=post.tags[index]%>
+                                    </span> </a>
+                                    <% } %>
+                            </div>
+                        </div>
+                    </li>
+
+                    <% }) %>
+                        <% }%>
+        </ul>
+
+    </div>
 
 
+<hr class="mt3">
+    <div class="grid mt2">
 
-    <!-- <div class="categories-list flex mt2 mb2">
-        <div>
-            <button class="filter-button filter-button-reset uppercase" data-filter="all">Reset</button>
-        </div>
-        <div class="flex filter-tags-column" id="tags">
+        <h1 class="mb2" id="category__jQuery">jQuery</h1>
+        <ul class="article-ul grid">
+            <% if(typeof allCategories.jQuery !=='undefined' && allCategories.jQuery.length> 0) { %>
+                <% allCategories.jQuery.forEach(function(post, index) { %>
 
-            <div id="tags-sort" class="tags-entry flex">
+                    <li>
+                        <div class="shadow blog-entry background-white">
+                            <a href="/post/<%=post._id %>">
+                                <figure><img src="<%=post.image %>" alt="Illustration for <%=post.title %>"></figure>
+                            </a>
+                            <div class="date-readmore flex">
+                                <span class="entry-date">
+                                    <%= post.createdAt.toDateString() %>
+                                </span>
+                                <div class="read-more-btn"><a href="/post/<%=post._id %>">Read more</a></div>
+                            </div>
 
-                <button class="filter-button tags-array">jQuery</button>
-                <button class="filter-button tags-array">small-app</button>
-                <button class="filter-button tags-array">Bootstrap</button>
-                <button class="filter-button tags-array">website</button>
-                <button class="filter-button tags-array">JavaScript</button>
-                <button class="filter-button tags-array">cheat-sheet</button>
-                <button class="filter-button tags-array">DOM-Manipulation</button>
+                            <a class="flex-align" href="/post/<%=post._id %>">
+                                <h2 class="blog-entry-title flex">
+                                    <%= post.title %>
+                                </h2>
+                            </a>
+                            <div class="tags-entry">
 
-            </div>
-        </div>
-    </div> -->
+                                <% for( let index=0; index < post.tags.length; index++ ) { %>
+                                    <span>
+                                        <a href="/categories">
+                                            <%=post.tags[index]%>
+                                    </span> </a>
+                                    <% } %>
+                            </div>
+                        </div>
+                    </li>
 
+                    <% }) %>
+                        <% }%>
+        </ul>
 
+    </div>
 
-    <hr>
-    <div class="objects grid mt2">
+<hr class="mt3">
+    <div class="grid mt2">
 
+        <h1 class="mb2" id="category__cheatSheet">Cheat Sheets</h1>
+        <ul class="article-ul grid">
+            <% if(typeof allCategories.cheatSheet !=='undefined' && allCategories.cheatSheet.length> 0) { %>
+                <% allCategories.cheatSheet.forEach(function(post, index) { %>
 
+                    <li>
+                        <div class="shadow blog-entry background-white">
+                            <a href="/post/<%=post._id %>">
+                                <figure><img src="<%=post.image %>" alt="Illustration for <%=post.title %>"></figure>
+                            </a>
+                            <div class="date-readmore flex">
+                                <span class="entry-date">
+                                    <%= post.createdAt.toDateString() %>
+                                </span>
+                                <div class="read-more-btn"><a href="/post/<%=post._id %>">Read more</a></div>
+                            </div>
 
-        <% data.forEach(post=> { %>
+                            <a class="flex-align" href="/post/<%=post._id %>">
+                                <h2 class="blog-entry-title flex">
+                                    <%= post.title %>
+                                </h2>
+                            </a>
+                            <div class="tags-entry">
 
-            <div class="filter <%=post.tags[0]%> <%=post.tags[1]%> <%=post.tags[2]%> <%=post.tags[3]%>">
-                <a href="/post/<%=post._id %>">
-                    <span class="article-list__date entry-date">
-                        <%= post.createdAt.toDateString() %>
-                    </span>
-                    <h4 style="display: inline-block;" class="">
-                        <%= post.title %>
-                    </h4>
-                </a>
-            </div>
+                                <% for( let index=0; index < post.tags.length; index++ ) { %>
+                                    <span>
+                                        <a href="/categories">
+                                            <%=post.tags[index]%>
+                                    </span> </a>
+                                    <% } %>
+                            </div>
+                        </div>
+                    </li>
 
-            <% }) %>
-
+                    <% }) %>
+                        <% }%>
+        </ul>
 
     </div>
 
