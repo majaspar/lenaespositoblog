@@ -1,8 +1,8 @@
 <div class="categories mt2 mb2">
-    <h1 class="mb2">Posts by Category</h1>
+    <h1 class="mb2 uppercase ff-title">Posts by Category</h1>
 
 
-    <div class="categories__list flex mt2 mb2">
+    <div class="categories__list grid mt2 mb2">
 
         <% if(categories !='' ) { %>
 
@@ -14,13 +14,12 @@
                 <% }) %>
 
                     <% } %>
-
-
     </div>
 
+    <!-- Categories -->
     <div class="grid mt2">
 
-        <h1 class="mb2" id="catagory__javascript">JavaScript</h1>
+        <h2 class="mb2  uppercase ff-title" id="catagory__javascript">JavaScript</h2>
         <ul class="article-ul grid">
             <% if(typeof allCategories.javascript !=='undefined' && allCategories.javascript.length> 0) { %>
                 <% allCategories.javascript.forEach(function(post, index) { %>

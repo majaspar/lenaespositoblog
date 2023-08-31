@@ -37,6 +37,9 @@ li {
 /**************************/
 /***   UTILITY CLASSES  ***/
 /**************************/
+.ff-title {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 
 hr.hr-white {
     color: white;
@@ -345,12 +348,17 @@ button.searchBtn img {
 .categories {
     min-height: 60vh;
 }
-
+.categories h1, .categories h2, .categories h3 {
+    font-weight: normal;
+}
 .categories__list {
+    grid-template-columns: 1fr 1fr;
     gap: 0.5rem;
     align-items: flex-start;
 }
 .categories__button {
+    min-height: 5rem;
+    width: 100%;
     cursor: pointer;
     color: white;
     padding: 0.5rem 1rem;
@@ -360,6 +368,17 @@ button.searchBtn img {
 .categories__button:hover {
     
     background: rgba(255, 255, 255, 0.082);
+}
+
+@media (min-width: 500px) {
+    .categories__list{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media (min-width: 900px) {
+    .categories__list{
+        grid-template-columns: repeat(6, 1fr);
+    }
 }
 /**************************/
 /***       POST PAGE    ***/
