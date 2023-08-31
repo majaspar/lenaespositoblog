@@ -1,4 +1,4 @@
-<div class="categories mt2 mb2">
+<div class="categories mt4 mb2">
     <h1 class="mb2 uppercase ff-title">Posts by Category</h1>
 
 
@@ -8,7 +8,7 @@
 
             <% categories.forEach(function(category, index){%>
 
-                <a href="#category__<%= category.searchBy%>"><button class="categories__button">
+                <a href="#category__<%= category.searchBy%>"><button class="shadow-light categories__button">
                         <%= category.name %>
                     </button></a>
                 <% }) %>
@@ -17,9 +17,9 @@
     </div>
 
     <!-- Categories -->
-    <div class="grid mt2">
+    <div class="grid mt4">
 
-        <h2 class="mb2  uppercase ff-title" id="catagory__javascript">JavaScript</h2>
+        <h2 class="mb2  uppercase ff-title" id="category__javascript">JavaScript</h2>
         <ul class="article-ul grid">
             <% if(typeof allCategories.javascript !=='undefined' && allCategories.javascript.length> 0) { %>
                 <% allCategories.javascript.forEach(function(post, index) { %>
@@ -59,9 +59,9 @@
 
     </div>
 <hr class="mt3">
-    <div class="grid mt2">
+    <div class="grid mt4">
 
-        <h1 class="mb2" id="category__smallApp">Small Apps</h1>
+        <h2 class="mb2 uppercase ff-title" id="category__smallApp">Small Apps</h2>
         <ul class="article-ul grid">
             <% if(typeof allCategories.smallApp !=='undefined' && allCategories.smallApp.length> 0) { %>
                 <% allCategories.smallApp.forEach(function(post, index) { %>
@@ -101,9 +101,9 @@
 
     </div>
 <hr class="mt3">
-    <div class="grid mt2">
+    <div class="grid mt4">
 
-        <h1 class="mb2" id="category__website">Websites</h1>
+        <h2 class="mb2 uppercase ff-title" id="category__website">Websites</h2>
         <ul class="article-ul grid">
             <% if(typeof allCategories.website !=='undefined' && allCategories.website.length> 0) { %>
                 <% allCategories.website.forEach(function(post, index) { %>
@@ -144,9 +144,9 @@
     </div>
 
 <hr class="mt3">
-    <div class="grid mt2">
+    <div class="grid mt4">
 
-        <h1 class="mb2" id="category__bootstrap">Bootstrap</h1>
+        <h2 class="mb2 uppercase ff-title" id="category__bootstrap">Bootstrap</h2>
         <ul class="article-ul grid">
             <% if(typeof allCategories.bootstrap !=='undefined' && allCategories.bootstrap.length> 0) { %>
                 <% allCategories.bootstrap.forEach(function(post, index) { %>
@@ -188,9 +188,9 @@
 
 
 <hr class="mt3">
-    <div class="grid mt2">
+    <div class="grid mt4">
 
-        <h1 class="mb2" id="category__jQuery">jQuery</h1>
+        <h2 class="mb2 uppercase ff-title" id="category__jQuery">jQuery</h2>
         <ul class="article-ul grid">
             <% if(typeof allCategories.jQuery !=='undefined' && allCategories.jQuery.length> 0) { %>
                 <% allCategories.jQuery.forEach(function(post, index) { %>
@@ -231,9 +231,9 @@
     </div>
 
 <hr class="mt3">
-    <div class="grid mt2">
+    <div class="grid mt4">
 
-        <h1 class="mb2" id="category__cheatSheet">Cheat Sheets</h1>
+        <h2 class="mb2 uppercase ff-title" id="category__cheatSheet">Cheat Sheets</h2>
         <ul class="article-ul grid">
             <% if(typeof allCategories.cheatSheet !=='undefined' && allCategories.cheatSheet.length> 0) { %>
                 <% allCategories.cheatSheet.forEach(function(post, index) { %>

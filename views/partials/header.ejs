@@ -57,8 +57,18 @@
                     <li class="header__button">
                        <%- include('search.ejs')  %> 
                     </li>
-                    <li><a class="link-nav " href="/categories">Categories</a></li>
-                    <li><a class="shadow action-btn" href="https://lenaesposito.co.uk/index.html#section-contact">Contact</a></li>
+                    <li class="dropdown"><a class="link-nav dropdown__button" href="/categories">Categories</a>
+                    <div class="dropdown__content">
+                        <a class="dropdown__link" href="/categories#category__javascript">JavaScript</a>
+                        <a class="dropdown__link" href="/categories#category__smallApp">Small apps</a>
+                        <a class="dropdown__link" href="/categories#category__website">Websites</a>
+                        <a class="dropdown__link" href="/categories#category__jQuery">jQuery</a>
+                        <a class="dropdown__link" href="/categories#category__bootstrap">Bootstrap</a>
+                        <a class="dropdown__link" href="/categories#category__cheatSheet">Cheat Sheet</a>
+                    </div>
+                    </li>
+                    
+                    <li><a class="shadow action-btn nav-button" href="https://lenaesposito.co.uk/index.html#section-contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
