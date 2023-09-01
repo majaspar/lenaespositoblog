@@ -1,20 +1,28 @@
-let date = new Date();
-
-document.getElementById('currentTime').innerHTML = todaysDate(date) + currentTime(date);
+const clock = document.getElementById('clock');
 
 
+function refreshTime() {
+    let date = new Date();
+    clock.innerHTML = formatTime(date);
 
-function todaysDate(date) {
-    let year = date.getFullYear();
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
+    function formatTime(date) {
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        let seconds = date.getSeconds();
 
-    return `Today is ${day}/${month}/${year}`
+        hours = addZero(hours);
+        minutes = addZero(minutes);
+        seconds = addZero(seconds);
+
+        return `${hours}:${minutes}:${seconds}`
+    }
+
+    function addZero(time) {
+        time = time.toString();
+        return time.length < 2 ? "0"+time : time;
+    }
 }
 
-function currentTime(date) {
-    let hour = date.getHours();
-    let minutes = date.getMinutes();
-    return ` and the time is ${hour}:${minutes}.`
-}
+refreshTime()
 
+setInterval(refreshTime, 1000)

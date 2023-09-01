@@ -59,42 +59,20 @@
 
     <!-- Copy from here -->
     <style>
-        body {
-            background: url('../public/assets/bg.jpg');
-            background-size: cover;
-            text-align: left;
-            color: rgb(255, 255, 255);
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+        .ff-orbitron {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.4rem;
+            letter-spacing: 0.3ch;
         }
 
-        * {
-            transition: none;
-
-        }
-
-        .console-log {
-            overflow-wrap: break-word;
-            background: rgba(137, 137, 137, 0.449);
-            padding: 1rem;
-            font-family: 'Courier New', Courier, monospace;
-            color: rgb(2, 9, 85);
-            margin-left: 1rem;
-            font-weight: bold;
-        }
-
-        .console-log span {
-            overflow-wrap: break-word;
-            color: rgb(134, 255, 123);
-            margin-top: 1rem;
-            margin-left: 3rem;
-        }
-
-        .console-log div {
-            overflow-wrap: break-word;
-            margin-top: 1rem;
-            margin-left: 10rem;
-
-            color: rgb(134, 255, 123);
-
+        .clock-container {
+            border: 3px solid rgb(255, 255, 255);
+            border-radius: 20px;
+            width: 320px;
+            margin: 3rem auto;
+            padding: 2rem 1rem;
         }
 
         .desc {
@@ -119,145 +97,90 @@
             color: rgb(217, 255, 0);
         }
 
-        .transp {
-            color: transparent;
+        span.indent {
+            margin-left: 2rem;
         }
     </style>
     <div class="separator mb5"></div>
 
 
     <div class="w70">
-        <h1 class="entry-title">JavaScript Objects Cheat Sheet</h1>
-        <p class="text">
-            Let's revise on the objects in JavaScript.
+        <h1 class="entry-title">Live Digital Clock</h1>
+        <p class="entry-content mb3">This simple digital clock shows you the current time (GMT +1) and updates every
+            second.</p>
+
+        <p class="clock-container">
+            <label id="clock" class=" mt4 ff-orbitron"></label>
         </p>
-        <h2 class="mt3 mb3 entry-subtitle">Objects</h2>
+        <p class="desc">In .html file:</p>
+        <p class="code">&lt;label id="clock"&gt;&lt;/label&gt;</p>
 
 
+        <p class="desc">In .js file:</p>
+        <p class="code">const clock = document.getElementById('clock');<br><br>
 
 
-        <p class="desc">An object is a group of properties (what the object has) and methods (what the object can do).
-            We can use "." to access object's methods and properties.</p>
+            function <span class="method">refreshTime()</span> {<br>
+            <span class="indent"></span>let date = new Date();<br>
+            <span class="indent"></span>clock.innerHTML = formatTime(date);<br><br>
 
+            <span class="indent"></span>function <span class="method">formatTime(date) </span>{<br>
+            <span class="indent"></span><span class="indent"></span>let hours = date.getHours();<br>
+            <span class="indent"></span><span class="indent"></span>let minutes = date.getMinutes();<br>
+            <span class="indent"></span><span class="indent"></span>let seconds = date.getSeconds();<br><br>
+
+            <span class="indent"></span><span class="indent"></span>hours = addZero(hours);<br>
+            <span class="indent"></span><span class="indent"></span>minutes = addZero(minutes);<br>
+            <span class="indent"></span><span class="indent"></span>seconds = addZero(seconds);<br><br>
+
+            <span class="indent"></span><span class="indent"></span>return `${hours}:${minutes}:${seconds}`<br>
+            <span class="indent"></span>}<br><br>
+            <br>
+            <span class="indent"></span>function <span class="method">addZero(time)</span> {<br>
+            <span class="indent"></span>time = time.toString();<br>
+            <span class="indent"></span>return time.length < 2 ? "0" +time : time;<br>
+                <span class="indent"></span>}<br>
+                }<br><br>
+
+                <span class="method">refreshTime()</span><br><br>
+
+                <span class="method">setInterval(refreshTime, 1000)</span>
         </p>
-
-        <div class="console-log">console.log(house.address) <span>//7 Bond Street</span></div>
-        <div class="console-log">house.live()<span>//Someone lives in this house.</span></div>
-
-
-        <h2 class="mt3 mb3 entry-subtitle">Date() </h2>
-
-        <p class="code">let date = new Date();</p>
-
-        <div class="console-log">console.log(date)<span>//Mon Aug 28 2023 22:34:56 GMT+0100 (British Summer Time)</span>
-        </div>
-
-        <p class="code"> date = date.<span class="method">toLocaleDateString()</span>;</p>
-        <div class="console-log">console.log(date)<span>//28/08/2023</span></div>
-
-        <p class="desc">JavaScript stores dates as number of milliseconds since January 01, 1970. 1st of January 1970
-            00:00:00 UTC is therefore the reference point when we pass an argument inside Date() object.</p>
-        <p class="code">let date = new Date(0);</p>
-        <div class="console-log">console.log(date)<span>//Thu Jan 01 1970 01:00:00 GMT+0100 (Greenwich Mean Time)</span>
-        </div>
-
-        <p class="code">let dateToday = new Date(2023, 7, 28, 22, 34, 1, 5);
-            let dateYesterday = new Date('August 27, 2023 22:45:00');
-        </p>
-
-        <div class="console-log">console.log(dateToday)<span>//Sun Aug 28 2023 22:34:01 GMT+0100 (British Summer
-                Time)</span></div>
-
-        <div class="console-log">console.log(dateYesterday)<span>//Sun Aug 27 2023 22:45:00 GMT+0100 (British Summer
-                Time)</span></div>
-
-        <p class="code">let date = new Date();<br><br>
-            let year = date.getFullYear(); <br>
-
-            let day = date.getDate(); <br>
-            let weekDay = date.getDay(); <br>
-            let month = date.getMonth(); <br>
-            let hour = date.getHours(); <br>
-            let minutes = date.getMinutes(); <br>
-            let seconds = date.getSeconds(); <br>
-            let milliSeconds = date.getMilliseconds(); </p>
-        <p class="desc">In <span class="method">getDay()</span> Sunday is 0, Monday is 1, etc.<br>
-            In <span class="method">getMonth()</span> January is 0, Febryary is 1, etc.</p>
-
-        <div class="console-log">console.log(year)<span>//2023</span><br>
-            console.log(day)<span>//28</span><br>
-            console.log(weekDay)<span>//1</span><br>
-            console.log(month)<span>//7</span><br>
-            console.log(hour)<span>//22</span><br>
-            console.log(seconds)<span>//25</span><br>
-            console.log(milliSeconds)<span>//701</span>
-        </div>
-
-        <p class="desc">Let's set a specific date.</p>
-        <p class="code">let date = new Date();<br><br>
-
-            date.setFullYear(2025)<br>
-            date.setMonth(11)<br>
-            date.setDate(31)<br>
-            date.setHours(8)<br>
-
-            date.setMinutes(5)<br>
-
-            date.setSeconds(0)
-        </p>
-        <div class="console-log">console.log(date)<span>//Wed Dec 31 2025 08:05:00 GMT+0000 (Greenwich Mean Time)</span>
-        </div>
-
-<p class="desc">Let's display your current date and time.</p>
-
-<p class="code">let date = new Date();<br><br>
-    
-    document.getElementById('currentTime').innerHTML = todaysDate(date) + currentTime(date);<br><br>
-    
-    
-    
-    function todaysDate(date) {<br>
-        <span class="transp">___</span>let year = date.getFullYear();<br>
-        <span class="transp">___</span>let day = date.getDate();<br>
-        <span class="transp">___</span>let month = date.getMonth() + 1;<br><br>
-    
-        <span class="transp">___</span>return `Today is ${day}/${month}/${year}`<br>
-    }<br><br>
- 
-    function currentTime(date) {   <br>
-        <span class="transp">___</span>let hour = date.getHours();<br>
-        <span class="transp">___</span>let minutes = date.getMinutes();<br><br>
-        <span class="transp">___</span>return ` and the time is ${hour}:${minutes}.`<br>
-    }
-    
-    </p>
-
-
-<p id="currentTime" style="padding-left: 1rem; font-weight: bold;"></p>
-
     </div>
     <script>
-let date = new Date();
-
-document.getElementById('currentTime').innerHTML = todaysDate(date) + currentTime(date);
+        const clock = document.getElementById('clock');
 
 
+        function refreshTime() {
+            let date = new Date();
+            clock.innerHTML = formatTime(date);
 
-function todaysDate(date) {
-    let year = date.getFullYear();
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
+            function formatTime(date) {
+                let hours = date.getHours();
+                let minutes = date.getMinutes();
+                let seconds = date.getSeconds();
 
-    return `Today is ${day}/${month}/${year}`
-}
+                hours = addZero(hours);
+                minutes = addZero(minutes);
+                seconds = addZero(seconds);
 
-function currentTime(date) {
-    let hour = date.getHours();
-    let minutes = date.getMinutes();
-    return ` and the time is ${hour}:${minutes}.`
-}
+                return `${hours}:${minutes}:${seconds}`
+            }
+
+            function addZero(time) {
+                time = time.toString();
+                return time.length < 2 ? "0" + time : time;
+            }
+        }
+
+        refreshTime()
+
+        setInterval(refreshTime, 1000)
     </script>
     <!-- Copy to here -->
+
+
+
     <!-- Footer -->
     <div id="previous-next-loader" class="mt2"></div>
 

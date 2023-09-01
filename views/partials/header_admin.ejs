@@ -1,63 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+<header class="primary-header background-white flex shadow">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Blog of web developer Lena Esposito, who builds websites from Newport in Wales.">
-
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
-    <link rel="canonical" href="https://blog.lenaesposito.co.uk">
-    <link rel="stylesheet" href="/styles/lenaesposito.css">
-    <link rel="stylesheet" href="/styles/blog.css">
-    <script type="text/javascript" defer src="/js/lenaesposito.js"></script>
-    <script type="text/javascript" defer src="/js/jquery-3.7.0.js"></script>
-    <script type="text/javascript" defer src="/js/jquery-ui.min.js"></script>
-    <script type="text/javascript" defer src="/js/script.js"></script>
-    <script type="text/javascript" defer src="/js/blog.js"></script>
-    <script crossorigin="anonymous" src="/js/c5fce3d149.js" defer></script>
-    <title>Lena Esposito - Blog, Admin Panel</title>
-
-</head>
+    <div class="w70 flex header scrollWatcher">
+        <!-- 1 .header -->
+        <a href="/">
+            <div class="logo flex">
+                <img class="image image1" height="100px" src="https://lenaesposito.co.uk/assets/le-logo.svg"
+                    alt="lena esposito logo part 1">
+                <img class="image image2 shake-horizontal" height="80px"
+                    src="https://lenaesposito.co.uk/assets/lenaesposito.svg" alt="lena esposito logo part2">
+            </div>
 
 
-<body class="flex-column">
-    <header class="primary-header background-white flex shadow">
+            <div class="nav-blog">Admin</div>
+        </a>
+        <!-- 2 .header-->
+        <button class="mobile-nav-toggle" aria-controls="primary-navigation"><span class="sr-only"
+                aria-expanded="false">Menu</span></button>
+        <!-- 3 .header-->
+        <nav role="navigation" class="navmenu">
+            <ul id="primary-navigation" data-visible="false" class="primary-navigation uppercase flex"
+                nav-visible="false">
 
-        <div class="w70 flex header scrollWatcher">
-            <!-- 1 .header -->
-            <a href="/">
-                <div class="logo flex">
-                    <img class="image image1" height="100px" src="https://lenaesposito.co.uk/assets/le-logo.svg"
-                        alt="lena esposito logo part 1">
-                    <img class="image image2 shake-horizontal" height="80px"
-                        src="https://lenaesposito.co.uk/assets/lenaesposito.svg" alt="lena esposito logo part2">
-                </div>
-
-
-                <div class="nav-blog">Admin</div>
-            </a>
-            <!-- 2 .header-->
-            <button class="mobile-nav-toggle" aria-controls="primary-navigation"><span class="sr-only"
-                    aria-expanded="false">Menu</span></button>
-            <!-- 3 .header-->
-            <nav role="navigation" class="navmenu">
-                <ul id="primary-navigation" data-visible="false" class="primary-navigation uppercase flex"
-                    nav-visible="false">
-
-                    <li><a class="link-nav" href="/">Home</a></li>
-                    <li class="dropdown"><a class="link-nav dropdown__button" href="/categories">Categories</a>
-                        <div class="dropdown__content">
-                            <a class="dropdown__link" href="/categories#category__javascript">JavaScript</a>
-                            <a class="dropdown__link" href="/categories#category__smallApp">Small apps</a>
-                            <a class="dropdown__link" href="/categories#category__website">Websites</a>
-                            <a class="dropdown__link" href="/categories#category__jQuery">jQuery</a>
-                            <a class="dropdown__link" href="/categories#category__bootstrap">Bootstrap</a>
-                            <a class="dropdown__link" href="/categories#category__cheatSheet">Cheat Sheet</a>
-                        </div>
-                    </li>
-                    <li><a class="shadow  nav-button action-btn" href="/logout">Logout</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+                <li><a class="link-nav" href="/">Home</a></li>
+                <li class="dropdown"><a class="link-nav dropdown__button" href="/categories">Categories</a>
+                    <div class="dropdown__content">
+                        <a class="dropdown__link" href="/categories#category__javascript">JavaScript</a>
+                        <a class="dropdown__link" href="/categories#category__smallApp">Small apps</a>
+                        <a class="dropdown__link" href="/categories#category__website">Websites</a>
+                        <a class="dropdown__link" href="/categories#category__jQuery">jQuery</a>
+                        <a class="dropdown__link" href="/categories#category__bootstrap">Bootstrap</a>
+                        <a class="dropdown__link" href="/categories#category__cheatSheet">Cheat Sheet</a>
+                    </div>
+                </li>
+                <li><a class="shadow  nav-button action-btn" href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>

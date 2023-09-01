@@ -24,6 +24,7 @@
         --clr-dark-purple: rgb(37, 37, 97);
         --clr-blue-light: #48aaff;
     }
+
     --clr-bluish: rgba(41, 111, 162, 255);
 }
 
@@ -258,7 +259,7 @@ ul {
 
 .dropdown__link:hover {
     text-underline-offset: 0.8rem;
-    
+
     text-shadow: white 1px 0 10px;
 }
 
@@ -271,10 +272,10 @@ ul {
     }
 
     .dropdown__link {
-        
-    width: 100%;
-    padding: 0.5rem 0.5rem;
-    background: none;
+
+        width: 100%;
+        padding: 0.5rem 0.5rem;
+        background: none;
     }
 }
 
@@ -316,6 +317,7 @@ button.searchBtn img {
 
 
 .searchBar input {
+    width: 100%;
     color: white;
     background: transparent;
 }

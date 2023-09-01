@@ -1,0 +1,66 @@
+body {
+    background: url('../public/assets/bg.avif');
+    background-size: cover;
+    background-position: top;
+    text-align: left;
+    color: rgb(255, 255, 255);
+}
+
+* {
+    transition: none;
+
+}
+
+.console-log {
+    overflow-wrap: break-word;
+    background: rgba(137, 137, 137, 0.449);
+    padding: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(2, 9, 85);
+    margin-left: 1rem;
+    font-weight: bold;
+}
+
+.console-log span {
+    overflow-wrap: break-word;
+    color: rgb(134, 255, 123);
+    margin-top: 1rem;
+    margin-left: 3rem;
+}
+
+.console-log div {
+    overflow-wrap: break-word;
+    margin-top: 1rem;
+    margin-left: 10rem;
+
+    color: rgb(134, 255, 123);
+
+}
+
+.desc {
+    font-style: italic;
+    font: 0.9rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.code {
+    overflow-wrap: break-word;
+    background: rgba(137, 137, 137, 0.449);
+    padding: 1rem;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+span.method {
+    color: rgb(217, 255, 0);
+}
+span.indent {
+    margin-left: 2rem;
+}
+.transp {
+    color: transparent;
+}

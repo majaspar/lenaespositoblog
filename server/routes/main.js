@@ -7,11 +7,13 @@ const Comment = require('../models/Comment');
 * get
 * home */
 
+
+
 router.get('', async (req, res) => {
     try {
         const locals = {
             title: "Welcome!",
-            description: "A Blog of an A Frontend Web Developer, created with NodeJs, Express & MongeDB"
+            description: "Lena Esposito's Blog built with NodeJs, Express & MongeDB"
         }
 
         let perPage = 12;
@@ -94,20 +96,19 @@ router.post('/search', async (req, res) => {
         }
 
 
-        let searchTerm = req.body.searchTerm;
-        const searchNoSpecialChar = searchTerm
+        let searchPhrase = req.body.searchPhrase;
+        const searchNoSpecialChar = searchPhrase.replace(/[^a-zA-Z0-9 ]/g, "")
 
-        console.log(searchTerm);
-
-        const data = await Post.find({
+        const results = await Post.find({
             $or: [
                 { title: { $regex: new RegExp(searchNoSpecialChar, 'i') } },
                 { body: { $regex: new RegExp(searchNoSpecialChar, 'i') } },
+                { tags: { $regex: new RegExp(searchNoSpecialChar, 'i') } }
 
             ]
         }).sort({ createdAt: -1});
 
-        res.render("search", { data, locals });
+        res.render("search", { results, locals, currentRoute: '/' });
     } catch (error) {
         console.log(error)
     }
@@ -139,7 +140,7 @@ router.get('/categories', async (req, res) => {
 
         const allCategories = { javascript, jQuery, smallApp, bootstrap, website, cheatSheet }
 
-        res.render('categories', { data, locals, categories, allCategories });
+        res.render('categories', { data, locals, categories, allCategories, currentRoute: '/categories' });
     } catch (error) {
         res.status(500).send({ message: error.message || "Error Occured" })
     }
