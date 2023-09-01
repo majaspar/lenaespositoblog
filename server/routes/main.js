@@ -10,7 +10,7 @@ const Comment = require('../models/Comment');
 router.get('', async (req, res) => {
     try {
         const locals = {
-            title: "",
+            title: "Welcome!",
             description: "A Blog of an A Frontend Web Developer, created with NodeJs, Express & MongeDB"
         }
 
@@ -90,24 +90,22 @@ router.post('/search', async (req, res) => {
     try {
         const locals = {
             title: "Search Results",
-            description: "A Blog of an Aspiring Full-Stack Web Developer, created with NodeJs, Express & MongeDB"
+            description: "A Blog of an Aspiring Full-Stack Web Developer, created with NodeJs, Express & MongoDB"
         }
 
 
         let searchTerm = req.body.searchTerm;
-        const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9]/g, "")
+        const searchNoSpecialChar = searchTerm
+
+        console.log(searchTerm);
 
         const data = await Post.find({
             $or: [
                 { title: { $regex: new RegExp(searchNoSpecialChar, 'i') } },
                 { body: { $regex: new RegExp(searchNoSpecialChar, 'i') } },
-                { tags: { $regex: new RegExp(searchNoSpecialChar, 'i') } },
-                { shortDescription: { $regex: new RegExp(searchNoSpecialChar, 'i') } },
-                { imageSource: { $regex: new RegExp(searchNoSpecialChar, 'i') } },
-                { imageSourceDescription: { $regex: new RegExp(searchNoSpecialChar, 'i') } }
 
             ]
-        });
+        }).sort({ createdAt: -1});
 
         res.render("search", { data, locals });
     } catch (error) {
@@ -115,6 +113,7 @@ router.post('/search', async (req, res) => {
     }
 
 })
+
 
 /*
 * get
@@ -138,7 +137,7 @@ router.get('/categories', async (req, res) => {
         const website = await Post.find({ 'category': 'Website' })
         const cheatSheet = await Post.find({ 'category': 'Cheat Sheet' })
 
-        const allCategories = { javascript, jQuery, smallApp, bootstrap, website, cheatSheet}
+        const allCategories = { javascript, jQuery, smallApp, bootstrap, website, cheatSheet }
 
         res.render('categories', { data, locals, categories, allCategories });
     } catch (error) {

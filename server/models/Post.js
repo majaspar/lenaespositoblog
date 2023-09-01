@@ -44,4 +44,9 @@ const PostSchema = new Schema({
     }
 });
 
+
+
+//Wildcard Indexing
+//PostSchema.index({ "$**": 'text'})
+
 module.exports = mongoose.model('Post', PostSchema);

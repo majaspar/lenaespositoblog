@@ -284,7 +284,7 @@ ul {
 
 
 button.searchBtn {
-    color: rgb(134, 132, 132);
+    color: rgb(228, 228, 228);
     justify-content: space-between;
     align-items: center;
     background: none;
@@ -297,10 +297,6 @@ button.searchBtn img {
     height: 1.2rem;
 }
 
-/* button.searchBtn img:hover {
-    scale: 1.1;
-    transition: 300ms;
-} */
 .searchBar input:focus {
     outline: none;
 }
