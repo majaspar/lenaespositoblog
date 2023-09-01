@@ -141,6 +141,7 @@ router.post('/add-post', authMiddleware, async (req, res) => {
                 body: req.body.body,
                 image: req.body.image,
                 tags: req.body.tags,
+                category: req.body.category,
                 shortDescription: req.body.shortDescription,
                 imageSource: req.body.imageSource,
                 imageSourceDescription: req.body.imageSourceDescription
@@ -201,6 +202,7 @@ router.put('/edit-post/:id', authMiddleware, async (req, res) => {
             imageSource: req.body.imageSource,
             imageSourceDescription: req.body.imageSourceDescription,
             tags: req.body.tags,
+            category: req.body.category,
             updatedAt: Date.now()
         });
 
