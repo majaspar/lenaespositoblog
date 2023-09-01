@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const allButtons = document.querySelectorAll('.searchBtn');
     const searchBar = document.querySelector('.searchBar');
     const searchInput = document.getElementById('searchInput');
-    const searchClose = document.getElementById('searchClose');
 
     for (var i = 0; i < allButtons.length; i++) {
         allButtons[i].addEventListener('click', function () {
@@ -21,15 +20,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-// function functionEnter() {
-//     var k = new Event("keydown");
-//     k.key="return"; //Change this value for different keys
-//     document.dispatchEvent(k);
-// }
-
 
 const postResults = document.getElementById('post-results');
-
-
-
-console.log(postResults.children)

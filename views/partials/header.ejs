@@ -55,7 +55,18 @@
                     nav-visible="false">
                     
                     <li class="header__button">
-                       <%- include('search.ejs')  %> 
+                        <button class="searchBtn flex" aria-expanded="false">
+
+                            <div class="searchBar">
+                                <div class="container flex">
+                                    <form action="/search" class="search__form" method="POST" role="search">
+                                        <input type="search" aria-label="Search" id="searchInput" name="searchTerm" placeholder="Search...">
+                                    </form>
+                        
+                                </div>
+                            </div>
+                            <img type="submit" id="search-icon" src="/assets/magnifying-glass.png" alt="search icon">
+                        </button>
                     </li>
                     <li class="dropdown"><a class="link-nav dropdown__button" href="/categories">Categories</a>
                     <div class="dropdown__content">

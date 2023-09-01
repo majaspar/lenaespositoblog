@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const Post = require('../models/Post')
-const Category = require('../models/Category')
+const Post = require('../models/Post');
+const Category = require('../models/Category');
+const Comment = require('../models/Comment');
 /*
 * get
 * home */
@@ -103,7 +104,7 @@ router.post('/search', async (req, res) => {
                 { tags: { $regex: new RegExp(searchNoSpecialChar, 'i') } },
                 { shortDescription: { $regex: new RegExp(searchNoSpecialChar, 'i') } },
                 { imageSource: { $regex: new RegExp(searchNoSpecialChar, 'i') } },
-                { imageSourceDescription: { $regex: new RegExp(searchNoSpecialChar, 'i') } },
+                { imageSourceDescription: { $regex: new RegExp(searchNoSpecialChar, 'i') } }
 
             ]
         });
@@ -145,51 +146,5 @@ router.get('/categories', async (req, res) => {
     }
 })
 
-/////////////////////////////////////////////
 
-
-
-
-
-router.get('/categories/:id', async (req, res) => {
-    try {
-
-
-        let slug = req.params.id;
-        const data = await Category.findById({ _id: slug });
-        const locals = {
-            title: `Lena Esposito Blog: ${data.name} Category`,
-            description: `Lena Esposito Blog: Posts from  ${data.name} category`
-        };
-        res.render('categories', {
-            locals, data,
-            currentRoute: `/categories/${slug}`
-        });
-    } catch (error) {
-        res.status(500).send({ message: error.message || "Error Occured" })
-    }
-
-
-
-})
 module.exports = router;
-
-
-
-// router.post('/search', async (req, res) => {
-//     try {
-//         const locals = {
-//             title: "Lena Esposito Blog",
-//             description: "A Blog of an Aspiring Full-Stack Web Developer, created with NodeJs, Express & MongeDB"
-//         }
-
-
-//         const data = await Post.find();
-
-
-//         res.render('search', { locals, data });
-//     } catch (error) {
-//         console.log(error)
-//     }
-
-// })

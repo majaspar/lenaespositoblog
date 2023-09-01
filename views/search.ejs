@@ -1,5 +1,5 @@
-<div class="author mt2 mb2">
-    <h2 class="author__heading">Search Results</h2>
+<div class="mt2 mb2">
+    <h2 class="">Search Results</h2>
 </div>
 
 <section class="articles mb2">
@@ -11,7 +11,7 @@
 
             <li>
                 <div class="shadow blog-entry background-white">
-                    <figure><img src="<%=post.image %>" alt="Illustration for the post"></figure>
+                    <figure><img src="<%=post.image %>" alt="Illustration for <%=post.title %>"></figure>
                     <div class="date-readmore flex">
                         <span class="article-list__date entry-date">
                             <%= post.createdAt.toDateString() %>

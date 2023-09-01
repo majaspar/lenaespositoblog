@@ -276,10 +276,15 @@ div[data-scroll-watcher] {
     margin: 1rem 0;
 }
 
-.nav-button {
-    position: relative;
-    z-index: 3;
+
+@media (min-width: 61em) {
+
+    .nav-button {
+        position: relative;
+        z-index: 3;
+    }
 }
+
 /* * ----------------------------------------
  * animation rotate-center
  * ----------------------------------------
