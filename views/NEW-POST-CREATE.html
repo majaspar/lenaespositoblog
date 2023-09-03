@@ -59,22 +59,6 @@
 
     <!-- Copy from here -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
-
-        .ff-orbitron {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.4rem;
-            letter-spacing: 0.3ch;
-        }
-
-        .clock-container {
-            border: 3px solid rgb(255, 255, 255);
-            border-radius: 20px;
-            width: 320px;
-            margin: 3rem auto;
-            padding: 2rem 1rem;
-        }
-
         .desc {
             font-style: italic;
             font: 0.9rem;
@@ -105,97 +89,160 @@
 
 
     <div class="w70">
-        <h1 class="entry-title">Live Digital Clock</h1>
-        <p class="entry-content mb3">This simple digital clock shows you the current time (GMT +1) and updates every
-            second.</p>
+        <h1 class="entry-title">DOM Manipulation</h1>
+        <p class="entry-content mb3">DOM stands for Document Object Model. We can change and modify the content of our
+            web document (which is simply the website displayed in the browser) through JavaScript code, without making
+            any changes to our .html file.</p>
+        <p class="entry-content">Here are some of the ways that we can do it.</p>
 
-        <p class="clock-container">
-            <label id="clock" class=" mt4 ff-orbitron"></label>
-        </p>
-        <p class="desc">In .html file:</p>
-        <p class="code">&lt;label id="clock"&gt;&lt;/label&gt;</p>
+        <h2 class="entry-subtitle mt3 mb2">Manipulating CSS Styles</h2>
+        <p class="entry-content">In order to change CSS properties we need to select an element and assign it to a
+            variable. Then we follow this pattern: <b>element.style.property = 'value'</b>, where <em>element</em>
+            stands for the variable name, <em>property</em> for a CSS property and <em>value</em> for a CSS value.</p>
+        <p class="entry-content">While single-word properties remain unchanged, multiple-word properties that are
+            hyphenated in CSS need to be converted to camelCase.</p>
 
+        <p class="desc">Let's select and declare the element that we want to change.</p>
 
-        <p class="desc">In .js file:</p>
-        <p class="code">const clock = document.getElementById('clock');<br><br>
+        <div class="code__container">
+            <div class="code__javascript">
+                <p class="mb1 bb">.html</p>
+                <p>&lt;h1 id="title"&gt;Document Title&lt;/h1&gt;</p>
+            </div>
+            <div class="code__html">
+                <p class="mb1 bb">.js</p>
+                <p>const title = document.getElementById('title');
+                </p>
+            </div>
+        </div>
 
-
-            function <span class="method">refreshTime()</span> {<br>
-            <span class="indent"></span>let date = new Date();<br>
-            <span class="indent"></span>clock.innerHTML = formatTime(date);<br><br>
-
-            <span class="indent"></span>function <span class="method">formatTime(date) </span>{<br>
-            <span class="indent"></span><span class="indent"></span>let hours = date.getHours();<br>
-            <span class="indent"></span><span class="indent"></span>let minutes = date.getMinutes();<br>
-            <span class="indent"></span><span class="indent"></span>let seconds = date.getSeconds();<br><br>
-
-            <span class="indent"></span><span class="indent"></span>hours = addZero(hours);<br>
-            <span class="indent"></span><span class="indent"></span>minutes = addZero(minutes);<br>
-            <span class="indent"></span><span class="indent"></span>seconds = addZero(seconds);<br><br>
-
-            <span class="indent"></span><span class="indent"></span>return `${hours}:${minutes}:${seconds}`<br>
-            <span class="indent"></span>}<br><br>
-            <br>
-            <span class="indent"></span>function <span class="method">addZero(time)</span> {<br>
-            <span class="indent"></span>time = time.toString();<br>
-            <span class="indent"></span>return time.length < 2 ? "0" +time : time;<br>
-                <span class="indent"></span>}<br>
-                }<br><br>
-
-                <span class="method">refreshTime()</span><br><br>
-
-                <span class="method">setInterval(refreshTime, 1000)</span>
-        </p>
-    </div>
-    <script>
-        const clock = document.getElementById('clock');
+        <p class="desc">Now let's change the color of our title.</p>
 
 
-        function refreshTime() {
-            let date = new Date();
-            clock.innerHTML = formatTime(date);
-
-            function formatTime(date) {
-                let hours = date.getHours();
-                let minutes = date.getMinutes();
-                let seconds = date.getSeconds();
-
-                hours = addZero(hours);
-                minutes = addZero(minutes);
-                seconds = addZero(seconds);
-
-                return `${hours}:${minutes}:${seconds}`
-            }
-
-            function addZero(time) {
-                time = time.toString();
-                return time.length < 2 ? "0" + time : time;
-            }
-        }
-
-        refreshTime()
-
-        setInterval(refreshTime, 1000)
-    </script>
-    <!-- Copy to here -->
+        <div class="code__container">
+            <p class="code__javascript">title.style.color = 'lightskyblue';</p>
+            <p class="document shadow" style="color: lightskyblue">Document Title</p>
+        </div>
 
 
+        <p class="desc">Now let's change the background color of our title.</p>
 
-    <!-- Footer -->
-    <div id="previous-next-loader" class="mt2"></div>
 
-    <!-- Footer -->
-    <div id="footer-loader-entry" class="mt2"></div>
+        <div class="code__container">
+            <p class="code__javascript">title.style.backgroundColor = 'grey';</p>
+            <p class="document shadow" style="color: lightskyblue; background: grey;">Document Title</p>
+        </div>
 
-    <!-- Load the CDN first -->
-    <script src="//code.jquery.com/jquery-3.7.0.js"></script>
+        <p class="desc">Let's change the font family of our title.</p>
 
-    <!-- If CDN fails to load, serve up the local version -->
-    <script>window.jQuery || document.write('<script src="../jquery-2.1.4.js"><\/script>');</script>
 
-    <!-- jQuery UI -->
-    <script src="../jquery-ui.min.js"></script>
-    <script src="new-post.js"></script>
+        <div class="code__container">
+            <p class="code__javascript">title.style.fontFamily = 'cursive';</p>
+            <p class="document shadow" style="color: lightskyblue; background: grey; font-family: cursive;">Document
+                Title</p>
+        </div>
+
+
+        <p class="desc">Let's center it.</p>
+
+        <div class="code__container">
+            <p class="code__javascript">title.style.textAlign = 'center';</p>
+            <p class="document shadow"
+                style="color: lightskyblue; background: grey; font-family: cursive; text-align: center;">Document Title
+            </p>
+        </div>
+
+
+        <p class="desc">Let's give it a border.</p>
+
+        <div class="code__container">
+            <p class="code__javascript">title.style.border = '5px solid';</p>
+            <p class="document shadow"
+                style="color: lightskyblue; background: grey; font-family: cursive; text-align: center; border: 5px solid;">
+                Document Title</p>
+        </div>
+
+
+        <h2 class="entry-subtitle mt3 mb2">JavaScript Event Attributes</h2>
+        <p class="entry-content">JavaScript Events are actions that you can assign to certain events that occur in HTML
+            pages.</p>
+        <p class="entry-content">Here's how it works.</p>
+        <p class="desc">Let's select an element that we want to react on. We can give the element an event attribute
+            inserting it directly inside the tag.</p>
+
+        <div class="code__container">
+            <div class="code__javascript">
+                <p class="mb1 bb">.html</p>
+                <p>&lt;button id="button"&gt;Click Me!&lt;/button&gt; <br><br>
+                    OR<br><br>
+                    &lt;button id="button" onclick="functionName()"&gt;Click Me!&lt;/button&gt;</p>
+            </div>
+            <div class="code__html">
+                <p class="mb1 bb">.js</p>
+                <p>const button = document.getElementById('button');<br><br>
+                    function functionName(){<br>
+                    <span class="indent"></span>alert('Hello')<br>
+                    }
+                </p>
+            </div>
+        </div>
+
+        <p class="desc">We can allso assign a function to our button in the .js file. In this case we only use the function name - we don't need to call the function with the parentheses.</p>
+
+        <div class="code__container">
+            <p class="code__javascript">button.onclick = functionName;</p>
+            <button id="button-event" onclick="functionName()" class="button__event shadow" style="width: 100px; border-radius: 5px;">Click
+                Me!</button>
+        </div>
+
+
+
+
+
+        <p class="entry-content mt2">The full list of HTML Events can be found <a
+                href="https://www.w3schools.com/tags/ref_eventattributes.asp">on w3schools</a>. </p>
+        <p class="entry-content mt2"> Some of the most frequently used events include: </p>
+        <ul>
+            <li>onclick</li>
+            <li>onload</li>
+            <li>onchange</li>
+            <li>onmouseover</li>
+            <li>onmouseout</li>
+            <li>onmousedown</li>
+            <li>onmouseup</li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+
+
+        <script>
+            const buttonEvent = document.getElementById('button-event');
+
+            function functionName(){
+                alert('Hello')
+            } 
+        </script>
+        <!-- Copy to here -->
+
+
+
+        <!-- Footer -->
+        <div id="previous-next-loader" class="mt2"></div>
+
+        <!-- Footer -->
+        <div id="footer-loader-entry" class="mt2"></div>
+
+        <!-- Load the CDN first -->
+        <script src="//code.jquery.com/jquery-3.7.0.js"></script>
+
+        <!-- If CDN fails to load, serve up the local version -->
+        <script>window.jQuery || document.write('<script src="../jquery-2.1.4.js"><\/script>');</script>
+
+        <!-- jQuery UI -->
+        <script src="../jquery-ui.min.js"></script>
+        <script src="new-post.js"></script>
 </body>
 
 </html>

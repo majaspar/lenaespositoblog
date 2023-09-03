@@ -91,7 +91,7 @@ router.get('/dashboard', authMiddleware, async (req, res) => {
             description: 'Simple Blog created with NodeJs, Express & MongoDb.'
         }
 
-        const data = await Post.find();
+        const data = await Post.find().sort({ createdAt: -1});
         res.render('admin/dashboard', {
             locals,
             data,

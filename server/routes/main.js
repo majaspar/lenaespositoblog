@@ -131,12 +131,12 @@ router.get('/categories', async (req, res) => {
 
         const data = await Post.find();
 
-        const javascript = await Post.find({ 'category': 'JavaScript' })
-        const jQuery = await Post.find({ 'category': 'jQuery' })
-        const smallApp = await Post.find({ 'category': 'Small App' })
-        const bootstrap = await Post.find({ 'category': 'Bootstrap' })
-        const website = await Post.find({ 'category': 'Website' })
-        const cheatSheet = await Post.find({ 'category': 'Cheat Sheet' })
+        const javascript = await Post.find({ 'category': 'JavaScript' }).sort({ createdAt: -1})
+        const jQuery = await Post.find({ 'category': 'jQuery' }).sort({ createdAt: -1})
+        const smallApp = await Post.find({ 'category': 'Small App' }).sort({ createdAt: -1})
+        const bootstrap = await Post.find({ 'category': 'Bootstrap' }).sort({ createdAt: -1})
+        const website = await Post.find({ 'category': 'Website' }).sort({ createdAt: -1})
+        const cheatSheet = await Post.find({ 'category': 'Cheat Sheet' }).sort({ createdAt: -1})
 
         const allCategories = { javascript, jQuery, smallApp, bootstrap, website, cheatSheet }
 
