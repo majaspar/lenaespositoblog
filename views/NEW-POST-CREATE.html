@@ -59,31 +59,67 @@
 
     <!-- Copy from here -->
     <style>
-        .desc {
-            font-style: italic;
-            font: 0.9rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
+.desc {
+    font-style: italic;
+    font: 0.9rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
 
-        .code {
-            overflow-wrap: break-word;
-            background: rgba(137, 137, 137, 0.449);
-            padding: 1rem;
-            font-weight: bold;
-            font-family: 'Courier New', Courier, monospace;
-            margin-top: 1rem;
-            margin-left: 1rem;
-            margin-bottom: 1rem;
-        }
+.code {
+    overflow-wrap: break-word;
+    background: rgba(137, 137, 137, 0.449);
+    padding: 1rem;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
 
-        span.method {
-            color: rgb(217, 255, 0);
-        }
+span.method {
+    color: rgb(217, 255, 0);
+}
+span.indent {
+    margin-left: 2rem;
+}
+.transp {
+    color: transparent;
+}
 
-        span.indent {
-            margin-left: 2rem;
-        }
+
+/*/////////////////////////////////////////////////////////*/
+.bb {
+    border-bottom: 1px solid rgb(175, 175, 175);
+}
+.code__container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 1rem;
+}
+
+.code__javascript, .code__html {
+    
+    overflow-wrap: break-word;
+    padding: 0.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    background: rgba(137, 137, 137, 0.349);
+}
+
+@media(max-width: 600px){
+    .code__container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.document {
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding: 1rem;
+    background: white;
+    color: black;
+    margin: 0.5rem 0;
+}
     </style>
     <div class="separator mb5"></div>
 
@@ -187,42 +223,147 @@
             </div>
         </div>
 
-        <p class="desc">We can allso assign a function to our button in the .js file. In this case we only use the function name - we don't need to call the function with the parentheses.</p>
+        <p class="desc">We can allso assign a function to our button in the .js file. In this case we only use the
+            function name - we don't need to call the function with the parentheses.</p>
 
         <div class="code__container">
-            <p class="code__javascript">button.onclick = functionName;</p>
-            <button id="button-event" onclick="functionName()" class="button__event shadow" style="width: 100px; border-radius: 5px;">Click
-                Me!</button>
+            <p class="code__javascript">button.<span class="method">onclick</span> = functionName;</p>
+            <button id="button-event" onclick="functionName()" class="button__event shadow"
+                style="width: 100px; border-radius: 5px;">Click
+                me!</button>
+        </div>
+
+
+        <p class="entry-content mt2">The full list of HTML Events can be found <a
+                href="https://www.w3schools.com/tags/ref_eventattributes.asp">on w3schools</a>. </p>
+        <p class="entry-content mt2"> Some of the most frequently used events include <span class="bold">onclick,
+                onmouseover, onmouseout, onmousedown, onmouseup, onload and onchange.</span> Let's see them in action.
+        </p>
+
+        <p class="desc">First, I will declare some functions.</p>
+        <p class="code__javascript">
+            function redFont() {<br>
+            <span class="indent"></span> button.style.color = "red"<br>
+            }<br><br>
+            function greenFont() {<br>
+            <span class="indent"></span>button.style.color = "green"<br>
+            }<br><br>
+
+            function yellowFont(){<br>
+            <span class="indent"></span>button.style.color = "yellow"<br>
+            }<br><br>
+            function blackFont(){<br>
+            <span class="indent"></span>button.style.color = "black"<br>
+            }
+        </p>
+        <p class="desc">Now let's use these functions as events on our button. When you hover over it the colour of the
+            font should change to red. <br>Note that the font will stay red even when the mouse pointer leaves the button.
+        </p>
+        <div class="code__container">
+            <p class="code__javascript">button.<span class="method">onmouseover</span> = redFont;</p>
+            <button id="button-event2" onmouseover="redFont()" class="button__event shadow"
+                style="width: 120px; border-radius: 5px;">Hover!</button>
+        </div>
+        <p class="desc">Let's tell our button what to do when the mouse stops hovering over it - we will change the
+            color of the font to green.</p>
+
+        <div class="code__container">
+            <p class="code__javascript">button.<span class="method">onmouseout</span> = greenFont;</p>
+            <button id="button-event3" onmouseover="redFont3()" onmouseout="greenFont()" class="button__event shadow"
+                style="width: 120px; border-radius: 5px;">Hover over and out!</button>
+        </div>
+        <p class="desc">Let's change the colour of the font to yellow when we click the button. <br>Note that the font stays
+            yellow even after the button has been clicked. </p>
+        <div class="code__container">
+            <p class="code__javascript">button.<span class="method">onmousedown</span> = yellowFont;</p>
+            <button id="button-event4" onmousedown="yellowFont()" class="button__event shadow"
+                style="width: 120px; border-radius: 5px;">Click me!</button>
+        </div>
+
+        <p class="desc">Now let's change the color of the font back to black, when the click is finished.</p>
+
+
+        <div class="code__container">
+            <p class="code__javascript">button.<span class="method">onmouseup</span> = blackFont;</p>
+            <button id="button-event5" onmousedown="yellowFont5()" onmouseup="blackFont()" class="button__event shadow"
+                style="width: 120px; border-radius: 5px;">Click me!</button>
+        </div>
+
+        <p class="desc">Let's trigger an alert when you make a change to an input. <br>Note that you need to click outside
+            of the input to trigger the event. The alert should pop up after every change.</p>
+
+
+        <div class="code__container">
+            <p class="code__javascript">
+                const input = document.getElementById('input')<Br><br>
+
+                function onChangeEvent() {<br>
+                <span class="indent"></span>alert('You made a change!')<br>
+                }<Br><br>
+
+                input.<span class="method">onchange</span> = onChangeEvent;
+
+            </p>
+            <input id="input" onchange="onChangeEvent()" class="shadow"
+                style="width: 170px; height: 2rem; border-radius: 5px; padding-inline: 0.5rem;"
+                placeholder="Type something...">
         </div>
 
 
 
 
 
-        <p class="entry-content mt2">The full list of HTML Events can be found <a
-                href="https://www.w3schools.com/tags/ref_eventattributes.asp">on w3schools</a>. </p>
-        <p class="entry-content mt2"> Some of the most frequently used events include: </p>
-        <ul>
-            <li>onclick</li>
-            <li>onload</li>
-            <li>onchange</li>
-            <li>onmouseover</li>
-            <li>onmouseout</li>
-            <li>onmousedown</li>
-            <li>onmouseup</li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
 
 
 
         <script>
             const buttonEvent = document.getElementById('button-event');
 
-            function functionName(){
+            function functionName() {
                 alert('Hello')
-            } 
+            }
+
+
+            const buttonEvent2 = document.getElementById('button-event2');
+
+            function redFont() {
+                buttonEvent2.style.color = "red"
+            }
+            function redFont3() {
+                buttonEvent3.style.color = "red"
+            }
+
+            const buttonEvent3 = document.getElementById('button-event3');
+
+            function greenFont() {
+                buttonEvent3.style.color = "green"
+            }
+
+            const buttonEvent4 = document.getElementById('button-event4');
+
+            function yellowFont() {
+                buttonEvent4.style.color = "yellow"
+            }
+
+            const buttonEvent5 = document.getElementById('button-event5');
+
+            function yellowFont5() {
+                buttonEvent5.style.color = "yellow"
+            }
+
+            function blackFont() {
+                buttonEvent5.style.color = "black"
+            }
+
+            const input = document.getElementById('input')
+
+
+            input.onchange = onChangeEvent;
+
+            function onChangeEvent() {
+                alert('You made a change!')
+            }
+
         </script>
         <!-- Copy to here -->
 
