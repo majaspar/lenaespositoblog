@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
 
 
+
 @font-face {
     font-family: 'Woods Pirates Regular';
     font-style: normal;
@@ -581,6 +582,7 @@ button.searchBtn img {
 .blog-intro {
     padding: 0 10%;
     gap: 1rem;
+    justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
 }
