@@ -1,100 +1,70 @@
-body {
-    background: url('../public/assets/bg.avif');
-    background-size: cover;
-    background-position: top;
-    text-align: left;
-    color: rgb(255, 255, 255);
-}
-
 * {
     transition: none;
 
 }
 
-.console-log {
-    overflow-wrap: break-word;
-    background: rgba(137, 137, 137, 0.449);
-    padding: 1rem;
-    font-family: 'Courier New', Courier, monospace;
-    color: rgb(2, 9, 85);
-    margin-left: 1rem;
-    font-weight: bold;
-}
-
-.console-log span {
-    overflow-wrap: break-word;
-    color: rgb(134, 255, 123);
-    margin-top: 1rem;
-    margin-left: 3rem;
-}
-
-.console-log div {
-    overflow-wrap: break-word;
-    margin-top: 1rem;
-    margin-left: 10rem;
-
-    color: rgb(134, 255, 123);
-
-}
-
-.desc {
-    font-style: italic;
-    font: 0.9rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-}
-
-.code {
-    overflow-wrap: break-word;
-    background: rgba(137, 137, 137, 0.449);
-    padding: 1rem;
-    font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
-    margin-top: 1rem;
-    margin-left: 1rem;
-    margin-bottom: 1rem;
-}
-
-span.method {
-    color: rgb(217, 255, 0);
-}
-span.indent {
-    margin-left: 2rem;
-}
-.transp {
-    color: transparent;
-}
-
-
-/*/////////////////////////////////////////////////////////*/
-.bb {
-    border-bottom: 1px solid rgb(175, 175, 175);
-}
-.code__container {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 1rem;
-}
-
-.code__javascript, .code__html {
-    
-    overflow-wrap: break-word;
+.submit-btn {
+    width: 100px;
     padding: 0.5rem;
-    font-family: 'Courier New', Courier, monospace;
-    background: rgba(137, 137, 137, 0.349);
-}
-
-@media(max-width: 600px){
-    .code__container {
-        grid-template-columns: 1fr;
-    }
-}
-
-.document {
-    font-size: 1.6rem;
+    border-radius: 10px;
     font-weight: bold;
-    padding: 1rem;
-    background: white;
-    color: black;
-    margin: 0.5rem 0;
+    background: #011055;
+    cursor: pointer;
+    color: white;
+    margin: 0.5rem;
+    transition: none;
 }
+
+.submit-btn:hover {
+    background: #091f85;
+}
+
+.submit-btn:active {
+    transform: translateY(2px);
+    background-color: #3a80ba;
+}
+
+
+.guess-field,
+.temp-field {
+    padding: 0.5rem;
+    width: 100px;
+    margin: 0.5rem;
+}
+
+.guess-answer span {
+    font-weight: bold;
+    font-size: 120%;
+}
+
+input {
+    width: auto;
+    margin: 0;
+    margin-right: 0.5rem;
+}
+
+.convert {
+    padding: 0;
+    margin: 0;
+
+    align-items: start;
+    gap: 2rem;
+}
+
+.temp-answer span {
+    font-weight: bold;
+    font-size: 120%;
+    padding: 0.5rem;
+}
+
+.select-unit {
+    text-align: center;
+    background: rgb(244, 154, 154);
+    border: 1px solid red;
+    padding: 0.5rem 1rem;
+    width: 200px;
+    color: rgb(245, 62, 62);
+}
+
+
+/*********************************/

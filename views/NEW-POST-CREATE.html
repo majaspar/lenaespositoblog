@@ -59,331 +59,96 @@
 
     <!-- Copy from here -->
     <style>
-.desc {
-    font-style: italic;
-    font: 0.9rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-}
+        .desc {
+            font-style: italic;
+            font: 0.9rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
 
-.code {
-    overflow-wrap: break-word;
-    background: rgba(137, 137, 137, 0.449);
-    padding: 1rem;
-    font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
-    margin-top: 1rem;
-    margin-left: 1rem;
-    margin-bottom: 1rem;
-}
+        .code {
+            overflow-wrap: break-word;
+            background: rgba(137, 137, 137, 0.449);
+            padding: 1rem;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 1rem;
+            margin-left: 1rem;
+            margin-bottom: 1rem;
+        }
 
-span.method {
-    color: rgb(217, 255, 0);
-}
-span.indent {
-    margin-left: 2rem;
-}
-.transp {
-    color: transparent;
-}
+        span.method {
+            color: rgb(217, 255, 0);
+        }
 
-
-/*/////////////////////////////////////////////////////////*/
-.bb {
-    border-bottom: 1px solid rgb(175, 175, 175);
-}
-.code__container {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 1rem;
-}
-
-.code__javascript, .code__html {
-    
-    overflow-wrap: break-word;
-    padding: 0.5rem;
-    font-family: 'Courier New', Courier, monospace;
-    background: rgba(137, 137, 137, 0.349);
-}
-
-@media(max-width: 600px){
-    .code__container {
-        grid-template-columns: 1fr;
-    }
-}
-
-.document {
-    font-size: 1.6rem;
-    font-weight: bold;
-    padding: 1rem;
-    background: white;
-    color: black;
-    margin: 0.5rem 0;
-}
+        span.indent {
+            margin-left: 2rem;
+        }
     </style>
     <div class="separator mb5"></div>
+    <h1 class="entry-title">JavaScript Games and Small Apps</h1>
+        <p class="entry-content">Here's several games and apps that every web developer knows. Temperature converter,
+            number guessing game. These apps are great for practising JavaScript and putting newly acquired skills to
+            test.</p>
 
+        <h2 class="mt3 mb3 entry-subtitle">1. Number Guessing Game</h2>
+        <div>
+            <p class="entry-content mb1">Pick a number between 1 and 100.
+            </p>
+            <label for="guessField">Enter a guess: </label>
+            <input class="mb1 guess-field" type="text" id="guessField">
+            <input class=" submit-btn mb1 uppercase" type="submit" id="submitBtn">
+            <div class="mt1 guess-answer" id="guess-answer"><span></span></div>
+        </div>
+        <hr class="mt2 hr-white mb2">
+
+        <section class="temp-converter">
+            <h2 class="mt3 entry-subtitle">2. Temperature Converter</h2>
+            <label for="textBox">Enter a temperature: </label>
+            <input class="mb1 temp-field" type="text" id="textBox">
+            <br><br>
+            <div class="convert flex">
+
+                <label>Convert to:</label>
+                <div>
+                    <div class="div-radio flex"><input type="radio" name="unit" id="cTemp" class="radio-input"><label
+                            for="cTemp">Celsius</label></div>
+                    <div class=" mt1 mb1 div-radio flex"> <input type="radio" name="unit" id="fTemp"
+                            class="radio-input"><label for="fTemp">Fahrenheit</label></div>
+                </div>
+            </div>
+
+
+            <input class="submit-btn uppercase submitTemp" type="submit" id="submitTemp">
+
+
+            <div class="mt1 mb2 temp-answer"><span id="temp-answer"></span></div>
+        </section>
+
+        <hr class="mt2 hr-white mb2">
 
     <div class="w70">
-        <h1 class="entry-title">DOM Manipulation</h1>
-        <p class="entry-content mb3">DOM stands for Document Object Model. We can change and modify the content of our
-            web document (which is simply the website displayed in the browser) through JavaScript code, without making
-            any changes to our .html file.</p>
-        <p class="entry-content">Here are some of the ways that we can do it.</p>
 
-        <h2 class="entry-subtitle mt3 mb2">Manipulating CSS Styles</h2>
-        <p class="entry-content">In order to change CSS properties we need to select an element and assign it to a
-            variable. Then we follow this pattern: <b>element.style.property = 'value'</b>, where <em>element</em>
-            stands for the variable name, <em>property</em> for a CSS property and <em>value</em> for a CSS value.</p>
-        <p class="entry-content">While single-word properties remain unchanged, multiple-word properties that are
-            hyphenated in CSS need to be converted to camelCase.</p>
+    </div>
+    <script>
 
-        <p class="desc">Let's select and declare the element that we want to change.</p>
+    </script>
+    <!-- Copy to here -->
+    <!-- Footer -->
+    <div id="previous-next-loader" class="mt2"></div>
 
-        <div class="code__container">
-            <div class="code__javascript">
-                <p class="mb1 bb">.html</p>
-                <p>&lt;h1 id="title"&gt;Document Title&lt;/h1&gt;</p>
-            </div>
-            <div class="code__html">
-                <p class="mb1 bb">.js</p>
-                <p>const title = document.getElementById('title');
-                </p>
-            </div>
-        </div>
+    <!-- Footer -->
+    <div id="footer-loader-entry" class="mt2"></div>
 
-        <p class="desc">Now let's change the color of our title.</p>
+    <!-- Load the CDN first -->
+    <script src="//code.jquery.com/jquery-3.7.0.js"></script>
 
+    <!-- If CDN fails to load, serve up the local version -->
+    <script>window.jQuery || document.write('<script src="../jquery-2.1.4.js"><\/script>');</script>
 
-        <div class="code__container">
-            <p class="code__javascript">title.style.color = 'lightskyblue';</p>
-            <p class="document shadow" style="color: lightskyblue">Document Title</p>
-        </div>
-
-
-        <p class="desc">Now let's change the background color of our title.</p>
-
-
-        <div class="code__container">
-            <p class="code__javascript">title.style.backgroundColor = 'grey';</p>
-            <p class="document shadow" style="color: lightskyblue; background: grey;">Document Title</p>
-        </div>
-
-        <p class="desc">Let's change the font family of our title.</p>
-
-
-        <div class="code__container">
-            <p class="code__javascript">title.style.fontFamily = 'cursive';</p>
-            <p class="document shadow" style="color: lightskyblue; background: grey; font-family: cursive;">Document
-                Title</p>
-        </div>
-
-
-        <p class="desc">Let's center it.</p>
-
-        <div class="code__container">
-            <p class="code__javascript">title.style.textAlign = 'center';</p>
-            <p class="document shadow"
-                style="color: lightskyblue; background: grey; font-family: cursive; text-align: center;">Document Title
-            </p>
-        </div>
-
-
-        <p class="desc">Let's give it a border.</p>
-
-        <div class="code__container">
-            <p class="code__javascript">title.style.border = '5px solid';</p>
-            <p class="document shadow"
-                style="color: lightskyblue; background: grey; font-family: cursive; text-align: center; border: 5px solid;">
-                Document Title</p>
-        </div>
-
-
-        <h2 class="entry-subtitle mt3 mb2">JavaScript Event Attributes</h2>
-        <p class="entry-content">JavaScript Events are actions that you can assign to certain events that occur in HTML
-            pages.</p>
-        <p class="entry-content">Here's how it works.</p>
-        <p class="desc">Let's select an element that we want to react on. We can give the element an event attribute
-            inserting it directly inside the tag.</p>
-
-        <div class="code__container">
-            <div class="code__javascript">
-                <p class="mb1 bb">.html</p>
-                <p>&lt;button id="button"&gt;Click Me!&lt;/button&gt; <br><br>
-                    OR<br><br>
-                    &lt;button id="button" onclick="functionName()"&gt;Click Me!&lt;/button&gt;</p>
-            </div>
-            <div class="code__html">
-                <p class="mb1 bb">.js</p>
-                <p>const button = document.getElementById('button');<br><br>
-                    function functionName(){<br>
-                    <span class="indent"></span>alert('Hello')<br>
-                    }
-                </p>
-            </div>
-        </div>
-
-        <p class="desc">We can allso assign a function to our button in the .js file. In this case we only use the
-            function name - we don't need to call the function with the parentheses.</p>
-
-        <div class="code__container">
-            <p class="code__javascript">button.<span class="method">onclick</span> = functionName;</p>
-            <button id="button-event" onclick="functionName()" class="button__event shadow"
-                style="width: 100px; border-radius: 5px;">Click
-                me!</button>
-        </div>
-
-
-        <p class="entry-content mt2">The full list of HTML Events can be found <a
-                href="https://www.w3schools.com/tags/ref_eventattributes.asp">on w3schools</a>. </p>
-        <p class="entry-content mt2"> Some of the most frequently used events include <span class="bold">onclick,
-                onmouseover, onmouseout, onmousedown, onmouseup, onload and onchange.</span> Let's see them in action.
-        </p>
-
-        <p class="desc">First, I will declare some functions.</p>
-        <p class="code__javascript">
-            function redFont() {<br>
-            <span class="indent"></span> button.style.color = "red"<br>
-            }<br><br>
-            function greenFont() {<br>
-            <span class="indent"></span>button.style.color = "green"<br>
-            }<br><br>
-
-            function yellowFont(){<br>
-            <span class="indent"></span>button.style.color = "yellow"<br>
-            }<br><br>
-            function blackFont(){<br>
-            <span class="indent"></span>button.style.color = "black"<br>
-            }
-        </p>
-        <p class="desc">Now let's use these functions as events on our button. When you hover over it the colour of the
-            font should change to red. <br>Note that the font will stay red even when the mouse pointer leaves the button.
-        </p>
-        <div class="code__container">
-            <p class="code__javascript">button.<span class="method">onmouseover</span> = redFont;</p>
-            <button id="button-event2" onmouseover="redFont()" class="button__event shadow"
-                style="width: 120px; border-radius: 5px;">Hover!</button>
-        </div>
-        <p class="desc">Let's tell our button what to do when the mouse stops hovering over it - we will change the
-            color of the font to green.</p>
-
-        <div class="code__container">
-            <p class="code__javascript">button.<span class="method">onmouseout</span> = greenFont;</p>
-            <button id="button-event3" onmouseover="redFont3()" onmouseout="greenFont()" class="button__event shadow"
-                style="width: 120px; border-radius: 5px;">Hover over and out!</button>
-        </div>
-        <p class="desc">Let's change the colour of the font to yellow when we click the button. <br>Note that the font stays
-            yellow even after the button has been clicked. </p>
-        <div class="code__container">
-            <p class="code__javascript">button.<span class="method">onmousedown</span> = yellowFont;</p>
-            <button id="button-event4" onmousedown="yellowFont()" class="button__event shadow"
-                style="width: 120px; border-radius: 5px;">Click me!</button>
-        </div>
-
-        <p class="desc">Now let's change the color of the font back to black, when the click is finished.</p>
-
-
-        <div class="code__container">
-            <p class="code__javascript">button.<span class="method">onmouseup</span> = blackFont;</p>
-            <button id="button-event5" onmousedown="yellowFont5()" onmouseup="blackFont()" class="button__event shadow"
-                style="width: 120px; border-radius: 5px;">Click me!</button>
-        </div>
-
-        <p class="desc">Let's trigger an alert when you make a change to an input. <br>Note that you need to click outside
-            of the input to trigger the event. The alert should pop up after every change.</p>
-
-
-        <div class="code__container">
-            <p class="code__javascript">
-                const input = document.getElementById('input')<Br><br>
-
-                function onChangeEvent() {<br>
-                <span class="indent"></span>alert('You made a change!')<br>
-                }<Br><br>
-
-                input.<span class="method">onchange</span> = onChangeEvent;
-
-            </p>
-            <input id="input" onchange="onChangeEvent()" class="shadow"
-                style="width: 170px; height: 2rem; border-radius: 5px; padding-inline: 0.5rem;"
-                placeholder="Type something...">
-        </div>
-
-
-
-
-
-
-
-
-        <script>
-            const buttonEvent = document.getElementById('button-event');
-
-            function functionName() {
-                alert('Hello')
-            }
-
-
-            const buttonEvent2 = document.getElementById('button-event2');
-
-            function redFont() {
-                buttonEvent2.style.color = "red"
-            }
-            function redFont3() {
-                buttonEvent3.style.color = "red"
-            }
-
-            const buttonEvent3 = document.getElementById('button-event3');
-
-            function greenFont() {
-                buttonEvent3.style.color = "green"
-            }
-
-            const buttonEvent4 = document.getElementById('button-event4');
-
-            function yellowFont() {
-                buttonEvent4.style.color = "yellow"
-            }
-
-            const buttonEvent5 = document.getElementById('button-event5');
-
-            function yellowFont5() {
-                buttonEvent5.style.color = "yellow"
-            }
-
-            function blackFont() {
-                buttonEvent5.style.color = "black"
-            }
-
-            const input = document.getElementById('input')
-
-
-            input.onchange = onChangeEvent;
-
-            function onChangeEvent() {
-                alert('You made a change!')
-            }
-
-        </script>
-        <!-- Copy to here -->
-
-
-
-        <!-- Footer -->
-        <div id="previous-next-loader" class="mt2"></div>
-
-        <!-- Footer -->
-        <div id="footer-loader-entry" class="mt2"></div>
-
-        <!-- Load the CDN first -->
-        <script src="//code.jquery.com/jquery-3.7.0.js"></script>
-
-        <!-- If CDN fails to load, serve up the local version -->
-        <script>window.jQuery || document.write('<script src="../jquery-2.1.4.js"><\/script>');</script>
-
-        <!-- jQuery UI -->
-        <script src="../jquery-ui.min.js"></script>
-        <script src="new-post.js"></script>
+    <!-- jQuery UI -->
+    <script src="../jquery-ui.min.js"></script>
+    <script src="new-post.js"></script>
 </body>
 
 </html>
