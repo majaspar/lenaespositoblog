@@ -746,10 +746,13 @@ footer {
     padding: 1rem 0;
 
 }
-
+.arrow {
+    position: relative;
+}
 .fa-arrow-up {
-    position: absolute;
-    top: -4rem;
+   z-index: 9999;
+    position: fixed;
+    bottom: 0;
     right: 5%;
     padding: 1rem 1.2rem;
 

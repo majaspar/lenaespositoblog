@@ -28,6 +28,7 @@
 </script>
 
 <body class="flex-column">
+ 
     <header class="primary-header background-white flex shadow">
 
         <div class="w70 flex header scrollWatcher">
@@ -59,13 +60,34 @@
 
     <!-- Copy from here -->
     <style>
+        .desc {
+            font-style: italic;
+            font: 0.9rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
 
+        .code {
+            overflow-wrap: break-word;
+            background: rgba(137, 137, 137, 0.449);
+            padding: 1rem;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 1rem;
+            margin-left: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        span.method {
+            color: rgb(217, 255, 0);
+        }
+
+        span.indent {
+            margin-left: 2rem;
+        }
     </style>
     <div class="separator mb5"></div>
-
-
-    <div class="w70">
-        <h1 class="entry-title">JavaScript Games and Small Apps</h1>
+    <h1 class="entry-title">JavaScript Games and Small Apps</h1>
         <p class="entry-content">Here's several games and apps that every web developer knows. Temperature converter,
             number guessing game. These apps are great for practising JavaScript and putting newly acquired skills to
             test.</p>
@@ -90,8 +112,8 @@
 
                 <label>Convert to:</label>
                 <div>
-                    <div class="div-radio flex"><input type="radio" name="unit" id="cTemp"
-                            class="radio-input"><label for="cTemp">Celsius</label></div>
+                    <div class="div-radio flex"><input type="radio" name="unit" id="cTemp" class="radio-input"><label
+                            for="cTemp">Celsius</label></div>
                     <div class=" mt1 mb1 div-radio flex"> <input type="radio" name="unit" id="fTemp"
                             class="radio-input"><label for="fTemp">Fahrenheit</label></div>
                 </div>
@@ -100,9 +122,14 @@
 
             <input class="submit-btn uppercase submitTemp" type="submit" id="submitTemp">
 
-           
+
             <div class="mt1 mb2 temp-answer"><span id="temp-answer"></span></div>
         </section>
+
+        <hr class="mt2 hr-white mb2">
+
+    <div class="w70">
+
     </div>
     <script>
 
