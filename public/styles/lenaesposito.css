@@ -373,7 +373,7 @@ header {
 
 nav {
     font-size: 1.3rem;
-    text-shadow: black 1px 0 5px;
+
 }
 
 .primary-navigation {
@@ -383,13 +383,14 @@ nav {
     align-items: center;
     column-gap: 2.5rem;
     list-style-type: none;
-    z-index: 2000;
+    z-index: 10;
 }
 
 .link-nav {
     display: inline-block;
     padding: 1rem 0;
     transition: 0.3s;
+    color: white;
 }
 
 .link-nav:hover {
@@ -404,7 +405,7 @@ nav {
         display: block;
         position: absolute;
         aspect-ratio: 1/1;
-        z-index: 9999;
+        z-index: 100;
         top: 1.5rem;
         right: 2rem;
         background-color: transparent;
@@ -424,7 +425,7 @@ nav {
     .primary-navigation {
         position: fixed;
         height: 100vh;
-        padding-top: 30%;
+        padding-top: 22%;
         margin: 0;
         background: var(--clr-violet);
         backdrop-filter: blur(1.5rem);
@@ -441,12 +442,13 @@ nav {
 
     }
 
+
     @supports (backdrop-filter: blur(1.2rem)) {
 
 
         .primary-navigation {
 
-            background: hwb(0 100% 0% / 0.2);
+            background: rgba(64, 65, 145, 0.5);
             backdrop-filter: blur(1.5rem);
         }
     }
