@@ -485,6 +485,7 @@ nav {
         display: none;
     }
 }
+
 /*    lena.css ends here */
 body,
 h1,
@@ -550,7 +551,8 @@ body {
     text-align: left;
     color: white;
     justify-content: space-between;
-    background-color: var(--clr-dark-gray);
+    background: linear-gradient(146deg, rgba(51,51,51,1) 9%, rgba(78,85,84,1) 55%, rgba(51,51,51,1) 94%);
+    /* background-color: var(--clr-dark-gray); */
     /* background: url('../assets/bg.avif');
     background-size: cover;
     background-position: top; */
