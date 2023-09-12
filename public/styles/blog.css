@@ -533,7 +533,7 @@ a {
 }
 
 .background-dark {
-    background: var(--clr-dark-gray);
+    background: var(--clr-nav-gray);
 }
 
 .flex-column {
@@ -725,6 +725,7 @@ ul {
         width: 100%;
         padding: 0.5rem 0.5rem;
         background: none;
+        border: 1px solid transparent;
     }
 
 }
@@ -1269,7 +1270,7 @@ footer {
 
 .text-link a:hover {
     cursor: pointer;
-    color: var(--clr-dark-turq-green);
+    color: var(--clr-turq-green);
 }
 
 .footer-social img {
