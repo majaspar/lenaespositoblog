@@ -1,4 +1,11 @@
+
+
 require('dotenv').config();
+require("@babel/core").transform("code", {
+    presets: ["@babel/preset-env"],
+  });
+const react = require('react')
+const reactDom = require('react-dom')
 
 const express = require('express');
 const expressLayout = require('express-ejs-layouts');
