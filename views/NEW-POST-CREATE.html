@@ -78,17 +78,68 @@
         span.indent {
             margin-left: 2rem;
         }
+
+        span.indent2 {
+            margin-left: 3rem;
+        }
+
+        span.indent3 {
+            margin-left: 4rem;
+        }
     </style>
     <!-- <a href="https://storyset.com/people">People illustrations by Storyset</a> -->
     <div class="separator mb5"></div>
     <div class="w70">
-        <h1 class="entry-title">Rock, Paper, Scissors Game</h1>
-        <p class="entry-content">This is a game of <em>Rock, paper, scissors</em> built with JavaScript.</p>
-        <hr>
-  
+        <h1 class="entry-title">Creating a React component</h1>
+        <p class="entry-content">There are two ways of creating a component in React.</p>
+        <h2 class="entry-subtitle mt4">1. Creating a JavaScript function</h2>
+        <p class="entry-content"> This option will create a stateless functional component, which means that the
+            component will render data, but will not keep track of any changes that happen.
+            This JavaScript function needs to return either <span class="method">JSX</span> or <span
+                class="method">null</span>.</p>
+        <p class="code">const <span class="method">NewComponent</span> = function() {<br>
+            <span class="indent"></span>return (<br>
+            <span class="indent2"></span>&lt;h1&gt;Hello from the
+            NewComponent!&lt;/h1&gt;<br>
+            <span class="indent"></span> );<br>
+            };
+        </p>
+        <p class="desc">OR use the arrow function like so:</p>
+        <p class="code">
+        const <span class="method">NewComponent</span> = () => {<br>
+        <span class="indent"></span>return (<br>
+        <span class="indent2"></span>&lt;div&gt;<br>
+        <span class="indent3"></span>&lt;p&gt;Hello from the
+        NewComponent!&lt;/p&gt;<br>
+        <span class="indent2"></span>&lt;/div&gt;<br>
+        <span class="indent">);<br>
+            };</p>
+
+            <h2 class="entry-subtitle mt4">2. Defining a React component with the ES6 syntax.</h2>
+            <p class="entry-content">This gives us a ES6 class NewComponent which extends React.Component class. Our new
+                component
+                has now access to React features, for example local state or hooks. To make sure that the component is
+                initialized properly, we use super() to call the constructor of React.Component class.</p>
+            <p class="code">
+                class <span class="method">NewComponent</span> extends <span class="method">React.Component</span> {<br>
+                <span class="indent"></span>constructor(props) {<br>
+                <span class="indent2"></span>super(props);<br>
+                <span class="indent"></span>}<br><br>
+
+                <span class="indent"></span>render() {<br>
+                <span class="indent2"></span>return (<br>
+                <span class="indent3"></span>&lt;h1&gt;Hello from the
+                NewComponent!&lt;/h1&gt;<br>
+                <span class="indent2"></span>);<br>
+                <span class="indent"></span>}<br>
+                }
+            </p>
+
+
+
     </div>
     <script>
-      
+
     </script>
     <!-- Copy to here -->
 
