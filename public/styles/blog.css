@@ -17,9 +17,10 @@
 :root {
 
 
-    --clr-nav-gray: #636363;
+    --clr-nav-gray: #3d515c;
     --clr-light-gray: #424242;
-    --clr-dark-gray: #333333;
+    /* --clr-dark-gray: #333333; */
+    --clr-dark-gray: #011b2b;
     --clr-turq-green: #68d7ce;
     --clr-dark-turq-green: #269c92;
     --clr-blue: #3b6699;
@@ -548,7 +549,8 @@ body {
     text-align: left;
     color: white;
     justify-content: space-between;
-    background: linear-gradient(146deg, rgba(51,51,51,1) 9%, rgba(78,85,84,1) 55%, rgba(51,51,51,1) 94%);
+    background-color: var(--clr-dark-gray);
+    /* background: linear-gradient(146deg, rgba(51,51,51,1) 9%, rgba(78,85,84,1) 55%, rgba(51,51,51,1) 94%); */
     /* background-color: var(--clr-dark-gray); */
     /* background: url('../assets/bg.avif');
     background-size: cover;
