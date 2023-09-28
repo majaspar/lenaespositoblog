@@ -75,6 +75,14 @@
             color: rgb(217, 255, 0);
         }
 
+        span.method2 {
+            color: rgb(39, 255, 255);
+        }
+
+        span.method3 {
+            color: rgb(243, 152, 255);
+        }
+
         span.indent {
             margin-left: 2rem;
         }
@@ -84,58 +92,60 @@
         }
 
         span.indent3 {
-            margin-left: 4rem;
+            zv margin-left: 4rem;
         }
     </style>
     <!-- <a href="https://storyset.com/people">People illustrations by Storyset</a> -->
     <div class="separator mb5"></div>
     <div class="w70">
-        <h1 class="entry-title">Creating a React component</h1>
-        <p class="entry-content">There are two ways of creating a component in React.</p>
-        <h2 class="entry-subtitle mt4">1. Creating a JavaScript function</h2>
-        <p class="entry-content"> This option will create a stateless functional component, which means that the
-            component will render data, but will not keep track of any changes that happen.
-            This JavaScript function needs to return either <span class="method">JSX</span> or <span
-                class="method">null</span>.</p>
-        <p class="code">const <span class="method">NewComponent</span> = function() {<br>
-            <span class="indent"></span>return (<br>
-            <span class="indent2"></span>&lt;h1&gt;Hello from the
-            NewComponent!&lt;/h1&gt;<br>
-            <span class="indent"></span> );<br>
-            };
-        </p>
-        <p class="desc">OR use the arrow function like so:</p>
+        <h1 class="entry-title">Changing navbar background on scroll in React</h1>
+        <p class="entry-content">While I have a pretty good understanding of React, I am still quite fresh to it and
+            learning it patiently every day. <br>
+            Today I needed to use the Intersection Observer to change the background of the navbar in the project I am
+            working on now. Or at least, Intersection Observer is what I thought I needed and what I would use with
+            Vanilla JavaScript. <br>
+            I chose to go for an initially transparent navbar background that would transition to a coloured background
+            when we start scrolling.</p>
+        <p class="entry-content">After I learned how to use
+            Intersecition Observer in React, I found this super easy solution which doesn't involve using it at
+            all! </p>
+
+        <p class="desc">First, we need to import <span class="method">useState</span>.</p>
+        <p class="code">import { useState } from "react";</p>
+
+        <p class="desc">Then we need to declare our useState inside of our component and write a function that would
+            change the
+            state of our color from <em>false</em> to <em>true</em>.</p>
         <p class="code">
-        const <span class="method">NewComponent</span> = () => {<br>
-        <span class="indent"></span>return (<br>
-        <span class="indent2"></span>&lt;div&gt;<br>
-        <span class="indent3"></span>&lt;p&gt;Hello from the
-        NewComponent!&lt;/p&gt;<br>
-        <span class="indent2"></span>&lt;/div&gt;<br>
-        <span class="indent">);<br>
-            };</p>
+            const [<span class="method3">color</span>, <span class="method3">setColor</span>] = <span
+                class="method">useState</span>(false)<br><br>
+            const <span class="method2">changeNavbar</span> = () => {<br>
+            <span class="indent"></span> if (window.scrollY >= 100) {<br>
+            <span class="indent2"></span> <span class="method3">setColor</span>(true)<br>
+            <span class="indent"></span> } else {<br>
+            <span class="indent2"></span> <span class="method3">setColor</span>(false)<br>
+            <span class="indent"></span> }<br>
+            }<br><br>
 
-            <h2 class="entry-subtitle mt4">2. Defining a React component with the ES6 syntax.</h2>
-            <p class="entry-content">This gives us a ES6 class NewComponent which extends React.Component class. Our new
-                component
-                has now access to React features, for example local state or hooks. To make sure that the component is
-                initialized properly, we use super() to call the constructor of React.Component class.</p>
-            <p class="code">
-                class <span class="method">NewComponent</span> extends <span class="method">React.Component</span> {<br>
-                <span class="indent"></span>constructor(props) {<br>
-                <span class="indent2"></span>super(props);<br>
-                <span class="indent"></span>}<br><br>
+            window.addEventListener('scroll', <span class="method2">changeNavbar</span>)
+        </p>
+        <p class="desc">Now, in our .css styles file let's create a class that will add a colour to the transparent
+            background of our navbar.</p>
+        <p class="code">
+            .navbar-dark {<br>
+            <span class="indent"></span>background-color: #333333;<br>
+            }
+        </p>
+        <p class="desc">Finally, let's use the ternary operator to dynamically assign a class to our chosen DOM element.
+            For this example I chose <em>header</em>. If we scroll and the state of <span class="method3">color</span>
+            changes to <em>true</em>, the header (that already has one class "header") will get "navbar-dark" class. If
+            state of <span class="method3">color</span> is <em>false</em> the header will not receive this class and
+            stay transparent.</p>
 
-                <span class="indent"></span>render() {<br>
-                <span class="indent2"></span>return (<br>
-                <span class="indent3"></span>&lt;h1&gt;Hello from the
-                NewComponent!&lt;/h1&gt;<br>
-                <span class="indent2"></span>);<br>
-                <span class="indent"></span>}<br>
-                }
-            </p>
-
-
+        <p class="code">
+            &lt;header className={<span class="method3">color</span> ? 'header navbar-dark' :
+            'header'}&gt;
+        </p>
 
     </div>
     <script>
