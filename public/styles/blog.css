@@ -823,11 +823,13 @@ ul {
 .dashboard .post-title {
     font-size: 1rem;
 }
+
 .dashboard-post-entry {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
+
 .admin-post {
     margin: 1rem 0;
 }
@@ -873,6 +875,24 @@ ul {
     color: white;
 }
 
+/**************************/
+/*** Random posts     ***/
+/**************************/
+.random-posts-wrapper {
+    padding-block: 2rem;
+    display: flex;
+    gap: 1rem;
+    overflow-x: scroll;
+    width: 100%;
+}
+
+.random-post {
+    min-width: 300px;
+}
+
+.random-posts h2 {
+    font-size: 1.9rem;
+}
 /**************************/
 /*** Categories PAGE    ***/
 /**************************/
@@ -1169,12 +1189,15 @@ div.blog-entry img:hover {
     margin-block: 2rem;
     display: flex;
 }
+
 .pagination-next {
-justify-content: flex-end;
+    justify-content: flex-end;
 }
+
 .pagination-prev {
-justify-content: flex-start;
+    justify-content: flex-start;
 }
+
 .pagination i {
     display: inline-block;
     font-size: 1rem;

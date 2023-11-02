@@ -41,11 +41,11 @@
                     <div class="tags-entry">
 
                         <% for( let i=0; i < post.tags.length; i++ ) { %>
-                          <a href="/categories"><button class="no-btn tags-entry-tag">
+                            <a href="/categories"><button class="no-btn tags-entry-tag">
                                     <%=post.tags[i]%>
                                 </button> </a>
-                                <% } %>
-                            
+                            <% } %>
+
                     </div>
                 </div>
             </li>
@@ -56,17 +56,161 @@
 
     <% if (nextPage !==null) { %>
         <div class="pagination pagination-next">
-        <a href="/?page=<%= nextPage %>" class="center">Go to next page <i class="fa-solid fa-arrow-right"></i></a>    
+            <a href="/?page=<%= nextPage %>" class="center">Go to next page <i class="fa-solid fa-arrow-right"></i></a>
         </div>
-        
+
         <% } %>
-    <% if (current > 1) { %>
-        <div class="pagination pagination-prev">
-        <a href="/?page=<%= prevPage %>" class="center"> <i class="fa-solid fa-arrow-left"></i> Go to previous page</a>
-        </div>
-        <% } %>
+            <% if (current> 1) { %>
+                <div class="pagination pagination-prev">
+                    <a href="/?page=<%= prevPage %>" class="center"> <i class="fa-solid fa-arrow-left"></i> Go to
+                        previous page</a>
+                </div>
+                <% } %>
 
 
+</section>
+
+<hr class="hr-white mt2 mb2">
+
+<section class="random-posts">
+    <h2 class="ff-title mt3 mb1">Random posts: </h2>
+    <div class="random-posts-wrapper">
+        <div class="shadow blog-entry background-white random-post">
+            <a href="/post/<%=data[random.random1]._id %>">
+                <figure><img src="<%=data[random.random1].image %>"
+                        alt="Illustration for <%=data[random.random1].title %>"></figure>
+            </a>
+            <div class="date-readmore flex">
+                <span class="article-list__date entry-date">
+                    <%= data[random.random1].createdAt.toDateString() %>
+                </span>
+                <div class="read-more-btn"><a href="/post/<%=data[random.random1]._id %>">Read more</a></div>
+            </div>
+
+            <a class="flex-align" href="/post/<%=data[random.random1]._id %>">
+                <h2 class="blog-entry-title flex">
+                    <%= data[random.random1].title %>
+                </h2>
+            </a>
+            <div class="tags-entry">
+
+                <% for( let i=0; i < data[random.random1].tags.length; i++ ) { %>
+                    <a href="/categories"><button class="no-btn tags-entry-tag">
+                            <%=data[random.random1].tags[i]%>
+                        </button> </a>
+                    <% } %>
+
+            </div>
+        </div>
+        <div class="shadow blog-entry background-white random-post">
+            <a href="/post/<%=data[random.random2]._id %>">
+                <figure><img src="<%=data[random.random2].image %>"
+                        alt="Illustration for <%=data[random.random2].title %>"></figure>
+            </a>
+            <div class="date-readmore flex">
+                <span class="article-list__date entry-date">
+                    <%= data[random.random2].createdAt.toDateString() %>
+                </span>
+                <div class="read-more-btn"><a href="/post/<%=data[random.random2]._id %>">Read more</a></div>
+            </div>
+
+            <a class="flex-align" href="/post/<%=data[random.random2]._id %>">
+                <h2 class="blog-entry-title flex">
+                    <%= data[random.random2].title %>
+                </h2>
+            </a>
+            <div class="tags-entry">
+
+                <% for( let i=0; i < data[random.random2].tags.length; i++ ) { %>
+                    <a href="/categories"><button class="no-btn tags-entry-tag">
+                            <%=data[random.random2].tags[i]%>
+                        </button> </a>
+                    <% } %>
+
+            </div>
+        </div>
+        <div class="shadow blog-entry background-white random-post">
+            <a href="/post/<%=data[random.random3]._id %>">
+                <figure><img src="<%=data[random.random3].image %>"
+                        alt="Illustration for <%=data[random.random3].title %>"></figure>
+            </a>
+            <div class="date-readmore flex">
+                <span class="article-list__date entry-date">
+                    <%= data[random.random3].createdAt.toDateString() %>
+                </span>
+                <div class="read-more-btn"><a href="/post/<%=data[random.random3]._id %>">Read more</a></div>
+            </div>
+
+            <a class="flex-align" href="/post/<%=data[random.random3]._id %>">
+                <h2 class="blog-entry-title flex">
+                    <%= data[random.random3].title %>
+                </h2>
+            </a>
+            <div class="tags-entry">
+
+                <% for( let i=0; i < data[random.random3].tags.length; i++ ) { %>
+                    <a href="/categories"><button class="no-btn tags-entry-tag">
+                            <%=data[random.random3].tags[i]%>
+                        </button> </a>
+                    <% } %>
+
+            </div>
+        </div>
+        <div class="shadow blog-entry background-white random-post">
+            <a href="/post/<%=data[random.random4]._id%>">
+                <figure><img src="<%=data[random.random4].image %>"
+                        alt="Illustration for <%=data[random.random4].title %>"></figure>
+            </a>
+            <div class="date-readmore flex">
+                <span class="article-list__date entry-date">
+                    <%= data[random.random4].createdAt.toDateString() %>
+                </span>
+                <div class="read-more-btn"><a href="/post/<%=data[random.random4]._id %>">Read more</a></div>
+            </div>
+
+            <a class="flex-align" href="/post/<%=data[random.random4]._id %>">
+                <h2 class="blog-entry-title flex">
+                    <%= data[random.random4].title %>
+                </h2>
+            </a>
+            <div class="tags-entry">
+
+                <% for( let i=0; i < data[random.random4].tags.length; i++ ) { %>
+                    <a href="/categories"><button class="no-btn tags-entry-tag">
+                            <%=data[random.random4].tags[i]%>
+                        </button> </a>
+                    <% } %>
+
+            </div>
+        </div>
+        <div class="shadow blog-entry background-white random-post">
+            <a href="/post/<%=data[random.random5]._id %>">
+                <figure><img src="<%=data[random.random5].image %>"
+                        alt="Illustration for <%=data[random.random5].title %>"></figure>
+            </a>
+            <div class="date-readmore flex">
+                <span class="article-list__date entry-date">
+                    <%= data[random.random5].createdAt.toDateString() %>
+                </span>
+                <div class="read-more-btn"><a href="/post/<%=data[random.random5]._id %>">Read more</a></div>
+            </div>
+
+            <a class="flex-align" href="/post/<%=data[random.random5]._id %>">
+                <h2 class="blog-entry-title flex">
+                    <%= data[random.random5].title %>
+                </h2>
+            </a>
+            <div class="tags-entry">
+
+                <% for( let i=0; i < data[random.random5].tags.length; i++ ) { %>
+                    <a href="/categories"><button class="no-btn tags-entry-tag">
+                            <%=data[random.random5].tags[i]%>
+                        </button> </a>
+                    <% } %>
+
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- Footer -->

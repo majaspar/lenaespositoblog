@@ -29,10 +29,17 @@ router.get('', async (req, res) => {
         const prevPage = parseInt(page) - 1;
         const hasNextPage = nextPage <= Math.ceil(count / perPage);
 
+        const random1 = Math.floor(Math.random() * data.length)
+        const random2 = Math.floor(Math.random() * data.length)
+        const random3 = Math.floor(Math.random() * data.length)
+        const random4 = Math.floor(Math.random() * data.length)
+        const random5 = Math.floor(Math.random() * data.length)
+        const random = { random1, random2, random3, random4, random5 }
 
         res.render('index', {
             locals,
             data,
+            random,
             current: page,
             prevPage,
             nextPage: hasNextPage ? nextPage : null,
@@ -100,16 +107,17 @@ router.post('/search', async (req, res) => {
         let searchTerm = req.body.searchTerm;
         // const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "")
 
-        let results = await Post.find({ 
-            
-            $text: { $search: searchTerm, $diacriticSensitive: true }}).sort({ createdAt: -1 });
+        let results = await Post.find({
 
-            // $or: [
-            //     { title: { $regex: new RegExp(searchNoSpecialChar, 'i') } },
-            //     { body: { $regex: new RegExp(searchNoSpecialChar, 'i') } },
-            //     { tags: { $regex: new RegExp(searchNoSpecialChar, 'i') } }
+            $text: { $search: searchTerm, $diacriticSensitive: true }
+        }).sort({ createdAt: -1 });
 
-            // ]
+        // $or: [
+        //     { title: { $regex: new RegExp(searchNoSpecialChar, 'i') } },
+        //     { body: { $regex: new RegExp(searchNoSpecialChar, 'i') } },
+        //     { tags: { $regex: new RegExp(searchNoSpecialChar, 'i') } }
+
+        // ]
         res.render("search", { results, locals, currentRoute: '/search', searchTerm });
     } catch (error) {
         console.log(error)
