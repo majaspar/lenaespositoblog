@@ -54,10 +54,19 @@
     </ul>
 
 
-
     <% if (nextPage !==null) { %>
-        <a href="/?page=<%= nextPage %>" class="pagination center">&lt; View Older Posts</a>
+        <div class="pagination pagination-next">
+        <a href="/?page=<%= nextPage %>" class="center">Go to next page <i class="fa-solid fa-arrow-right"></i></a>    
+        </div>
+        
         <% } %>
+    <% if (current > 1) { %>
+        <div class="pagination pagination-prev">
+        <a href="/?page=<%= prevPage %>" class="center"> <i class="fa-solid fa-arrow-left"></i> Go to previous page</a>
+        </div>
+        <% } %>
+
+
 </section>
 
 <!-- Footer -->

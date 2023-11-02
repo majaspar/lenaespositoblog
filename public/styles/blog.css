@@ -1162,11 +1162,22 @@ div.blog-entry img:hover {
     font-size: 0.7rem;
 }
 
+/**************************/
+/***       pagination   ***/
+/**************************/
 .pagination {
+    margin-block: 2rem;
+    display: flex;
+}
+.pagination-next {
+justify-content: flex-end;
+}
+.pagination-prev {
+justify-content: flex-start;
+}
+.pagination i {
     display: inline-block;
-    font-size: 1.3rem;
-    padding: 1rem;
-    margin: 1rem;
+    font-size: 1rem;
 }
 
 /**************************/
