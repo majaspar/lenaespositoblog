@@ -797,9 +797,26 @@ ul {
     min-height: 48vh;
 }
 
-
-
 /* Dashboard Admin */
+
+.add-tag {
+    color: white;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--clr-dark-turq-green);
+}
+
+.tag-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+}
+.add-tag:hover {
+    background: var(--clr-dark-gray70);
+}
+
 
 .admin-title {
     justify-content: space-between;
@@ -888,10 +905,11 @@ ul {
 
 .random-post {
     min-width: 300px;
+    max-width: 350px;
 }
 
 .random-posts h2 {
-    font-size: 1.9rem;
+    font-size: 2.5rem;
 }
 /**************************/
 /*** Categories PAGE    ***/
@@ -1094,7 +1112,9 @@ ul {
     gap: 2rem;
     justify-content: space-around;
 }
-
+.blog-entries h2 {
+    font-size: 2.5rem;
+}
 .article-ul {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1rem;

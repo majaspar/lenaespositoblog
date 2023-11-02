@@ -1,27 +1,30 @@
-// document.addEventListener('DOMContentLoaded', function () {
+// add new tags in add-post.ejs
 
-//     const allButtons = document.querySelectorAll('.searchBtn');
-//     const searchBar = document.querySelector('.searchBar');
-//     const searchInput = document.getElementById('searchInput');
-
-//     for (var i = 0; i < allButtons.length; i++) {
-//         allButtons[i].addEventListener('click', function () {
-//             searchBar.style.visibility = 'visible';
-//             searchBar.classList.add('open');
-//             this.setAttribute('aria-expanded', 'true');
-//             searchInput.focus();
-//         });
-//     };
-//     searchClose.addEventListener('click', function () {
-//         searchBar.style.visibility = 'hidden';
-//         searchBar.classList.remove('open');
-//         this.setAttribute('aria-expanded', 'false');
-//     });
-
-// });
+let addTagsBtn = document.getElementById('addTagsBtn');
+let tagList = document.querySelector('.tag-list')
+let tagItem = document.querySelectorAll('.tag-item')[0];
+let allTags = document.querySelectorAll('.tag-item')
 
 
-// const postResults = document.getElementById('post-results');
+addTagsBtn.addEventListener('click', function () {
+    let newTags = tagItem.cloneNode(true);
+    let tagInput = newTags.getElementsByTagName('input')[0];
+    tagInput.value = '';
+    tagList.appendChild(newTags)
+})
+
+// add new tags in edit-post.ejs
+
+let editTagsBtn = document.getElementById('editaddTagsBtn');
+let edittagList = document.querySelector('.edittag-list')
+let edittagItem = document.querySelectorAll('.teditag-item')[0];
+let editallTags = document.querySelectorAll('.edittag-item')
 
 
-//https://unsplash.com/@lukechesser - new blog bg
+editTagsBtn.addEventListener('click', function () {
+    let editnewTags = edittagItem.cloneNode(true);
+    let edittagInput = editnewTags.getElementsByTagName('input')[0];
+    edittagInput.value = '';
+    edittagList.appendChild(editnewTags)
+})
+

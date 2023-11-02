@@ -40,3 +40,5 @@ twitterLink.href = `https://www.twitter.com/share?&url=${shareLink}&text=${msg}&
 
 const whatsappLink = document.querySelector('.whatsappLink');
 whatsappLink.href = `https://api.whatsapp.com/send?text=${shareLink}`;
+
+

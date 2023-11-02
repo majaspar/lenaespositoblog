@@ -136,9 +136,9 @@ router.get('/add-post', authMiddleware, async (req, res) => {
 router.post('/add-post', authMiddleware, async (req, res) => {
 
     try {
-        req.body.tags = req.body.tags.replace(/\s/g, '').split(",").map(function (tag) {
-            return tag;
-        })
+        // req.body.tags = req.body.tags.replace(/\s/g, '').split(",").map(function (tag) {
+        //     return tag;
+        // })
         req.body.category = req.body.category.replace(/\s/g, '').split(",").map(function (cat) {
             return cat;
         })

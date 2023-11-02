@@ -3,36 +3,42 @@
   <h2>Add New Post</h2>
 </div>
 <div class="edit-post">
-<form action="/add-post" method="POST">
+  <form action="/add-post" method="POST">
 
-  <label for="title"><b>Title</b></label>
-  <input type="text" placeholder="Post Title" name="title">
+    <label for="title"><b>Title</b></label>
+    <input type="text" placeholder="Post Title" name="title">
 
-  <label for="body"><b>Content</b></label>
-  <textarea name="body" cols="50" rows="10"></textarea>
+    <label for="body"><b>Content</b></label>
+    <textarea name="body" cols="50" rows="10"></textarea>
 
-  
-  <label for="image"><b>Image Url</b></label>  
-  <input type="text" placeholder="Image url" name="image">
 
-  
-  <label for="tags"><b>Tags</b></label>
-  <input type="text" placeholder="Tags" name="tags">
-  
-  <label for="category"><b>Categories</b></label>
-  <input type="text" placeholder="Category" name="category">
+    <label for="image"><b>Image Url</b></label>
+    <input type="text" placeholder="Image url" name="image">
 
-  <label for="shortDescription"><b>Short Description</b></label>
-  <input type="text" placeholder="Short Description" name="shortDescription">
 
-  <label for="imageSource"><b>Image Source</b></label>
-  <input type="text" placeholder="Image Source" name="imageSource">
+    <label for="tags"><b>Tags</b></label>
+    <div class="tag-list">
+      <div class="tag-item">
+        <input type="text" placeholder="Enter tag..." name="tags">
+      </div>
+    </div>
+    <button type="button" class="add-tag" id="addTagsBtn">+ TAG</button>
 
-  <label for="imageSourceDescription"><b>Image Source Description</b></label>
-  <input type="text" placeholder="Image Source Description" name="imageSourceDescription">
+    <label for="category"><b>Categories</b></label>
+    <input type="text" placeholder="Category" name="category">
 
-  <div class="flex add-post-btn">
-  <input type="submit" value="Add" class="action-btn"></div>
+    <label for="shortDescription"><b>Short Description</b></label>
+    <input type="text" placeholder="Short Description" name="shortDescription">
 
-</form>
+    <label for="imageSource"><b>Image Source</b></label>
+    <input type="text" placeholder="Image Source" name="imageSource">
+
+    <label for="imageSourceDescription"><b>Image Source Description</b></label>
+    <input type="text" placeholder="Image Source Description" name="imageSourceDescription">
+
+    <div class="flex add-post-btn">
+      <input type="submit" value="Add" class="action-btn">
+    </div>
+
+  </form>
 </div>
