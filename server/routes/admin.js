@@ -91,7 +91,7 @@ router.get('/dashboard', authMiddleware, async (req, res) => {
             description: 'Simple Blog created with NodeJs, Express & MongoDb.'
         }
 
-        const data = await Post.find().sort({ createdAt: -1});
+        const data = await Post.find().sort({ createdAt: -1 });
         res.render('admin/dashboard', {
             locals,
             data,
@@ -113,7 +113,7 @@ router.get('/add-post', authMiddleware, async (req, res) => {
     try {
         const locals = {
             title: 'Add Post',
-            description: 'Simple Blog created with NodeJs, Express & MongoDb.'
+            description: 'Add post page for Lena Esposito Blog'
         }
 
         const data = await Post.find();
@@ -134,7 +134,15 @@ router.get('/add-post', authMiddleware, async (req, res) => {
  * Admin - Create New Post
 */
 router.post('/add-post', authMiddleware, async (req, res) => {
+
     try {
+        req.body.tags = req.body.tags.replace(/\s/g, '').split(",").map(function (tag) {
+            return tag;
+        })
+        req.body.category = req.body.category.replace(/\s/g, '').split(",").map(function (cat) {
+            return cat;
+        })
+
         try {
             const newPost = new Post({
                 title: req.body.title,
@@ -165,11 +173,15 @@ router.post('/add-post', authMiddleware, async (req, res) => {
  * Admin - Create New Post
 */
 router.get('/edit-post/:id', authMiddleware, async (req, res) => {
+
+
+
+
     try {
 
         const locals = {
             title: "Edit Post",
-            description: "Free NodeJs User Management System",
+            description: "Edit post page for Lena Esposito Blog",
         };
 
         const data = await Post.findOne({ _id: req.params.id });

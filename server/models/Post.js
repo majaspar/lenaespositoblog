@@ -24,7 +24,7 @@ const PostSchema = new Schema({
     },
     tags: {
         type: Array,
-        required: false
+        required: true
     },
     shortDescription: {
         type: String,
@@ -33,7 +33,7 @@ const PostSchema = new Schema({
     imageSource: {
         type: String,
         required: false
-    }, 
+    },
     imageSourceDescription: {
         type: String,
         required: false
@@ -45,8 +45,6 @@ const PostSchema = new Schema({
 });
 
 
-
-//Wildcard Indexing
-PostSchema.index({ "$**": 'text'})
+PostSchema.index({ title: 'text', body: 'text' })
 
 module.exports = mongoose.model('Post', PostSchema);

@@ -22,18 +22,12 @@
                 nav-visible="false">
 
                 <li class="header__button">
-                    <button class="searchBtn flex" aria-expanded="false">
+                        <form method="POST" action="/search" class="search-form" role="search">
+                            <input class="search-input" type="search" aria-label="Search" name="searchTerm" placeholder="Search">
+                            <button class="search-submit"><img height="50px" id="search-icon"
+                                    src="/assets/magnifying-glass.png" alt="search icon"></button>
+                        </form>
 
-                        <div class="searchBar">
-                            <div class="container flex">
-                                <form action="/search" class="search__form" method="POST" role="search">
-                                    <input type="search" aria-label="Search" name="searchPhrase" placeholder="Search">
-                                </form>
-
-                            </div>
-                        </div>
-                        <img type="submit" id="search-icon" src="/assets/magnifying-glass.png" alt="search icon">
-                    </button>
                 </li>
                 <li class="dropdown"><a class="link-nav dropdown__button" href="/categories">Categories</a>
                     <div class="dropdown__content">
@@ -45,8 +39,6 @@
                         <a class="dropdown__link" href="/categories#category__bootstrap">Bootstrap</a>
                     </div>
                 </li>
-
-                <li><a class="shadow action-btn" href="https://lenaesposito.co.uk/index.html#section-contact">Contact</a></li>
             </ul>
         </nav>
     </div>

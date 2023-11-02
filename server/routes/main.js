@@ -85,7 +85,6 @@ router.get('/post/:id', async (req, res) => {
 
 
 /*
-* get
 * Post - searchTerm*/
 
 router.post('/search', async (req, res) => {
@@ -96,19 +95,20 @@ router.post('/search', async (req, res) => {
         }
 
 
-        let searchPhrase = req.body.searchPhrase;
-        const searchNoSpecialChar = searchPhrase.replace(/[^a-zA-Z0-9 ]/g, "")
+        let searchTerm = req.body.searchTerm;
+        // const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "")
 
-        const results = await Post.find({
-            $or: [
-                { title: { $regex: new RegExp(searchNoSpecialChar, 'i') } },
-                { body: { $regex: new RegExp(searchNoSpecialChar, 'i') } },
-                { tags: { $regex: new RegExp(searchNoSpecialChar, 'i') } }
+        let results = await Post.find({ 
+            
+            $text: { $search: searchTerm, $diacriticSensitive: true }}).sort({ createdAt: -1 });
 
-            ]
-        }).sort({ createdAt: -1});
+            // $or: [
+            //     { title: { $regex: new RegExp(searchNoSpecialChar, 'i') } },
+            //     { body: { $regex: new RegExp(searchNoSpecialChar, 'i') } },
+            //     { tags: { $regex: new RegExp(searchNoSpecialChar, 'i') } }
 
-        res.render("search", { results, locals, currentRoute: '/' });
+            // ]
+        res.render("search", { results, locals, currentRoute: '/search', searchTerm });
     } catch (error) {
         console.log(error)
     }
@@ -131,13 +131,13 @@ router.get('/categories', async (req, res) => {
 
         const data = await Post.find();
 
-        const javascript = await Post.find({ 'category': 'JavaScript' }).sort({ createdAt: -1})
-        const jQuery = await Post.find({ 'category': 'jQuery' }).sort({ createdAt: -1})
-        const react = await Post.find({ 'category': 'React' }).sort({ createdAt: -1})
-        const smallApp = await Post.find({ 'category': 'Small App' }).sort({ createdAt: -1})
-        const bootstrap = await Post.find({ 'category': 'Bootstrap' }).sort({ createdAt: -1})
-        const website = await Post.find({ 'category': 'Website' }).sort({ createdAt: -1})
-        const cheatSheet = await Post.find({ 'category': 'Cheat Sheet' }).sort({ createdAt: -1})
+        const javascript = await Post.find({ 'category': 'JavaScript' }).sort({ createdAt: -1 })
+        const jQuery = await Post.find({ 'category': 'jQuery' }).sort({ createdAt: -1 })
+        const react = await Post.find({ 'category': 'React' }).sort({ createdAt: -1 })
+        const smallApp = await Post.find({ 'category': 'Small App' }).sort({ createdAt: -1 })
+        const bootstrap = await Post.find({ 'category': 'Bootstrap' }).sort({ createdAt: -1 })
+        const website = await Post.find({ 'category': 'Website' }).sort({ createdAt: -1 })
+        const cheatSheet = await Post.find({ 'category': 'Cheat Sheet' }).sort({ createdAt: -1 })
 
         const allCategories = { javascript, jQuery, smallApp, bootstrap, website, cheatSheet, react }
 

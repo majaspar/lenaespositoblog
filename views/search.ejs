@@ -1,5 +1,5 @@
 <div class="mt2 mb2">
-    <h2 class="">Search Results</h2>
+    <h2 class="">Search Results for "<%=searchTerm %>"</h2>
 </div>
 
 <section class="articles mb2">
@@ -24,17 +24,19 @@
                             <%= result.title %>
                         </h2>
                     </a>
+
                     <div class="tags-entry">
 
-                        <% for( let index=0; index < result.tags.length; index++ ) { %>
-                            <span>
-                               <a href="/categories"> <%=result.tags[index]%>
-                            </span> </a>
+                        <% for( let i=0; i < result.tags.length; i++ ) { %>
+                            <a href="/categories"><button class="no-btn tags-entry-tag">
+                                    <%=result.tags[i]%>
+                                </button> </a>
                             <% } %>
+
                     </div>
                 </div>
             </li>
             <% }) %>
-        </ul>
+    </ul>
 
 </section>

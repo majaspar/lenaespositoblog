@@ -11,6 +11,7 @@
 
 </div>
 <hr class="hr-white mt2 mb2">
+
 <div class="separator mb2"></div>
 
 <section class="blog-entries">
@@ -39,13 +40,12 @@
                     </a>
                     <div class="tags-entry">
 
-                        <% for( let index=0; index < post.tags.length; index++ ) { %>
-
-                            <span> <a href="/categories">
-                                    <%=post.tags[index]%>
-                                </a>
+                        <% for( let i=0; i < post.tags.length; i++ ) { %>
+                          <a href="/categories"><button class="no-btn tags-entry-tag">
+                                    <%=post.tags[i]%>
+                                </button> </a>
                                 <% } %>
-                            </span>
+                            
                     </div>
                 </div>
             </li>

@@ -9,38 +9,42 @@
 </div>
 
 <div class="edit-post">
-<form action="/edit-post/<%= data._id %>?_method=PUT" method="POST">
+  <form action="/edit-post/<%= data._id %>?_method=PUT" method="POST">
 
-  <label for="title"><b>Title</b></label>
-  <input type="text" name="title" value="<%= data.title %>">
+    <label for="title"><b>Title</b></label>
+    <input type="text" name="title" value="<%= data.title %>">
 
-  <label for="body"><b>Content</b></label>
-  <textarea name="body" cols="50" rows="10"><%= data.body %></textarea>
+    <label for="body"><b>Content</b></label>
+    <textarea name="body" cols="50" rows="10"><%= data.body %></textarea>
 
-  
-  <label for="image"><b>Image Url</b></label>
-  <input type="text" name="image" value="<%= data.image %>">
 
-  
-  <label for="tags"><b>Tags</b></label>
-  <input type="text" name="tags" value="<%= data.tags[0] %>">
-  <input type="text" name="tags" value="<%= data.tags[1] %>">
- 
-  <label for="tags"><b>Category</b></label>
-  <input type="text" name="category" value="<%= data.category[0] %>">
- 
+    <label for="image"><b>Image Url</b></label>
+    <input type="text" name="image" value="<%= data.image %>">
 
-  <label for="shortDescription"><b>Short Description</b></label>
-  <input type="text" name="shortDescription" value="<%= data.shortDescription %>">
 
-  <label for="imageSource"><b>Image Source</b></label>
-  <input type="text" name="imageSource" value="<%= data.imageSource %>">
+    <label for="tags"><b>Tags</b></label>
 
-  <label for="imageSourceDescription"><b>Image Source Description</b></label>
-  <input type="text" name="imageSourceDescription" value="<%= data.imageSourceDescription %>">
+    <% for( let index=0; index < data.tags.length; index++ ) { %>
+      <input type="text" name="tags" value="<%= data.tags[index] %>">
+      <% } %>
 
-  
-  <div class="flex add-post-btn">
-  <input type="submit" value="Update" class="action-btn"></div>
+        <label for="tags"><b>Category</b></label>
+        <% for( let index=0; index < data.category.length; index++ ) { %>
+          <input type="text" name="category" value="<%= data.category[index] %>">
+          <% } %>
+            <label for="shortDescription"><b>Short Description</b></label>
+            <input type="text" name="shortDescription" value="<%= data.shortDescription %>">
 
-</form></div>
+            <label for="imageSource"><b>Image Source</b></label>
+            <input type="text" name="imageSource" value="<%= data.imageSource %>">
+
+            <label for="imageSourceDescription"><b>Image Source Description</b></label>
+            <input type="text" name="imageSourceDescription" value="<%= data.imageSourceDescription %>">
+
+
+            <div class="flex add-post-btn">
+              <input type="submit" value="Update" class="action-btn">
+            </div>
+
+  </form>
+</div>
