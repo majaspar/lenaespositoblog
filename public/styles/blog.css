@@ -823,7 +823,11 @@ ul {
 .dashboard .post-title {
     font-size: 1rem;
 }
-
+.dashboard-post-entry {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 .admin-post {
     margin: 1rem 0;
 }

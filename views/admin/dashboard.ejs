@@ -10,14 +10,12 @@
         
         <ul class="admin-post dashboard-page">
             <% data.forEach(post => { %>
-            <li>
+            <li class="dashboard-post-entry flex">
                 <a href="/post/<%= post._id %>" class="post-title"><%= post.title %> &nearr;</a>
 
                 <div class="admin-post-controls flex">
-                    <a href="/edit-post/<%= post._id %>" class="btn-delete">Edit</a>
-
-                
-                            
+                    <a href="/edit-post/<%= post._id %>" class="btn-delete">Edit</a>           
+                    
                 </div>
 
             </li>
