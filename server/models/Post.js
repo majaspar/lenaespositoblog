@@ -41,7 +41,14 @@ const PostSchema = new Schema({
     category: {
         type: Array,
         required: true
-    }
+    },
+    comments: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Comment'
+        }
+
+    ]
 });
 
 

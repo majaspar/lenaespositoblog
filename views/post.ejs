@@ -1,7 +1,18 @@
 <article class="article">
-  <div class="mt3"></div>
-  <div class="go-back uppercase"><a href="/">&larr; Go Back</a></div>
+  <div class="mt3 article-goback-share flex">
+    <div class="go-back uppercase"><a href="/">&larr; Go Back</a></div>
+    <div class="">
+      <div class="flex share-buttons">
+     Share:
+        <a href="" target="_blank" class="facebook"><i class="fab fa-facebook"></i></a>
 
+        <a href="" target="_blank" class="twitterLink"><i class="fab fa-twitter"></i></a>
+
+        <a href="" target="_blank" class="whatsappLink"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+
+  </div>
 
   <h2>
     <%= data.title %>
@@ -16,7 +27,7 @@
         <!-- <a href="/tag/< %= data.tags[index]%>"> -->
 
 
-        <a href="/categories"><span class="tag-single">
+        <a href="/categories"><span class="tags-entry-tag">
             <%=data.tags[index]%>
           </span></a>
         <% } %>
@@ -42,17 +53,8 @@
   </figure>
 </article>
 
-<hr class="hr-white mb2 mt2 w70">
-
-<div class="mb3 mt3 w70 center">
-  <h2 class="mb2">Share this post:</h2>
-  <div class="flex share-buttons">
-    <a href="" target="_blank" class="facebook"><i class="fab fa-facebook"></i></a>
-
-    <a href="" target="_blank" class="twitterLink"><i class="fab fa-twitter"></i></a>
-
-    <a href="" target="_blank" class="whatsappLink"><i class="fab fa-whatsapp"></i></a>
-  </div>
-
-
-</div>
+<hr class="hr-white mb2 mt2">
+<article class="comment-wrapper flex">
+<input class="comment-text mb1" type="text" placeholder="Whats's your name?">
+<textarea class="comment-text mb1" name="" id="" Placeholder="What's your thoughts?"></textarea>
+<button class="post-leave-comment">Leave a comment</button></article>

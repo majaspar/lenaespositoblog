@@ -964,8 +964,32 @@ ul {
 /**************************/
 /***       POST PAGE    ***/
 /**************************/
+.article-goback-share {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 
-
+.comment-wrapper {
+    flex-direction: column;
+    width: min(100%, 500px);
+}
+.post-leave-comment {
+    background: var(--clr-dark-turq-green);
+    border: 1px solid --clr-dark-turq-green;
+    padding: 0.5rem 1rem;
+    border-radius: 7px;
+    color: white;
+    align-self: flex-end;
+}
+.comment-text {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 7px;
+    background: transparent;
+    color: white;
+    border: 1px solid var(--clr-dark-turq-green);
+}
 .blog-entry-title {
     align-items: center;
     min-height: 4.5rem;
@@ -1013,17 +1037,18 @@ ul {
 
 .share-buttons {
     justify-content: center;
-    gap: 1rem;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .share-buttons i {
-    height: 2.5rem;
-    width: 2.5rem;
-    font-size: 2rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    font-size: 1.5rem;
 }
 
 .share-buttons i:hover {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
 }
 
 .fa-facebook:hover {
