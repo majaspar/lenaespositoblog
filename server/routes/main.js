@@ -59,7 +59,7 @@ router.get('/post/:id', async (req, res) => {
     try {
 
         let slug = req.params.id;
-        const data = await Post.findById({ _id: slug })
+        const data = await Post.findById({ _id: slug }).populate('comments');
         const locals = {
             title: data.title,
             description: data.shortDescription
@@ -68,6 +68,26 @@ router.get('/post/:id', async (req, res) => {
             locals, data,
             currentRoute: `/post/${slug}`
         });
+    } catch (error) {
+        console.log(error)
+    }
+
+})
+
+/*
+* get
+* Comment :id */
+
+router.post('/post/:id/comments', async (req, res) => {
+
+    try {
+
+        const post = await Post.findById(req.params.id)
+        const comment = new Comment(req.body.comment)
+        post.comments.push(comment);
+        await comment.save();
+        await post.save();
+        res.redirect(`/post/${post._id}#comments`)
     } catch (error) {
         console.log(error)
     }

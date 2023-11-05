@@ -3,7 +3,7 @@
     <div class="go-back uppercase"><a href="/">&larr; Go Back</a></div>
     <div class="">
       <div class="flex share-buttons">
-     Share:
+        Share:
         <a href="" target="_blank" class="facebook"><i class="fab fa-facebook"></i></a>
 
         <a href="" target="_blank" class="twitterLink"><i class="fab fa-twitter"></i></a>
@@ -54,7 +54,44 @@
 </article>
 
 <hr class="hr-white mb2 mt2">
-<article class="comment-wrapper flex">
-<input class="comment-text mb1" type="text" placeholder="Whats's your name?">
-<textarea class="comment-text mb1" name="" id="" Placeholder="What's your thoughts?"></textarea>
-<button class="post-leave-comment">Leave a comment</button></article>
+<section id="comments">
+  <h2 class="mb2 ff-title">Comments (<%= data.comments.length %>)</h2>
+  <% for (let comment of data.comments) {%>
+    <article class="comment-item mb1">
+      <div class="comment-author-date-wrapper flex mb1">
+        <h3>
+          <%= comment.author %>
+        </h3>
+        <span>
+          <%= comment.createdAt.toLocaleString('en-GB', { timeZone: 'UTC' }) %>
+        </span>
+      </div>
+      <p>
+        <%= comment.content %>
+      </p>
+    </article>
+    <% } %>
+      <hr class="hr-white mb2 mt2">
+
+
+      <% if (data.comments.length < 1) {%>
+        <h2 class="mb2 ff-title">Be the first to leave a comment</h2>
+        <% } else { %>
+          <h2 class="mb2 ff-title">Leave a comment</h2>
+          <% } %>
+
+
+            <form action="/post/<%=data._id%>/comments" method="POST" class="comment-wrapper flex">
+              <div class="comment-input-wrapper mb1">
+                <label class="input-label" for="comment[author]">Name</label>
+                <input class="comment-text" type="text" placeholder="What's your name?" id="comment[author]"
+                  name="comment[author]" required>
+              </div>
+              <div class="comment-input-wrapper mb1">
+                <label class="input-label" for="comment[content]">Comment</label>
+                <textarea class="comment-text" name="comment[content]" id="comment[content]" name="comment"
+                  Placeholder="What's your thoughts?" required></textarea>
+              </div>
+              <button class="post-leave-comment">Leave a comment</button>
+            </form>
+</section>
