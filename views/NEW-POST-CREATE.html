@@ -71,82 +71,93 @@
             margin-bottom: 1rem;
         }
 
-        span.method {
+        span.clr-yellow {
             color: rgb(217, 255, 0);
         }
-
-        span.method2 {
+        span.clr-turq {
             color: rgb(39, 255, 255);
         }
-
-        span.method3 {
+        span.clr-green {
+            color: #96ff93;
+        }
+        span.clr-pink {
             color: rgb(243, 152, 255);
+        }
+        span.clr-orange {
+            color: rgb(250, 190, 141);
         }
 
         span.indent {
             margin-left: 2rem;
+            display: block;
         }
-
         span.indent2 {
             margin-left: 3rem;
+            display: block;
         }
-
         span.indent3 {
             margin-left: 4rem;
+            display: block;
         }
     </style>
-    <!-- <a href="https://storyset.com/people">People illustrations by Storyset</a> -->
-    <div class="separator mb5"></div>
-    <div class="w70">
-        <h1 class="entry-title">Changing navbar background on scroll in React</h1>
-        <p class="entry-content">While I have a pretty good understanding of React, I am still quite fresh to it and
-            learning it patiently every day. <br>
-            Today I needed to use the Intersection Observer to change the background of the navbar in the project I am
-            working on now. Or at least, Intersection Observer is what I thought I needed and what I would use with
-            Vanilla JavaScript. <br>
-            I chose to go for an initially transparent navbar background that would transition to a coloured background
-            when we start scrolling.</p>
-        <p class="entry-content">After I learned how to use
-            Intersecition Observer in React, I found this super easy solution which doesn't involve using it at
-            all! </p>
+    
+    <div>
 
-        <p class="desc">First, we need to import <span class="method">useState</span>.</p>
-        <p class="code">import { useState } from "react";</p>
+        <p class="desc">SASS (Syntactically Awesome Style Sheets) is a preprocessor scripting language that needs to be compiled into CSS in order to work, as the browser will not understand it's syntax. As we read on <a href="https://sass-lang.com/">Sass website</a>, it's &quot;CSS with superpowers. Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.&quot;.</p>
+        <p class="entry-content">Sass uses .sass and .scss extensions, but as these two have a slightly different syntax, I will be using the .scss one.</p>
 
-        <p class="desc">Then we need to declare our useState inside of our component and write a function that would
-            change the
-            state of our color from <em>false</em> to <em>true</em>.</p>
+        <h2 class="entry-title">How to compile .scss into .css?</h2>
+        <p class="entry-content">If you use Visual Studio Code then the easiest way is to install an extension <i>Live Sass Compiler</i>. Then we need to go to Settings of this extension and click on <i>Edit in settings.json</i> under <b>Settings: Format</b> and pick the best set of settings for you. Here are your options:</p>
         <p class="code">
-            const [<span class="method3">color</span>, <span class="method3">setColor</span>] = <span
-                class="method">useState</span>(false)<br><br>
-            const <span class="method2">changeNavbar</span> = () => {<br>
-            <span class="indent"></span> if (window.scrollY >= 100) {<br>
-            <span class="indent2"></span> <span class="method3">setColor</span>(true)<br>
-            <span class="indent"></span> } else {<br>
-            <span class="indent2"></span> <span class="method3">setColor</span>(false)<br>
-            <span class="indent"></span> }<br>
-            }<br><br>
-
-            window.addEventListener('scroll', <span class="method2">changeNavbar</span>)
+        <span class="indent">        "liveSassCompile.settings.formats":[</span>
+        <span class="indent2 clr-green">// This is Default.</span>
+        <span class="indent2">{</span>
+        <span class="indent3">    "format": "expanded",</span>
+        <span class="indent3">    "extensionName": ".css",</span>
+        <span class="indent3">    "savePath": null</span>
+        <span class="indent2">},</span>
+        <span class="indent2 clr-green">// You can add more</span>
+        <span class="indent2">{</span>
+        <span class="indent3">    "format": "compressed",</span>
+        <span class="indent3">    "extensionName": ".min.css",</span>
+        <span class="indent3">    "savePath": "/dist/css"</span>
+        <span class="indent2">},</span>
+        <span class="indent2 clr-green">// More Complex</span>
+        <span class="indent2">{</span>
+        <span class="indent3">    "format": "compressed",</span>
+        <span class="indent3">    "extensionName": ".min.css",</span>
+        <span class="indent3">    "savePath": "~/../css/"</span>
+        <span class="indent2">}</span>
+    <span class="indent">]</span>
         </p>
-        <p class="desc">Now, in our .css styles file let's create a class that will add a colour to the transparent
-            background of our navbar.</p>
+        <p class="entry-content">Another option is to use Node.js and Gulp. Install Node on your computer, then run <i>npm init</i> in the project folder. Next step is to install all the dependencies that we are going to need: <i>gulp, gulp-sass, sass and</i>.</p>
+        <p class="code">npm install gulp gulp-sass sass --save-dev</p>
+        <p class="desc">Then, in a .js file write a function that will watch the .scss files and automatically compile them to .css.</p>
         <p class="code">
-            .navbar-dark {<br>
-            <span class="indent"></span>background-color: #333333;<br>
-            }
-        </p>
-        <p class="desc">Finally, let's use the ternary operator to dynamically assign a class to our chosen DOM element.
-            For this example I chose <em>header</em>. If we scroll and the state of <span class="method3">color</span>
-            changes to <em>true</em>, the header (that already has one class "header") will get "navbar-dark" class. If
-            state of <span class="method3">color</span> is <em>false</em> the header will not receive this class and
-            stay transparent.</p>
+            const { src, dest, watch, series } = require ('gulp');
+const sass = require('gulp-sass')(require('sass'))
 
-        <p class="code">
-            &lt;header className={<span class="method3">color</span> ? 'header navbar-dark' :
-            'header'}&gt;
+
+function buildStyles() {
+    return src('shinobi/**/*.scss')
+    .pipe(sass())
+    .pipe(dest('css'))          //folder 
+}
+
+
+//function to watch our scss file to recompile ot whenever we make changes
+function watchTask() {
+watch(['shinobi/**/*.scss'], buildStyles)     //we pass in an array of files to watch
+}
+
+exports.default = series(buildStyles, watchTask)
         </p>
-        <p class="entry-content">And that's it! Very straightforward and super quick.</p>
+
+
+        <p class="desc">Sources: https://github.com/ritwickdey/vscode-live-sass-compiler<br></p>
+        <p class="code"></p>
+
+       
     </div>
     <script>
 
