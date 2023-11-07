@@ -53,6 +53,10 @@
 
     <!-- Copy from here -->
     <style>
+        .sass-compare {
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        }
+
         .desc {
             font-style: italic;
             font: 0.9rem;
@@ -74,90 +78,319 @@
         span.clr-yellow {
             color: rgb(217, 255, 0);
         }
+
         span.clr-turq {
             color: rgb(39, 255, 255);
         }
+
         span.clr-green {
             color: #96ff93;
         }
+
         span.clr-pink {
             color: rgb(243, 152, 255);
         }
+
         span.clr-orange {
             color: rgb(250, 190, 141);
         }
 
-        span.indent {
+        .indent1 {
             margin-left: 2rem;
             display: block;
         }
-        span.indent2 {
+
+        .indent2 {
             margin-left: 3rem;
             display: block;
         }
-        span.indent3 {
+
+        .indent3 {
             margin-left: 4rem;
             display: block;
         }
+
+        .indent4 {
+            margin-left: 5rem;
+            display: block;
+        }
     </style>
-    
-    <div>
 
-        <p class="desc">SASS (Syntactically Awesome Style Sheets) is a preprocessor scripting language that needs to be compiled into CSS in order to work, as the browser will not understand it's syntax. As we read on <a href="https://sass-lang.com/">Sass website</a>, it's &quot;CSS with superpowers. Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.&quot;.</p>
-        <p class="entry-content">Sass uses .sass and .scss extensions, but as these two have a slightly different syntax, I will be using the .scss one.</p>
+    <div class="w70">
+        <p class="entry-content">Let's take some notes on SASS.</p>
+        <p class="desc">SASS (Syntactically Awesome Style Sheets) is a preprocessor scripting language that needs to be
+            compiled into CSS in order to work, as the browser will not understand its syntax. As we read on <a
+                href="https://sass-lang.com/">Sass website</a>, it's &quot;CSS with superpowers. Sass is the most
+            mature, stable, and powerful professional grade CSS extension language in the world.&quot;.</p>
+        <p class="entry-content">Sass uses .sass and .scss extensions, but as these two have a slightly different
+            syntax, I will be using the .scss one.</p>
 
-        <h2 class="entry-title">How to compile .scss into .css?</h2>
-        <p class="entry-content">If you use Visual Studio Code then the easiest way is to install an extension <i>Live Sass Compiler</i>. Then we need to go to Settings of this extension and click on <i>Edit in settings.json</i> under <b>Settings: Format</b> and pick the best set of settings for you. Here are your options:</p>
+        <h3 class="entry-title mt3">How to compile .scss into .css?</h3>
+        <p class="entry-content">If you use Visual Studio Code then the easiest way is to install an extension <i>Live
+                Sass Compiler</i>. Then we need to go to Settings of this extension and click on <i>Edit in
+                settings.json</i> under <b>Settings: Format</b> and pick the best set of settings for you. Here are your
+            options:</p>
         <p class="code">
-        <span class="indent">        "liveSassCompile.settings.formats":[</span>
-        <span class="indent2 clr-green">// This is Default.</span>
-        <span class="indent2">{</span>
-        <span class="indent3">    "format": "expanded",</span>
-        <span class="indent3">    "extensionName": ".css",</span>
-        <span class="indent3">    "savePath": null</span>
-        <span class="indent2">},</span>
-        <span class="indent2 clr-green">// You can add more</span>
-        <span class="indent2">{</span>
-        <span class="indent3">    "format": "compressed",</span>
-        <span class="indent3">    "extensionName": ".min.css",</span>
-        <span class="indent3">    "savePath": "/dist/css"</span>
-        <span class="indent2">},</span>
-        <span class="indent2 clr-green">// More Complex</span>
-        <span class="indent2">{</span>
-        <span class="indent3">    "format": "compressed",</span>
-        <span class="indent3">    "extensionName": ".min.css",</span>
-        <span class="indent3">    "savePath": "~/../css/"</span>
-        <span class="indent2">}</span>
-    <span class="indent">]</span>
+            <span class="indent1"> "liveSassCompile.settings.formats":[</span>
+            <span class="indent2 clr-green">// This is Default.</span>
+            <span class="indent2">{</span>
+            <span class="indent3"> "format": "expanded",</span>
+            <span class="indent3"> "extensionName": ".css",</span>
+            <span class="indent3"> "savePath": null</span>
+            <span class="indent2">},</span>
+            <span class="indent2 clr-green">// You can add more</span>
+            <span class="indent2">{</span>
+            <span class="indent3"> "format": "compressed",</span>
+            <span class="indent3"> "extensionName": ".min.css",</span>
+            <span class="indent3"> "savePath": "/dist/css"</span>
+            <span class="indent2">},</span>
+            <span class="indent2 clr-green">// More Complex</span>
+            <span class="indent2">{</span>
+            <span class="indent3"> "format": "compressed",</span>
+            <span class="indent3"> "extensionName": ".min.css",</span>
+            <span class="indent3"> "savePath": "~/../css/"</span>
+            <span class="indent2">}</span>
+            <span class="indent1">]</span>
         </p>
-        <p class="entry-content">Another option is to use Node.js and Gulp. Install Node on your computer, then run <i>npm init</i> in the project folder. Next step is to install all the dependencies that we are going to need: <i>gulp, gulp-sass, sass and</i>.</p>
+        <p class="entry-content">Another option is to use Node.js and Gulp. Install Node on your computer, then run
+            <i>npm init</i> in the project folder. Next step is to install all the dependencies that we are going to
+            need: <i>gulp, gulp-sass, sass</i>.
+        </p>
         <p class="code">npm install gulp gulp-sass sass --save-dev</p>
-        <p class="desc">Then, in a .js file write a function that will watch the .scss files and automatically compile them to .css.</p>
+        <p class="desc">Then, in <b>gulpfile.js</b> file write a function that will watch the .scss files and
+            automatically compile them to .css file in a location of your choice.</p>
+        <div class="code">
+            <span class="indent1">const { src, dest, watch, series } = require ('gulp');</span>
+            <span class="indent1">const sass = require('gulp-sass')(require('sass'))</span>
+            <br>
+
+            <p class="indent1">function <span class="clr-orange">buildStyles()</span> {</p>
+            <span class="indent2"> return src('folder/**/*.scss')</span>
+            <span class="indent2"> .pipe(sass())</span>
+            <span class="indent2"> .pipe(dest('css')) </span> <span style="margin-left: 4rem;"
+                class="clr-green">//choose a folder name where gulp will save compiled styles</span>
+            <span class="indent1"> }</span>
+            <br>
+
+            <span class="clr-green indent3">//function to watch our scss file to recompile whenever we make
+                changes</span>
+            <p class="indent1">function <span class="clr-orange">watchTask()</span> {</p>
+            <span class="indent2">watch(['folder/**/*.scss'], <span class="clr-orange">buildStyles</span>) </span>
+            <span class="indent3 clr-green">//we pass in an array of files to watch. Here - all .scss files in directory
+                named <i>folder</i></span>
+            <span class="indent1">}</span>
+
+            <span class="indent1">exports.default = series(<span class="clr-orange">buildStyles</span>, <span
+                    class="clr-orange">watchTask</span>)</span>
+        </div>
+
+        <p class="entry-content">Then in terminal run <i>gulp</i> or <i>npx gulp</i>.
+
+            Gulp will create a <i>css</i> folder where the compiled styles will be saved. It will run both functions in
+            turns: <span class="clr-orange">buildStyles</span> (compiling .scss into .css) and <span
+                class="clr-orange">watchTask</span> (watching on our .scss files for any changes).
+
+        </p>
+
+        <h3 class="entry-title mt3">Variables</h3>
+        <p class="entry-content">We create variables by assigning a value to a name that begins with $. Then we can
+            refer to that name instead of the value itself.</p>
+
+        <div class="grid sass-compare">
+            <div class="code"><b>SASS</b><br><br>
+                <p class="indent1"><span class="clr-green">$clr-orange</span>: rgb(250, 190, 141)</p><br>
+
+                <span class="indent1">p {</span>
+                <p class="indent2">color: <span class="clr-green">$clr-orange</span></p>
+                <span class="indent1">}</span>
+
+            </div>
+            <p class="code"><b>CSS</b><br><br>
+
+                <span class="indent1">p {</span>
+                <span class="indent2">color: rgb(250, 190, 141);</span>
+                <span class="indent1">}</span>
+            </p>
+        </div>
+
+
+        <h3 class="entry-title mt3">Maps</h3>
+        <p class="entry-content">Maps are all about associating keys and values.</p>
+
+        <div class="code">
+            <p class="indent1"><span class="clr-pink"> $colors</span>: (</p>
+            <p class="indent2"> "orange": rgb(250, 190, 141),</p>
+            <p class="indent2"> "green": #96ff93,</p>
+            <p class="indent1"> );</p>
+        </div>
+
+        <h4 class="entry-title mt3">Looping through a map</h4>
+
+        <div class="grid sass-compare">
+            <div class="code">
+
+                <p class="mb2"><b>SASS</b></p>
+                <span class="clr-turq">@each</span> $key, $val in <span class="clr-pink">$colors</span> {
+                <p class="indent2 mt1"> .text-#{$key} {</p>
+                <p class="indent3"> color: $val</p>
+                <p class="indent2 mb1"> };</p>
+                <p class="indent2"> .bg-#{$key} {</p>
+                <p class="indent3"> background-color: $val;</p>
+                <p class="indent2 mb1"> };</p>
+                <p class="indent1">}</p>
+            </div>
+            <div class="code">
+                <p class="mb2"><b>CSS</b></p>
+
+                <span class="indent1">.text-orange {</span>
+                <span class="indent2"> color: rgb(250, 190, 141);</span>
+                <span class="indent1 mb1"> }</span>
+
+                <span class="indent1"> .bg-orange {</span>
+                <span class="indent2"> background-color: rgb(250, 190, 141);</span>
+                <span class="indent1 mb1"> }</span>
+
+
+
+                <span class="indent1">.text-green {</span>
+                <span class="indent2"> color: #96ff93;</span>
+                <span class="indent1 mb1"> }</span>
+
+                <span class="indent1"> .bg-green {</span>
+                <span class="indent2"> background-color: #96ff93;</span>
+                <span class="indent1 mb1"> }</span>
+
+
+            </div>
+        </div>
+        <p class="desc"> Note that $key and $val exist only inside the loop.</p>
+
+
+        <h3 class="entry-title mt3">Nesting</h3>
+        <div class="grid sass-compare">
+            <div class="code">
+
+                <p class="mb2"><b>SASS</b></p>
+                <span class="indent1 mb1"> .card {</span>
+                <span class="indent2"> display: block;</span>
+                <span class="indent2"> padding: 1rem;</span>
+                <span class="indent2 mb1"> border: 1px solid black;</span>
+
+                <span class="indent2"> .card-title {</span>
+                <span class="indent3"> font-size: 2rem;</span>
+                <span class="indent2 mb1"> }</span>
+
+                <span class="indent2"> .card-body {</span>
+                <span class="indent3 mb1"> font-size: 1rem;</span>
+
+                <span class="indent3"> a {</span>
+                <span class="indent4"> text-decoration: underline;</span>
+                <span class="indent3"> }</span>
+                <span class="indent2"> }</span>
+                <span class="indent1"> }</span>
+
+
+            </div>
+            <div class="code">
+
+                <p class="mb2"><b>CSS</b></p>
+                <span class="indent1 mb1"> .card {</span>
+                <span class="indent2"> display: block;</span>
+                <span class="indent2"> padding: 1rem;</span>
+                <span class="indent2"> border: 1px solid black;</span>
+
+                <span class="indent1 mb1"> }</span>
+
+                <span class="indent1"> .card .card-title {</span>
+                <span class="indent2"> font-size: 2rem;</span>
+                <span class="indent1 mb1"> }</span>
+
+                <span class="indent1"> .card .card-body {</span>
+                <span class="indent2"> font-size: 1rem;</span>
+                <span class="indent1 mb1"> }</span>
+
+                <span class="indent1"> .card .card-body a {</span>
+                <span class="indent2"> text-decoration: underline;</span>
+                <span class="indent1"> }</span>
+            </div>
+
+        </div>
+
+
+        <h3 class="entry-title mt3">Partials</h3>
+
+        <p class="entry-content">Sass lets us create partial .scss files with smaller bits of styles that we can include
+            in other .scss files. Partial's name file must be preceded with underscore.</p>
+        <p class="entry-content">Note that the order in which we include partials has significant meaning.</p>
+        <p class="desc">Our file:</p>
         <p class="code">
-            const { src, dest, watch, series } = require ('gulp');
-const sass = require('gulp-sass')(require('sass'))
-
-
-function buildStyles() {
-    return src('shinobi/**/*.scss')
-    .pipe(sass())
-    .pipe(dest('css'))          //folder 
-}
-
-
-//function to watch our scss file to recompile ot whenever we make changes
-function watchTask() {
-watch(['shinobi/**/*.scss'], buildStyles)     //we pass in an array of files to watch
-}
-
-exports.default = series(buildStyles, watchTask)
+            _variables.scss
+        </p>
+        <p class="desc"> In index.scss file:</p>
+        <p class="code">
+            @import 'variables';
         </p>
 
 
-        <p class="desc">Sources: https://github.com/ritwickdey/vscode-live-sass-compiler<br></p>
-        <p class="code"></p>
+        <h3 class="entry-title mt3">Math</h3>
 
-       
+        <p class="entry-content">While in CSS we can make calculations using <span class="clr-yellow">calc()</span>, in SASS we can completely omit it, but the operation must be of the same type.</p>
+        <div class="code">
+            <span class="indent1">p {</span>
+            <p class="indent2">   width: <strike>100vw - 10%</strike> 100vw - 10vw;</p> 
+            <span class="indent1">}</span>
+        </div>
+
+        <p class="entry-content">We can also use SASS built-in modules.</p>
+        <p class="entry-content mt2"><span class="clr-pink">math.div</span>($number1, $number2) returns the result of dividing $number1 by $number2.</p>
+        <p class="desc">At the top of a .scss file:</p>
+        <p class="code">
+            @use 'sass:math';
+        </p>
+
+        <p class="desc">Then:</p>
+        <div class="code">
+            <p class="indent1 mb2"><span class="clr-turq">$border-radius</span>: 20px;</p>
+
+           <p class="indent1"> .card {</p>
+           <p class="indent2"> border-radius: <span class="clr-pink">math.div</span>(<span class="clr-turq">$border-radius</span>, 4); <span class="clr-green">// 5px</span></p>
+           <p class="indent1"> }</p>
+        </div>
+
+        <p class="entry-content mt2"><span class="clr-pink">math.percentage</span>($number) converts a unitless $number (usually a decimal between 0 and 1) to a percentage.</p>
+        <p class="code">@debug math.percentage(math.div(100px, 50px));  <span class="clr-green">// 200%</span>
+        </p>
+
+        <p class="entry-content mt2"><span class="clr-pink">math.random</span>($limit: null) - 
+        if $limit is null, returns a random decimal number between 0 and 1.</p>
+
+<p class="code">
+    @debug math.random(100px); <span class="clr-green">// 42</span><br>
+    @debug math.random(10000); <span class="clr-green">// 5373</span>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <h4 class="mt5">Sources:</h4>
+        <p><a
+                href="https://github.com/ritwickdey/vscode-live-sass-compiler">https://github.com/ritwickdey/vscode-live-sass-compiler</a>
+        </p>
+        <p><a href="https://sass-lang.com/">https://sass-lang.com</a></p>
+        <p><a href="https://www.youtube.com/@NetNinja">Net Ninja channel on Youtube</a></p>
+
+
+
     </div>
     <script>
 
