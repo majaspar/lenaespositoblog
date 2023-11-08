@@ -42,3 +42,12 @@ const whatsappLink = document.querySelector('.whatsappLink');
 whatsappLink.href = `https://api.whatsapp.com/send?text=${shareLink}`;
 
 
+
+
+const tableOfContents = document.getElementById('table-of-contents')
+const toggleTableBtn = document.querySelector('.open-table-of-contents') 
+
+
+toggleTableBtn.addEventListener('click', () => {
+    tableOfContents.classList.toggle('table-of-contents-visible')
+})
