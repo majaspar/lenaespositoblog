@@ -1100,7 +1100,9 @@ article.comment-item {
     margin-left: 1rem;
     margin-bottom: 0.5rem;
 }
-
+.table-of-contents-entry:hover {
+    font-weight: bold;
+}
 .post-body-wrapper {
     position: relative;
 }
@@ -1192,7 +1194,7 @@ article.comment-item {
     overflow-wrap: break-word;
     background: rgba(137, 137, 137, 0.449);
     padding: 1rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: bold;
     font-family: 'Courier New', Courier, monospace;
     margin-top: 1rem;

@@ -93,7 +93,7 @@
                     class="fa-solid fa-ellipsis-vertical"></i></button>
             <div class="dada">
                 <div class="post-table-of-contents-body">
-                    <h2 class="ff-title mb2">Table of contents</h2>
+                    <h2 class="ff-title mb2">Contents</h2>
                     <div class="hashtag-list">
                         <p class="table-of-contents-entry"><a href="#introduction">Introduction</a></p>
                         <p class="table-of-contents-entry"><a href="#compiling">How to compile .scss into .css?</a></p>
@@ -106,6 +106,8 @@
                         <p class="table-of-contents-entry"><a href="#conditionals">Conditionals</a></p>
                         <p class="table-of-contents-entry"><a href="#mixins">Mixins</a></p>
                         <p class="table-of-contents-entry"><a href="#parent-selectors">Parent selectors</a></p>
+                        <p class="table-of-contents-entry"><a href="#media-queries">Media Queries</a></p>
+                        <p class="table-of-contents-entry"><a href="#sources">Sources</a></p>
                     </div>
                 </div>
                 <div class="table-of-contents-image center">
@@ -475,7 +477,7 @@
             <h3 class="entry-title mt3" id="mixins">Mixins</h3>
             <p class="entry-content">Thanks to mixins we can group together certain properties and values that are
                 identical
-                for numerous elements, so that nwe can reuse those values without having to rewrite them for every
+                for numerous elements, so that we can reuse those values without having to rewrite them for every
                 single
                 element. </p>
 
@@ -514,7 +516,64 @@
 
 
                 </div>
+
+
             </div>
+
+
+            <p class="desc">Inside the parentheses of a mixin we can set a value to a property that exists in all
+                elements that include it, but has a different value.</p>
+
+            <div class="code">
+                <p class="indent1"> <span class="clr-pink">@mixin</span> <span
+                        class="clr-orange">button($bg-color)</span> {</p>
+                <p class="indent2"> padding: 1rem 1.5rem;</p>
+                <p class="indent2"> color: blue;</p>
+                <p class="indent2"> border: 2px solid blue;</p>
+                <p class="indent2"> background-color: $bg-color;</p>
+                <p class="indent1"> }</p>
+
+            </div>
+
+            <div class="grid sass-compare">
+                <div class="code">
+
+                    <p class="mb2"><b>SASS</b></p>
+                    <p class="indent1">button {</p>
+                    <p class="indent2"> <span class="clr-pink">@include</span> <span
+                            class="clr-orange">button(white)</span>
+                    </p>
+                    <p class="indent2"> font-size: 1.2rem;</p>
+                    <p class="indent1"> }</p>
+
+                </div>
+                <div class="code">
+                    <p class="mb2"><b>CSS</b></p>
+                    <p class="indent1">button {</p>
+                    <p class="indent2"> padding: 1rem 1.5rem;</p>
+                    <p class="indent2"> color: blue;</p>
+                    <p class="indent2"> border: 2px solid blue;</p>
+
+                    <p class="indent2"> font-size: 1.2rem;</p>
+                    <p class="indent2"> background-color: white;</p>
+                    <p class="indent1"> }</p>
+                </div>
+
+            </div>
+            <p class="desc">We can also set up a default value for a property if it has not been declared.</p>
+
+            <div class="code">
+                <p class="indent1"> <span class="clr-pink">@mixin</span> <span class="clr-orange">button($bg-color:
+                        #fff)</span> {</p>
+                <p class="indent2"> padding: 1rem 1.5rem;</p>
+                <p class="indent2"> color: blue;</p>
+                <p class="indent2"> border: 2px solid blue;</p>
+                <p class="indent2"> background-color: $bg-color;</p>
+                <p class="indent1"> }</p>
+
+            </div>
+
+
             <h3 class="entry-title mt3" id="parent-selectors">Parent selectors</h3>
 
             <p class="entry-content">By using <span class="clr-yellow"><b>&</b></span> as a nexted selector we can refer
@@ -550,13 +609,62 @@
                 </div>
             </div>
 
+            <h3 class="entry-title mt3" id="media-queries">Media Queries</h3>
+
+            <p class="desc">First let's create a map, where the keys will be screen sizes and properties their
+                corresponding screen widths.</p>
+            <div class="code">
+                <p class="indent1"> <span class="clr-pink">$breakpoints</span>: (</p>
+                <p class="indent2"> "small": 480px,</p>
+                <p class="indent2"> "medium": 720px,</p>
+                <p class="indent2"> "large": 1080px</p>
+                <p class="indent1"> );</p>
+
+            </div>
+
+            <p class="desc">Now let's create a mixin for each of the breakpoints.</p>
+            <div class="code">
+                <p class="indent1"> <span class="clr-yellow">@mixin</span> small {</p>
+                <p class="indent2"> @media (min-width: map-get(<span class="clr-pink">$breakpoints</span>, "small")) {</p>
+                <p class="indent3"> <span class="clr-turq">@content</span>;</p>
+                <p class="indent2"> }</p>
+                <p class="indent1"> }</p>
+
+                <p class="indent3 mt1 mb1 clr-green">// @content is the collection of all the properties from elements where this mixin was used</p>
+                <p class="indent1"> <span class="clr-yellow">@mixin</span> medium {</p>
+                <p class="indent2"> @media (min-width: map-get(<span class="clr-pink">$breakpoints</span>, "medium")) {</p>
+                <p class="indent3"> <span class="clr-turq">@content</span>;</p>
+                <p class="indent2"> }</p>
+                <p class="indent1"> }</p>
+
+                <p class="indent1"> <span class="clr-yellow">@mixin</span> large {</p>
+                <p class="indent2"> @media (min-width: map-get(<span class="clr-pink">$breakpoints</span>, "large")) {</p>
+                <p class="indent3"> <span class="clr-turq">@content</span>;</p>
+                <p class="indent2"> }</p>
+                <p class="indent1"> }</p>
+            </div>
+            <p class="desc">Finally, let's see how to use them.</p>
+
+<div class="code">
+<p class="indent1">.button {</p>
+<p class="indent2">    <span class="clr-yellow">@include</span> small {</p>
+<p class="indent3">        color: red;</p>
+<p class="indent2">    }</p>
+<p class="indent1">}</p>
+
+</div>
+
+
+
+
+
 
             <h4 class="mt5" id="sources">Sources:</h4>
             <p><a
                     href="https://github.com/ritwickdey/vscode-live-sass-compiler">https://github.com/ritwickdey/vscode-live-sass-compiler</a>
             </p>
             <p><a href="https://sass-lang.com/">https://sass-lang.com</a></p>
-            <p><a href="https://www.youtube.com/@NetNinja">Net Ninja channel on Youtube</a></p>
+            <p><a href="https://www.youtube.com/@NetNinja">SASS Tutorial by Net Ninja channel on Youtube</a></p>
 
 
 
