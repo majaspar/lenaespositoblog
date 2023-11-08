@@ -27,4 +27,3 @@ editTagsBtn.addEventListener('click', function () {
     edittagInput.value = '';
     edittagList.appendChild(editnewTags)
 })
-

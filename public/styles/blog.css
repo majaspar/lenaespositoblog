@@ -84,9 +84,11 @@ input,
 button,
 textarea,
 select {
+
     font: inherit;
     border: none;
 }
+
 
 .no-btn {
     background: none;
@@ -1059,8 +1061,68 @@ article.comment-item {
     justify-content: space-between;
 }
 
+.post-body-wrapper {
+    width: 100vw;
+    position: relative;
+}
+
+.post-table-of-contents-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    z-index: 1;
+    background: var(--clr-nav-gray);
+    border-bottom: 5px solid var(--clr-white);
+    border-top: 5px solid var(--clr-white);
+    margin-bottom: 3rem;
+}
+
+.main-post-content {
+    padding: 0 2rem;
+}
+
+@media (min-width: 750px) {
+    .post-table-of-contents-wrapper {
+        border-right: 5px solid var(--clr-white);
+        position: absolute;
+        overflow-y: scroll;
+        position: fixed;
+        width: 300px;
+        left: 0;
+    }
+
+    .main-post-content {
+        position: absolute;
+        right: 0;
+        width: calc(100% - 300px);
+        height: fit-content;
+    }
+}
+
+.table-of-contents-image {
+    margin-inline: 5%;
+    max-width: 300px;
+}
+
+.table-of-contents-image img {
+    width: 100%;
+}
+
+.post-table-of-contents-body {
+    padding: 1rem;
+}
+
+.post-table-of-contents-body h2 {
+    font-size: 2rem;
+}
+
+.table-of-contents-entry {
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+}
+
 .post-body {
-    margin: 3rem 0;
+    margin: 2rem 0;
     text-align: justify;
     min-height: 50vh;
 }
@@ -1079,6 +1141,25 @@ article.comment-item {
     font-size: 0.7rem;
     text-align: center;
     padding: 10px 0;
+}
+
+.desc {
+    font-style: italic;
+    font: 0.9rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.code {
+    overflow-wrap: break-word;
+    background: rgba(137, 137, 137, 0.449);
+    padding: 1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
 }
 
 /**************************/
@@ -1315,6 +1396,7 @@ div.blog-entry img:hover {
 }
 
 .entry-content {
+    word-break: break-all;
     font-size: 1.2rem;
     margin-bottom: 1rem;
     text-align: justify;
