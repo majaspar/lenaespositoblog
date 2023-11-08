@@ -20,7 +20,7 @@
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N5N9M504R8"></script>
 
-<body class="mt5 flex-column">
+<body class="mt5 flex-column w70">
 
 
     <!-- Copy from here -->
@@ -89,9 +89,11 @@
 
     <div class="post-body-wrapper">
         <aside class="post-table-of-contents-wrapper shadow" id="table-of-contents">
+            <button class="no-btn open-table-of-contents" alt="&rarr;"><i class="fa-solid fa-ellipsis-vertical"></i></button>
             <div class="post-table-of-contents-body">
                 <h2 class="ff-title mb2">Table of contents</h2>
                 <div>
+                    <p class="table-of-contents-entry"><a href="#introduction">Introduction</a></p>
                     <p class="table-of-contents-entry"><a href="#compiling">How to compile .scss into .css?</a></p>
                     <p class="table-of-contents-entry"><a href="#variables">Variables</a></p>
                     <p class="table-of-contents-entry"><a href="#maps">Maps</a></p>
@@ -110,7 +112,7 @@
         </aside>
         <main class="main-post-content">
 
-            <p class="entry-content">Let's take some notes on SASS.</p>
+            <p class="entry-content" id="introduction">Let's take some notes on SASS.</p>
             <p class="desc">SASS (Syntactically Awesome Style Sheets) is a preprocessor scripting language that needs to
                 be
                 compiled into CSS in order to work, as the browser will not understand its syntax. As we read on <a
