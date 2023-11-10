@@ -24,7 +24,7 @@ const PostSchema = new Schema({
     },
     tags: {
         type: Array,
-        required: true
+        required: false
     },
     shortDescription: {
         type: String,

@@ -47,3 +47,12 @@ navObserver.observe(divScrollWatcher)
 // scrollReveal.reveal('.hero-text', {
 //     origin: 'left'
 // })
+
+// // let unique = [...new Set(myArray)];
+
+// <% for (let tag of posts.tags) {%>
+//     <% let unique = [...new Set(posts.tags)] %>
+//     <button class="no-btn cloud-tag tags-entry-tag">
+//         <%= unique %>
+//     </button>
+//     <% } %>

@@ -9,6 +9,7 @@ const Comment = require('../models/Comment');
 
 
 
+
 router.get('', async (req, res) => {
     try {
         const locals = {
@@ -24,11 +25,14 @@ router.get('', async (req, res) => {
             .limit(perPage)
             .exec();
 
+
+        //pagination
         const count = await Post.count();
         const nextPage = parseInt(page) + 1;
         const prevPage = parseInt(page) - 1;
         const hasNextPage = nextPage <= Math.ceil(count / perPage);
 
+        //random posts
         const random1 = Math.floor(Math.random() * data.length)
         const random2 = Math.floor(Math.random() * data.length)
         const random3 = Math.floor(Math.random() * data.length)
@@ -36,10 +40,14 @@ router.get('', async (req, res) => {
         const random5 = Math.floor(Math.random() * data.length)
         const random = { random1, random2, random3, random4, random5 }
 
+        // categories
+        const categories = await Category.find({})
+
         res.render('index', {
             locals,
             data,
             random,
+            categories,
             current: page,
             prevPage,
             nextPage: hasNextPage ? nextPage : null,
@@ -53,7 +61,7 @@ router.get('', async (req, res) => {
 /*
 * get
 * Post :id */
-
+router.get('/tags/:id')
 router.get('/post/:id', async (req, res) => {
 
     try {
@@ -120,7 +128,7 @@ router.post('/search', async (req, res) => {
     try {
         const locals = {
             title: "Search Results",
-            description: "A Blog of an Aspiring Full-Stack Web Developer, created with NodeJs, Express & MongoDB"
+            description: "Here are your Search Results"
         }
 
 
@@ -145,14 +153,11 @@ router.post('/search', async (req, res) => {
 
 })
 
-
 /*
 * get
 * Post - categories*/
 router.get('/categories', async (req, res) => {
     try {
-
-
         const locals = {
             title: "Lena Esposito Blog: Categories",
             description: "Search Lena Esposito Blog by a category"
@@ -160,7 +165,8 @@ router.get('/categories', async (req, res) => {
         const categories = await Category.find({})
 
         const data = await Post.find();
-
+        const cheatSheet = await Post.find({ 'category': 'Cheat Sheet' }).sort({ createdAt: -1 })
+        const domManipulation = await Post.find({ 'category': 'DOM Manipulation' }).sort({ createdAt: -1 })
         const javascript = await Post.find({ 'category': 'JavaScript' }).sort({ createdAt: -1 })
         const jQuery = await Post.find({ 'category': 'jQuery' }).sort({ createdAt: -1 })
         const react = await Post.find({ 'category': 'React' }).sort({ createdAt: -1 })
@@ -169,13 +175,12 @@ router.get('/categories', async (req, res) => {
         const website = await Post.find({ 'category': 'Website' }).sort({ createdAt: -1 })
         const styles = await Post.find({ 'category': 'Styles' }).sort({ createdAt: -1 })
 
-        const allCategories = { bootstrap, javascript, jQuery, react, smallApp, styles, website }
+        const allCategories = { bootstrap, cheatSheet, domManipulation, javascript, jQuery, react, smallApp, styles, website }
 
         res.render('categories', { data, locals, categories, allCategories, currentRoute: '/categories' });
     } catch (error) {
         res.status(500).send({ message: error.message || "Error Occured" })
     }
 })
-
 
 module.exports = router;

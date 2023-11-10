@@ -97,3 +97,36 @@
               <button class="post-leave-comment">Leave a comment</button>
             </form>
 </section>
+<script>
+
+
+//share buttons
+
+const shareLink = encodeURI(window.location.href);
+const msg = encodeURIComponent('Hey, I have a look at this article:');
+const title = encodeURIComponent(document.querySelector('title').textContent);
+
+
+const fb = document.querySelector('.facebook');
+fb.href = `https://www.facebook.com/share.php?u=${shareLink}`;
+
+
+const twitterLink = document.querySelector('.twitterLink');
+twitterLink.href = `https://www.twitter.com/share?&url=${shareLink}&text=${msg}&hashtags=lenaesposito,lenaespositoblog,webdeveloper,webdesigner`;
+
+
+const whatsappLink = document.querySelector('.whatsappLink');
+whatsappLink.href = `https://api.whatsapp.com/send?text=${shareLink}`;
+
+
+//contents toggle
+
+const tableOfContents = document.getElementById('table-of-contents')
+const toggleTableBtn = document.querySelector('.open-table-of-contents') 
+
+
+toggleTableBtn.addEventListener('click', () => {
+    tableOfContents.classList.toggle('table-of-contents-visible')
+})
+
+</script>

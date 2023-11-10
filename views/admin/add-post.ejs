@@ -42,3 +42,18 @@
 
   </form>
 </div>
+<script>
+  
+let addTagsBtn = document.getElementById('addTagsBtn');
+let tagList = document.querySelector('.tag-list')
+let tagItem = document.querySelectorAll('.tag-item')[0];
+let allTags = document.querySelectorAll('.tag-item')
+
+
+addTagsBtn.addEventListener('click', function () {
+    let newTags = tagItem.cloneNode(true);
+    let tagInput = newTags.getElementsByTagName('input')[0];
+    tagInput.value = '';
+    tagList.appendChild(newTags)
+})
+</script>

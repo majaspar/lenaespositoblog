@@ -7,7 +7,7 @@
 
             <% categories.forEach(function(category, index){%>
 
-                <a href="#category__<%= category.searchBy%>"><button class="shadow-light categories__button">
+                <a href="#<%= category.searchBy%>"><button class="shadow-light categories__button">
                         <%= category.name %>
                     </button></a>
                 <% }) %>
@@ -18,7 +18,9 @@
     <!-- Categories -->
     <div id="results" class="grid mt4">
 
-        <h2 class="mb2  uppercase ff-title" id="category__javascript">JavaScript</h2>
+
+
+        <h2 class="mb2  uppercase ff-title" id="javascript">JavaScript (<%= allCategories.javascript.length %>)</h2>
         <ul class="article-ul grid">
             <% if(typeof allCategories.javascript !=='undefined' && allCategories.javascript.length> 0) { %>
                 <% allCategories.javascript.forEach(function(post, index) { %>
@@ -60,7 +62,51 @@
     <hr class="hr-white mt3">
     <div class="grid mt4">
 
-        <h2 class="mb2 uppercase ff-title" id="category__smallApp">Small Apps</h2>
+        <h2 class="mb2 uppercase ff-title" id="dom_manipulation">DOM Manipulation (<%=
+                allCategories.domManipulation.length %>)</h2>
+        <ul class="article-ul grid">
+            <% if(typeof allCategories.domManipulation !=='undefined' && allCategories.domManipulation.length> 0) { %>
+                <% allCategories.domManipulation.forEach(function(post, index) { %>
+
+                    <li>
+                        <div class="shadow blog-entry background-white">
+                            <a href="/post/<%=post._id %>">
+                                <figure><img src="/<%=post.image %>" alt="Illustration for <%=post.title %>"></figure>
+                            </a>
+                            <div class="date-readmore flex">
+                                <span class="entry-date">
+                                    <%= post.createdAt.toDateString() %>
+                                </span>
+                                <div class="read-more-btn"><a href="/post/<%=post._id %>">Read more</a></div>
+                            </div>
+
+                            <a class="flex-align" href="/post/<%=post._id %>">
+                                <h2 class="blog-entry-title flex">
+                                    <%= post.title %>
+                                </h2>
+                            </a>
+                            <div class="tags-entry">
+
+                                <% for( let i=0; i < post.tags.length; i++ ) { %>
+                                    <a href="/categories"><button class="no-btn tags-entry-tag">
+                                            <%=post.tags[i]%>
+                                        </button> </a>
+                                    <% } %>
+
+                            </div>
+                        </div>
+                    </li>
+
+                    <% }) %>
+                        <% }%>
+        </ul>
+
+    </div>
+
+    <hr class="hr-white mt3">
+    <div class="grid mt4">
+
+        <h2 class="mb2 uppercase ff-title" id="smallApp">Small Apps (<%= allCategories.smallApp.length %>)</h2>
         <ul class="article-ul grid">
             <% if(typeof allCategories.smallApp !=='undefined' && allCategories.smallApp.length> 0) { %>
                 <% allCategories.smallApp.forEach(function(post, index) { %>
@@ -99,10 +145,53 @@
         </ul>
 
     </div>
+
     <hr class="hr-white mt3">
     <div class="grid mt4">
 
-        <h2 class="mb2 uppercase ff-title" id="category__react">React</h2>
+        <h2 class="mb2 uppercase ff-title" id="cheat_sheet">Cheat Sheet (<%= allCategories.cheatSheet.length %>)</h2>
+        <ul class="article-ul grid">
+            <% if(typeof allCategories.cheatSheet !=='undefined' && allCategories.cheatSheet.length> 0) { %>
+                <% allCategories.cheatSheet.forEach(function(post, index) { %>
+
+                    <li>
+                        <div class="shadow blog-entry background-white">
+                            <a href="/post/<%=post._id %>">
+                                <figure><img src="/<%=post.image %>" alt="Illustration for <%=post.title %>"></figure>
+                            </a>
+                            <div class="date-readmore flex">
+                                <span class="entry-date">
+                                    <%= post.createdAt.toDateString() %>
+                                </span>
+                                <div class="read-more-btn"><a href="/post/<%=post._id %>">Read more</a></div>
+                            </div>
+
+                            <a class="flex-align" href="/post/<%=post._id %>">
+                                <h2 class="blog-entry-title flex">
+                                    <%= post.title %>
+                                </h2>
+                            </a>
+                            <div class="tags-entry">
+
+                                <% for( let i=0; i < post.tags.length; i++ ) { %>
+                                    <a href="/categories"><button class="no-btn tags-entry-tag">
+                                            <%=post.tags[i]%>
+                                        </button> </a>
+                                    <% } %>
+
+                            </div>
+                        </div>
+                    </li>
+
+                    <% }) %>
+                        <% }%>
+        </ul>
+
+    </div>
+    <hr class="hr-white mt3">
+    <div class="grid mt4">
+
+        <h2 class="mb2 uppercase ff-title" id="react">React (<%= allCategories.react.length %>)</h2>
         <ul class="article-ul grid">
             <% if(typeof allCategories.react !=='undefined' && allCategories.react.length> 0) { %>
                 <% allCategories.react.forEach(function(post, index) { %>
@@ -144,7 +233,7 @@
     <hr class="hr-white mt3">
     <div class="grid mt4">
 
-        <h2 class="mb2 uppercase ff-title" id="category__website">Websites</h2>
+        <h2 class="mb2 uppercase ff-title" id="website">Websites (<%= allCategories.website.length %>)</h2>
         <ul class="article-ul grid">
             <% if(typeof allCategories.website !=='undefined' && allCategories.website.length> 0) { %>
                 <% allCategories.website.forEach(function(post, index) { %>
@@ -186,7 +275,7 @@
     <hr class="hr-white mt3">
     <div class="grid mt4">
 
-        <h2 class="mb2 uppercase ff-title" id="category__styles">Styles</h2>
+        <h2 class="mb2 uppercase ff-title" id="styles">Styles (<%= allCategories.styles.length %>)</h2>
         <ul class="article-ul grid">
             <% if(typeof allCategories.website !=='undefined' && allCategories.styles.length> 0) { %>
                 <% allCategories.styles.forEach(function(post, index) { %>
@@ -229,7 +318,7 @@
     <hr class="hr-white mt3">
     <div class="grid mt4">
 
-        <h2 class="mb2 uppercase ff-title" id="category__bootstrap">Bootstrap</h2>
+        <h2 class="mb2 uppercase ff-title" id="bootstrap">Bootstrap (<%= allCategories.bootstrap.length %>)</h2>
         <ul class="article-ul grid">
             <% if(typeof allCategories.bootstrap !=='undefined' && allCategories.bootstrap.length> 0) { %>
                 <% allCategories.bootstrap.forEach(function(post, index) { %>
@@ -273,7 +362,7 @@
     <hr class="hr-white mt3">
     <div class="grid mt4">
 
-        <h2 class="mb2 uppercase ff-title" id="category__jQuery">jQuery</h2>
+        <h2 class="mb2 uppercase ff-title" id="jQuery">jQuery (<%= allCategories.jQuery.length %>)</h2>
         <ul class="article-ul grid">
             <% if(typeof allCategories.jQuery !=='undefined' && allCategories.jQuery.length> 0) { %>
                 <% allCategories.jQuery.forEach(function(post, index) { %>

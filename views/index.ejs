@@ -1,11 +1,23 @@
 <div class="separator mb5"></div>
 <div class="flex blog-intro">
-    <div class="center">
-        <h1 class="entry-title center">Hi, my name is Lena <br></h1>
+    <div class="index-text">
+        <h1 class="entry-title">Hi, my name is Lena <br></h1>
         <h3 class="mb1"> This blog is where I practise my web-developing skills and make notes of things I've learned and might use in the future &#128521;</h3>
 
     </div>
+<div class="center mb2 index-categories"><% categories.forEach(category=> { %>
 
+
+
+    
+       <a href="/categories#<%=category.searchBy%>"><button class="no-btn tags-entry-tag">
+                <%=category.name%>
+            </button></a>
+      
+
+
+    <% }) %>
+</div>
 </div>
 <hr class="hr-white mt2 mb2">
 
@@ -38,9 +50,9 @@
                     </a>
                     <div class="tags-entry">
 
-                        <% for( let i=0; i < post.tags.length; i++ ) { %>
+                        <% for( let i=0; i < post.category.length; i++ ) { %>
                             <a href="/categories"><button class="no-btn tags-entry-tag">
-                                    <%=post.tags[i]%>
+                                    <%=post.category[i]%>
                                 </button> </a>
                             <% } %>
 
