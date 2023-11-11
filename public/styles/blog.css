@@ -1435,6 +1435,36 @@ div.blog-entry img:hover {
 .entry-content a {
     color: var(--clr-turq-green);
 }
+/* compare code */
+.code-compare {
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 1000px) {
+    .code-compare {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+/* colors */
+.clr-yellow {
+    color: rgb(217, 255, 0);
+}
+
+.clr-turq {
+    color: rgb(39, 255, 255);
+}
+
+.clr-green {
+    color: #96ff93;
+}
+
+.clr-pink {
+    color: rgb(243, 152, 255);
+}
+
+.clr-orange {
+    color: rgb(250, 190, 141);
+}
 
 /**************************/
 /***       to-do-list   ***/
