@@ -47,7 +47,9 @@
                     <div class="hashtag-list">
                         <p class="table-of-contents-entry"><a href="#introduction">Introduction</a></p>
                         <p class="table-of-contents-entry"><a href="#StatelessComponent">Stateless Component</a></p>
-                        <p class="table-of-contents-entry"><a href="#StatefullComponent">ES6 Statefull Component</a></p>
+                        <p class="table-of-contents-entry"><a href="#StatefulComponent">ES6 Stateful Component</a></p>
+                        <p class="table-of-contents-entry"><a href="#setState">setState()</a></p>
+                        <p class="table-of-contents-entry"><a href="#sources">Sources</a></p>
                     </div>
                 </div>
                 <div class="table-of-contents-image center">
@@ -56,22 +58,24 @@
             </div>
         </aside>
         <main class="main-post-content">
-        <p class="entry-content" id="introduction">Here are some notes on creating React components. <p>
+            <p class="entry-content" id="introduction">Here are some notes on creating React components.
+            <p>
             <p class="entry-content">There are two ways of creating a component in React.</p>
-        <h2 class="entry-subtitle mt2" id="StatelessComponent">1. Creating a JavaScript function</h2>
-        <p class="entry-content"> This option will create a <b>stateless functional component</b>, which means that the
-            component will render data, but will not keep track of any changes that happen.
-            This JavaScript function needs to return either <span class="method">JSX</span> or <span
-                class="method">null</span>.</p>
-<pre><code>
+            <h2 class="entry-subtitle mt2" id="StatelessComponent">1. Creating a JavaScript function</h2>
+            <p class="entry-content"> This option will create a <b>stateless functional component</b>, which means that
+                the
+                component will render data, but will not keep track of any changes that happen.
+                This JavaScript function needs to return either <span class="method">JSX</span> or <span
+                    class="method">null</span>.</p>
+            <pre><code>
 const <span class="method"><span class="clr-yellow">NewComponent</span> = function() {
     return (
         <span class="clr-orange">&lt;h1&gt;Hello from the NewComponent!&lt;/h1&gt;</span>
     );
 };
 </code></pre>
-        <p class="desc">OR use the arrow function like so:</p>
-<pre><code>
+            <p class="desc">OR use the arrow function like so:</p>
+            <pre><code>
 <span class="clr-yellow">NewComponent</span> = () => {
     return (
         <span class="clr-orange">&lt;div&gt;
@@ -80,25 +84,60 @@ const <span class="method"><span class="clr-yellow">NewComponent</span> = functi
     );
 };
 </code></pre>
-            <h2 class="entry-subtitle mt4" id="StatefullComponent">2. Defining a Statefull Component with the ES6 syntax.</h2>
+            <h2 class="entry-subtitle mt4" id="StatefulComponent">2. Defining a Stateful Component with the ES6 syntax.
+            </h2>
             <p class="entry-content">This gives us a ES6 class NewComponent which extends React.Component class. Our new
                 component
                 has now access to React features, for example local state or hooks. To make sure that the component is
                 initialized properly, we use super() to call the constructor of React.Component class.</p>
-<pre><code>
-class <span class="clr-yellow">NewComponent</span> extends <span class="method">React.Component</span> {
+                <p class="entry-content">To create <i>state</i> in a React component you need to declare a state property as a JavaScript object in its constructor (<span class="clr-turq">this.state = { key: "value"}</span>). State can be updated and rendered in the UI as well as passed as props to child components.</p>
+                <p class="entry-content">React uses what is called a <i>virtual DOM</i>, to keep track of changes behind the scenes. If the data of the state changes the component is rerendered.</p>
+            <pre><code>class <span class="clr-yellow">NewComponent</span> extends <span class="clr-yellow">React.Component</span> {
     constructor(props) {
         super(props);
+        <span class="clr-turq">this.state = { 
+            name: "Lena"
+        }</span>
     }
 
     render() {
         return (
-        <span class="clr-orange">&lt;h1&gt;Hello from the NewComponent!&lt;/h1&gt;</span>
+            <span class="clr-orange">&lt;h1&gt;</span><span class="clr-turq">{this.state.name} </span><span class="clr-orange">says: Hello from the NewComponent!&lt;/h1&gt;</span>
+        <span class="clr-green">// output: "Lena says: Hello from the NewComponent!"</span>
         );
     }
 }
 </code></pre>
 
+<p class="desc">We can also assign the state to a variable.</p>
+<pre><code>class <span class="clr-yellow">NewComponent</span> extends <span class="clr-yellow">React.Component</span> {
+    constructor(props) {
+        super(props);
+        <span class="clr-turq">this.state = { 
+            name: "Lena"
+        }</span>
+    }
+
+    render() {
+        const <span class="clr-pink">name</span> = <span class="clr-turq">this.state.name</span>
+        return (
+            <span class="clr-orange">&lt;h1&gt;</span><span class="clr-pink">{name}</span><span class="clr-orange"> says: Hello from the NewComponent!&lt;/h1&gt;</span>
+        <span class="clr-green">// output: "Lena says: Hello from the NewComponent!"</span>
+        );
+    }
+}
+</code></pre>
+<h2 class="entry-subtitle mt4" id="setState">setState()</h2>
+<p class="entry-content">setState( key: "value") is a method used for updating the state, where kezs are the state properties and the values are the updated state data.</p>
+<pre><code>
+this.setState({
+    lastName: 'Esposito'
+});
+</code></pre>
+
+<h4 class="entry-subtitle mt4" id="sources">Sources:.</h4>
+<p><a href="https://www.freecodecamp.org/">freeCodeCamp</a></p>
+<p><a href="https://react.dev/">React.dev</a></p>
         </main>
 
 
