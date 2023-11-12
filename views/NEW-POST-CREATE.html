@@ -49,6 +49,7 @@
                         <p class="table-of-contents-entry"><a href="#StatelessComponent">Stateless Component</a></p>
                         <p class="table-of-contents-entry"><a href="#StatefulComponent">ES6 Stateful Component</a></p>
                         <p class="table-of-contents-entry"><a href="#setState">setState()</a></p>
+                        <p class="table-of-contents-entry"><a href="#counter">Simple Counter</a></p>
                         <p class="table-of-contents-entry"><a href="#sources">Sources</a></p>
                     </div>
                 </div>
@@ -90,8 +91,11 @@ const <span class="method"><span class="clr-yellow">NewComponent</span> = functi
                 component
                 has now access to React features, for example local state or hooks. To make sure that the component is
                 initialized properly, we use super() to call the constructor of React.Component class.</p>
-                <p class="entry-content">To create <i>state</i> in a React component you need to declare a state property as a JavaScript object in its constructor (<span class="clr-turq">this.state = { key: "value"}</span>). State can be updated and rendered in the UI as well as passed as props to child components.</p>
-                <p class="entry-content">React uses what is called a <i>virtual DOM</i>, to keep track of changes behind the scenes. If the data of the state changes the component is rerendered.</p>
+            <p class="entry-content">To create <i>state</i> in a React component you need to declare a state property as
+                a JavaScript object in its constructor (<span class="clr-turq">this.state = { key: "value"}</span>).
+                State can be updated and rendered in the UI as well as passed as props to child components.</p>
+            <p class="entry-content">React uses what is called a <i>virtual DOM</i>, to keep track of changes behind the
+                scenes. If the data of the state changes the component is rerendered.</p>
             <pre><code>class <span class="clr-yellow">NewComponent</span> extends <span class="clr-yellow">React.Component</span> {
     constructor(props) {
         super(props);
@@ -109,8 +113,8 @@ const <span class="method"><span class="clr-yellow">NewComponent</span> = functi
 }
 </code></pre>
 
-<p class="desc">We can also assign the state to a variable.</p>
-<pre><code>class <span class="clr-yellow">NewComponent</span> extends <span class="clr-yellow">React.Component</span> {
+            <p class="desc">We can also assign the state to a variable.</p>
+            <pre><code>class <span class="clr-yellow">NewComponent</span> extends <span class="clr-yellow">React.Component</span> {
     constructor(props) {
         super(props);
         <span class="clr-turq">this.state = { 
@@ -127,17 +131,71 @@ const <span class="method"><span class="clr-yellow">NewComponent</span> = functi
     }
 }
 </code></pre>
-<h2 class="entry-subtitle mt4" id="setState">setState()</h2>
-<p class="entry-content">setState( key: "value") is a method used for updating the state, where kezs are the state properties and the values are the updated state data.</p>
-<pre><code>
-this.setState({
+            <h2 class="entry-subtitle mt4" id="setState">setState()</h2>
+            <p class="entry-content">setState( key: "value") is a method used for updating the state, where keys are the
+                state properties and the values are the updated state data.</p>
+            <pre class="flex" style="gap: 3rem; flex-wrap: wrap"><code><span class="clr-turq">this.setState</span>({
     lastName: 'Esposito'
 });
+</code>
+<code><span class="clr-turq">this.setState</span>((state, props) => ({
+  counter: state.counter + props.increment
+}));
+</code>
+<code><span class="clr-turq">this.setState</span>(state => ({
+  counter: state.counter + 1
+}));
 </code></pre>
 
-<h4 class="entry-subtitle mt4" id="sources">Sources:.</h4>
-<p><a href="https://www.freecodecamp.org/">freeCodeCamp</a></p>
-<p><a href="https://react.dev/">React.dev</a></p>
+            <h2 class="entry-subtitle mt4" id="counter">Simple counter</h2>
+            <p class="entry-content">This is a simple counter example. The output will give us three buttons: one to
+                increment the counter by 1, one to decrement it by 1 and one to reset the counter.</p>
+            <pre><code>
+class <span class="clr-yellow">Counter</span> extends <span class="clr-yellow">React.Component</span> {
+  constructor(props) {
+    super(props);
+    <span class="clr-turq">this.state = {
+      count: 0
+    };</span>
+
+    this.increment = this.increment.bind(this);
+    this.decrement = this.decrement.bind(this);
+    this.reset = this.reset.bind(this);
+  }
+
+<span class="clr-pink">increment()</span> {
+      this.setState(state => ({
+        count: state.count + 1
+      }))     
+    }
+    
+<span class="clr-pink">decrement()</span> {
+      this.setState(state => ({
+        count: state.count - 1
+      }))     
+    }
+<span class="clr-pink">reset()</span> {
+      this.setState(state => ({
+        count: state.count = 0
+      }))     
+    }
+
+  render() {
+    return (
+      <span class="clr-orange">&lt;div&gt;
+        &lt;button className='inc' onClick={this.increment}&gt;Increment!&lt;/button&gt;
+        &lt;button className='dec' onClick={this.decrement}&gt;Decrement!&lt;/button&gt;
+        &lt;button className='reset' onClick={this.reset}&gt;Reset&lt;/button&gt;
+        &lt;h1&gt;Current Count: {this.state.count}&lt;/h1&gt;
+      &lt;/div&gt;</span>
+    );
+  }
+};
+</code></pre>
+
+            <h4 class="entry-subtitle mt4" id="sources">Sources:.</h4>
+            <p><a href="https://www.freecodecamp.org/">freeCodeCamp</a></p>
+            <p><a href="https://react.dev/">React.dev</a></p>
         </main>
 
 
