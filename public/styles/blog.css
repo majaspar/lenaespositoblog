@@ -1319,7 +1319,9 @@ pre {
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
+justify-content: space-between;
     border: 1px solid var(--clr-light-gray);
+    min-height: 530px;
 }
 
 .blog-entry:hover {
@@ -1388,8 +1390,12 @@ div.blog-entry img:hover {
     border-radius: 0.5rem;
     font-size: 1rem;
     margin-top: 0.5rem;
+    cursor: pointer;
 }
-
+.tags-entry-tag:hover {
+    
+    background: var(--clr-dark-turq-green30);
+}
 /**************************/
 /***       pagination   ***/
 /**************************/

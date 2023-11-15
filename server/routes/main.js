@@ -165,6 +165,7 @@ router.get('/categories', async (req, res) => {
         const categories = await Category.find({})
 
         const data = await Post.find();
+
         const cheatSheet = await Post.find({ 'category': 'Cheat Sheet' }).sort({ createdAt: -1 })
         const domManipulation = await Post.find({ 'category': 'DOM Manipulation' }).sort({ createdAt: -1 })
         const javascript = await Post.find({ 'category': 'JavaScript' }).sort({ createdAt: -1 })

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lena Esposito Blog</title>
+    <title>Starting with Ruby</title>
     <link href="jquery-ui.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../public/styles/lenaesposito.css">
     <link rel="stylesheet" href="../public/styles/blog.css">
@@ -46,156 +46,175 @@
                     <h2 class="ff-title mb2">Contents</h2>
                     <div class="hashtag-list">
                         <p class="table-of-contents-entry"><a href="#introduction">Introduction</a></p>
-                        <p class="table-of-contents-entry"><a href="#StatelessComponent">Stateless Component</a></p>
-                        <p class="table-of-contents-entry"><a href="#StatefulComponent">ES6 Stateful Component</a></p>
-                        <p class="table-of-contents-entry"><a href="#setState">setState()</a></p>
-                        <p class="table-of-contents-entry"><a href="#counter">Simple Counter</a></p>
+                        <p class="table-of-contents-entry"><a href="#vscode">Ruby and VSCode</a></p>
+                        <p class="table-of-contents-entry"><a href="#printputs">Print/Puts</a></p>
+                        <p class="table-of-contents-entry"><a href="#Variables">Variables</a></p>
+                        <p class="table-of-contents-entry"><a href="#datatypes">Data types</a></p>
+                        <p class="table-of-contents-entry"><a href="#strings">&rarr; Strings</a></p>
+                        <p class="table-of-contents-entry"><a href="#Numbers">&rarr; Numbers</a></p>
+                        <p class="table-of-contents-entry"><a href="#Booleans">&rarr; Booleans</a></p>
+                        <p class="table-of-contents-entry"><a href="#Nil">&rarr; Nil</a></p>
+                        <p class="table-of-contents-entry"><a href="#Arrays">&rarr; Arrays</a></p>
+                        <p class="table-of-contents-entry"><a href="#Hashes">&rarr; Hashes</a></p>
+                        <p class="table-of-contents-entry"><a href="#Symbols">&rarr; Symbols</a></p>
                         <p class="table-of-contents-entry"><a href="#sources">Sources</a></p>
                     </div>
                 </div>
                 <div class="table-of-contents-image center">
-                    <img src="/assets/reactnewcomponent.png" alt="illustration with react logo">
+                    <img src="/assets/ruby.png" alt="illustration with ruby logo">
                 </div>
             </div>
         </aside>
         <main class="main-post-content">
-            <p class="entry-content" id="introduction">Here are some notes on creating React components.
-            <p>
-            <p class="entry-content">There are two ways of creating a component in React.</p>
-            <h2 class="entry-subtitle mt2" id="StatelessComponent">1. Creating a JavaScript function</h2>
-            <p class="entry-content"> This option will create a <b>stateless functional component</b>, which means that
-                the
-                component will render data, but will not keep track of any changes that happen.
-                This JavaScript function needs to return either <span class="method">JSX</span> or <span
-                    class="method">null</span>.</p>
-            <pre><code>
-const <span class="method"><span class="clr-yellow">NewComponent</span> = function() {
-    return (
-        <span class="clr-orange">&lt;h1&gt;Hello from the NewComponent!&lt;/h1&gt;</span>
-    );
-};
-</code></pre>
-            <p class="desc">OR use the arrow function like so:</p>
-            <pre><code>
-<span class="clr-yellow">NewComponent</span> = () => {
-    return (
-        <span class="clr-orange">&lt;div&gt;
-        &lt;p&gt;Hello from the NewComponent!&lt;/p&gt;
-        &lt;/div&gt;</span>
-    );
-};
-</code></pre>
-            <h2 class="entry-subtitle mt4" id="StatefulComponent">2. Defining a Stateful Component with the ES6 syntax.
-            </h2>
-            <p class="entry-content">This gives us a ES6 class NewComponent which extends React.Component class. Our new
-                component
-                has now access to React features, for example local state or hooks. To make sure that the component is
-                initialized properly, we use super() to call the constructor of React.Component class.</p>
-            <p class="entry-content">To create <i>state</i> in a React component you need to declare a state property as
-                a JavaScript object in its constructor (<span class="clr-turq">this.state = { key: "value"}</span>).
-                State can be updated and rendered in the UI as well as passed as props to child components.</p>
-            <p class="entry-content">React uses what is called a <i>virtual DOM</i>, to keep track of changes behind the
-                scenes. If the data of the state changes the component is rerendered.</p>
-            <pre><code>class <span class="clr-yellow">NewComponent</span> extends <span class="clr-yellow">React.Component</span> {
-    constructor(props) {
-        super(props);
-        <span class="clr-turq">this.state = { 
-            name: "Lena"
-        }</span>
-    }
+            <p class="entry-content" id="introduction">Starting with Ruby.
+            </p>
+            <p class="entry-content">To install Ruby on our computer we need to download the installer file from <a
+                    href="https://rubyinstaller.org/">https://rubyinstaller.org/</a>. The installation process is smooth
+                and very straightforward.</p>
+            <h2 class="entry-subtitle mt2" id="vscode">Ruby and VSCode</h2>
+            <p class="entry-content">First thing we need to do if we want to use VSCode is let it do its magic and get
+                the right extensions. The first one is <b>Ruby</b> which is a package of three other extensions: Ruby
+                LSP, Ruby Sorbet and VSCode rdbg Ruby Debugger. This is all we need for analyzing Ruby code and
+                enhancing our user experience. The extension recommends using a <i>Spinel dark theme</i> for better
+                semantic highlighting.</p>
+            <p class="entry-content">Second extension is <b>Code Runner</b>, which is a useful tool when working not
+                only with Ruby, but also many other programming languages. Here we use the shortcut <span
+                    style="background-color: var(--clr-nav-gray);"><b>CTRL</b> + <b>ALT</b> + <b>N</b></span> to run our
+                Ruby code.</p>
 
-    render() {
-        return (
-            <span class="clr-orange">&lt;h1&gt;</span><span class="clr-turq">{this.state.name} </span><span class="clr-orange">says: Hello from the NewComponent!&lt;/h1&gt;</span>
-        <span class="clr-green">// output: "Lena says: Hello from the NewComponent!"</span>
-        );
-    }
-}
-</code></pre>
+            <h2 class="entry-subtitle mt2" id="printputs">Print/Puts</h2>
+            <p class="entry-content">Ruby is going to execute the instructions in the order that we write them.</p>
+            <p class="code"> <span class="clr-pink">puts</span> "Hello World" <span class="clr-green">(pushes what
+                    follows one line below)</span></p>
+            <p class="code"> <span class="clr-pink">print</span> "Hello World" <span class="clr-green">(whatever follows
+                    will print next to it in the same line)</span></p>
 
-            <p class="desc">We can also assign the state to a variable.</p>
-            <pre><code>class <span class="clr-yellow">NewComponent</span> extends <span class="clr-yellow">React.Component</span> {
-    constructor(props) {
-        super(props);
-        <span class="clr-turq">this.state = { 
-            name: "Lena"
-        }</span>
-    }
+            <h2 class="entry-subtitle mt2" id="Variables">Variables</h2>
+            <p class="entry-content">Variables in Ruby can store different types of data and can be updated throughout
+                your program.</p>
+            <p class="code"> <span class="clr-turq">person_name</span> = "Harry"<br>
+                <span class="clr-turq">person_age</span> = "35"
+                <br><br>
+                <span class="clr-pink">puts</span> (<span class="clr-turq">person_name</span> + " is " + <span
+                    class="clr-turq">person_age</span> + " .") <span class="clr-green">// Harry is 35.</span><Br><br>
 
-    render() {
-        const <span class="clr-pink">name</span> = <span class="clr-turq">this.state.name</span>
-        return (
-            <span class="clr-orange">&lt;h1&gt;</span><span class="clr-pink">{name}</span><span class="clr-orange"> says: Hello from the NewComponent!&lt;/h1&gt;</span>
-        <span class="clr-green">// output: "Lena says: Hello from the NewComponent!"</span>
-        );
-    }
-}
-</code></pre>
-            <h2 class="entry-subtitle mt4" id="setState">setState()</h2>
-            <p class="entry-content">setState( key: "value") is a method used for updating the state, where keys are the
-                state properties and the values are the updated state data.</p>
-            <pre class="flex" style="gap: 3rem; flex-wrap: wrap"><code><span class="clr-turq">this.setState</span>({
-    lastName: 'Esposito'
-});
-</code>
-<code><span class="clr-turq">this.setState</span>((state, props) => ({
-  counter: state.counter + props.increment
-}));
-</code>
-<code><span class="clr-turq">this.setState</span>(state => ({
-  counter: state.counter + 1
-}));
-</code></pre>
+                <span class="clr-turq">person_age</span> = "40"
+                <br><br>
+                <span class="clr-pink">puts</span> (<span class="clr-turq">person_name</span> + " is " + <span
+                    class="clr-turq">person_age</span> + " .") <span class="clr-green">// Harry is 40.</span><Br><br>
 
-            <h2 class="entry-subtitle mt4" id="counter">Simple counter</h2>
-            <p class="entry-content">This is a simple counter example. The output will give us three buttons: one to
-                increment the counter by 1, one to decrement it by 1 and one to reset the counter.</p>
-            <pre><code>
-class <span class="clr-yellow">Counter</span> extends <span class="clr-yellow">React.Component</span> {
-  constructor(props) {
-    super(props);
-    <span class="clr-turq">this.state = {
-      count: 0
-    };</span>
+            </p>
 
-    this.increment = this.increment.bind(this);
-    this.decrement = this.decrement.bind(this);
-    this.reset = this.reset.bind(this);
-  }
+            <h2 class="entry-subtitle mt2" id="datatypes">Data types</h2>
+            <h3 class="mb1" id="strings">&rarr; Strings</h3>
+            <p class="code"><span class="clr-turq">name</span> = "Lena Esposito" <span class="clr-green">//
+                    String</span></p>
+            <p class="entry-content">To put a quotation mark inside a string we use <b>\</b> (a backslash).</p>
+            <p class="code"><span class="clr-pink">puts</span> "My name begins with \"L\""<span class="clr-green"> // My
+                    name begins with "L"</span></p>
+            <p class="entry-content">To print something on a diffrent line we use <b>\n</b>.</p>
 
-<span class="clr-pink">increment()</span> {
-      this.setState(state => ({
-        count: state.count + 1
-      }))     
-    }
-    
-<span class="clr-pink">decrement()</span> {
-      this.setState(state => ({
-        count: state.count - 1
-      }))     
-    }
-<span class="clr-pink">reset()</span> {
-      this.setState(state => ({
-        count: state.count = 0
-      }))     
-    }
 
-  render() {
-    return (
-      <span class="clr-orange">&lt;div&gt;
-        &lt;button className='inc' onClick={this.increment}&gt;Increment!&lt;/button&gt;
-        &lt;button className='dec' onClick={this.decrement}&gt;Decrement!&lt;/button&gt;
-        &lt;button className='reset' onClick={this.reset}&gt;Reset&lt;/button&gt;
-        &lt;h1&gt;Current Count: {this.state.count}&lt;/h1&gt;
-      &lt;/div&gt;</span>
-    );
-  }
-};
-</code></pre>
 
-            <h4 class="entry-subtitle mt4" id="sources">Sources:.</h4>
+            <h3 class="mb1 mt1">Strings methods</h3>
+            <p>While I will use a variable <b>name</b>, note that you don't have to create a variable to use these
+                fnctions.</p>
+            <p class="code"><span class="clr-turq">name</span> = "Lena Esposito"<br>
+                <span class="clr-pink">puts</span> <span class="clr-turq">name</span>.<span
+                    class="clr-orange">upcase()</span>
+                <span class="clr-green"> // LENA ESPOSITO</span>
+            </p>
+            <div class="entry-content">Other methds include:
+                <ul class="mt1" style="margin-left: 1rem;">
+                    <li><span class="clr-orange">downcase()</span> (to lower case),</li>
+                    <li><span class="clr-orange">strip()</span> (gets rid of white space),</li>
+                    <li><span class="clr-orange">length()</span> (prints length as a number), </li>
+                    <li><span class="clr-orange">include? "string"</span> (returns a boolean value)</li>
+                    <li><span class="clr-orange">index("L")</span> (returns the index of the character or the the index
+                        of where the string starts)</li>
+                </ul>
+            </div>
+            <p class="entry-content">To access individual characters we use the index number in square brackets. We also
+                use them to print out a range of characters.</p>
+            <p class="code">
+                <span class="clr-pink">puts</span> <span class="clr-turq">name</span>[0] <span class="clr-green">//
+                    L</span><br><br>
+                <span class="clr-pink">puts</span> <span class="clr-turq">name</span>[0, 3] <span class="clr-green">//
+                    Len (start with 0, stop before
+                    3)</span>
+
+            </p>
+
+
+            <h3 class="mb1 mt1" id="Numbers">&rarr; Numbers</h3>
+            <p class="entry-content">Ruby distinguishes between integers and decimal numbers. If we operate on integers,
+                we are goint to get an integer back, i.e. 10 / 4 will give us 2, while 10/4.0 will print a more accurate
+                decimal number - 2.5.</p>
+            <p class="code"><span class="clr-turq">age</span> = 65 <span class="clr-green">// Number (integers and
+                    floats/decimal)</span>
+            </p>
+
+            <p>In order to print a number next to a string we need to convert it to a string with <span
+                    class="clr-orange">.to_s</span>.</p>
+            <p class="code">
+                <span class="clr-turq">number</span> = 13
+                <br><span class="clr-pink">puts</span> ("My favourite number is " + <span
+                    class="clr-turq">number</span><span class="clr-orange">.to_s</span>)<span class="clr-green"> // My
+                    favourite number is 13</span>
+            </p>
+
+
+            <h3 class="mb1 mt1">Number methods</h3>
+            <p>There are a bunch of methods that we can call on numbers. </p>
+            <div class="code">
+                <p class="mb1"><span class="clr-turq">number</span> = -13<br>
+                    <span class="clr-pink">puts</span> number.<span class="clr-orange">abs()</span> <span
+                        class="clr-green">// 13 (returns the absolute value)</span>
+                </p>
+                <p class=""><span class="clr-turq">number</span> = 13.6594513<br>
+                    <span class="clr-pink">puts</span> number.<span class="clr-orange">round()</span> <span
+                        class="clr-green">// 14 (rounds the number)</span>
+                </p>
+            </div>
+
+            <div class="entry-content">Other functions include:
+                <ul class="mt1" style="margin-left: 1rem;">
+                    <li><span class="clr-orange">ceil()</span> (rounds it up),</li>
+                    <li><span class="clr-orange">floor()</span> (rounds it down),</li>
+                    <li><span class="clr-orange">Math.sqrt(number)</span> (prints square root of a number), </li>
+                    <li><span class="clr-orange">include? "string"</span> (returns a boolean value)</li>
+                    <li><span class="clr-orange">index("L")</span> (returns the index of the character or the the index
+                        of where the string starts)</li>
+                </ul>
+            </div>
+
+            <h3 class="mb1 mt1" id="Booleans">&rarr; Booleans</h3>
+            <p class="code"><span class="clr-turq">isfemale</span> = true <span class="clr-green">// Boolean</span>
+            </p>
+            
+            <h3 class="mb1 mt1" id="Nil">&rarr; Nil</h3>
+            <p class="code"><span class="clr-turq">money</span> = nil <span class="clr-green">// nil</span>
+            </p>
+
+
+            <h3 class="mb1 mt1" id="Arrays">&rarr; Arrays</h3>
+            <p class="code"><span class="clr-turq"> my_array</span> = [ "banana", "Hello!", 3.1242, true, 56 ] <span
+                    class="clr-green">// array</span>
+            </p>
+
+            <h3 class="mb1 mt1" id="Hashes">&rarr; Hashes</h3>
+            <p class="code"><span class="clr-turq"> own_hats</span> = { "Lena" => 5, "Alice" => 20, "Jacob" => 1 }<span
+                    class="clr-green"> // hash</span>
+            </p>
+            <h3 class="mb1 mt1" id="Symbols">&rarr; Symbols</h3>
+            <p class="code"><span class="clr-turq"> my_symbols</span> = {:ln => "Lena", :al => "Alice", :jc =>
+                "Jacob"}<span class="clr-green"> // symbol</span>
+            </p>
+
+
+
+            <h4 class="entry-subtitle mt4" id="sources">Sources:</h4>
             <p><a href="https://www.freecodecamp.org/">freeCodeCamp</a></p>
-            <p><a href="https://react.dev/">React.dev</a></p>
         </main>
 
 
