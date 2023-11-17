@@ -106,6 +106,50 @@
     <hr class="hr-white mt3">
     <div class="grid mt4">
 
+        <h2 class="mb2 uppercase ff-title" id="dom_manipulation">Ruby (<%=
+                allCategories.ruby.length %>)</h2>
+        <ul class="article-ul grid">
+            <% if(typeof allCategories.ruby !=='undefined' && allCategories.ruby.length> 0) { %>
+                <% allCategories.ruby.forEach(function(post, index) { %>
+
+                    <li>
+                        <div class="shadow blog-entry background-white">
+                            <a href="/post/<%=post._id %>">
+                                <figure><img src="/<%=post.image %>" alt="Illustration for <%=post.title %>"></figure>
+                            </a>
+                            <div class="date-readmore flex">
+                                <span class="entry-date">
+                                    <%= post.createdAt.toDateString() %>
+                                </span>
+                                <div class="read-more-btn"><a href="/post/<%=post._id %>">Read more</a></div>
+                            </div>
+
+                            <a class="flex-align" href="/post/<%=post._id %>">
+                                <h2 class="blog-entry-title flex">
+                                    <%= post.title %>
+                                </h2>
+                            </a>
+                            <div class="tags-entry">
+
+                                <% for( let i=0; i < post.tags.length; i++ ) { %>
+                                    <a href="/categories"><button class="no-btn tags-entry-tag">
+                                            <%=post.tags[i]%>
+                                        </button> </a>
+                                    <% } %>
+
+                            </div>
+                        </div>
+                    </li>
+
+                    <% }) %>
+                        <% }%>
+        </ul>
+
+    </div>
+
+    <hr class="hr-white mt3">
+    <div class="grid mt4">
+
         <h2 class="mb2 uppercase ff-title" id="smallApp">Small Apps (<%= allCategories.smallApp.length %>)</h2>
         <ul class="article-ul grid">
             <% if(typeof allCategories.smallApp !=='undefined' && allCategories.smallApp.length> 0) { %>

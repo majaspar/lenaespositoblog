@@ -1171,9 +1171,7 @@ article.comment-item {
     font-size: 1rem;
     font-weight: bold;
     font-family: 'Courier New', Courier, monospace;
-    margin-top: 1rem;
-    margin-left: 1rem;
-    margin-bottom: 1rem;
+    margin: 1rem;
 }
 code {
     overflow-wrap: break-word;
@@ -1185,7 +1183,7 @@ pre {
     font-size: 1rem;
     padding: 1rem;
     background: rgba(137, 137, 137, 0.449);
-    margin: 1rem inherit 1rem 1rem;
+    margin: 1rem;
 }
 
 /**************************/
@@ -1470,6 +1468,13 @@ div.blog-entry img:hover {
 
 .clr-orange {
     color: rgb(250, 190, 141);
+}
+.clr-purple {
+    color: rgb(141, 148, 250);
+}
+
+.clr-blue {
+    color: rgb(101, 197, 253);
 }
 
 /**************************/

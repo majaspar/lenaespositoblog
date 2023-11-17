@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starting with Ruby</title>
+    <title>Ruby part 2</title>
     <link href="jquery-ui.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../public/styles/lenaesposito.css">
     <link rel="stylesheet" href="../public/styles/blog.css">
@@ -25,6 +25,16 @@
 
     <!-- Copy from here -->
     <style>
+        .code-compare {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            gap: 1rem;
+            align-items: center;
+        }
+        .indent1 {
+            margin-left: 1rem;
+        }
         .columns {
             columns: 1;
         }
@@ -45,18 +55,28 @@
                 <div class="post-table-of-contents-body">
                     <h2 class="ff-title mb2">Contents</h2>
                     <div class="hashtag-list">
-                        <p class="table-of-contents-entry"><a href="#introduction">Introduction</a></p>
-                        <p class="table-of-contents-entry"><a href="#vscode">Ruby and VSCode</a></p>
-                        <p class="table-of-contents-entry"><a href="#printputs">Print/Puts</a></p>
-                        <p class="table-of-contents-entry"><a href="#Variables">Variables</a></p>
-                        <p class="table-of-contents-entry"><a href="#datatypes">Data types</a></p>
-                        <p class="table-of-contents-entry"><a href="#strings">&rarr; Strings</a></p>
-                        <p class="table-of-contents-entry"><a href="#Numbers">&rarr; Numbers</a></p>
-                        <p class="table-of-contents-entry"><a href="#Booleans">&rarr; Booleans</a></p>
-                        <p class="table-of-contents-entry"><a href="#Nil">&rarr; Nil</a></p>
-                        <p class="table-of-contents-entry"><a href="#Arrays">&rarr; Arrays</a></p>
-                        <p class="table-of-contents-entry"><a href="#Hashes">&rarr; Hashes</a></p>
-                        <p class="table-of-contents-entry"><a href="#Symbols">&rarr; Symbols</a></p>
+                        <p class="table-of-contents-entry"><a href="#methods">Methods</a></p>
+                        <p class="table-of-contents-entry"><a href="#splat">Splat argument</a></p>
+                        <p class="table-of-contents-entry"><a href="#return">Return</a></p>
+                        <p class="table-of-contents-entry"><a href="#Blocks">Blocks</a></p>
+                        <p class="table-of-contents-entry"><a href="#Sorting">Sorting</a></p>
+                        <p class="table-of-contents-entry"><a href="#controlflow">Control flow</a></p>
+                        <p class="table-of-contents-entry"><a href="#controlflow">&rarr; If</a></p>
+                        <p class="table-of-contents-entry"><a href="#unless">&rarr; Unless</a></p>
+                        <p class="table-of-contents-entry"><a href="#booleanoperators">&rarr; Boolean operators</a></p>
+                        <p class="table-of-contents-entry"><a href="#caseExpressions">Case expressions</a></p>
+                        <p class="table-of-contents-entry"><a href="#loops">Loops and iterators</a></p>
+                        <p class="table-of-contents-entry"><a href="#while">&rarr; While</a></p>
+                        <p class="table-of-contents-entry"><a href="#until">&rarr; Until</a></p>
+                        <p class="table-of-contents-entry"><a href="#for">&rarr; For</a></p>
+                        <p class="table-of-contents-entry"><a href="#loop">&rarr; Loop</a></p>
+                        <p class="table-of-contents-entry"><a href="#next">&rarr; next</a></p>
+                        <p class="table-of-contents-entry"><a href="#each">&rarr; .each</a></p>
+                        <p class="table-of-contents-entry"><a href="#times">&rarr; .times</a></p>
+
+
+
+
                         <p class="table-of-contents-entry"><a href="#sources">Sources</a></p>
                     </div>
                 </div>
@@ -66,155 +86,254 @@
             </div>
         </aside>
         <main class="main-post-content">
-            <p class="entry-content" id="introduction">Starting with Ruby.
+            <p class="entry-content" id="introduction">Delving a bit deeper into Ruby.</p>
+
+
+            <h2 class="entry-subtitle mt2" id="methods">Methods</h2>
+
+            <p class="entry-content">A method is a section of code created to perform a task in a program that you can
+                reuse. A method consists of a <b>header</b>, a <b>body</b> (indented by convention) and the <b>end</b>
+                keyword. The code from inside a method needs to be called in order to be executed.</p>
+
+            <p class="code"><span class="clr-yellow">def</span> <span class="clr-orange">greet</span><br>
+                <span class="clr-pink">puts</span> "Hello!"<br>
+                <span class="clr-yellow">end</span><br><br>
+                <span class="clr-orange">greet</span> <span class="clr-green">// Hello!</span>
             </p>
-            <p class="entry-content">To install Ruby on our computer we need to download the installer file from <a
-                    href="https://rubyinstaller.org/">https://rubyinstaller.org/</a>. The installation process is smooth
-                and very straightforward.</p>
-            <h2 class="entry-subtitle mt2" id="vscode">Ruby and VSCode</h2>
-            <p class="entry-content">First thing we need to do if we want to use VSCode is let it do its magic and get
-                the right extensions. The first one is <b>Ruby</b> which is a package of three other extensions: Ruby
-                LSP, Ruby Sorbet and VSCode rdbg Ruby Debugger. This is all we need for analyzing Ruby code and
-                enhancing our user experience. The extension recommends using a <i>Spinel dark theme</i> for better
-                semantic highlighting.</p>
-            <p class="entry-content">Second extension is <b>Code Runner</b>, which is a useful tool when working not
-                only with Ruby, but also many other programming languages. Here we use the shortcut <span
-                    style="background-color: var(--clr-nav-gray);"><b>CTRL</b> + <b>ALT</b> + <b>N</b></span> to run our
-                Ruby code.</p>
+            <p class="desc">Let's greet a certain person and use a parameter.</p>
 
-            <h2 class="entry-subtitle mt2" id="printputs">Print/Puts</h2>
-            <p class="entry-content">Ruby is going to execute the instructions in the order that we write them.</p>
-            <p class="code"> <span class="clr-pink">puts</span> "Hello World" <span class="clr-green">(pushes what
-                    follows one line below)</span></p>
-            <p class="code"> <span class="clr-pink">print</span> "Hello World" <span class="clr-green">(whatever follows
-                    will print next to it in the same line)</span></p>
+            <pre><code><span class="clr-yellow">def</span> <span class="clr-orange">greet</span>(<span class="clr-purple">person</span>)
+  <span class="clr-pink">puts</span> ("Hello " + <span class="clr-purple">person</span> + "!")
+<span class="clr-yellow">end</span>
 
-            <h2 class="entry-subtitle mt2" id="Variables">Variables</h2>
-            <p class="entry-content">Variables in Ruby can store different types of data and can be updated throughout
-                your program.</p>
-            <p class="code"> <span class="clr-turq">person_name</span> = "Harry"<br>
-                <span class="clr-turq">person_age</span> = "35"
-                <br><br>
-                <span class="clr-pink">puts</span> (<span class="clr-turq">person_name</span> + " is " + <span
-                    class="clr-turq">person_age</span> + " .") <span class="clr-green">// Harry is 35.</span><Br><br>
+<span class="clr-orange">greet</span>("Nico")   <span class="clr-green">// Hello Nico!</span>
+</code></pre>
 
-                <span class="clr-turq">person_age</span> = "40"
-                <br><br>
-                <span class="clr-pink">puts</span> (<span class="clr-turq">person_name</span> + " is " + <span
-                    class="clr-turq">person_age</span> + " .") <span class="clr-green">// Harry is 40.</span><Br><br>
+            <h3 class="mt2 mb1" id="splat">Splat arguments</h3>
 
+            <p>Splat arguments are arguments that start with an asterisk <b>*</b>. The asterisk tells the program that
+                the method can receive one or more arguments.</p>
+            <pre>
+<code><span class="clr-yellow">def</span> <span class="clr-orange">whats_up</span>(greeting, *<span class="clr-purple">friends</span>)
+  <span class="clr-purple">friends</span>.each { |<span class="clr-purple">friend</span>| <span class="clr-pink">puts</span> "#{greeting}, #{friend}!" }
+<span class="clr-yellow">end</span>
+      
+whats_up("What's up", "Nico", "Enzo", "Mario")</code>
+    <span class="clr-green">// What's up, Nico!
+       What's up, Enzo!
+       What's up, Mario!</span>
+</pre>
+
+            <h3 class="mt2 mb1" id="return">Return</h3>
+            <p class="entry-content"><b>Return</b> is used inside a method, when we want this method to give us back a
+                value, which means executing another method. Any code that goes under the line with <b>return</b> is not
+                going to be executed.</p>
+
+            <pre><code><span class="clr-yellow">def</span> <span class="clr-orange">sqrt</span>(n)
+    <span class="clr-pink">return</span> n * n
+<span class="clr-yellow">end</span>
+
+<span class="clr-pink">puts</span> <span class="clr-orange">sqrt</span>(3)    <span class="clr-green">// 9</span></code></pre>
+
+
+            <h3 class="mt2 mb1" id="Blocks">Blocks</h3>
+            <p class="entry-content">Blocks are similar to methods, but they don't have a name. Another difference is
+                that they run only once and cannot be called upon again.
+                Blocks can be defined with either the keywords <b>do and end</b> or with <b>{ }</b>(curly braces). A
+                method can take a block as a parameter, for example when using <b>each</b>.</p>
+
+            <pre><code>["enzo", "nico"].<span class="clr-orange">each</span> {|<span class="clr-purple">string</span>| <span class="clr-pink">puts</span> "#{<span class="clr-purple">string</span>[0].<span class="clr-purple">upcase</span>}#{<span class="clr-purple">string</span>[1..-1]}"} 
+    <span class="clr-green">// Enzo
+       Nico</span>
+</code></pre>
+
+
+            <h3 class="mt2 mb1" id="Sorting">Sorting</h3>
+            <p class="entry-content">sort! will sort our arrays of numbers and strings alphabetically or ascending. This
+                method, however, accepts a second argument, if we want to specify how the items should be compared.</p>
+            <p class="code"><span class="clr-turq">my_array</span> = [3, 4, 8, 7, 1, 6, 5, 9, 2]<br>
+                <br>
+                <span class="clr-turq"><span class="clr-pink">print</span> my_array</span>.sort! <span
+                    class="clr-green">// [1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
             </p>
 
-            <h2 class="entry-subtitle mt2" id="datatypes">Data types</h2>
-            <h3 class="mb1" id="strings">&rarr; Strings</h3>
-            <p class="code"><span class="clr-turq">name</span> = "Lena Esposito" <span class="clr-green">//
-                    String</span></p>
-            <p class="entry-content">To put a quotation mark inside a string we use <b>\</b> (a backslash).</p>
-            <p class="code"><span class="clr-pink">puts</span> "My name begins with \"L\""<span class="clr-green"> // My
-                    name begins with "L"</span></p>
-            <p class="entry-content">To print something on a diffrent line we use <b>\n</b>.</p>
+            <pre><code><span class="clr-pink">print</span> <span class="clr-turq">my_array</span>.sort! { |num1, num2| num2 <=> num1 }        <span class="clr-green">// [9, 8, 7, 6, 5, 4, 3, 2, 1]</span>
+</code></pre>
+
+            <p class="entry-content">There is a <b>combined comparison operator</b> that looks like this: <b>
+                    <=>
+                </b>. It returns 0 if the first operand equals the second. If the first operand is greater than the
+                second it returns 1, and if the first operand is less than the second it returns -1.</p>
+
+            <pre><code>
+<span class="clr-turq">day_1</span> = "Monday"
+<span class="clr-turq">day_2</span> = "Tuesday"
+
+<span class="clr-pink">puts</span> <span class="clr-turq">day_1</span> <=> <span class="clr-turq">day_2</span>      <span class="clr-green">// -1</span>
+</code></pre>
+
+            <h2 class="entry-title mt2" id="controlflow">Control Flow</h2>
+
+            <h3 id="if">If, elsif, else, end</h3>
+
+            <pre><code><span class="clr-turq">age</span> = 13
+
+<span class="clr-yellow">if</span> <span class="clr-turq">age</span> < 1
+  <span class="clr-pink">puts</span> "You're an infant"
+<span class="clr-yellow">elsif</span> <span class="clr-turq">age</span> >= 1 and <span class="clr-turq">age</span> < 13
+  <span class="clr-pink">puts</span> "You're a child"
+<span class="clr-yellow">elsif</span> <span class="clr-turq">age</span> >= 13 and <span class="clr-turq">age</span> < 18
+  <span class="clr-pink">puts</span> "You're a teenager"
+<span class="clr-yellow">else</span>
+  <span class="clr-pink">puts</span> "You're an adult"
+<span class="clr-yellow">end</span>
+            <span class="clr-green"> // You're a teenager </span>
+</code></pre>
+
+            <h3 id="unless">Unless</h3>
+
+            <pre><code><span class="clr-turq">sleepy</span> = true
+
+<span class="clr-yellow">unless</span> <span class="clr-turq">sleepy</span>
+  <span class="clr-pink">puts</span> "I'm in front of the computer"
+<span class="clr-yellow">else</span>
+  <span class="clr-pink">puts</span> "Bed time!"
+<span class="clr-yellow">end</span>
+            <span class="clr-green"> // Bed time! </span></code></pre>
+
+
+            <h3 id="booleanoperators">Boolean operators: &&, ||, !</h3>
+
+            <pre><code>true <span class="clr-yellow">&&</span> true <span class="clr-green">     // true</span>
+true <span class="clr-yellow">&&</span> false <span class="clr-green">    // false</span>
+false <span class="clr-yellow">&&</span> true <span class="clr-green">    // false</span>
+false <span class="clr-yellow">&&</span> false <span class="clr-green">   // false</span>
+
+true <span class="clr-yellow">||</span> true <span class="clr-green">    // true</span>
+true <span class="clr-yellow">||</span> false <span class="clr-green">   // true</span>
+false <span class="clr-yellow">||</span> true <span class="clr-green">   // true</span>
+false <span class="clr-yellow">||</span> false <span class="clr-green">  // false</span>
+
+<span class="clr-yellow">!</span>true <span class="clr-green">           // false</span>
+<span class="clr-yellow">!</span>false <span class="clr-green">          // true</span></code></pre>
+            <p class="desc">Let's have a look at some examples.</p>
+            <pre><code><span class="clr-turq">boolean_1</span> = (3 < 4 || false) && (false || true)
+
+<span class="clr-pink">print</span> <span class="clr-turq">boolean_1</span>       <span class="clr-green">// true</span>
+
+<span class="clr-turq">boolean_2</span> = !true && (!true || 100 != 5**2)
+
+<span class="clr-pink">print</span> <span class="clr-turq">boolean_2</span>       <span class="clr-green">// false</span></code></pre>
+
+
+            <h2 class="mt2 entry-title" id="caseExpressions">Case Expressions</h2>
+            <p class="entry-content">Case expressions are a useful solution when we check one value against a number of
+                other values.</p>
+            <pre><code><span class="clr-yellow">def</span> <span class="clr-orange">get_day</span>(day)
+<span class="clr-turq">day_name</span> = ""
+
+<span class="clr-blue">case</span> day
+  <span class="clr-yellow">when</span> "mon"
+    <span class="clr-turq">day_name</span> = "Monday"
+  <span class="clr-yellow">when</span> "tue"
+    <span class="clr-turq">day_name</span> = "Tuesday"
+  <span class="clr-yellow">else</span>
+    <span class="clr-turq">day_name</span> = "Incorrect input"
+  <span class="clr-yellow">end</span>
+
+  <span class="clr-pink">return</span> <span class="clr-turq">day_name</span>
+<span class="clr-yellow">end</span>
+
+<span class="clr-pink">puts</span> <span class="clr-orange">get_day</span>("tue")           <span class="clr-green">// Tuesday</span>
+</code></pre>
 
 
 
-            <h3 class="mb1 mt1">Strings methods</h3>
-            <p>While I will use a variable <b>name</b>, note that you don't have to create a variable to use these
-                fnctions.</p>
-            <p class="code"><span class="clr-turq">name</span> = "Lena Esposito"<br>
-                <span class="clr-pink">puts</span> <span class="clr-turq">name</span>.<span
-                    class="clr-orange">upcase()</span>
-                <span class="clr-green"> // LENA ESPOSITO</span>
+            <h2 class=" entry-title mt2" id="loops">Loops and iterators</h2>
+
+            <h3 id="while">While</h3>
+            <pre><code><span class="clr-turq">index</span> = 1                          <span class="clr-green">// we start from 1</span>
+
+<span class="clr-yellow">while</span> <span class="clr-turq">index</span> <= 5                   <span class="clr-green">// we stop when we get to 5</span>
+<span class="clr-pink">print</span> <span class="clr-turq">index</span>                        <span class="clr-green">// we execute this code </span>
+  <span class="clr-turq">index</span> += 1                       <span class="clr-green">// while adding 1 with each loop </span>
+<span class="clr-yellow">end</span>                <span class="clr-green">// 12345</span> </code></pre>
+
+            <h3 id="until">Until</h3>
+
+            <pre><code><span class="clr-turq">index</span> = 0                          <span class="clr-green">// we start from 0</span>
+
+<span class="clr-yellow">until</span> <span class="clr-turq">index</span> == 6                   <span class="clr-green">// we stop at 6</span>
+<span class="clr-pink">print</span> <span class="clr-turq">index</span> = <span class="clr-turq">index</span> + 1            <span class="clr-green">// we execute this code until index equals 6</span>
+<span class="clr-yellow">end</span>                <span class="clr-green">// 123456</span>
+</code></pre>
+
+
+            <h3 class="mt1 mb1" id="for">For</h3>
+            <p class="entry-content">The <b>for</b> loop is useful when we don't know how many times we will be looping.
             </p>
-            <div class="entry-content">Other methds include:
-                <ul class="mt1" style="margin-left: 1rem;">
-                    <li><span class="clr-orange">downcase()</span> (to lower case),</li>
-                    <li><span class="clr-orange">strip()</span> (gets rid of white space),</li>
-                    <li><span class="clr-orange">length()</span> (prints length as a number), </li>
-                    <li><span class="clr-orange">include? "string"</span> (returns a boolean value)</li>
-                    <li><span class="clr-orange">index("L")</span> (returns the index of the character or the the index
-                        of where the string starts)</li>
-                </ul>
+            <p class="desc">Syntax:</p>
+            <pre><code><span class="clr-yellow">for</span> <span class="clr-turq">num</span> in 1...10
+  <span class="clr-pink">print</span> <span class="clr-turq">num</span>
+<span class="clr-yellow">end</span>             <span class="clr-green">// 123456789</span></code></pre>
+
+            <p class="desc">Three dots mean that the final number will be excluded from the count. <br> Two dots mean
+                that the final number should be included.</p>
+
+
+            <h3 class="mb1 mt2" id="loop">The Loop Method</h3>
+            <p class="entry-content">In Ruby, { } <b>(curly braces)</b> are generally interchangeable with the keywords
+                <b>do</b> and <b>end</b>. The keyword <b>break</b> breaks a loop whe the condition is met.
+            </p>
+            <pre><code><span class="clr-turq">i</span> = 0
+<span class="clr-yellow">loop do</span>
+  <span class="clr-turq">i</span> += 1
+  <span class="clr-pink">print</span> "#{<span class="clr-turq">i</span>}"
+  <span class="clr-blue">break</span> if <span class="clr-turq">i</span> > 5
+<span class="clr-yellow">end</span></code></pre>
+
+
+            <h3 class="mb1 mt2" id="next">Next</h3>
+            <p class="entry-content">We use the <b>next</b> keyword to skip some steps in the loop. In the example below
+                we only print odd numbers.</p>
+
+            <pre><code><span class="clr-yellow">for</span> <span class="clr-turq">i</span> in 1..5
+  <span class="clr-blue">next</span> if <span class="clr-turq">i</span> % 2 == 0
+  <span class="clr-pink">puts</span> <span class="clr-turq">i</span>
+<span class="clr-yellow">end</span>                 <span class="clr-green">// 1
+                       3
+                       5</span>
+
+</code></pre>
+
+            <h3 class="mb1 mt2" id="each">.each</h3>
+            <div class="code-compare">
+                <code class="code">object.<span class="clr-orange">each</span> <span class="clr-yellow">{</span> |<span class="clr-purple">item</span>| <br>
+    <span class="indent1"></span> # Do something <br>
+    <span class="clr-yellow">}</span>
+</code>
+                <p>OR</p>
+                <code class="code">object.<span class="clr-orange">each</span> <span class="clr-yellow">do</span> |<span class="clr-purple">item</span>| <br>
+    <span class="indent1"></span># Do something <br>
+  <span class="clr-yellow">end</span>
+</code>
             </div>
-            <p class="entry-content">To access individual characters we use the index number in square brackets. We also
-                use them to print out a range of characters.</p>
-            <p class="code">
-                <span class="clr-pink">puts</span> <span class="clr-turq">name</span>[0] <span class="clr-green">//
-                    L</span><br><br>
-                <span class="clr-pink">puts</span> <span class="clr-turq">name</span>[0, 3] <span class="clr-green">//
-                    Len (start with 0, stop before
-                    3)</span>
 
-            </p>
+            <h3 class="mb1 mt2" id="times">.times</h3>
+            <p class="entry-content">The .times iterator can perform a task on each item in an object a specified number of times.</p>
+
+            <p class="code">5.<span class="clr-orange">times</span> { <span class="clr-pink">print</span> "hey " } <span class="clr-green">// hey hey hey hey hey </span></p>
 
 
-            <h3 class="mb1 mt1" id="Numbers">&rarr; Numbers</h3>
-            <p class="entry-content">Ruby distinguishes between integers and decimal numbers. If we operate on integers,
-                we are goint to get an integer back, i.e. 10 / 4 will give us 2, while 10/4.0 will print a more accurate
-                decimal number - 2.5.</p>
-            <p class="code"><span class="clr-turq">age</span> = 65 <span class="clr-green">// Number (integers and
-                    floats/decimal)</span>
-            </p>
-
-            <p>In order to print a number next to a string we need to convert it to a string with <span
-                    class="clr-orange">.to_s</span>.</p>
-            <p class="code">
-                <span class="clr-turq">number</span> = 13
-                <br><span class="clr-pink">puts</span> ("My favourite number is " + <span
-                    class="clr-turq">number</span><span class="clr-orange">.to_s</span>)<span class="clr-green"> // My
-                    favourite number is 13</span>
-            </p>
 
 
-            <h3 class="mb1 mt1">Number methods</h3>
-            <p>There are a bunch of methods that we can call on numbers. </p>
-            <div class="code">
-                <p class="mb1"><span class="clr-turq">number</span> = -13<br>
-                    <span class="clr-pink">puts</span> number.<span class="clr-orange">abs()</span> <span
-                        class="clr-green">// 13 (returns the absolute value)</span>
-                </p>
-                <p class=""><span class="clr-turq">number</span> = 13.6594513<br>
-                    <span class="clr-pink">puts</span> number.<span class="clr-orange">round()</span> <span
-                        class="clr-green">// 14 (rounds the number)</span>
-                </p>
-            </div>
-
-            <div class="entry-content">Other functions include:
-                <ul class="mt1" style="margin-left: 1rem;">
-                    <li><span class="clr-orange">ceil()</span> (rounds it up),</li>
-                    <li><span class="clr-orange">floor()</span> (rounds it down),</li>
-                    <li><span class="clr-orange">Math.sqrt(number)</span> (prints square root of a number), </li>
-                    <li><span class="clr-orange">include? "string"</span> (returns a boolean value)</li>
-                    <li><span class="clr-orange">index("L")</span> (returns the index of the character or the the index
-                        of where the string starts)</li>
-                </ul>
-            </div>
-
-            <h3 class="mb1 mt1" id="Booleans">&rarr; Booleans</h3>
-            <p class="code"><span class="clr-turq">isfemale</span> = true <span class="clr-green">// Boolean</span>
-            </p>
-            
-            <h3 class="mb1 mt1" id="Nil">&rarr; Nil</h3>
-            <p class="code"><span class="clr-turq">money</span> = nil <span class="clr-green">// nil</span>
-            </p>
 
 
-            <h3 class="mb1 mt1" id="Arrays">&rarr; Arrays</h3>
-            <p class="code"><span class="clr-turq"> my_array</span> = [ "banana", "Hello!", 3.1242, true, 56 ] <span
-                    class="clr-green">// array</span>
-            </p>
-
-            <h3 class="mb1 mt1" id="Hashes">&rarr; Hashes</h3>
-            <p class="code"><span class="clr-turq"> own_hats</span> = { "Lena" => 5, "Alice" => 20, "Jacob" => 1 }<span
-                    class="clr-green"> // hash</span>
-            </p>
-            <h3 class="mb1 mt1" id="Symbols">&rarr; Symbols</h3>
-            <p class="code"><span class="clr-turq"> my_symbols</span> = {:ln => "Lena", :al => "Alice", :jc =>
-                "Jacob"}<span class="clr-green"> // symbol</span>
-            </p>
 
 
 
             <h4 class="entry-subtitle mt4" id="sources">Sources:</h4>
-            <p><a href="https://www.freecodecamp.org/">freeCodeCamp</a></p>
+            <p><a href="https://www.codecademy.com/courses/learn-ruby">Codecademy</a></p>
         </main>
 
 
