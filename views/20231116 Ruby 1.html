@@ -34,7 +34,7 @@
             .columns {
                 columns: 2;
             }
-        }
+        }  
     </style>
 
     <div class="post-body-wrapper">
@@ -323,9 +323,13 @@
 <p class="desc">You can create a hash using Hash.new. Note that <i>Hash</i> needs to be capitalized for that purpose. The created hash is empty.</p>
 <pre><code><span class="clr-turq">colours</span> = Hash.new</code></pre>
 
-<h4 class="mt2 mb2">Adding to a Hash</h4>
+<h4 class="mt2 mb2">Adding to a hash</h4>
 
 <pre><code><span class="clr-turq">colours</span>["warm"] = "red"</code></pre>
+
+<h4 class="mt2 mb2">Removing from a hash</h4>
+
+<pre><code><span class="clr-turq">colours</span>.<span class="clr-orange">delete</span>("warm")</code></pre>
 
 <h4 class="mt2 mb2">Default value</h4>
 <p class="entry-content">If a hash has a default value, then it will print it when we try to access a non-existent value.</p>
@@ -395,6 +399,8 @@ b = <span class="clr-turq">grades</span>.<span class="clr-orange">select</span> 
 <span class="clr-pink">puts</span> <span class="clr-turq">symbols</span>        <span class="clr-green">// [:One, :Two, :Three]</span>
 </code></pre>
             
+<h4 class="mt2 mb2">Check if symbol</h4>
+<pre><code>:LA.<span class="clr-orange">is_a?</span> <span class="clr-red">Symbol</span></code></pre>
 <h3 class="mb1 mt1" id="Nil">&rarr; Nil</h3>
 <p class="entry-content">In Ruby, if you try to access a key that doesn't exist, you get the non-true <b>nil</b> value. Nil doesn't mean <i>false</i>, but <i>nothing</i>.</p>
 

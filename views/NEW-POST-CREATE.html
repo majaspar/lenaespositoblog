@@ -59,12 +59,22 @@
                         <p class="table-of-contents-entry"><a href="#splat">Splat argument</a></p>
                         <p class="table-of-contents-entry"><a href="#return">Return</a></p>
                         <p class="table-of-contents-entry"><a href="#Blocks">Blocks</a></p>
+                        <p class="table-of-contents-entry"><a href="#collect">&rarr; Collect</a></p>
+                        <p class="table-of-contents-entry"><a href="#yield">&rarr; Yield</a></p>
+                        <p class="table-of-contents-entry"><a href="#proc">&rarr; Procs</a></p>
+                        <p class="table-of-contents-entry"><a href="#call">&rarr; .call</a></p>
+                        <p class="table-of-contents-entry"><a href="#symbol_proc">&rarr; Procs and symbols</a></p>
                         <p class="table-of-contents-entry"><a href="#Sorting">Sorting</a></p>
                         <p class="table-of-contents-entry"><a href="#controlflow">Control flow</a></p>
                         <p class="table-of-contents-entry"><a href="#controlflow">&rarr; If</a></p>
                         <p class="table-of-contents-entry"><a href="#unless">&rarr; Unless</a></p>
                         <p class="table-of-contents-entry"><a href="#booleanoperators">&rarr; Boolean operators</a></p>
                         <p class="table-of-contents-entry"><a href="#caseExpressions">Case expressions</a></p>
+                        <p class="table-of-contents-entry"><a href="#ConditionalAssignment">Conditional Assignment</a></p>
+                        <p class="table-of-contents-entry"><a href="#Concatenation">Concatenation operator <<</a></p>
+                            
+                        <p class="table-of-contents-entry"><a href="#upto">.upto and .downto</a></p>
+                        <p class="table-of-contents-entry"><a href="#respondto">.respond_to?</a></p>
                         <p class="table-of-contents-entry"><a href="#loops">Loops and iterators</a></p>
                         <p class="table-of-contents-entry"><a href="#while">&rarr; While</a></p>
                         <p class="table-of-contents-entry"><a href="#until">&rarr; Until</a></p>
@@ -137,7 +147,7 @@ whats_up("What's up", "Nico", "Enzo", "Mario")</code>
 
 
             <h3 class="mt2 mb1" id="Blocks">Blocks</h3>
-            <p class="entry-content">Blocks are similar to methods, but they don't have a name. Another difference is
+            <p class="entry-content">Blocks are similar to methods, but they don't have a name and cannot be saved to a variable. Another difference is
                 that they run only once and cannot be called upon again.
                 Blocks can be defined with either the keywords <b>do and end</b> or with <b>{ }</b>(curly braces). A
                 method can take a block as a parameter, for example when using <b>each</b>.</p>
@@ -146,6 +156,60 @@ whats_up("What's up", "Nico", "Enzo", "Mario")</code>
     <span class="clr-green">// Enzo
        Nico</span>
 </code></pre>
+
+<h3 class="mt2 mb1" id="collect">Collect</h3>
+<p class="entry-content">.collect returns a copy of an array. However, we can mutate the array if we add an exclamation mark to collect.</p>
+<pre><code><span class="clr-turq">numbers</span> = [1, 2, 3, 4, 5]
+
+<span class="clr-turq">tripled_numbers</span> = <span class="clr-turq">numbers</span>.<span class="clr-orange">collect</span> { |<span class="clr-purple">n</span>| n * 3 }
+
+<span class="clr-pink">print</span> <span class="clr-turq">tripled_numbers</span>, " "              <span class="clr-green">// [3, 6, 9, 12, 15] </span> 
+</code></pre>
+
+<!-- Why do some methods accept a block and others don’t? It’s because methods that accept blocks have a way of transferring control from the calling method to the block and back again. -->
+
+<h3 class="mt2 mb1" id="yield">Yield</h3>
+If a method has the keyword <b>yield</b>, it means that for that particular line of code, it accepts a block of code specified outside fo this method.
+
+<pre><code><span class="clr-yellow">def</span> <span class="clr-orange">double</span>(n)
+    <span class="clr-blue">yield</span>(n)
+<span class="clr-yellow">end</span>
+
+ <span class="clr-orange">double</span>(16) { |<span class="clr-purple">n</span>| <span class="clr-pink">puts</span> <span class="clr-purple">n</span> * 2 }</code></pre>
+
+ <h3 class="mt2 mb1" id="proc">Proc</h3>
+
+ <p class="entry-content">A <b>proc</b> is what happens when we give a bloc a name. We use them so we don't have to repeat the same code again and again. To define a block we call <b>Proc.new</b> and pass in our block. To call it we add <b>&</b> to the proc's name.</p>
+<pre><code><span class="clr-red">multiples_of_3</span> = <span class="clr-red">Proc</span>.new <span class="clr-yellow">do</span> |n|
+  n % 3 == 0
+<span class="clr-yellow">end</span>
+
+<span class="clr-pink">print</span> (1..30).to_a.<span class="clr-orange">select</span>(<span class="clr-yellow">&<span class="clr-red">multiples_of_3</span>)              // <span class="clr-green">[3, 6, 9, 12, 15, 18, 21, 24, 27, 30]</span></code></pre>
+
+
+<h3 class="mt2 mb1" id="call">.call</h3>
+<p class="entry-content">We use <b>.call</b> method to call procs, as just defining them will not run the code from inside of them.</p>
+
+<pre><code><span class="clr-red">hi</span> = <span class="clr-red">Proc</span>.new { <span class="clr-pink">puts</span> "Hello!" }
+
+<span class="clr-red">hi</span>.<span class="clr-orange">call</span></code></pre>
+
+<p class="entry-content">There are also other ways of calling a lambda, but using the .call method gives more clarity.</p>
+<h3 class="mt2 mb1" id="symbol_proc">Symbols and procs</h3>
+<pre><code><span class="clr-turq">numbers_array</span> = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+<span class="clr-turq">strings_array</span> = <span class="clr-turq">numbers_array</span>.<span class="clr-orange">map</span>(<span class="clr-yellow">&</span>:to_s)
+
+<span class="clr-pink">print</span>  <span class="clr-turq">strings_array</span>            <span class="clr-green">// ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]</span> </code></pre>
+
+<h2 class="mt2 mb1" id="lambdas">Lambdas</h2>
+<p class="entry-content">Lambdas are nearly identical to procs. They define blocks and their parameters and can be saved to a variable.
+     Lambdas check the number of the passed arguments, while procs don't. Procs will ignore extra arguments and pass <b>nil</b> to the missing ones, but lambdas will throw an error.</p>
+     <p class="desc">You can either use the word "lambda" or the symbol "->". </p>
+
+<p class="code"><span class="clr-yellow">lambda</span> { <span class="clr-pink">puts</span> "Hello!" } <span style="margin-right: 1.5rem; margin-left: 1.5rem;">OR</span> 
+    <span class="clr-yellow">lambda</span> {|<span class="clr-purple">param</span>| <span class="clr-pink">BLOCK</span> }</p>
+
 
 
             <h3 class="mt2 mb1" id="Sorting">Sorting</h3>
@@ -190,6 +254,10 @@ whats_up("What's up", "Nico", "Enzo", "Mario")</code>
             <span class="clr-green"> // You're a teenager </span>
 </code></pre>
 
+<p class="desc">We can also use the one-liner syntax which looks like so:</p>
+<p class="code"><span class="clr-pink">puts</span> "You're an infant" <span class="clr-yellow">if</span> <span class="clr-turq">age</span> < 1</p>
+
+
             <h3 id="unless">Unless</h3>
 
             <pre><code><span class="clr-turq">sleepy</span> = true
@@ -201,6 +269,8 @@ whats_up("What's up", "Nico", "Enzo", "Mario")</code>
 <span class="clr-yellow">end</span>
             <span class="clr-green"> // Bed time! </span></code></pre>
 
+<p class="desc">Unless also has a one-line syntax:</p>
+            <p class="code"><span class="clr-pink">puts</span> "I'm in front of the computer" <span class="clr-yellow">unless</span> <span class="clr-turq">sleepy</span></p>
 
             <h3 id="booleanoperators">Boolean operators: &&, ||, !</h3>
 
@@ -246,6 +316,46 @@ false <span class="clr-yellow">||</span> false <span class="clr-green">  // fals
 
 <span class="clr-pink">puts</span> <span class="clr-orange">get_day</span>("tue")           <span class="clr-green">// Tuesday</span>
 </code></pre>
+
+
+<h2 class=" entry-title mt2" id="ConditionalAssignment">Conditional Assignment</h2>
+
+<p class="entry-content">If we want to assign a variable only if it hasn't already been assigned, we can use the conditional assignment operator: <span class="clr-yellow">||=</span></p>
+
+<pre><code><span class="clr-turq">name</span> = nil
+<span class="clr-pink">print</span> <span class="clr-turq">name</span>                 <span class="clr-green">// nothing prints</span>
+
+<span class="clr-turq">name</span> ||= "Lena"
+<span class="clr-pink">print</span> <span class="clr-turq">name</span>                 <span class="clr-green">// Lena</span>
+
+<span class="clr-turq">name</span> ||= "Eric"
+<span class="clr-pink">print</span> <span class="clr-turq">name</span>                 <span class="clr-green">// Lena</span>
+</code></pre>
+
+<h2 class=" entry-title mt2" id="Concatenation">Concatenation operator <<</h2>
+<p class="entry-content"><b><< is used to push to arrays.</b>
+<pre><code>[1, 2, 3] << 4                <span class="clr-green">// [1, 2, 3, 4]</span>
+    
+alphabet = ["a", "b", "c"]
+alphabet << "d"                <span class="clr-green">// ["a", "b", "c", "d"]</span></code></pre>
+
+<h2 class=" entry-title mt2" id="upto">.upto and .downto</h2>
+<p class="entry-content">If we know what is the top or the bottom number that we are going to count to we can use <b>.upto</b> or <b>.downto</b>. What is more, these methods will also work with letters.</p>
+<pre><code>15.<span class="clr-orange">downto</span>(5) { |<span class="clr-purple">num</span>| <span class="clr-pink">print</span> <span class="clr-purple">num</span>, " " }            <span class="clr-green">// 15 14 13 12 11 10 9 8 7 6 5</span>
+
+"A".<span class="clr-orange">upto</span>("Z") { |<span class="clr-purple">letter</span>| <span class="clr-pink">print</span> <span class="clr-purple">letter</span>, " " }     <span class="clr-green">// A B C D E F G H I J K L M N O P Q R S T U V W X Y Z </span></code></pre> </p>
+
+
+
+<h2 class=" entry-title mt2" id="respondto">.respond_to?</h2>
+<p class="entry-content">In Ruby we can check if we can call a method on an object. respond_to? returns <i>true</i> if we can.</p>
+
+<p class="desc">Since we cannot turn an array into a symbol...</p>
+<pre><code>[1, 2, 3].<span class="clr-orange">respond_to?</span><span class="clr-purple">(:to_sym)</span>       <span class="clr-green">// false</span></code></pre>
+
+
+
+
 
 
 
