@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OOP - Ruby 3</title>
+    <title>Ruby part 2</title>
     <link href="jquery-ui.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../public/styles/lenaesposito.css">
     <link rel="stylesheet" href="../public/styles/blog.css">
@@ -25,6 +25,16 @@
 
     <!-- Copy from here -->
     <style>
+        .code-compare {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            gap: 1rem;
+            align-items: center;
+        }
+        .indent1 {
+            margin-left: 1rem;
+        }
         .columns {
             columns: 1;
         }
@@ -34,12 +44,6 @@
             .columns {
                 columns: 2;
             }
-        }
-
-        .post-body-wrapper {
-            line-height: 1.5;
-            max-width: 1100px;
-            margin-inline: auto;
         }
     </style>
 
@@ -51,13 +55,8 @@
                 <div class="post-table-of-contents-body">
                     <h2 class="ff-title mb2">Contents</h2>
                     <div class="hashtag-list">
-                        <p class="table-of-contents-entry"><a href="#introduction">Introduction</a></p>
-
-
-
-
-
-
+                        <p class="table-of-contents-entry"><a href="#methods">Methods</a></p>
+            
                         <p class="table-of-contents-entry"><a href="#sources">Sources</a></p>
                     </div>
                 </div>
@@ -67,58 +66,15 @@
             </div>
         </aside>
         <main class="main-post-content">
+            <p class="entry-content" id="introduction">Ruby gives us the ability to work with external files located on our computer. We can open them, edit them and even create new ones.</p>
 
-            <h2 class="entry-subtitle mt2" id="introduction">Object-Oriented Programming</h2>
-            <p class="entry-content">Since nearly everything in Ruby is an object, Ruby is an object-oriented
-                programming language.<Br>
-                A class is a way of organizing and producing objects with similar attributes and methods.</p>
-            <p class="desc">This class will create new objects of class Person (just like "A" is of class String). Every
-                variable of an instance of a class starts with <b>@</b>.</p>
-            <pre><code><span class="clr-yellow">class</span> <span class="clr-red">Person</span>
-    <span class="clr-yellow">def</span> <span class="clr-orange">initialize</span>(<span class="clr-turq">name</span>)
-      <span class="clr-turq">@name</span> = name
-    <span class="clr-yellow">end</span>
-<span class="clr-yellow">end</span>
+            <p class="entry-content"></p>
 
-lena = <span class="clr-red">Person</span>.new("Lena Esposito")
-</code></pre>
-
-
-            <h3 class="entry-subtitle mt2" id="Variables">Variables</h3>
-            <p class="entry-content">We use: <br>
-                <span class="clr-yellow">$</span> for global variables (created inside of a class but available
-                everywhere), <br>
-                <span class="clr-yellow">@</span> for instance variables (available to a particular instance of a
-                class),<br>
-                <span class="clr-yellow">@@ </span>for class variables (available to all members of a certain class).
-            </p>
-
-
-
-            <h2 class="entry-subtitle mt2" id="inheritance">Inheritance</h2>
-            <p class="entry-content">One class can take on the attributes and methods of another. This process ic called <b>inheritance</b>.</p>
-
-            <p class="desc">Here ClassOne inherits CLassTwo.</p>
-
-<pre><code><span class="clr-yellow">class</span> <span class="clr-red">ClassOne</span> < <span class="clr-red">ClassTwo</code>
-<span class="clr-yellow">end</span></code></pre>
-
-
-<h2 class="entry-subtitle mt2" id="inheritance">Super</h2>
-
-<p class="entry-content">Thanks to the keyword <b>super</b> we can directly access the attributes or methods of a superclass.</p>
-
-<pre><code>
-
-</code></pre>
-
-
-
-
-
-
-
-
+            <h2 class="entry-subtitle mt2" id="readingfiles">Reading files</h2>
+            <p class="desc">If a file we want to open is in the same directory:</p>
+          <p class="code">File.open("file.txt")</p>
+<p class="desc">Otherwise we need to specify a relative or an absolute path to the file.</p>
+        
 
             <h4 class="entry-subtitle mt4" id="sources">Sources:</h4>
             <p><a href="https://www.codecademy.com/courses/learn-ruby">Codecademy</a></p>

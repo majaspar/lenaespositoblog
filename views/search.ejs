@@ -4,14 +4,15 @@
 
 <section class="articles mb2">
 
-    <ul class="article-ul grid">
+    <ul class="article-ul-search grid">
 
         <% results.forEach(result=> { %>
 
 
             <li>
-                <div class="shadow blog-entry background-white">
+                <div class="shadow blog-entry-search background-white">
                     <figure><img src="<%=result.image %>" alt="Illustration for <%=result.title %>"></figure>
+                    <div class="blog-entry-search-right flex-column">
                     <div class="date-readmore flex">
                         <span class="article-list__date entry-date">
                             <%= result.createdAt.toDateString() %>
@@ -34,6 +35,7 @@
                             <% } %>
 
                     </div>
+                </div>
                 </div>
             </li>
             <% }) %>
