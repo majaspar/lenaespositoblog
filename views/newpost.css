@@ -1,70 +1,39 @@
-/* * {
-    transition: none;
-
+figure {
+    margin-block: 1rem;
+    width: 100%;
 }
 
-.submit-btn {
-    width: 100px;
-    padding: 0.5rem;
-    border-radius: 10px;
-    font-weight: bold;
-    background: #011055;
-    cursor: pointer;
-    color: white;
-    margin: 0.5rem;
-    transition: none;
+main {
+    gap: 1.5rem;
+    flex-wrap: no-wrap;
 }
 
-.submit-btn:hover {
-    background: #091f85;
+figure img {
+    width: 100%;
 }
 
-.submit-btn:active {
-    transform: translateY(2px);
-    background-color: #3a80ba;
+figcaption {
+    font-style: italic;
+    font-size: 0.8rem;
 }
 
-
-.guess-field,
-.temp-field {
-    padding: 0.5rem;
-    width: 100px;
-    margin: 0.5rem;
+section#text {
+    width: 60%;
 }
 
-.guess-answer span {
-    font-weight: bold;
-    font-size: 120%;
+section#img {
+    width: 40%;
 }
 
-input {
-    width: auto;
-    margin: 0;
-    margin-right: 0.5rem;
+@media (max-width: 800px) {
+    main {
+        flex-direction: column-reverse;
+    }
+    section#text {
+        width: 100%;
+    }
+    
+    section#img {
+        width: 100%;
+    }
 }
-
-.convert {
-    padding: 0;
-    margin: 0;
-
-    align-items: start;
-    gap: 2rem;
-}
-
-.temp-answer span {
-    font-weight: bold;
-    font-size: 120%;
-    padding: 0.5rem;
-}
-
-.select-unit {
-    text-align: center;
-    background: rgb(244, 154, 154);
-    border: 1px solid red;
-    padding: 0.5rem 1rem;
-    width: 200px;
-    color: rgb(245, 62, 62);
-} */
-
-
-/*********************************/

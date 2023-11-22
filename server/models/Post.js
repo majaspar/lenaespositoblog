@@ -52,6 +52,6 @@ const PostSchema = new Schema({
 });
 
 
-PostSchema.index({ title: 'text', body: 'text' })
+PostSchema.index({ title: 'text', body: 'text', tags: 'text', category: 'text' })
 
 module.exports = mongoose.model('Post', PostSchema);
