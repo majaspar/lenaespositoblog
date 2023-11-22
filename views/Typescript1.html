@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="table-of-contents-image center">
-                    <img src="/assets/ruby.png" alt="illustration with ruby logo">
+                    <img src="/assets/typescript.png" alt="illustration with typescript logo">
                 </div>
             </div>
         </aside>
@@ -69,10 +69,38 @@
             <p class="entry-content" id="introduction">Let's take some notes on Typescript.</p>
             <p class="entry-content">Released in 2012 by Microsoft, TypeScript is a free and open-source programming language that builds on JavaScript. It was created by Anders Hejlsberg who is also the person who designed and developed C#. <br>TypeScript is designed for the development of large applications. It uses file extension <b>.ts</b> and needs to be transpiled to JavaScript.</p>
 
-            <p class="entry-content">Compiling</p>
-<p class="desc">Once you've created your .ts file, open the terminal and cd into your project folder. Then type <b>tsc</b>, the name of the file that needs to be compiled and the destination file:</p>
-<pre><code>tsc filename.ts filename.js      OR      tsc filename.ts</code></pre>
-            <h2 class="entry-subtitle mt2" id=""></h2>
+            <h2 class="entry-subtitle">Getting started</h2>
+            <h3 class="bold">Compiling</h3>
+<p class="desc">Once you've created your .ts file, open the terminal and cd into your project folder. Then type <b>tsc</b>, the name of the file that needs to be compiled and the destination file. Running this command will create filename.js in the same directory.</p>
+<pre><code><span class="clr-turq">tsc</span> filename.ts filename.js      OR      <span class="clr-turq">tsc</span> filename.ts</code></pre>
+
+
+<h3 class="bold">tsconfig</h3>
+<p class="desc">In the terminal run <b>tsc -init</b> to create the configuration file.</p>
+<pre><code><span class="clr-turq">tsc</span> -init</code></pre>
+<p class="ec">Then we need to decide where our .js and .ts files will be stored. Once we do that, in the tsconfig.json file we can find the rootDir and outDir and put the directory names that we will be using in our project.</p>
+
+<h3 class="bold">Watching the .ts files</h3>
+<p class="ec"></p>
+<pre><code><span class="clr-turq">tsc</span> -w</code></pre>
+
+<p class="ec">If we want all our .js files to be created in the folder we specified earlier, even if the .ts file is in our root directory, we need to make one change in the .tsconfig file.</p>
+<pre><code>{
+    "compilerOptions": {
+        ...
+    }<span class="clr-yellow">,
+    "include": [
+        "src"
+    ]</span>  
+}
+ 
+</code></pre>
+
+            <h2 class="entry-subtitle mt2" id="">Explicit and Implicit</h2>
+<p class="entry-content">TypeScript recognizes the primitive data types of JavaScript: string, number, boolean, null and undefined. Once we declare a variable with an initial value, the variable can never be reassigned a value of a different data type. </p>
+            <p class="ec">We can <b>explicitly</b> state what type a variable is.</p>
+            <p class="code">let <span class="clr-turq">color</span>: <span class="clr-pink">string</span> = 'blue'</p>
+            <p class="ec">If we don't specify that our variable is a string, TypeScript will figure it out.</p>
             <h2 class="entry-subtitle mt2" id=""></h2>
             <h2 class="entry-subtitle mt2" id=""></h2>
             <h2 class="entry-subtitle mt2" id=""></h2>

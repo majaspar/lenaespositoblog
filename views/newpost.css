@@ -1,39 +1,5 @@
-figure {
-    margin-block: 1rem;
-    width: 100%;
-}
-
-main {
-    gap: 1.5rem;
-    flex-wrap: no-wrap;
-}
-
-figure img {
-    width: 100%;
-}
-
-figcaption {
-    font-style: italic;
-    font-size: 0.8rem;
-}
-
-section#text {
-    width: 60%;
-}
-
-section#img {
-    width: 40%;
-}
-
-@media (max-width: 800px) {
-    main {
-        flex-direction: column-reverse;
-    }
-    section#text {
-        width: 100%;
-    }
-    
-    section#img {
-        width: 100%;
-    }
+.bold {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 2rem;
 }

@@ -1480,19 +1480,19 @@ div.blog-entry img:hover,
     margin-bottom: 1.5rem;
 }
 
-.entry-subtitle {
+.entry-subtitle, .es {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
 }
 
-.entry-content {
+.entry-content, .ec {
     overflow-wrap: break-word;
     font-size: 1.2rem;
     margin-bottom: 1rem;
     text-align: justify;
 }
 
-.entry-content a {
+.entry-content a, .ec a {
     color: var(--clr-turq-green);
 }
 
