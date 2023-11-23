@@ -127,7 +127,8 @@
             <p class="code">let <span class="clr-turq">color</span>: <span class="clr-pink">string</span>;<br>
                 let <span class="clr-turq">isFun</span>: <span class="clr-pink">boolean</span>;<br>
                 let <span class="clr-turq">regular</span>: <span class="clr-pink">boolean</span>;<br>
-                let <span class="clr-turq">phoneNumber</span>: <span class="clr-pink">string</span> | <span class="clr-pink">number</span>;
+                let <span class="clr-turq">phoneNumber</span>: <span class="clr-pink">string</span> | <span class="clr-pink">number</span>;<br>
+                let <span class="clr-turq">re</span>: <span class="clr-pink">RegExp</span>;<br>
             </p>
 
 
@@ -138,14 +139,22 @@
     Parameters without type annotations are assumed to be of type <span class="cb">any</span>.</p>
 
 <pre><code>
-function hello(name: string){
+function <span class="co">hello</span>(name: <span class="cpk">string</span>){
     console.log(`Hello ${name}!`)
 }
 </code></pre>
 
 
+<h2 id="OptionalParameters">Optional Parameters</h2>
 
+<p class="ec">If a parameter is supposed to be optional, we need to add a <span class="cb"><b>?</b></span> after its name.</p>
+<pre><code>
+function <span class="co">hello</span>(name<span class="cb">?</span>: <span class="cpk">string</span>) {
+  console.log(`Hello, ${name || 'everyone'}!`);
+}
 
+<span class="co">hello()</span>        <span class="cg">// Hello, everyone!</span>
+</code></pre>
 
 
             <h2 class="entry-subtitle mt2" id="strings">String Methods</h2>
