@@ -56,6 +56,16 @@
                     <h2 class="ff-title mb2">Contents</h2>
                     <div class="hashtag-list">
                         <p class="table-of-contents-entry"><a href="#methods">Introduction</a></p>
+                        <p class="table-of-contents-entry"><a href="#tsconfig">tsconfig</a></p>
+                        <p class="table-of-contents-entry"><a href="#explicit">Explicit, implicit</a></p>
+                        <p class="table-of-contents-entry"><a href="#vta">Variable Type Annotations</a></p>
+                        <p class="table-of-contents-entry"><a href="#pta">Parameter Type Annotations</a></p>
+
+
+
+
+
+                        <p class="table-of-contents-entry"><a href="#strings">String Methods</a></p>
             
                         <p class="table-of-contents-entry"><a href="#sources">Sources</a></p>
                     </div>
@@ -66,19 +76,26 @@
             </div>
         </aside>
         <main class="main-post-content">
-            <p class="entry-content" id="introduction">Let's take some notes on Typescript.</p>
+            <p class="entry-content" id="introduction">Let's take some notes on TypeScript.</p>
             <p class="entry-content">Released in 2012 by Microsoft, TypeScript is a free and open-source programming language that builds on JavaScript. It was created by Anders Hejlsberg who is also the person who designed and developed C#. <br>TypeScript is designed for the development of large applications. It uses file extension <b>.ts</b> and needs to be transpiled to JavaScript.</p>
 
             <h2 class="entry-subtitle">Getting started</h2>
+
+
+    
             <h3 class="bold">Compiling</h3>
-<p class="desc">Once you've created your .ts file, open the terminal and cd into your project folder. Then type <b>tsc</b>, the name of the file that needs to be compiled and the destination file. Running this command will create filename.js in the same directory.</p>
+<p class="desc">Once you've created your .ts file, open the terminal and cd into your project folder. Then type: <b>tsc</b>, the name of the file that needs to be compiled and the destination file. Running this command will create filename.js in the same directory.</p>
 <pre><code><span class="clr-turq">tsc</span> filename.ts filename.js      OR      <span class="clr-turq">tsc</span> filename.ts</code></pre>
 
 
-<h3 class="bold">tsconfig</h3>
+
+<h2 class="bold" id="tsconfig">tsconfig</h2>
+<p class="ec">Placed in the root of the project, .tsconfig file's purpose is customizing the rules to be enforced by the compiler.</p>
 <p class="desc">In the terminal run <b>tsc -init</b> to create the configuration file.</p>
 <pre><code><span class="clr-turq">tsc</span> -init</code></pre>
 <p class="ec">Then we need to decide where our .js and .ts files will be stored. Once we do that, in the tsconfig.json file we can find the rootDir and outDir and put the directory names that we will be using in our project.</p>
+
+
 
 <h3 class="bold">Watching the .ts files</h3>
 <p class="ec"></p>
@@ -89,21 +106,172 @@
     "compilerOptions": {
         ...
     }<span class="clr-yellow">,
-    "include": [
-        "src"
-    ]</span>  
+    "include": ["src"]</span>  
 }
- 
 </code></pre>
 
-            <h2 class="entry-subtitle mt2" id="">Explicit and Implicit</h2>
-<p class="entry-content">TypeScript recognizes the primitive data types of JavaScript: string, number, boolean, null and undefined. Once we declare a variable with an initial value, the variable can never be reassigned a value of a different data type. </p>
+
+
+            <h2 class="entry-subtitle mt2" id="explicit">Explicit and Implicit</h2>
+<p class="entry-content">TypeScript recognizes the primitive data types of JavaScript: string, number, boolean, null and undefined. Once we declare a variable with an initial value, the variable can never be reassigned a value of a different data type. This is called <i>type inference</i>.</p>
             <p class="ec">We can <b>explicitly</b> state what type a variable is.</p>
             <p class="code">let <span class="clr-turq">color</span>: <span class="clr-pink">string</span> = 'blue'</p>
-            <p class="ec">If we don't specify that our variable is a string, TypeScript will figure it out.</p>
+            <p class="ec">If we don't specify that our variable is a string, TypeScript will figure it out. However if TypeScript in unable to infer the data type, it will assign it the <span class="clr-blue"><b>any</b></span> type. These won't give an error if we reassign to a different type.</p>
+ 
+
+
+            <h2 class="entry-subtitle mt2" id="vta">Variable Type Annotations</h2>
+
+            <p class="ec">We can tell TypeScript what type something is or will be by using a type annotation. These declarations are automatically removed when compiled to JavaScript.</p>
+
+            <p class="code">let <span class="clr-turq">color</span>: <span class="clr-pink">string</span>;<br>
+                let <span class="clr-turq">isFun</span>: <span class="clr-pink">boolean</span>;<br>
+                let <span class="clr-turq">regular</span>: <span class="clr-pink">boolean</span>;<br>
+                let <span class="clr-turq">phoneNumber</span>: <span class="clr-pink">string</span> | <span class="clr-pink">number</span>;
+            </p>
+
+
+
+            <h3 class="entry-subtitle mt2" id="pta">Parameter Type Annotations</h3>
+
+<p class="ec">Function parameters may be given type annotations as well. The syntax stays the same. <br>
+    Parameters without type annotations are assumed to be of type <span class="cb">any</span>.</p>
+
+<pre><code>
+function hello(name: string){
+    console.log(`Hello ${name}!`)
+}
+</code></pre>
+
+
+
+
+
+
+            <h2 class="entry-subtitle mt2" id="strings">String Methods</h2>
+
+
+1. 	charAt()
+
+Returns the character at the specified index.
+2. 	charCodeAt()
+
+Returns a number indicating the Unicode value of the character at the given index.
+3. 	concat()
+
+Combines the text of two strings and returns a new string.
+4. 	indexOf()
+
+Returns the index within the calling String object of the first occurrence of the specified value, or -1 if not found.
+5. 	lastIndexOf()
+
+Returns the index within the calling String object of the last occurrence of the specified value, or -1 if not found.
+6. 	localeCompare()
+
+Returns a number indicating whether a reference string comes before or after or is the same as the given string in sort order.
+7.  match()
+
+Used to match a regular expression against a string.
+8. 	replace()
+
+Used to find a match between a regular expression and a string, and to replace the matched substring with a new substring.
+9. 	search()
+
+Executes the search for a match between a regular expression and a specified string.
+10. 	slice()
+
+Extracts a section of a string and returns a new string.
+11. 	split()
+
+Splits a String object into an array of strings by separating the string into substrings.
+12. 	substr()
+
+Returns the characters in a string beginning at the specified location through the specified number of characters.
+13. 	substring()
+
+Returns the characters in a string between two indexes into the string.
+14. 	toLocaleLowerCase()
+
+The characters within a string are converted to lower case while respecting the current locale.
+15. 	toLocaleUpperCase()
+
+The characters within a string are converted to upper case while respecting the current locale.
+16. 	toLowerCase()
+
+Returns the calling string value converted to lower case.
+17. 	toString()
+
+Returns a string representing the specified object.
+18. 	toUpperCase()
+
+Returns the calling string value converted to uppercase.
+19. 	valueOf()
+
+Returns the primitive value of the specified object.
+            <h2 class="entry-subtitle mt2" id="">Array Methods</h2>
+
+1. 	concat()
+
+Returns a new array comprised of this array joined with other array(s) and/or value(s).
+2. 	every()
+
+Returns true if every element in this array satisfies the provided testing function.
+3. 	filter()
+
+Creates a new array with all of the elements of this array for which the provided filtering function returns true.
+4. 	forEach()
+
+Calls a function for each element in the array.
+5. 	indexOf()
+
+Returns the first (least) index of an element within the array equal to the specified value, or -1 if none is found.
+6. 	join()
+
+Joins all elements of an array into a string.
+7. 	lastIndexOf()
+
+Returns the last (greatest) index of an element within the array equal to the specified value, or -1 if none is found.
+8. 	map()
+
+Creates a new array with the results of calling a provided function on every element in this array.
+9. 	pop()
+
+Removes the last element from an array and returns that element.
+10. 	push()
+
+Adds one or more elements to the end of an array and returns the new length of the array.
+11. 	reduce()
+
+Apply a function simultaneously against two values of the array (from left-to-right) as to reduce it to a single value.
+12. 	reduceRight()
+
+Apply a function simultaneously against two values of the array (from right-to-left) as to reduce it to a single value.
+13. 	reverse()
+
+Reverses the order of the elements of an array -- the first becomes the last, and the last becomes the first.
+14. 	shift()
+
+Removes the first element from an array and returns that element.
+15. 	slice()
+
+Extracts a section of an array and returns a new array.
+16. 	some()
+
+Returns true if at least one element in this array satisfies the provided testing function.
+17. 	sort()
+
+Sorts the elements of an array.
+18. 	splice()
+
+Adds and/or removes elements from an array.
+19. 	toString()
+
+Returns a string representing the array and its elements.
+20. 	unshift()
+
+Adds one or more elements to the front of an array and returns the new length of the array.
             <h2 class="entry-subtitle mt2" id=""></h2>
-            <h2 class="entry-subtitle mt2" id=""></h2>
-            <h2 class="entry-subtitle mt2" id=""></h2>
+
             <h2 class="entry-subtitle mt2" id=""></h2>
             <h2 class="entry-subtitle mt2" id=""></h2>
             <h2 class="entry-subtitle mt2" id=""></h2>

@@ -793,6 +793,9 @@ ul {
 /*************************/
 /***      login page   ***/
 /**************************/
+.login-page {
+    gap: 2rem;
+}
 
 .login-page,
 .dashboard-page {
@@ -1508,35 +1511,35 @@ div.blog-entry img:hover,
 }
 
 /* colors */
-.clr-yellow {
+.clr-yellow, .cy {
     color: rgb(217, 255, 0);
 }
 
-.clr-turq {
+.clr-turq, .ct {
     color: rgb(39, 255, 255);
 }
 
-.clr-green {
+.clr-green, .cg {
     color: #96ff93;
 }
 
-.clr-pink {
+.clr-pink, .cpk {
     color: rgb(243, 152, 255);
 }
 
-.clr-orange {
+.clr-orange, .co {
     color: rgb(250, 190, 141);
 }
 
-.clr-purple {
+.clr-purple, .cpe {
     color: rgb(141, 148, 250);
 }
 
-.clr-blue {
+.clr-blue, .cb {
     color: rgb(101, 197, 253);
 }
 
-.clr-red {
+.clr-red, .cr {
     color: rgb(253, 168, 168);
 }
 

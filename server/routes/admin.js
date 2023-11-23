@@ -9,6 +9,7 @@ const jwt = require('jsonwebtoken');
 
 const adminLayout = '../views/layouts/admin';
 const jwtSecret = process.env.JWT_SECRET;
+const refreshToken = process.env.JWT_REFRESH;
 
 
 /**
@@ -88,7 +89,7 @@ router.get('/dashboard', authMiddleware, async (req, res) => {
     try {
         const locals = {
             title: 'Dashboard',
-            description: 'Simple Blog created with NodeJs, Express & MongoDb.'
+            description: 'Lena Esposito Blog: Admin Dashboard'
         }
 
         const data = await Post.find().sort({ createdAt: -1 });
@@ -113,7 +114,7 @@ router.get('/add-post', authMiddleware, async (req, res) => {
     try {
         const locals = {
             title: 'Add Post',
-            description: 'Add post page for Lena Esposito Blog'
+            description: 'Lena Esposito Blog: Add post'
         }
 
         const data = await Post.find();
@@ -174,14 +175,10 @@ router.post('/add-post', authMiddleware, async (req, res) => {
 */
 router.get('/edit-post/:id', authMiddleware, async (req, res) => {
 
-
-
-
     try {
-
-        const locals = {
+            const locals = {
             title: "Edit Post",
-            description: "Edit post page for Lena Esposito Blog",
+            description: "Lena Esposito Blog: Edit post",
         };
 
         const data = await Post.findOne({ _id: req.params.id });
@@ -189,7 +186,8 @@ router.get('/edit-post/:id', authMiddleware, async (req, res) => {
         res.render('admin/edit-post', {
             locals,
             data,
-            layout: adminLayout
+            layout: adminLayout,
+            
         })
 
     } catch (error) {
@@ -261,7 +259,7 @@ router.post('/register', async (req, res) => {
             }
             res.status(500).json({ message: 'Internal server error' })
         }
-
+        res.redirect('/')
     } catch (error) {
         console.log(error);
     }
