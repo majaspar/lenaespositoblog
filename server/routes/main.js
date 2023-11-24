@@ -175,9 +175,10 @@ router.get('/categories', async (req, res) => {
         const ruby = await Post.find({ 'category': 'Ruby' }).sort({ createdAt: -1 })
         const smallApp = await Post.find({ 'category': 'Small App' }).sort({ createdAt: -1 })
         const styles = await Post.find({ 'category': 'Styles' }).sort({ createdAt: -1 })
+        const typescript = await Post.find({ 'category': 'TypeScript' }).sort({ createdAt: -1 })
         const website = await Post.find({ 'category': 'Website' }).sort({ createdAt: -1 })
 
-        const allCategories = { bootstrap, cheatSheet, domManipulation, javascript, jQuery, react, ruby, smallApp, styles, website }
+        const allCategories = { bootstrap, cheatSheet, domManipulation, javascript, jQuery, react, ruby, smallApp, styles, typescript, website }
 
         res.render('categories', { data, locals, categories, allCategories, currentRoute: '/categories' });
     } catch (error) {

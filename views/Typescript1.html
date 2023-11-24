@@ -32,9 +32,11 @@
             gap: 1rem;
             align-items: center;
         }
+
         .indent1 {
             margin-left: 1rem;
         }
+
         .columns {
             columns: 1;
         }
@@ -57,16 +59,26 @@
                     <div class="hashtag-list">
                         <p class="table-of-contents-entry"><a href="#methods">Introduction</a></p>
                         <p class="table-of-contents-entry"><a href="#tsconfig">tsconfig</a></p>
-                        <p class="table-of-contents-entry"><a href="#explicit">Explicit, implicit</a></p>
+                        <p class="table-of-contents-entry"><a href="#explicit">Explicit Return Types</a></p>
                         <p class="table-of-contents-entry"><a href="#vta">Variable Type Annotations</a></p>
                         <p class="table-of-contents-entry"><a href="#pta">Parameter Type Annotations</a></p>
+                        <p class="table-of-contents-entry"><a href="#OptionalParameters">Optional Parameters</a></p>
+                        <p class="table-of-contents-entry"><a href="#DefaultParameters">Default Parameters</a></p>
+                        <p class="table-of-contents-entry"><a href="#void">Void Return Types</a></p>
+                        <p class="table-of-contents-entry"><a href="#documenting">Comments</a></p>
+                        <p class="table-of-contents-entry">Arrays:</p>
+                        <p class="table-of-contents-entry"><a href="#ArrayTypeAnnotations">&rarr; Array Type
+                                Annotations</a></p>
+                        <p class="table-of-contents-entry"><a href="#Tuples">&rarr; Tuples</a></p>
+                        <p class="table-of-contents-entry"><a href="#Rest">&rarr; Rest Parameters</a></p>
 
 
 
 
 
-                        <p class="table-of-contents-entry"><a href="#strings">String Methods</a></p>
-            
+                        <p class="table-of-contents-entry"><a href="#stringmethods">String Methods</a></p>
+                        <p class="table-of-contents-entry"><a href="#arraymethods">Array Methods</a></p>
+
                         <p class="table-of-contents-entry"><a href="#sources">Sources</a></p>
                     </div>
                 </div>
@@ -77,32 +89,43 @@
         </aside>
         <main class="main-post-content">
             <p class="entry-content" id="introduction">Let's take some notes on TypeScript.</p>
-            <p class="entry-content">Released in 2012 by Microsoft, TypeScript is a free and open-source programming language that builds on JavaScript. It was created by Anders Hejlsberg who is also the person who designed and developed C#. <br>TypeScript is designed for the development of large applications. It uses file extension <b>.ts</b> and needs to be transpiled to JavaScript.</p>
+            <p class="entry-content">Released in 2012 by Microsoft, TypeScript is a free and open-source programming
+                language that builds on JavaScript. It was created by Anders Hejlsberg who is also the person who
+                designed and developed C#. <br>TypeScript is designed for the development of large applications. It uses
+                file extension <b>.ts</b> and needs to be transpiled to JavaScript.</p>
+            <p class="entry-content">TypeScript makes it easy to debug our code because it shows us the errors BEFORE we
+                run it.</p>
 
             <h2 class="entry-subtitle">Getting started</h2>
 
 
-    
+
             <h3 class="bold">Compiling</h3>
-<p class="desc">Once you've created your .ts file, open the terminal and cd into your project folder. Then type: <b>tsc</b>, the name of the file that needs to be compiled and the destination file. Running this command will create filename.js in the same directory.</p>
-<pre><code><span class="clr-turq">tsc</span> filename.ts filename.js      OR      <span class="clr-turq">tsc</span> filename.ts</code></pre>
+            <p class="desc">Once you've created your .ts file, open the terminal and cd into your project folder. Then
+                type: <b>tsc</b>, the name of the file that needs to be compiled and the destination file. Running this
+                command will create filename.js in the same directory.</p>
+            <pre><code><span class="clr-turq">tsc</span> filename.ts filename.js      OR      <span class="clr-turq">tsc</span> filename.ts</code></pre>
 
 
 
-<h2 class="bold" id="tsconfig">tsconfig</h2>
-<p class="ec">Placed in the root of the project, .tsconfig file's purpose is customizing the rules to be enforced by the compiler.</p>
-<p class="desc">In the terminal run <b>tsc -init</b> to create the configuration file.</p>
-<pre><code><span class="clr-turq">tsc</span> -init</code></pre>
-<p class="ec">Then we need to decide where our .js and .ts files will be stored. Once we do that, in the tsconfig.json file we can find the rootDir and outDir and put the directory names that we will be using in our project.</p>
+            <h2 class="bold" id="tsconfig">tsconfig</h2>
+            <p class="ec">Placed in the root of the project, .tsconfig file's purpose is customizing the rules to be
+                enforced by the compiler.</p>
+            <p class="desc">In the terminal run <b>tsc -init</b> to create the configuration file.</p>
+            <pre><code><span class="clr-turq">tsc</span> -init</code></pre>
+            <p class="ec">Then we need to decide where our .js and .ts files will be stored. Once we do that, in the
+                tsconfig.json file we can find the rootDir and outDir and put the directory names that we will be using
+                in our project.</p>
 
 
 
-<h3 class="bold">Watching the .ts files</h3>
-<p class="ec"></p>
-<pre><code><span class="clr-turq">tsc</span> -w</code></pre>
+            <h3 class="bold">Watching the .ts files</h3>
+            <p class="ec"></p>
+            <pre><code><span class="clr-turq">tsc</span> -w</code></pre>
 
-<p class="ec">If we want all our .js files to be created in the folder we specified earlier, even if the .ts file is in our root directory, we need to make one change in the .tsconfig file.</p>
-<pre><code>{
+            <p class="ec">If we want all our .js files to be created in the folder we specified earlier, even if the .ts
+                file is in our root directory, we need to make one change in the .tsconfig file.</p>
+            <pre><code>{
     "compilerOptions": {
         ...
     }<span class="clr-yellow">,
@@ -112,22 +135,29 @@
 
 
 
-            <h2 class="entry-subtitle mt2" id="explicit">Explicit and Implicit</h2>
-<p class="entry-content">TypeScript recognizes the primitive data types of JavaScript: string, number, boolean, null and undefined. Once we declare a variable with an initial value, the variable can never be reassigned a value of a different data type. This is called <i>type inference</i>.</p>
+            <h3 class="entry-subtitle mt2" id="explicit">Explicit Return Types</h3>
+            <p class="entry-content">TypeScript recognizes the primitive data types of JavaScript: string, number,
+                boolean, null and undefined. Once we declare a variable with an initial value, the variable can never be
+                reassigned a value of a different data type. This is called <i>type inference</i>.</p>
             <p class="ec">We can <b>explicitly</b> state what type a variable is.</p>
             <p class="code">let <span class="clr-turq">color</span>: <span class="clr-pink">string</span> = 'blue'</p>
-            <p class="ec">If we don't specify that our variable is a string, TypeScript will figure it out. However if TypeScript in unable to infer the data type, it will assign it the <span class="clr-blue"><b>any</b></span> type. These won't give an error if we reassign to a different type.</p>
- 
+            <p class="ec">If we don't specify that our variable is a string, TypeScript will figure it out. However if
+                TypeScript in unable to infer the data type, it will assign it the <span
+                    class="clr-blue"><b>any</b></span> type. These won't give an error if we reassign to a different
+                type.</p>
 
 
-            <h2 class="entry-subtitle mt2" id="vta">Variable Type Annotations</h2>
 
-            <p class="ec">We can tell TypeScript what type something is or will be by using a type annotation. These declarations are automatically removed when compiled to JavaScript.</p>
+            <h3 class="entry-subtitle mt2" id="vta">Variable Type Annotations</h3>
+
+            <p class="ec">We can tell TypeScript what type something is or will be by using a type annotation. These
+                declarations are automatically removed when compiled to JavaScript.</p>
 
             <p class="code">let <span class="clr-turq">color</span>: <span class="clr-pink">string</span>;<br>
                 let <span class="clr-turq">isFun</span>: <span class="clr-pink">boolean</span>;<br>
                 let <span class="clr-turq">regular</span>: <span class="clr-pink">boolean</span>;<br>
-                let <span class="clr-turq">phoneNumber</span>: <span class="clr-pink">string</span> | <span class="clr-pink">number</span>;<br>
+                let <span class="clr-turq">phoneNumber</span>: <span class="clr-pink">string</span> | <span
+                    class="clr-pink">number</span>;<br>
                 let <span class="clr-turq">re</span>: <span class="clr-pink">RegExp</span>;<br>
             </p>
 
@@ -135,151 +165,140 @@
 
             <h3 class="entry-subtitle mt2" id="pta">Parameter Type Annotations</h3>
 
-<p class="ec">Function parameters may be given type annotations as well. The syntax stays the same. <br>
-    Parameters without type annotations are assumed to be of type <span class="cb">any</span>.</p>
+            <p class="ec">Function parameters may be given type annotations as well. The syntax stays the same. <br>
+                Parameters without type annotations are assumed to be of type <span class="cb">any</span>.</p>
 
-<pre><code>
+            <pre><code>
 function <span class="co">hello</span>(name: <span class="cpk">string</span>){
-    console.log(`Hello ${name}!`)
+    <span class="cr">console.log</span>(`Hello ${name}!`)
 }
 </code></pre>
 
 
-<h2 id="OptionalParameters">Optional Parameters</h2>
 
-<p class="ec">If a parameter is supposed to be optional, we need to add a <span class="cb"><b>?</b></span> after its name.</p>
-<pre><code>
-function <span class="co">hello</span>(name<span class="cb">?</span>: <span class="cpk">string</span>) {
-  console.log(`Hello, ${name || 'everyone'}!`);
+
+            <h3 class="entry-subtitle mt2" id="OptionalParameters">Optional Parameters</h3>
+
+            <p class="ec">If a parameter is supposed to be optional, we need to add a <span class="cb"><b>?</b></span>
+                after its name.</p>
+            <pre><code>function <span class="co">hello</span>(<span class="cb">name?</span>: <span class="cpk">string</span>) {
+  <span class="cr">console.log</span>(`Hello, ${<span class="cb">name</span> || 'everyone'}!`);
 }
 
 <span class="co">hello()</span>        <span class="cg">// Hello, everyone!</span>
 </code></pre>
 
 
-            <h2 class="entry-subtitle mt2" id="strings">String Methods</h2>
 
 
-1. 	charAt()
+            <h3 class="entry-subtitle mt2" id="DefaultParameters">Default Parameters</h3>
+            <pre><code>function <span class="co">hello</span>(<span class="cb">name</span> = 'everyone') {
+  <span class="cr">console.log</span>(`Hello, ${<span class="cb">name</span>}!`);
+}
 
-Returns the character at the specified index.
-2. 	charCodeAt()
+<span class="co">hello()</span>        <span class="cg">// Hello, everyone!</span>
+</code></pre>
 
-Returns a number indicating the Unicode value of the character at the given index.
-3. 	concat()
 
-Combines the text of two strings and returns a new string.
-4. 	indexOf()
 
-Returns the index within the calling String object of the first occurrence of the specified value, or -1 if not found.
-5. 	lastIndexOf()
+            <h3 class="entry-subtitle mt2" id="void">Void Return Types</h3>
+            <p class="ec">
+                If a function does not return a value, we must treat the return type as <b>void</b>.
+                A function whose declared type is neither 'void' nor 'any' must return a value.
+            </p>
 
-Returns the index within the calling String object of the last occurrence of the specified value, or -1 if not found.
-6. 	localeCompare()
+            <pre><code>function <span class="co">hello</span>(name: <span class="cpk">string</span>): <span class="cpk">void</span> {
+    <span class="cr">console.log</span>(`Hello ${name}!`)
+}
+</code></pre>
 
-Returns a number indicating whether a reference string comes before or after or is the same as the given string in sort order.
-7.  match()
 
-Used to match a regular expression against a string.
-8. 	replace()
+            <h3 class="entry-subtitle mt2" id="documenting">Comments</h3>
 
-Used to find a match between a regular expression and a string, and to replace the matched substring with a new substring.
-9. 	search()
 
-Executes the search for a match between a regular expression and a specified string.
-10. 	slice()
+            <pre><code><span class="cg">// This is a single line comment 
 
-Extracts a section of a string and returns a new string.
-11. 	split()
+/*
+This is a multiline
+comment
+*/
 
-Splits a String object into an array of strings by separating the string into substrings.
-12. 	substr()
+/**
+* This is a documentation comment
+*/</span></code></pre>
 
-Returns the characters in a string beginning at the specified location through the specified number of characters.
-13. 	substring()
+            <p class="ec">We place a function's documentation comment in the code directly above the function
+                declaration. It should explain the parameters (by using @param tag) and what the function is returning
+                (by using @returns tag).</p>
 
-Returns the characters in a string between two indexes into the string.
-14. 	toLocaleLowerCase()
 
-The characters within a string are converted to lower case while respecting the current locale.
-15. 	toLocaleUpperCase()
+            <h2 class="entry-subtitle mt2">Arrays</h2>
 
-The characters within a string are converted to upper case while respecting the current locale.
-16. 	toLowerCase()
+            <p class="ec">TypeScript makes it very easy to keep track of element types in arrays.</p>
 
-Returns the calling string value converted to lower case.
-17. 	toString()
 
-Returns a string representing the specified object.
-18. 	toUpperCase()
+            <h3 class="entry-subtitle mt2" id="ArrayTypeAnnotations">Array Type Annotations</h3>
 
-Returns the calling string value converted to uppercase.
-19. 	valueOf()
+            <p class="ec">We need to put [ ] after the element type.</p>
 
-Returns the primitive value of the specified object.
-            <h2 class="entry-subtitle mt2" id="">Array Methods</h2>
+            <pre><code>let <span class="ct">colours</span>: <span class="cpk">string[]</span> = ['blue', 'purple'];
 
-1. 	concat()
+OR
 
-Returns a new array comprised of this array joined with other array(s) and/or value(s).
-2. 	every()
+let <span class="ct">colours</span>: <span class="cpk">Array&lt;string></span> = ['blue', 'purple'];
 
-Returns true if every element in this array satisfies the provided testing function.
-3. 	filter()
 
-Creates a new array with all of the elements of this array for which the provided filtering function returns true.
-4. 	forEach()
+let <span class="ct">colours</span>: <span class="cpk">string[]</span> = [1, 2]        <span class="cg">// Type Error</span></code></pre>
 
-Calls a function for each element in the array.
-5. 	indexOf()
+            <p class="ec"> We can also declare multidimensional arrays: arrays of arrays (of some type).</p>
 
-Returns the first (least) index of an element within the array equal to the specified value, or -1 if none is found.
-6. 	join()
+            <pre><code>let <span class="ct">arr</span>: <span class="cpk">string[][]</span> = [['el1', 'el2'], ['el3', 'el4']];
+</code></pre>
 
-Joins all elements of an array into a string.
-7. 	lastIndexOf()
+            <h3 class="entry-subtitle mt2" id="Tuples">Tuples</h3>
+            <p class="ec">Tuples are arrays with a fixed sequence of types. With tuples we know the exact number of elements it has and the exact type of each of them.<br>
+            Note that tuples and arrays do not have compatible types within TypeScript, which means that an array cannot be assigned to a tuple.</p>
 
-Returns the last (greatest) index of an element within the array equal to the specified value, or -1 if none is found.
-8. 	map()
+            <pre><code>let <span class="ct">tuple</span>: <span class="cpk">[string, number, string, boolean]</span> = ['spring', 4, 'Is it?', false]; </code></pre>
 
-Creates a new array with the results of calling a provided function on every element in this array.
-9. 	pop()
 
-Removes the last element from an array and returns that element.
-10. 	push()
+            <h2 class="entry-subtitle mt2" id="Rest">Rest Parameters</h2>
+<p class="ec">The rest parameter syntax allows a function to accept an indefinite number of arguments as an array</p>
 
-Adds one or more elements to the end of an array and returns the new length of the array.
-11. 	reduce()
+<pre><code>function eat(breakfast, ...dinner: string[]) {
+    <span class="cy">for</span>(let i = 0; i < dinner.length; i++) {
+        <span class="cr">console.log</span>(dinner[i])
+    }
+}
+</code></pre>
+<pre><code>function <span class="co">moveYourFeet</span>(<span class="cb">moveDirection</span>: <span class="cpk">string</span>, <span class="cb">moveReps</span>: <span class="cpk">number</span>, <span class="cb">fast</span>: <span class="cpk">boolean</span>): <span class="cpk">void</span> {
+    <span class="cr">console.log</span>(`Move your feet to the ${<span class="cb">moveDirection</span>} ${<span class="cb">moveReps</span>} times!`);
+    <span class="cy">if</span> (<span class="cb">fast</span>) {
+        <span class="cr">console.log</span>('Do it fast!');
+    }
+}
 
-Apply a function simultaneously against two values of the array (from left-to-right) as to reduce it to a single value.
-12. 	reduceRight()
+let <span class="ct">feetMoves</span>: <span class="cpk">[string, number, boolean][]</span> = [
+    ['right', 3, false],
+    ['left', 4, true]
+];
 
-Apply a function simultaneously against two values of the array (from right-to-left) as to reduce it to a single value.
-13. 	reverse()
+let <span class="ct">move</span>: <span class="cpk">[string, number, boolean][]</span> = <span class="ct">[...feetMoves]</span>
+    <span class="ct">move</span>.<span class="co">forEach</span>(<span class="cpe">m</span> => {
+    <span class="co">moveYourFeet</span>(<span class="cpe">m</span>[0], <span class="cpe">m</span>[1], <span class="cpe">m</span>[2])
+})
 
-Reverses the order of the elements of an array -- the first becomes the last, and the last becomes the first.
-14. 	shift()
+  <span class="cg">//  Move your feet to the right 3 times!
+      Move your feet to the left 4 times!
+      Do it fast!</span></code></pre>
 
-Removes the first element from an array and returns that element.
-15. 	slice()
 
-Extracts a section of an array and returns a new array.
-16. 	some()
 
-Returns true if at least one element in this array satisfies the provided testing function.
-17. 	sort()
 
-Sorts the elements of an array.
-18. 	splice()
 
-Adds and/or removes elements from an array.
-19. 	toString()
 
-Returns a string representing the array and its elements.
-20. 	unshift()
 
-Adds one or more elements to the front of an array and returns the new length of the array.
-            <h2 class="entry-subtitle mt2" id=""></h2>
+
 
             <h2 class="entry-subtitle mt2" id=""></h2>
             <h2 class="entry-subtitle mt2" id=""></h2>
@@ -300,11 +319,160 @@ Adds one or more elements to the front of an array and returns the new length of
             <h2 class="entry-subtitle mt2" id=""></h2>
             <h2 class="entry-subtitle mt2" id=""></h2>
             <h2 class="entry-subtitle mt2" id=""></h2>
-  
 
+
+
+
+
+
+
+
+
+            <h2 class="entry-subtitle mt2" id="stringmethods">String Methods</h2>
+
+<ul>
+      <li>  <span class="co">charAt()</span>
+
+            Returns the character at the specified index.
+     </li>  <li> <span class="co">charCodeAt()</span>
+
+            Returns a number indicating the Unicode value of the character at the given index.
+      </li>  <li><span class="co">concat()</span>
+
+            Combines the text of two strings and returns a new string.
+       </li><li> <span class="co">indexOf()</span>
+
+            Returns the index within the calling String object of the first occurrence of the specified value, or -1 if
+          not found.
+        </li> <li> <span class="co">lastIndexOf()</span>
+
+            Returns the index within the calling String object of the last occurrence of the specified value, or -1 if
+          not found.
+       </li>  <li> <span class="co">localeCompare()</span>
+
+            Returns a number indicating whether a reference string comes before or after or is the same as the given
+         string in sort order.
+        </li>  <li> <span class="co">match()</span>
+
+            Used to match a regular expression against a string.
+      </li> <li> <span class="co">replace()</span>
+
+            Used to find a match between a regular expression and a string, and to replace the matched substring with a
+         new substring.
+       </li>   <li> <span class="co">search()</span>
+
+            Executes the search for a match between a regular expression and a specified string.
+      </li>      <li><span class="co">slice()</span>
+
+            Extracts a section of a string and returns a new string.
+           </li><li> <span class="co">split()</span>
+
+            Splits a String object into an array of strings by separating the string into substrings.
+          </li>  <li><span class="co">substr()</span>
+
+            Returns the characters in a string beginning at the specified location through the specified number of
+           characters.
+            </li> <li><span class="co">substring()</span>
+
+            Returns the characters in a string between two indexes into the string.
+           </li> <li><span class="co">toLocaleLowerCase()</span>
+
+            The characters within a string are converted to lower case while respecting the current locale.
+           </li><li> <span class="co">toLocaleUpperCase()</span>
+
+            The characters within a string are converted to upper case while respecting the current locale.
+          </li> <li> <span class="co">toLowerCase()</span>
+
+            Returns the calling string value converted to lower case.
+          </li> <li> <span class="co">toString()</span>
+
+            Returns a string representing the specified object.
+          </li><li>  <span class="co">toUpperCase()</span>
+
+            Returns the calling string value converted to uppercase.
+         </li>   <li><span class="co">valueOf()</span>
+
+            Returns the primitive value of the specified object.</li>
+
+        </ul>
+            <h2 class="entry-subtitle mt2" id="arraymethods">Array Methods</h2>
+<ul>
+   <li> <span class="co">concat()</span>
+
+            Returns a new array comprised of this array joined with other array(s) and/or value(s).
+  </li><li>  <span class="co">every()</span>
+
+            Returns true if every element in this array satisfies the provided testing function.
+ </li>  <li> <span class="co">filter()</span>
+
+            Creates a new array with all of the elements of this array for which the provided filtering function returns
+           true.</li> 
+   <li> <span class="co">forEach()</span>
+
+            Calls a function for each element in the array.
+  </li> <li><span class="co">indexOf()</span>
+
+            Returns the first (least) index of an element within the array equal to the specified value, or -1 if none
+       is found.</li>     
+   <li> <span class="co">join()</span>
+
+            Joins all elements of an array into a string.
+  </li>  <li><span class="co">lastIndexOf()</span>
+
+            Returns the last (greatest) index of an element within the array equal to the specified value, or -1 if none
+          is found.</li>  
+   <li> <span class="co">map()</span>
+
+            Creates a new array with the results of calling a provided function on every element in this array.
+  </li><li>  <span class="co">pop()</span>
+
+            Removes the last element from an array and returns that element.
+ </li>     <li>  <span class="co">push()</span>
+
+            Adds one or more elements to the end of an array and returns the new length of the array.
+     </li>  <li> <span class="co">reduce()</span>
+
+            Apply a function simultaneously against two values of the array (from left-to-right) as to reduce it to a
+         single value.</li>   
+       <li> <span class="co">reduceRight()</span>
+
+            Apply a function simultaneously against two values of the array (from right-to-left) as to reduce it to a
+        single value.  </li>  
+       <li> <span class="co">reverse()</span>
+
+            Reverses the order of the elements of an array -- the first becomes the last, and the last becomes the
+         first. </li>  
+       <li> <span class="co">shift()</span>
+
+            Removes the first element from an array and returns that element.
+      </li> <li> <span class="co">slice()</span>
+
+            Extracts a section of an array and returns a new array.
+      </li>  <li><span class="co">some()</span>
+
+            Returns true if at least one element in this array satisfies the provided testing function.
+       </li><li> <span class="co">sort()</span>
+
+            Sorts the elements of an array.
+      </li> <li> <span class="co">splice()</span>
+
+            Adds and/or removes elements from an array.
+      </li> <li> <span class="co">toString()</span>
+
+            Returns a string representing the array and its elements.
+      </li> <li> <span class="co">unshift()</span>
+
+            Adds one or more elements to the front of an array and returns the new length of the array.
+      </li>  </ul>
             <h4 class="entry-subtitle mt4" id="sources">Sources:</h4>
-            <p><a href="https://www.codecademy.com/courses/learn-typescript/">Learn Typescript Course on Codecademy</a></p>
-            <p><a href="https://www.youtube.com/@DaveGrayTeachesCode">Typescript Full Course by Dave Gray on YouTube</a></p>
+            <p><a href="https://www.codecademy.com/courses/learn-typescript/">Learn Typescript Course on Codecademy</a>
+            </p>
+            <p><a href="https://www.typescriptlang.org/">TypeScript Docs on https://www.typescriptlang.org</a>
+            </p>
+            <p><a href="https://developer.mozilla.org/">Mozilla: Mdn Web Docs</a>
+            </p>
+            <p><a href="https://www.tutorialspoint.com/typescript/">TutorialsPoint: TypeScript</a>
+            </p>
         </main>
 
 
