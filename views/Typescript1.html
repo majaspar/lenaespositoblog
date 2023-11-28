@@ -71,6 +71,11 @@
                                 Annotations</a></p>
                         <p class="table-of-contents-entry"><a href="#Tuples">&rarr; Tuples</a></p>
                         <p class="table-of-contents-entry"><a href="#Rest">&rarr; Rest Parameters</a></p>
+                        <p class="table-of-contents-entry"><a href="#customTypes">Custom Types</a></p>
+                        <p class="table-of-contents-entry"><a href="#enums">&rarr; Enums</a></p>
+                        <p class="table-of-contents-entry"><a href="#ObjectTypes">&rarr; Object Types</a></p>
+                        <p class="table-of-contents-entry"><a href="#TypeAliases">&rarr; Type Aliases</a></p>
+                        <p class="table-of-contents-entry"><a href="#FunctionTypes">&rarr; Function Types</a></p>
 
 
 
@@ -296,14 +301,125 @@ let <span class="ct">move</span>: <span class="cpk">[string, number, boolean][]<
 
 
 
+<h2 class="mt2 mb2" id="customTypes">Custom Types</h2>
+
+            <h3 class="entry-subtitle mt2" id="enums">Numeric Enums</h3>
+
+            <p class="ec"> We use enums when we want to enumerate all the values that a variable will allow.</p>
+            <pre><code><span class="cy">enum</span> Direction {
+  North,
+  South,
+  East,
+  West
+}</code></pre>
+<p class="desc">Direction.North, Direction.South, Direction.East, and Direction.West are equal to 0, 1, 2, and 3, respectively. <br>
+    We could assign <b>Disrection.North = 3</b>, which would reassign the values of Direction.North, Direction.South, Direction.East, and Direction.West to 3, 4, 5, and 6, respectively.<br>
+We could also specify all numbers separately.</p>
+
+<p class="desc">Another example. </p>
+
+<pre><code><span class="cg">There is a shop that sells scarfs. The scarfs are available only in 3 colours.</span>
+
+<span class="cy">enum</span> <span class="cpe">Scarf</span> {
+    Blue,
+    Orange,
+    Purple
+}
+
+<span class="cg">We received an order for 3 blue scarfs, 1 purple and 2 orange. Let's visualize our order as an array.</span>
+
+let <span class="ct">order</span>: <span class="cpk">[<span class="cpe">Scarf</span>, number][]</span> = [
+    [Scarf.Blue, 3],
+    [Scarf.Purple, 1],
+    [Scarf.Orange, 2]
+]
+</code></pre>
+
+
+<h3 class="entry-subtitle mt2" >String Enums</h3>
+
+<p class="ec">When working with string enums, we need to assign the strings explicitly - they will not be assigned automatically as it happens with numeric enums. The convention is assigning a variable to a value that is its capitalized version.</p>
+<pre><code><span class="cy">enum</span> <span class="cpe">Direction</span> { 
+    North = 'NORTH', 
+    South = 'SOUTH', 
+    East = 'EAST', 
+    West = 'WEST' 
+}
+
+</code></pre>
+
+<h3 class="entry-subtitle mt2" id="ObjectTypes">Object Types </h3>
+<p class="ec">TypeScript has no restrictions when it comes to the types of an object's properties. They can be enums, arrays, and even other object types.</p>
+<pre><code>let <span class="cpe">myCar</span>: { <span class="cb">make</span>: <span class="cpk">string</span>, <span class="cb">year</span>: <span class="cpk">number</span> };
+
+<span class="cpe">myCar</span> = { <span class="cb">make</span>: 'Dacia', <span class="cb">year</span>: 2019 }</code></pre>
+
+
+
+<h3 class="entry-subtitle mt2" id="TypeAliases">Type Aliases</h3>
+
+<p class="ec">We can customize the types and use type aliases. This is useful for referring to complicated types that need to be repeated, especially object types and tuple types. </p>
+
+<pre><code><span class="cy">type</span> <span class="cpe">MyString</span> = <span class="cpk">string</span>;
+
+let <span class="ct">hi</span>: <span class="cpe">MyString</span> = 'Hi';</code></pre>
+
+<p class="desc">Example from Codecademy</p>
+
+<pre><code><span class="cy">type</span> <span class="cpe">Coord</span> = <span class="cpk">[number, number, string, number, number, string]</span>
+
+let <span class="ct">codecademyCoordinates</span>: <span class="cpe">Coord</span> = [40, 43.2, 'N', 73, 59.8, 'W'];
+let <span class="ct">bermudaTCoordinates</span>: <span class="cpe">Coord</span> = [25, 0 , 'N' , 71, 0, 'W'];</code></pre>
 
 
 
 
-            <h2 class="entry-subtitle mt2" id=""></h2>
-            <h2 class="entry-subtitle mt2" id=""></h2>
-            <h2 class="entry-subtitle mt2" id=""></h2>
-            <h2 class="entry-subtitle mt2" id=""></h2>
+
+
+<h3 class="entry-subtitle mt2" id="FunctionTypes">Function Types</h3>
+<p class="ec">In TypeScript we can specify the argument types and return type of a function thanks to function types. Note that even if there is only one parameter, we should not omit the parentheses.</p>
+
+<pre><code><span class="cy">type</span> <span class="cpe">Function</span> = <span class="cpk">(<span class="ct">argument1</span><span class="cpk">: string, <span class="ct">argument2</span>: string) <span class="ct">=></span> number</span>
+
+        <span class="cg">// This function type will take in two string arguments and return a number.</span></code></pre>
+
+
+
+
+
+
+<h3 class="entry-subtitle mt2" id="GenericTypes">Generic Types</h3>
+<p class="ec">Generic types also called <b>generics</b> let us make collections of types that have certain similarities. <b>T</b> is the placeholder (it can be replaced by any other letter or word) later replaced with the provided type.</p>
+
+<pre><code><span class="cy">type</span> <span class="cpe">Colours</span><span class="cpk">&lt;T&gt;</span> = {
+  <span class="ct">primary</span>: <span class="cpk">T</span>, <span class="ct">secondary</span>: <span class="cpk">[T, T]</span>, <span class="ct">tertiary</span>: <span class="cpk">T[]</span>
+};
+
+
+let <span class="cb">warmPallete</span>: <span class="cpe">Colours</span><span class="cpk">&lt;string> </span>= {
+    <span class="ct">primary</span>: 'red',
+    <span class="ct">secondary</span>: ['orange', 'brown'],
+    <span class="ct">tertiary</span>: ['yellow', 'lightyellow', 'beige', 'lightbrown']
+}</code></pre>
+
+
+
+
+
+<h2 class="entry-subtitle mt2" id="UnionTypes">Union Types</h2>
+
+<p class="ec">TypeScript allows us to be flexible with how specific our types are by combining different types.</p>
+
+
+
+
+
+
+
+
+
+
+
             <h2 class="entry-subtitle mt2" id=""></h2>
             <h2 class="entry-subtitle mt2" id=""></h2>
             <h2 class="entry-subtitle mt2" id=""></h2>
