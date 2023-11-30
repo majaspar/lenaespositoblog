@@ -76,6 +76,19 @@
                         <p class="table-of-contents-entry"><a href="#ObjectTypes">&rarr; Object Types</a></p>
                         <p class="table-of-contents-entry"><a href="#TypeAliases">&rarr; Type Aliases</a></p>
                         <p class="table-of-contents-entry"><a href="#FunctionTypes">&rarr; Function Types</a></p>
+                        <p class="table-of-contents-entry"><a href="#UnionTypes">Union Types</a></p>
+                        <p class="table-of-contents-entry"><a href="#LiteralTypes">&rarr; Literal Types</a></p>
+
+                        <p class="table-of-contents-entry"><a href="#interface">Type vs. interface</a></p>
+                        <p class="table-of-contents-entry"><a href="#classes">Classes</a></p>
+                        <p class="table-of-contents-entry"><a href="#Public">&rarr; Public, private, protected</a></p>
+                        <p class="table-of-contents-entry"><a href="#Static">&rarr; Static</a></p>
+                        <p class="table-of-contents-entry"><a href="#Interfaceclass">Interface & class</a></p>
+                        <p class="table-of-contents-entry"><a href="#ComposedTypes">Composed Types</a></p>
+
+                        <p class="table-of-contents-entry"><a href="#extends">Extending Interfaces</a></p>
+
+                        <p class="table-of-contents-entry"><a href="#IndexSignatures">Index Signatures</a></p>
 
 
 
@@ -185,7 +198,7 @@ function <span class="co">hello</span>(name: <span class="cpk">string</span>){
             <h3 class="entry-subtitle mt2" id="OptionalParameters">Optional Parameters</h3>
 
             <p class="ec">If a parameter is supposed to be optional, we need to add a <span class="cb"><b>?</b></span>
-                after its name.</p>
+                after its name. If a function has multiple parameters the optional ones should be listed as last.</p>
             <pre><code>function <span class="co">hello</span>(<span class="cb">name?</span>: <span class="cpk">string</span>) {
   <span class="cr">console.log</span>(`Hello, ${<span class="cb">name</span> || 'everyone'}!`);
 }
@@ -193,6 +206,18 @@ function <span class="co">hello</span>(name: <span class="cpk">string</span>){
 <span class="co">hello()</span>        <span class="cg">// Hello, everyone!</span>
 </code></pre>
 
+            <p class="desc">We need to use a <b>type guard</b> which will narrow down the possible value of our optional
+                parameter.</p>
+            <pre><code>const <span class="co">addNumbers</span> = (num1: <span class="cpk">number</span>, num2: <span class="cpk">number</span>, num3<span class="cb">?</span>: <span class="cpk">number</span>): <span class="cpk">number</span> => {
+    if (<span class="cy">typeof</span> num3 !== 'undefined') {
+        <span class="cy">return</span> num1 + num2 + num3
+    }
+    <span class="cy">return</span> num1 + num2
+}
+
+<span class="co">addNumbers</span>(1, 4, 6)             <span class="cg">// 11</span>
+<span class="co">addNumbers</span>(5, 9)                <span class="cg">// 14</span>
+</code></pre>
 
 
 
@@ -261,22 +286,25 @@ let <span class="ct">colours</span>: <span class="cpk">string[]</span> = [1, 2] 
 </code></pre>
 
             <h3 class="entry-subtitle mt2" id="Tuples">Tuples</h3>
-            <p class="ec">Tuples are arrays with a fixed sequence of types. With tuples we know the exact number of elements it has and the exact type of each of them.<br>
-            Note that tuples and arrays do not have compatible types within TypeScript, which means that an array cannot be assigned to a tuple.</p>
+            <p class="ec">Tuples are arrays with a fixed sequence of types. With tuples we know the exact number of
+                elements it has and the exact type of each of them.<br>
+                Note that tuples and arrays do not have compatible types within TypeScript, which means that an array
+                cannot be assigned to a tuple.</p>
 
             <pre><code>let <span class="ct">tuple</span>: <span class="cpk">[string, number, string, boolean]</span> = ['spring', 4, 'Is it?', false]; </code></pre>
 
 
             <h2 class="entry-subtitle mt2" id="Rest">Rest Parameters</h2>
-<p class="ec">The rest parameter syntax allows a function to accept an indefinite number of arguments as an array</p>
+            <p class="ec">The rest parameter syntax allows a function to accept an indefinite number of arguments as an
+                array</p>
 
-<pre><code>function eat(breakfast, ...dinner: string[]) {
-    <span class="cy">for</span>(let i = 0; i < dinner.length; i++) {
-        <span class="cr">console.log</span>(dinner[i])
+            <pre><code>function <span class="co">eat</span>(<span class="cb">breakfast</span>, <span class="cb">...dinner</span>: <span class="cpk">string[]</span>) {
+    <span class="cy">for</span>(let i = 0; i < <span class="cb">dinner</code>.length; i++) {
+        <span class="cr">console.log</span>(<span class="cb">dinner</span>[i])
     }
 }
 </code></pre>
-<pre><code>function <span class="co">moveYourFeet</span>(<span class="cb">moveDirection</span>: <span class="cpk">string</span>, <span class="cb">moveReps</span>: <span class="cpk">number</span>, <span class="cb">fast</span>: <span class="cpk">boolean</span>): <span class="cpk">void</span> {
+            <pre><code>function <span class="co">moveYourFeet</span>(<span class="cb">moveDirection</span>: <span class="cpk">string</span>, <span class="cb">moveReps</span>: <span class="cpk">number</span>, <span class="cb">fast</span>: <span class="cpk">boolean</span>): <span class="cpk">void</span> {
     <span class="cr">console.log</span>(`Move your feet to the ${<span class="cb">moveDirection</span>} ${<span class="cb">moveReps</span>} times!`);
     <span class="cy">if</span> (<span class="cb">fast</span>) {
         <span class="cr">console.log</span>('Do it fast!');
@@ -301,7 +329,7 @@ let <span class="ct">move</span>: <span class="cpk">[string, number, boolean][]<
 
 
 
-<h2 class="mt2 mb2" id="customTypes">Custom Types</h2>
+            <h2 class="mt2 mb2" id="customTypes">Custom Types</h2>
 
             <h3 class="entry-subtitle mt2" id="enums">Numeric Enums</h3>
 
@@ -312,13 +340,15 @@ let <span class="ct">move</span>: <span class="cpk">[string, number, boolean][]<
   East,
   West
 }</code></pre>
-<p class="desc">Direction.North, Direction.South, Direction.East, and Direction.West are equal to 0, 1, 2, and 3, respectively. <br>
-    We could assign <b>Disrection.North = 3</b>, which would reassign the values of Direction.North, Direction.South, Direction.East, and Direction.West to 3, 4, 5, and 6, respectively.<br>
-We could also specify all numbers separately.</p>
+            <p class="desc">Direction.North, Direction.South, Direction.East, and Direction.West are equal to 0, 1, 2,
+                and 3, respectively. <br>
+                We could assign <b>Disrection.North = 3</b>, which would reassign the values of Direction.North,
+                Direction.South, Direction.East, and Direction.West to 3, 4, 5, and 6, respectively.<br>
+                We could also specify all numbers separately.</p>
 
-<p class="desc">Another example. </p>
+            <p class="desc">Another example. </p>
 
-<pre><code><span class="cg">There is a shop that sells scarfs. The scarfs are available only in 3 colours.</span>
+            <pre><code><span class="cg">There is a shop that sells scarfs. The scarfs are available only in 3 colours.</span>
 
 <span class="cy">enum</span> <span class="cpe">Scarf</span> {
     Blue,
@@ -336,10 +366,12 @@ let <span class="ct">order</span>: <span class="cpk">[<span class="cpe">Scarf</s
 </code></pre>
 
 
-<h3 class="entry-subtitle mt2" >String Enums</h3>
+            <h3 class="entry-subtitle mt2">String Enums</h3>
 
-<p class="ec">When working with string enums, we need to assign the strings explicitly - they will not be assigned automatically as it happens with numeric enums. The convention is assigning a variable to a value that is its capitalized version.</p>
-<pre><code><span class="cy">enum</span> <span class="cpe">Direction</span> { 
+            <p class="ec">When working with string enums, we need to assign the strings explicitly - they will not be
+                assigned automatically as it happens with numeric enums. The convention is assigning a variable to a
+                value that is its capitalized version.</p>
+            <pre><code><span class="cy">enum</span> <span class="cpe">Direction</span> { 
     North = 'NORTH', 
     South = 'SOUTH', 
     East = 'EAST', 
@@ -348,25 +380,27 @@ let <span class="ct">order</span>: <span class="cpk">[<span class="cpe">Scarf</s
 
 </code></pre>
 
-<h3 class="entry-subtitle mt2" id="ObjectTypes">Object Types </h3>
-<p class="ec">TypeScript has no restrictions when it comes to the types of an object's properties. They can be enums, arrays, and even other object types.</p>
-<pre><code>let <span class="cpe">myCar</span>: { <span class="cb">make</span>: <span class="cpk">string</span>, <span class="cb">year</span>: <span class="cpk">number</span> };
+            <h3 class="entry-subtitle mt2" id="ObjectTypes">Object Types </h3>
+            <p class="ec">TypeScript has no restrictions when it comes to the types of an object's properties. They can
+                be enums, arrays, and even other object types.</p>
+            <pre><code>let <span class="cpe">myCar</span>: { <span class="cb">make</span>: <span class="cpk">string</span>, <span class="cb">year</span>: <span class="cpk">number</span> };
 
 <span class="cpe">myCar</span> = { <span class="cb">make</span>: 'Dacia', <span class="cb">year</span>: 2019 }</code></pre>
 
 
 
-<h3 class="entry-subtitle mt2" id="TypeAliases">Type Aliases</h3>
+            <h3 class="entry-subtitle mt2" id="TypeAliases">Type Aliases</h3>
 
-<p class="ec">We can customize the types and use type aliases. This is useful for referring to complicated types that need to be repeated, especially object types and tuple types. </p>
+            <p class="ec">We can customize the types and use type aliases. This is useful for referring to complicated
+                types that need to be repeated, especially object types and tuple types. </p>
 
-<pre><code><span class="cy">type</span> <span class="cpe">MyString</span> = <span class="cpk">string</span>;
+            <pre><code><span class="cy">type</span> <span class="cpe">MyString</span> = <span class="cpk">string</span>;
 
 let <span class="ct">hi</span>: <span class="cpe">MyString</span> = 'Hi';</code></pre>
 
-<p class="desc">Example from Codecademy</p>
+            <p class="desc">Example from Codecademy</p>
 
-<pre><code><span class="cy">type</span> <span class="cpe">Coord</span> = <span class="cpk">[number, number, string, number, number, string]</span>
+            <pre><code><span class="cy">type</span> <span class="cpe">Coord</span> = <span class="cpk">[number, number, string, number, number, string]</span>
 
 let <span class="ct">codecademyCoordinates</span>: <span class="cpe">Coord</span> = [40, 43.2, 'N', 73, 59.8, 'W'];
 let <span class="ct">bermudaTCoordinates</span>: <span class="cpe">Coord</span> = [25, 0 , 'N' , 71, 0, 'W'];</code></pre>
@@ -376,22 +410,26 @@ let <span class="ct">bermudaTCoordinates</span>: <span class="cpe">Coord</span> 
 
 
 
-<h3 class="entry-subtitle mt2" id="FunctionTypes">Function Types</h3>
-<p class="ec">In TypeScript we can specify the argument types and return type of a function thanks to function types. Note that even if there is only one parameter, we should not omit the parentheses.</p>
+            <h3 class="entry-subtitle mt2" id="FunctionTypes">Function Types</h3>
+            <p class="ec">In TypeScript we can specify the argument types and return type of a function thanks to
+                function types. Note that even if there is only one parameter, we should not omit the parentheses.</p>
 
-<pre><code><span class="cy">type</span> <span class="cpe">Function</span> = <span class="cpk">(<span class="ct">argument1</span><span class="cpk">: string, <span class="ct">argument2</span>: string) <span class="ct">=></span> number</span>
+            <pre><code><span class="cy">type</span> <span class="cpe">Function</span> = <span class="cpk">(<span class="ct">argument1</span><span class="cpk">: string, <span class="ct">argument2</span>: string) <span class="ct">=></span> number</span>
 
         <span class="cg">// This function type will take in two string arguments and return a number.</span></code></pre>
 
+            <pre><code><span class="cy">type</span> <span class="cpe">Function</span> = 
+</code></pre>
 
 
 
 
+            <h3 class="entry-subtitle mt2" id="GenericTypes">Generic Types</h3>
+            <p class="ec">Generic types also called <b>generics</b> let us make collections of types that have certain
+                similarities. <b>T</b> is the placeholder (it can be replaced by any other letter or word) later
+                replaced with the provided type.</p>
 
-<h3 class="entry-subtitle mt2" id="GenericTypes">Generic Types</h3>
-<p class="ec">Generic types also called <b>generics</b> let us make collections of types that have certain similarities. <b>T</b> is the placeholder (it can be replaced by any other letter or word) later replaced with the provided type.</p>
-
-<pre><code><span class="cy">type</span> <span class="cpe">Colours</span><span class="cpk">&lt;T&gt;</span> = {
+            <pre><code><span class="cy">type</span> <span class="cpe">Colours</span><span class="cpk">&lt;T&gt;</span> = {
   <span class="ct">primary</span>: <span class="cpk">T</span>, <span class="ct">secondary</span>: <span class="cpk">[T, T]</span>, <span class="ct">tertiary</span>: <span class="cpk">T[]</span>
 };
 
@@ -406,180 +444,431 @@ let <span class="cb">warmPallete</span>: <span class="cpe">Colours</span><span c
 
 
 
-<h2 class="entry-subtitle mt2" id="UnionTypes">Union Types</h2>
+            <h2 class="entry-subtitle mt2" id="UnionTypes">Union Types</h2>
 
-<p class="ec">TypeScript allows us to be flexible with how specific our types are by combining different types.</p>
+            <p class="ec">TypeScript allows us to be flexible with how specific our types are by combining different
+                types. Each type in a union is called a <strong>type member</strong>. </p>
 
-
-
-
-
+            <pre><code>let <span class="ct">phoneNumber</span>: <span class="cpk">string | number</span></code></pre>
 
 
 
+            <h3 class="entry-subtitle mt2" id="LiteralTypes">Unions with Literal Types</h3>
+
+            <pre><code><span class="cy">type</span> <span class="cpe">Color</span> = <span class="cpk">'green' | 'yellow' | 'red'</span> </code></pre>
 
 
 
-            <h2 class="entry-subtitle mt2" id=""></h2>
-            <h2 class="entry-subtitle mt2" id=""></h2>
-            <h2 class="entry-subtitle mt2" id=""></h2>
-            <h2 class="entry-subtitle mt2" id=""></h2>
-            <h2 class="entry-subtitle mt2" id=""></h2>
-            <h2 class="entry-subtitle mt2" id=""></h2>
-            <h2 class="entry-subtitle mt2" id=""></h2>
-            <h2 class="entry-subtitle mt2" id=""></h2>
-            <h2 class="entry-subtitle mt2" id=""></h2>
-            <h2 class="entry-subtitle mt2" id=""></h2>
-            <h2 class="entry-subtitle mt2" id=""></h2>
-            <h2 class="entry-subtitle mt2" id=""></h2>
-            <h2 class="entry-subtitle mt2" id=""></h2>
-            <h2 class="entry-subtitle mt2" id=""></h2>
-            <h2 class="entry-subtitle mt2" id=""></h2>
+            <h2 class="entry-subtitle mt2" id="in">In</h2>
+
+            <p class="ec">It's useful to use the <b>in</b> operator when we want to see if a specific method exists on a
+                type instead of a type like 'string'. TypeScript recognizes in as a <b>type guard</b>.</p>
+
+            <pre><code><span class="cy">type</span> <span class="cpe">Fantasy</span> = {
+  <span class="co">canDoMagic</span>: () => <span class="cpk">void</span>;
+}
+
+<span class="cy">type</span> <span class="cpe">Contemporary</span> = {
+  <span class="co">cantDoMagic</span>: () => <span class="cpk">void</span>;
+}
+
+function play(sport: <span class="cpe">Fantasy</span> | <span class="cpe">Contemporary</span>) {
+  if ('<span class="co">canDoMagic</span>' <span class="cb">in</span> <span class="ct">book</span>) {
+    return book.<span class="co">canDoMagic()</span>;
+  }
+
+  if ('<span class="co">cantDoMagic</span>' <span class="cb">in</span> <span class="ct">book</span>) {
+    return book.<span class="co">cantDoMagic()</span>;
+  }
+}</code></pre>
+
+
+
+            <h2 class="entry-subtitle mt2" id="interface">Type vs. interface</h2>
+
+            <p class="ec">The syntaxes for type and interface are slightly different, but both will enforce the typed
+                object at compile time when typing a variable. The difference between these two is that <span
+                    class="cy">interface</span> can only be used to type objects, while <span class="cy">type</span> can
+                be used to type objects, primitives, and more.<br>
+                Interface, then, is perfect for writing object-oriented programs because these programs need many typed
+                objects.</p>
+
+            <pre><code><span class="cy">type</span> <span class="cpe">Person</span> = {
+    height: <span class="cpk">number</span>
+    favColour: <span class="cpk">string</span>
+}
+
+const <span class="ct">list</span>: <span class="cpe">Person</span> = ...
+
+<span class="cy">interface</span> <span class="cpe">Person</span> {
+    height: <span class="cpk">number</span>
+    favColour:<span class="cpk">string</span>
+}
+const <span class="ct">list</span>: <span class="cpe">Person</span> = ...
+</code></pre>
 
 
 
 
 
 
+            <h2 class="entry-subtitle mt2" id="classes">Classes</h2>
+
+            <h3 class="entry-subtitle mt2" id="Public">&rarr; Public, private, protected</h3>
+
+            <p class="ec">Parameters and methods inside of a class are called <b>members</b>.</p>
+            <p class="desc">We need to have the property (here: height, etc.) as a member of a class and in the
+                constructor.</p>
+            <pre><code><span class="cy">class</span> <span class="cpe">Person</span> {
+    <span class="ct">height</span>: <span class="cpk">number</span>
+    <span class="ct">favColour</span>: <span class="cpk">string</span>
+    <span class="ct">age</span>: <span class="cpk">number</span>
+    <span class="ct">language</span>: <span class="cpk">string</span>
+
+    constructor (
+        <span class="ct">height</span>: <span class="cpk">number</span>, 
+        <span class="ct">favColour</span>: <span class="cpk">string</span>,
+        <span class="ct">age</span>: <span class="cpk">number</span>,
+        <span class="ct">language</span>: <span class="cpk">string</span>
+
+    ) {
+        this.<span class="ct">height</span> = <span class="ct">height</span>
+        this.<span class="ct">favColour</span> = <span class="ct">favColour</span>
+        this.<span class="ct">age</span> = <span class="ct">age</span>
+        this.<span class="ct">language</span> = <span class="ct">language</span>
+      }
+}
+
+<span class="desc cg">As writing every parameter 3 times seems a bit redundant, 
+we can use <b>visibility modifiers</b> to avoid it.</span>
+
+<span class="cy">class</span> <span class="cpe">Person</span> {
+   <strike><span class="ct">height</span>: <span class="cpk">number</span></strike>
+   <strike><span class="ct">favColour</span>: <span class="cpk">string</span></strike>
+   <strike><span class="ct">age</span>: <span class="cpk">number</span></strike>
+   <strike><span class="ct">language</span>: <span class="cpk">string</span></strike>
+
+    constructor (
+       <span class="cr">public readonly</span> <span class="ct">height</span>: <span class="cpk">number</span>, 
+       <span class="cr">public</span> <span class="ct">favColour</span>: <span class="cpk">string</span>, 
+       <span class="cr">private</span> <span class="ct">age</span>: <span class="cpk">number</span>,    <span class="cg">// it can be accessed inside of a class as well as inside of derived classes (if we use <b>extend</b>)</span>
+       <span class="cr">protected</span> <span class="ct">language</span>: <span class="cpk">string</span> = 'English'  <span class="cg">// it can only be accessed inside of this class</span>
+    ) {
+        this.<span class="ct">height</span> = <span class="ct">height</span>
+        this.<span class="ct">favColour</span> = <span class="ct">favColour</span>
+        this.<span class="ct">age</span> = <span class="ct">age</span>
+        this.<span class="ct">language</span> = <span class="ct">language</span>      
+      }
+
+      <span class="cr">public</span> <span class="co">getAge()</span> {
+        console.log(`Hello, I am ${this.<span class="ct">age</span>} years old.`)
+    }
+}
+
+const <span class="cpe">Adam</span> = new <span class="cpe">Person</span>(180, 'Blue', 47, 'English')
+
+<span class="cpe">Adam</span>.<span class="co">getAge()</span>                   <span class="cg">// Hello, I am 47 years old.</span>
+console.log(Adam.<span class="ct">favColour</span>)     <span class="cg">// Blue</span>
+console.log(Adam.<span class="ct">age</span>)           <span class="cg">// Error from TS: Property 'age' is private and only accessible within class 'Person'.</span>
+</code></pre>
+            <p class="ec">Note that even though TypeScript throws an error, the code will be compiled into JavaScript.
+            </p>
+
+            <p class="ec">The <b>Extends</b> keyword + <b>super()</b></p>
+
+            <pre><code><span class="cy">class</span> <span class="cpe">Chef</span> <span class="cy">extends </span><span class="cpe">Person</span> {
+    constructor (
+        <span class="cr">public</span>  <span class="ct">uniform</span>: <span class="cpk">string</span>,
+        <span class="ct">height</span>: <span class="cpk">number</span>, 
+        <span class="ct">favColour</span>: <span class="cpk">string</span>,
+        <span class="ct">age</span>: <span class="cpk">number</span>,
+    ) 
+    { 
+        <span class="cg">// super needs to come before we try to assign uniform</span>
+
+        <span class="cy">super</span>(<span class="ct">height</span>, <span class="ct">favColour</span>, <span class="ct">age</span>)   <span class="cg">// <span class="ct">language</span> is not required as it has a default value 'English'</span>
+        this.<span class="ct">uniform</span> = <span class="ct">uniform</span>
+    }
+    <span class="cr">public</span> <span class="co">getLanguage()</span> {
+        return `I speak ${this.<span class="ct">language</span>} and I wear an ${this.<span class="ct">uniform</span>}.`
+        <span class="cg">// we can access <span class="ct">language</span> because it was  </span>
+    }
+}
+
+const <span class="ct">Mario</span> = new <span class="cpe">Chef</span>('apron', 188, 'pink', 26)
+console.log(<span class="ct">Mario</span>.<span class="co">getLanguage()</span>)            // I speak English and I wear an apron.
+
+
+</code></pre>
+            <h3 class="entry-subtitle mt2" id="Static">Static</h3>
+            <p class="ec">The <span class="cb">static</span> keyword applies directly to the class - not to any object
+                you intantiate with the class.</p>
+            <pre><code><span class="cy">class</span> <span class="cpe">Genre</span> {
+
+    <span class="cr">static</span> count: <span class="cpk">number</span> = 0
+
+    <span class="cr">static</span> <span class="co">getCount()</span>: <span class="cpk">number</span> {
+        return <span class="cpe">Genre</span>.count
+    }
+
+    <span class="cr">public</span> id: number
+
+    constructor (public name: string) {
+        this.name = name
+        this.id = ++<span class="cpe">Genre</span>.count
+    }
+}
+
+const <span class="cpe">Thriller</span> = new <span class="cpe">Genre</span>('Thriller')
+const <span class="cpe">Comedy</span> = new <span class="cpe">Genre</span>('Comedy')
+const <span class="cpe">Romance</span> = new <span class="cpe">Genre</span>('Romance')
+
+console.log(<span class="cpe">Thriller</span>.id)        <span class="cg">// 1</span>
+console.log(<span class="cpe">Comedy</span>.id)          <span class="cg">// 2</span>
+console.log(<span class="cpe">Romance</span>.id)         <span class="cg">// 3</span>
+
+console.log(<span class="cpe">Genre</span>.count)        <span class="cg">// 3</span>
+</code></pre>
+
+
+            <h2 class="entry-subtitle mt2" id="Interfaceclass">Interface & class</h2>
+
+            <p class="ec">We can apply a type to an object/class with the <span class="cy">implements</span> keyword.
+            </p>
+
+            <pre><code><span class="cy">interface</span> <span class="cpe">Person</span> {
+    <span class="co">sleep</span>: (when: <span class="cpk">string</span>) => <span class="cpk">void</span>;
+}
+
+<span class="cy">class</span> <span class="cpe">NightWorker</span> <span class="cy">implements</span> <span class="cpe">Person</span> {
+    <span class="co">sleep</span>(when: <span class="cpk">string</span>) {
+        console.log(`I sleep ${when}.`)
+    }
+
+    <span class="co">work</span>() {
+        console.log('I work.')
+    }
+}
+</code></pre>
 
 
 
-            <h2 class="entry-subtitle mt2" id="stringmethods">String Methods</h2>
 
-<ul>
-      <li>  <span class="co">charAt()</span>
+            <h3 class="entry-subtitle mt2" id="ComposedTypes">Composed Types</h3>
+            <p class="ec">Object types can be nested infinitely.</p>
 
-            Returns the character at the specified index.
-     </li>  <li> <span class="co">charCodeAt()</span>
 
-            Returns a number indicating the Unicode value of the character at the given index.
-      </li>  <li><span class="co">concat()</span>
 
-            Combines the text of two strings and returns a new string.
-       </li><li> <span class="co">indexOf()</span>
+            <h2 class="entry-subtitle mt2" id="extends">Extending Interfaces</h2>
 
-            Returns the index within the calling String object of the first occurrence of the specified value, or -1 if
-          not found.
-        </li> <li> <span class="co">lastIndexOf()</span>
+            <p class="ec">The <span class="cy">extends</span> can help us organize our code. It can abstract out common
+                type members into their own interface, then copy them into more specific types.</p>
 
-            Returns the index within the calling String object of the last occurrence of the specified value, or -1 if
-          not found.
-       </li>  <li> <span class="co">localeCompare()</span>
 
-            Returns a number indicating whether a reference string comes before or after or is the same as the given
-         string in sort order.
-        </li>  <li> <span class="co">match()</span>
 
-            Used to match a regular expression against a string.
-      </li> <li> <span class="co">replace()</span>
+            <h2 class="entry-subtitle mt2" id="IndexSignatures">Index Signatures</h2>
 
-            Used to find a match between a regular expression and a string, and to replace the matched substring with a
-         new substring.
-       </li>   <li> <span class="co">search()</span>
+            <p class="ec">When we don't know the property names for an object that we want to type, it is useful to
+                write an object type that allows us to include a variable name for the property name</p>
 
-            Executes the search for a match between a regular expression and a specified string.
-      </li>      <li><span class="co">slice()</span>
+            <pre><code>[propertyName: string]: string</code></pre>
 
-            Extracts a section of a string and returns a new string.
-           </li><li> <span class="co">split()</span>
+            <!-- 
+    <pre><code>import { getBudgetAsync } from './api';
 
-            Splits a String object into an array of strings by separating the string into substrings.
-          </li>  <li><span class="co">substr()</span>
+    // Write an interface here
+    interface Budget {
+        [category: string]: number;
+    }
+    
+    async function getBudget() {
+      const result: Budget = await getBudgetAsync();
+      console.log(result);
+    }
+    
+    getBudget(); </code></pre>-->
 
-            Returns the characters in a string beginning at the specified location through the specified number of
-           characters.
-            </li> <li><span class="co">substring()</span>
 
-            Returns the characters in a string between two indexes into the string.
-           </li> <li><span class="co">toLocaleLowerCase()</span>
 
-            The characters within a string are converted to lower case while respecting the current locale.
-           </li><li> <span class="co">toLocaleUpperCase()</span>
+            <h2 class="entry-subtitle mt2" id="stringmethods">List of String Methods</h2>
 
-            The characters within a string are converted to upper case while respecting the current locale.
-          </li> <li> <span class="co">toLowerCase()</span>
+            <ul>
+                <li> <span class="co">charAt()</span>
 
-            Returns the calling string value converted to lower case.
-          </li> <li> <span class="co">toString()</span>
+                    Returns the character at the specified index.
+                </li>
+                <li> <span class="co">charCodeAt()</span>
 
-            Returns a string representing the specified object.
-          </li><li>  <span class="co">toUpperCase()</span>
+                    Returns a number indicating the Unicode value of the character at the given index.
+                </li>
+                <li><span class="co">concat()</span>
 
-            Returns the calling string value converted to uppercase.
-         </li>   <li><span class="co">valueOf()</span>
+                    Combines the text of two strings and returns a new string.
+                </li>
+                <li> <span class="co">indexOf()</span>
 
-            Returns the primitive value of the specified object.</li>
+                    Returns the index within the calling String object of the first occurrence of the specified value,
+                    or -1 if
+                    not found.
+                </li>
+                <li> <span class="co">lastIndexOf()</span>
 
-        </ul>
-            <h2 class="entry-subtitle mt2" id="arraymethods">Array Methods</h2>
-<ul>
-   <li> <span class="co">concat()</span>
+                    Returns the index within the calling String object of the last occurrence of the specified value, or
+                    -1 if
+                    not found.
+                </li>
+                <li> <span class="co">localeCompare()</span>
 
-            Returns a new array comprised of this array joined with other array(s) and/or value(s).
-  </li><li>  <span class="co">every()</span>
+                    Returns a number indicating whether a reference string comes before or after or is the same as the
+                    given
+                    string in sort order.
+                </li>
+                <li> <span class="co">match()</span>
 
-            Returns true if every element in this array satisfies the provided testing function.
- </li>  <li> <span class="co">filter()</span>
+                    Used to match a regular expression against a string.
+                </li>
+                <li> <span class="co">replace()</span>
 
-            Creates a new array with all of the elements of this array for which the provided filtering function returns
-           true.</li> 
-   <li> <span class="co">forEach()</span>
+                    Used to find a match between a regular expression and a string, and to replace the matched substring
+                    with a
+                    new substring.
+                </li>
+                <li> <span class="co">search()</span>
 
-            Calls a function for each element in the array.
-  </li> <li><span class="co">indexOf()</span>
+                    Executes the search for a match between a regular expression and a specified string.
+                </li>
+                <li><span class="co">slice()</span>
 
-            Returns the first (least) index of an element within the array equal to the specified value, or -1 if none
-       is found.</li>     
-   <li> <span class="co">join()</span>
+                    Extracts a section of a string and returns a new string.
+                </li>
+                <li> <span class="co">split()</span>
 
-            Joins all elements of an array into a string.
-  </li>  <li><span class="co">lastIndexOf()</span>
+                    Splits a String object into an array of strings by separating the string into substrings.
+                </li>
+                <li><span class="co">substr()</span>
 
-            Returns the last (greatest) index of an element within the array equal to the specified value, or -1 if none
-          is found.</li>  
-   <li> <span class="co">map()</span>
+                    Returns the characters in a string beginning at the specified location through the specified number
+                    of
+                    characters.
+                </li>
+                <li><span class="co">substring()</span>
 
-            Creates a new array with the results of calling a provided function on every element in this array.
-  </li><li>  <span class="co">pop()</span>
+                    Returns the characters in a string between two indexes into the string.
+                </li>
+                <li><span class="co">toLocaleLowerCase()</span>
 
-            Removes the last element from an array and returns that element.
- </li>     <li>  <span class="co">push()</span>
+                    The characters within a string are converted to lower case while respecting the current locale.
+                </li>
+                <li> <span class="co">toLocaleUpperCase()</span>
 
-            Adds one or more elements to the end of an array and returns the new length of the array.
-     </li>  <li> <span class="co">reduce()</span>
+                    The characters within a string are converted to upper case while respecting the current locale.
+                </li>
+                <li> <span class="co">toLowerCase()</span>
 
-            Apply a function simultaneously against two values of the array (from left-to-right) as to reduce it to a
-         single value.</li>   
-       <li> <span class="co">reduceRight()</span>
+                    Returns the calling string value converted to lower case.
+                </li>
+                <li> <span class="co">toString()</span>
 
-            Apply a function simultaneously against two values of the array (from right-to-left) as to reduce it to a
-        single value.  </li>  
-       <li> <span class="co">reverse()</span>
+                    Returns a string representing the specified object.
+                </li>
+                <li> <span class="co">toUpperCase()</span>
 
-            Reverses the order of the elements of an array -- the first becomes the last, and the last becomes the
-         first. </li>  
-       <li> <span class="co">shift()</span>
+                    Returns the calling string value converted to uppercase.
+                </li>
+                <li><span class="co">valueOf()</span>
 
-            Removes the first element from an array and returns that element.
-      </li> <li> <span class="co">slice()</span>
+                    Returns the primitive value of the specified object.</li>
 
-            Extracts a section of an array and returns a new array.
-      </li>  <li><span class="co">some()</span>
+            </ul>
+            <h2 class="entry-subtitle mt2" id="arraymethods">List of Array Methods</h2>
+            <ul>
+                <li> <span class="co">concat()</span>
 
-            Returns true if at least one element in this array satisfies the provided testing function.
-       </li><li> <span class="co">sort()</span>
+                    Returns a new array comprised of this array joined with other array(s) and/or value(s).
+                </li>
+                <li> <span class="co">every()</span>
 
-            Sorts the elements of an array.
-      </li> <li> <span class="co">splice()</span>
+                    Returns true if every element in this array satisfies the provided testing function.
+                </li>
+                <li> <span class="co">filter()</span>
 
-            Adds and/or removes elements from an array.
-      </li> <li> <span class="co">toString()</span>
+                    Creates a new array with all of the elements of this array for which the provided filtering function
+                    returns
+                    true.</li>
+                <li> <span class="co">forEach()</span>
 
-            Returns a string representing the array and its elements.
-      </li> <li> <span class="co">unshift()</span>
+                    Calls a function for each element in the array.
+                </li>
+                <li><span class="co">indexOf()</span>
 
-            Adds one or more elements to the front of an array and returns the new length of the array.
-      </li>  </ul>
+                    Returns the first (least) index of an element within the array equal to the specified value, or -1
+                    if none
+                    is found.</li>
+                <li> <span class="co">join()</span>
+
+                    Joins all elements of an array into a string.
+                </li>
+                <li><span class="co">lastIndexOf()</span>
+
+                    Returns the last (greatest) index of an element within the array equal to the specified value, or -1
+                    if none
+                    is found.</li>
+                <li> <span class="co">map()</span>
+
+                    Creates a new array with the results of calling a provided function on every element in this array.
+                </li>
+                <li> <span class="co">pop()</span>
+
+                    Removes the last element from an array and returns that element.
+                </li>
+                <li> <span class="co">push()</span>
+
+                    Adds one or more elements to the end of an array and returns the new length of the array.
+                </li>
+                <li> <span class="co">reduce()</span>
+
+                    Apply a function simultaneously against two values of the array (from left-to-right) as to reduce it
+                    to a
+                    single value.</li>
+                <li> <span class="co">reduceRight()</span>
+
+                    Apply a function simultaneously against two values of the array (from right-to-left) as to reduce it
+                    to a
+                    single value. </li>
+                <li> <span class="co">reverse()</span>
+
+                    Reverses the order of the elements of an array -- the first becomes the last, and the last becomes
+                    the
+                    first. </li>
+                <li> <span class="co">shift()</span>
+
+                    Removes the first element from an array and returns that element.
+                </li>
+                <li> <span class="co">slice()</span>
+
+                    Extracts a section of an array and returns a new array.
+                </li>
+                <li><span class="co">some()</span>
+
+                    Returns true if at least one element in this array satisfies the provided testing function.
+                </li>
+                <li> <span class="co">sort()</span>
+
+                    Sorts the elements of an array.
+                </li>
+                <li> <span class="co">splice()</span>
+
+                    Adds and/or removes elements from an array.
+                </li>
+                <li> <span class="co">toString()</span>
+
+                    Returns a string representing the array and its elements.
+                </li>
+                <li> <span class="co">unshift()</span>
+
+                    Adds one or more elements to the front of an array and returns the new length of the array.
+                </li>
+            </ul>
             <h4 class="entry-subtitle mt4" id="sources">Sources:</h4>
             <p><a href="https://www.codecademy.com/courses/learn-typescript/">Learn Typescript Course on Codecademy</a>
             </p>
