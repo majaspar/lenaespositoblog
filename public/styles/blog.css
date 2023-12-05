@@ -1304,7 +1304,7 @@ pre {
 }
 
 .article-ul {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 1rem;
 }
 
@@ -1445,14 +1445,7 @@ div.blog-entry img:hover,
     border-radius: 0.5rem;
     font-size: 1rem;
     margin-top: 0.5rem;
-    cursor: pointer;
 }
-
-.tags-entry-tag:hover {
-
-    background: var(--clr-dark-turq-green30);
-}
-
 /**************************/
 /***       pagination   ***/
 /**************************/

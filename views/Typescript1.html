@@ -57,7 +57,7 @@
                 <div class="post-table-of-contents-body">
                     <h2 class="ff-title mb2">Contents</h2>
                     <div class="hashtag-list">
-                        <p class="table-of-contents-entry"><a href="#methods">Introduction</a></p>
+                        <p class="table-of-contents-entry"><a href="#Introduction">Introduction</a></p>
                         <p class="table-of-contents-entry"><a href="#tsconfig">tsconfig</a></p>
                         <p class="table-of-contents-entry"><a href="#explicit">Explicit Return Types</a></p>
                         <p class="table-of-contents-entry"><a href="#vta">Variable Type Annotations</a></p>
@@ -76,19 +76,20 @@
                         <p class="table-of-contents-entry"><a href="#ObjectTypes">&rarr; Object Types</a></p>
                         <p class="table-of-contents-entry"><a href="#TypeAliases">&rarr; Type Aliases</a></p>
                         <p class="table-of-contents-entry"><a href="#FunctionTypes">&rarr; Function Types</a></p>
+                        <p class="table-of-contents-entry"><a href="#GenericTypes">&rarr; Generic Types</a></p>
                         <p class="table-of-contents-entry"><a href="#UnionTypes">Union Types</a></p>
                         <p class="table-of-contents-entry"><a href="#LiteralTypes">&rarr; Literal Types</a></p>
-
+                        <p class="table-of-contents-entry"><a href="#ininin">&rarr; in</a></p>
                         <p class="table-of-contents-entry"><a href="#interface">Type vs. interface</a></p>
                         <p class="table-of-contents-entry"><a href="#classes">Classes</a></p>
                         <p class="table-of-contents-entry"><a href="#Public">&rarr; Public, private, protected</a></p>
                         <p class="table-of-contents-entry"><a href="#Static">&rarr; Static</a></p>
                         <p class="table-of-contents-entry"><a href="#Interfaceclass">Interface & class</a></p>
                         <p class="table-of-contents-entry"><a href="#ComposedTypes">Composed Types</a></p>
-
                         <p class="table-of-contents-entry"><a href="#extends">Extending Interfaces</a></p>
-
+                        <!-- <p class="table-of-contents-entry"><a href="#UtilityTypes">Utility Types</a></p> -->
                         <p class="table-of-contents-entry"><a href="#IndexSignatures">Index Signatures</a></p>
+                        <p class="table-of-contents-entry"><a href="#keyof">&rarr; keyof</a></p>
 
 
 
@@ -106,7 +107,7 @@
             </div>
         </aside>
         <main class="main-post-content">
-            <p class="entry-content" id="introduction">Let's take some notes on TypeScript.</p>
+            <p class="entry-content" id="Introduction">Let's take some notes on TypeScript.</p>
             <p class="entry-content">Released in 2012 by Microsoft, TypeScript is a free and open-source programming
                 language that builds on JavaScript. It was created by Anders Hejlsberg who is also the person who
                 designed and developed C#. <br>TypeScript is designed for the development of large applications. It uses
@@ -433,14 +434,21 @@ let <span class="ct">bermudaTCoordinates</span>: <span class="cpe">Coord</span> 
   <span class="ct">primary</span>: <span class="cpk">T</span>, <span class="ct">secondary</span>: <span class="cpk">[T, T]</span>, <span class="ct">tertiary</span>: <span class="cpk">T[]</span>
 };
 
-
 let <span class="cb">warmPallete</span>: <span class="cpe">Colours</span><span class="cpk">&lt;string> </span>= {
     <span class="ct">primary</span>: 'red',
     <span class="ct">secondary</span>: ['orange', 'brown'],
     <span class="ct">tertiary</span>: ['yellow', 'lightyellow', 'beige', 'lightbrown']
 }</code></pre>
 
+<p class="desc">Another example:</p>
+<pre><code>const <span class="ct">test</span> = <T>(<span class="ct">arg</span>: <span class="cpk">T</span>): <span class="cpk">T</span> => <span class="ct">arg</span>
 
+const <span class="co">isObject</span> = <T>(<span class="ct">arg</span>: <span class="cpk">T</span>): <span class="cpk">boolean</span> => {
+    <span class="cy">return</span> (<span class="cr">typeof</span> <span class="ct">arg</span> === 'object' && !Array.isArray(<span class="ct">arg</span>) && <span class="ct">arg</span> !== null)
+}
+
+console.log(<span class="co">isObject</span>([1, 2, 3, 4]))         <span class="cg">// false</span>
+console.log(<span class="co">isObject</span>({colour: 'blue'}))     <span class="cg">// true</span></code></pre>
 
 
 
@@ -459,7 +467,7 @@ let <span class="cb">warmPallete</span>: <span class="cpe">Colours</span><span c
 
 
 
-            <h2 class="entry-subtitle mt2" id="in">In</h2>
+            <h2 class="entry-subtitle mt2" id="ininin">In</h2>
 
             <p class="ec">It's useful to use the <b>in</b> operator when we want to see if a specific method exists on a
                 type instead of a type like 'string'. TypeScript recognizes in as a <b>type guard</b>.</p>
@@ -611,11 +619,11 @@ console.log(<span class="ct">Mario</span>.<span class="co">getLanguage()</span>)
         return <span class="cpe">Genre</span>.count
     }
 
-    <span class="cr">public</span> id: number
+    <span class="cr">public</span> <span class="ct">id</span>: <span class="cpk">number</span>
 
     constructor (public name: string) {
         this.name = name
-        this.id = ++<span class="cpe">Genre</span>.count
+        this.<span class="ct">id</span> = ++<span class="cpe">Genre</span>.count
     }
 }
 
@@ -623,9 +631,9 @@ const <span class="cpe">Thriller</span> = new <span class="cpe">Genre</span>('Th
 const <span class="cpe">Comedy</span> = new <span class="cpe">Genre</span>('Comedy')
 const <span class="cpe">Romance</span> = new <span class="cpe">Genre</span>('Romance')
 
-console.log(<span class="cpe">Thriller</span>.id)        <span class="cg">// 1</span>
-console.log(<span class="cpe">Comedy</span>.id)          <span class="cg">// 2</span>
-console.log(<span class="cpe">Romance</span>.id)         <span class="cg">// 3</span>
+console.log(<span class="cpe">Thriller</span>.<span class="ct">id</span>)        <span class="cg">// 1</span>
+console.log(<span class="cpe">Comedy</span>.<span class="ct">id</span>)          <span class="cg">// 2</span>
+console.log(<span class="cpe">Romance</span>.<span class="ct">id</span>)         <span class="cg">// 3</span>
 
 console.log(<span class="cpe">Genre</span>.count)        <span class="cg">// 3</span>
 </code></pre>
@@ -637,18 +645,17 @@ console.log(<span class="cpe">Genre</span>.count)        <span class="cg">// 3</
             </p>
 
             <pre><code><span class="cy">interface</span> <span class="cpe">Person</span> {
-    <span class="co">sleep</span>: (when: <span class="cpk">string</span>) => <span class="cpk">void</span>;
+    <span class="co">sleep</span>: (<span class="ct">when</span>: <span class="cpk">string</span>) => <span class="cpk">void</span>;
 }
 
 <span class="cy">class</span> <span class="cpe">NightWorker</span> <span class="cy">implements</span> <span class="cpe">Person</span> {
-    <span class="co">sleep</span>(when: <span class="cpk">string</span>) {
-        console.log(`I sleep ${when}.`)
-    }
-
-    <span class="co">work</span>() {
-        console.log('I work.')
+    <span class="co">sleep</span>(<span class="ct">when</span>: <span class="cpk">string</span>) {
+        console.log(`I sleep ${<span class="ct">when</span>}.`)
     }
 }
+
+const <span class="cpe">Pete</span> = new <span class="cpe">NightWorker</span>
+<span class="cpe">Pete</span>.<span class="co">sleep</span>('during the day')       <span class="cg">// I sleep during the day.</span>
 </code></pre>
 
 
@@ -661,32 +668,147 @@ console.log(<span class="cpe">Genre</span>.count)        <span class="cg">// 3</
 
             <h2 class="entry-subtitle mt2" id="extends">Extending Interfaces</h2>
 
+
+
             <p class="ec">The <span class="cy">extends</span> can help us organize our code. It can abstract out common
                 type members into their own interface, then copy them into more specific types.</p>
 
 
 
+            <!-- <h2 class="entry-subtitle mt2" id="UtilityTypes">Utility Types</h2> -->
+
             <h2 class="entry-subtitle mt2" id="IndexSignatures">Index Signatures</h2>
 
             <p class="ec">When we don't know the property names for an object that we want to type, it is useful to
-                write an object type that allows us to include a variable name for the property name</p>
+                write an object type that allows us to include a variable name for the property name.<br>
+                Also, TypeScript requires an index signature if you attempt to access an object property dynamically.</p>
+   <pre><code><span class="cy">interface</span> <span class="cpe">Training</span> {
+    [index: <span class="cpk">string</span>]: <span class="cpk">number</span>
+}
+                </code></pre>
 
-            <pre><code>[propertyName: string]: string</code></pre>
+                <p class="desc">Let's try to access the properties dynamically.</p>
+<pre><code><div class="flex" style="gap: 3rem; align-items: start;"><div><span class="cy">interface</span> <span class="cpe">ShoppingList</span> {
+    Bread: <span class="cpk">number</span>,
+    Milk: <span class="cpk">number</span>,
+    Newspaper: <span class="cpk">number</span>
+}</div>
+<div class="cg"><i>instead</i></div>
+<div><span class="cy">interface</span> <span class="cpe">ShoppingList</span> {
+    [<span class="ct">index</span>: <span class="cpk">string</span>]: <span class="cpk">number</span>
+}</div>
+</div>
+const <span class="ct">todaysShopping</span>: <span class="cpe">ShoppingList</span> = {
+    Bread: 1.5,
+    Milk: 1.4,
+    Newspaper: 2
+}
 
-            <!-- 
-    <pre><code>import { getBudgetAsync } from './api';
+console.log(`I paid ${<span class="ct">todaysShopping</span>.Bread} for bread.`)      <span class="cg"> // I paid 1.5 for bread.</span>
+console.log(<span class="ct">todaysShopping</span>['Bread'])                           <span class="cg">// 1.5</span>
 
-    // Write an interface here
-    interface Budget {
-        [category: string]: number;
+let <span class="cb">prop</span>: <span class="cpk">string</span> = 'Bread'
+console.log(<span class="ct">todaysShopping</span>[<span class="cb">prop</span>])
+
+
+const <span class="ct">todaysShoppingCost</span> = (items: <span class="cpe">ShoppingList</span>): <span class="cpk">number</span> => {
+    let total = 0
+    for (const item in items) {
+        total += items[item]
     }
-    
-    async function getBudget() {
-      const result: Budget = await getBudgetAsync();
-      console.log(result);
-    }
-    
-    getBudget(); </code></pre>-->
+    return total
+}
+
+console.log(todaysShoppingCost(<span class="ct">todaysShopping</span>))                <span class="cg">// 4.9</span></code></pre>
+
+
+<h3 class="entry-subtitle mt2" id="keyof">keyof</h3>
+<p class="ec">The keyword <b>keyof</b> creates a union type as the specific string literal.</p>
+<p class="desc">For comparison purposes, first let's see an example without the <b>keyof</b> keyword.</p>
+<pre><code><span class="cy">interface</span> <span class="cpe">Song</span> {
+    [<span class="cb">key</span>: <span class="cpk">string</span>]: string | number | string[] | undefined</span>
+    <span class="ct">title</span>:<span class="cpk"> string</span>,
+    <span class="ct">singer</span>: <span class="cpk">string</span>,
+    <span class="ct">year</span>:<span class="cpk"> number</span>,
+    <span class="ct">authors?</span>: <span class="cpk">string[]</span>         <span class="cg"> // optional</span>
+}
+
+const <span class="cy">songOnlyYou</span>: <span class="cpe">Song</span> = {
+    <span class="ct">title</span>: 'Only You',
+    <span class="ct">singer</span>: 'Elvis Presley',
+    <span class="ct">year</span>: 1955
+}
+
+console.log(<span class="cy">songOnlyYou</span>.authors)           <span class="cg">// undefined    
+                                           // (there's no error as we listed <b>undefined</b> as a type option)</span>
+_____________________
+
+const <span class="cy">songOnlyYou</span>: <span class="cpe">Song</span> = {
+    <span class="ct">title</span>: 'Only You',
+    <span class="ct">singer</span>: 'Elvis Presley',
+    <span class="ct">year</span>: 1955
+    <span class="ct">authors</span>: ['Ande Rand', 'Buck Ram']
+}
+
+for (const <span class="cb">key</span> in <span class="cy">songOnlyYou</span>) {
+    console.log(`${<span class="cb">key</span>}: ${<span class="cy">songOnlyYou</span>[<span class="cb">key</span>]}`)
+}
+<span class="cg">
+// title: Only You
+// singer: Elvis Presley
+// year: 1955
+// authors: Ande Rand,Buck Ram</span>
+</code></pre>
+<p class="desc">Now let's use the <b>keyof</b> keyword in the same example.<br>
+    We will need to get rid of the index signature.</p>
+
+<pre><code><span class="cy">interface</span> <span class="cpe">Song</span> {
+    <span class="ct">title</span>:<span class="cpk"> string</span>,
+    <span class="ct">singer</span>: <span class="cpk">string</span>,
+    <span class="ct">year</span>:<span class="cpk"> number</span>,
+    <span class="ct">authors?</span>: <span class="cpk">string[]</span>
+}
+
+const <span class="cy">songOnlyYou</span>: <span class="cpe">Song</span> = {
+    <span class="ct">title</span>: 'Only You',
+    <span class="ct">singer</span>: 'Elvis Presley',
+    <span class="ct">year</span>: 1955
+    <span class="ct">authors</span>: ['Ande Rand', 'Buck Ram']
+}
+
+for (const <span class="cb">key</span> in <span class="cy">songOnlyYou</span>) {
+    console.log(`${<span class="cb">key</span>}: ${<span class="cy">songOnlyYou</span>[<span class="cb">key</span> as <span class="cr">keyof</span> <span class="cpe">Song</span>]}`)
+}
+<span class="cg">
+// title: Only You
+// singer: Elvis Presley
+// year: 1955
+// authors: Ande Rand,Buck Ram</span>
+
+OR
+
+<span class="cr">Object</span>.<span class="co">keys</span>(<span class="cy">songOnlyYou</span>).<span class="co">map</span>(key => {
+    console.log(`${<span class="cb">key</span>}: ${<span class="cy">songOnlyYou</span>[<span class="cb">key</span> as <span class="cr">keyof typeof</span> <span class="cy">songOnlyYou</span>]}`)
+})
+<span class="cg">
+// title: Only You
+// singer: Elvis Presley
+// year: 1955
+// authors: Ande Rand,Buck Ram</span>
+
+OR
+
+const <span class="co">logSongKey</span> = (<span class="cy">songOnlyYou</span>: <span class="cpe">Song</span>, <span class="cb">key</span>: <span class="cr">keyof</span> <span class="cpe">Song</span>): <span class="cpk">void</span> => {
+    console.log(`The song ${<span class="cb">key</span>} is ${<span class="cy">songOnlyYou</span>[<span class="cb">key</span>]}`)
+}
+
+<span class="co">logSongKey</span>(<span class="cy">songOnlyYou</span>, 'title')       <span class="cg"> // The song title is Only You</span>
+</code></pre>
+
+
+
+
+
 
 
 
