@@ -1313,7 +1313,9 @@ pre {
     gap: 1rem;
 }
 
-
+.homepage-categories {
+    cursor: pointer;
+}
 .blog-entry-search {
     align-items: center;
     gap: 1rem;
