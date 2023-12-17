@@ -121,7 +121,9 @@ select {
     border: 0;
 }
 
-
+.bold {
+    font-weight: bold;
+}
 
 /**************************/
 /***   UTILITY CLASSES  ***/
