@@ -587,6 +587,14 @@ ul {
 }
 
 
+.ml1 {
+    margin-left: 1rem;
+}
+
+.ml2 {
+    margin-left: 2rem;
+}
+
 .mt1 {
     margin-top: 1rem;
 }
@@ -1318,6 +1326,7 @@ pre {
 .homepage-categories {
     cursor: pointer;
 }
+
 .blog-entry-search {
     align-items: center;
     gap: 1rem;
@@ -1331,6 +1340,7 @@ pre {
 .blog-entry-search-right {
     width: 100%;
 }
+
 .blog-entry-search figure {
     width: 140px;
     display: flex;
@@ -1348,18 +1358,22 @@ pre {
     .blog-intro {
         flex-direction: column-reverse;
     }
+
     .article-ul-search {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
+
     .blog-entry-search {
         flex-direction: column;
         height: 100%;
     }
+
     .blog-entry-search img {
         width: 100%;
         height: auto;
     }
+
     .blog-entry-search figure {
         width: 100%;
     }
@@ -1450,6 +1464,7 @@ div.blog-entry img:hover,
     font-size: 1rem;
     margin-top: 0.5rem;
 }
+
 /**************************/
 /***       pagination   ***/
 /**************************/
@@ -1480,19 +1495,22 @@ div.blog-entry img:hover,
     margin-bottom: 1.5rem;
 }
 
-.entry-subtitle, .es {
+.entry-subtitle,
+.es {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
 }
 
-.entry-content, .ec {
+.entry-content,
+.ec {
     overflow-wrap: break-word;
     font-size: 1.2rem;
     margin-bottom: 1rem;
     text-align: justify;
 }
 
-.entry-content a, .ec a {
+.entry-content a,
+.ec a {
     color: var(--clr-turq-green);
 }
 
@@ -1508,35 +1526,43 @@ div.blog-entry img:hover,
 }
 
 /* colors */
-.clr-yellow, .cy {
+.clr-yellow,
+.cy {
     color: rgb(217, 255, 0);
 }
 
-.clr-turq, .ct {
+.clr-turq,
+.ct {
     color: rgb(39, 255, 255);
 }
 
-.clr-green, .cg {
+.clr-green,
+.cg {
     color: #96ff93;
 }
 
-.clr-pink, .cpk {
+.clr-pink,
+.cpk {
     color: rgb(243, 152, 255);
 }
 
-.clr-orange, .co {
+.clr-orange,
+.co {
     color: rgb(250, 190, 141);
 }
 
-.clr-purple, .cpe {
+.clr-purple,
+.cpe {
     color: rgb(141, 148, 250);
 }
 
-.clr-blue, .cb {
+.clr-blue,
+.cb {
     color: rgb(101, 197, 253);
 }
 
-.clr-red, .cr {
+.clr-red,
+.cr {
     color: rgb(253, 168, 168);
 }
 
