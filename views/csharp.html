@@ -58,6 +58,12 @@
                     <ul class="hashtag-list">
                         <li class="table-of-contents-entry"><a href="#introduction">Introduction</a></li>
                         <li class="table-of-contents-entry"><a href="#hello">Hello World!</a></li>
+                        <li class="table-of-contents-entry"><a href="#datatypes">Data types</a></li>
+                        <li class="table-of-contents-entry"><a href="#hello">Hello World!</a></li>
+                        <li class="table-of-contents-entry"><a href="#hello">Hello World!</a></li>
+                        <li class="table-of-contents-entry"><a href="#hello">Hello World!</a></li>
+                        <li class="table-of-contents-entry"><a href="#hello">Hello World!</a></li>
+                        <li class="table-of-contents-entry"><a href="#hello">Hello World!</a></li>
                     </ul>
                 </div>
                 <div class="table-of-contents-image center">
@@ -101,6 +107,7 @@
                     end of a command</li>
             </ul>
             </p>
+            <h2 class="mt2 mb2" id="datatypes">Data types</h2>
             <h3 class="mt2 mb1">Literal String</h2>
 <p class="ec"></p>
 <pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>("Hello :)");
@@ -145,10 +152,36 @@
 <span class="cg">// True</span></code></pre>
 
 <h2 class="mt3 mb1">Declaring variables</h2>
-<p class="ec">To create a new variable we need to declare its data type followed by its name.</p>
+<p class="ec">Variables are temporary storage containers for data. They can only hold values matching its specified data types.</p>
+<p class="ec">To create a new variable we need to declare its data type followed by its name. Then we can assign a value to that variable using the equals sign. The assignment happens from right to left.</p>
 <pre><code><span class="cpk">string</span> myName;
-<span class="cpk">int</span> myAge;
+myName = "Lena";
+
+<span class="cpk">int</span> myAge = 99;
 </code></pre>
+
+<h3 class="mt2 mb1">Implicitly typed local variables</h3>
+<p class="ec">
+    The <span class="cy">var</span> keyword tells the C# compiler that the data type is implied by the assigned value. Once the type is implied, the variable cannot be reassigned to a different data type.
+</p>
+<p class="ec">Variables using the var keyword must be initialized.</p>
+<pre><code><span class="cpk">var</span> myAge = 99;
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 <h4 class="mt5" id="sources">Sources:</h4>
                 <p><a
