@@ -1454,7 +1454,10 @@ div.blog-entry img:hover,
   font-size: 1rem;
   margin-top: 0.5rem;
 }
-
+.tags-entry-tag:hover {
+    cursor: pointer;
+    background: var(--clr-dark-turq-green);
+}
 /**************************/
 /***       pagination   ***/
 /**************************/
