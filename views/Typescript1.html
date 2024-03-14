@@ -272,18 +272,18 @@ comment
 
             <p class="ec">We need to put [ ] after the element type.</p>
 
-            <pre><code>let <span class="ct">colours</span>: <span class="cpk">string[]</span> = ['blue', 'purple'];
+            <pre><code>let <span class="ct">colours</span>: <span class="cpk"><span class="cpk">string[]</span></span> = ['blue', 'purple'];
 
 OR
 
 let <span class="ct">colours</span>: <span class="cpk">Array&lt;string></span> = ['blue', 'purple'];
 
 
-let <span class="ct">colours</span>: <span class="cpk">string[]</span> = [1, 2]        <span class="cg">// Type Error</span></code></pre>
+let <span class="ct">colours</span>: <span class="cpk"><span class="cpk">string[]</span></span> = [1, 2]        <span class="cg">// Type Error</span></code></pre>
 
             <p class="ec"> We can also declare multidimensional arrays: arrays of arrays (of some type).</p>
 
-            <pre><code>let <span class="ct">arr</span>: <span class="cpk">string[][]</span> = [['el1', 'el2'], ['el3', 'el4']];
+            <pre><code>let <span class="ct">arr</span>: <span class="cpk"><span class="cpk">string[]</span>[]</span> = [['el1', 'el2'], ['el3', 'el4']];
 </code></pre>
 
             <h3 class="entry-subtitle mt2" id="Tuples">Tuples</h3>
@@ -299,7 +299,7 @@ let <span class="ct">colours</span>: <span class="cpk">string[]</span> = [1, 2] 
             <p class="ec">The rest parameter syntax allows a function to accept an indefinite number of arguments as an
                 array</p>
 
-            <pre><code>function <span class="co">eat</span>(<span class="cb">breakfast</span>, <span class="cb">...dinner</span>: <span class="cpk">string[]</span>) {
+            <pre><code>function <span class="co">eat</span>(<span class="cb">breakfast</span>, <span class="cb">...dinner</span>: <span class="cpk"><span class="cpk">string[]</span></span>) {
     <span class="cy">for</span>(let i = 0; i < <span class="cb">dinner</code>.length; i++) {
         <span class="cr">console.log</span>(<span class="cb">dinner</span>[i])
     }
@@ -440,8 +440,8 @@ let <span class="cb">warmPallete</span>: <span class="cpe">Colours</span><span c
     <span class="ct">tertiary</span>: ['yellow', 'lightyellow', 'beige', 'lightbrown']
 }</code></pre>
 
-<p class="desc">Another example:</p>
-<pre><code>const <span class="ct">test</span> = <T>(<span class="ct">arg</span>: <span class="cpk">T</span>): <span class="cpk">T</span> => <span class="ct">arg</span>
+            <p class="desc">Another example:</p>
+            <pre><code>const <span class="ct">test</span> = <T>(<span class="ct">arg</span>: <span class="cpk">T</span>): <span class="cpk">T</span> => <span class="ct">arg</span>
 
 const <span class="co">isObject</span> = <T>(<span class="ct">arg</span>: <span class="cpk">T</span>): <span class="cpk">boolean</span> => {
     <span class="cy">return</span> (<span class="cr">typeof</span> <span class="ct">arg</span> === 'object' && !Array.isArray(<span class="ct">arg</span>) && <span class="ct">arg</span> !== null)
@@ -681,14 +681,15 @@ const <span class="cpe">Pete</span> = new <span class="cpe">NightWorker</span>
 
             <p class="ec">When we don't know the property names for an object that we want to type, it is useful to
                 write an object type that allows us to include a variable name for the property name.<br>
-                Also, TypeScript requires an index signature if you attempt to access an object property dynamically.</p>
-   <pre><code><span class="cy">interface</span> <span class="cpe">Training</span> {
+                Also, TypeScript requires an index signature if you attempt to access an object property dynamically.
+            </p>
+            <pre><code><span class="cy">interface</span> <span class="cpe">Training</span> {
     [index: <span class="cpk">string</span>]: <span class="cpk">number</span>
 }
                 </code></pre>
 
-                <p class="desc">Let's try to access the properties dynamically.</p>
-<pre><code><div class="flex" style="gap: 3rem; align-items: start;"><div><span class="cy">interface</span> <span class="cpe">ShoppingList</span> {
+            <p class="desc">Let's try to access the properties dynamically.</p>
+            <pre><code><div class="flex" style="gap: 3rem; align-items: start;"><div><span class="cy">interface</span> <span class="cpe">ShoppingList</span> {
     Bread: <span class="cpk">number</span>,
     Milk: <span class="cpk">number</span>,
     Newspaper: <span class="cpk">number</span>
@@ -722,15 +723,15 @@ const <span class="ct">todaysShoppingCost</span> = (items: <span class="cpe">Sho
 console.log(todaysShoppingCost(<span class="ct">todaysShopping</span>))                <span class="cg">// 4.9</span></code></pre>
 
 
-<h3 class="entry-subtitle mt2" id="keyof">keyof</h3>
-<p class="ec">The keyword <b>keyof</b> creates a union type as the specific string literal.</p>
-<p class="desc">For comparison purposes, first let's see an example without the <b>keyof</b> keyword.</p>
-<pre><code><span class="cy">interface</span> <span class="cpe">Song</span> {
-    [<span class="cb">key</span>: <span class="cpk">string</span>]: string | number | string[] | undefined</span>
+            <h3 class="entry-subtitle mt2" id="keyof">keyof</h3>
+            <p class="ec">The keyword <b>keyof</b> creates a union type as the specific string literal.</p>
+            <p class="desc">For comparison purposes, first let's see an example without the <b>keyof</b> keyword.</p>
+            <pre><code><span class="cy">interface</span> <span class="cpe">Song</span> {
+    [<span class="cb">key</span>: <span class="cpk">string</span>]: string | number | <span class="cpk">string[]</span> | undefined</span>
     <span class="ct">title</span>:<span class="cpk"> string</span>,
     <span class="ct">singer</span>: <span class="cpk">string</span>,
     <span class="ct">year</span>:<span class="cpk"> number</span>,
-    <span class="ct">authors?</span>: <span class="cpk">string[]</span>         <span class="cg"> // optional</span>
+    <span class="ct">authors?</span>: <span class="cpk"><span class="cpk">string[]</span></span>         <span class="cg"> // optional</span>
 }
 
 const <span class="cy">songOnlyYou</span>: <span class="cpe">Song</span> = {
@@ -759,14 +760,14 @@ for (const <span class="cb">key</span> in <span class="cy">songOnlyYou</span>) {
 // year: 1955
 // authors: Ande Rand,Buck Ram</span>
 </code></pre>
-<p class="desc">Now let's use the <b>keyof</b> keyword in the same example.<br>
-    We will need to get rid of the index signature.</p>
+            <p class="desc">Now let's use the <b>keyof</b> keyword in the same example.<br>
+                We will need to get rid of the index signature.</p>
 
-<pre><code><span class="cy">interface</span> <span class="cpe">Song</span> {
+            <pre><code><span class="cy">interface</span> <span class="cpe">Song</span> {
     <span class="ct">title</span>:<span class="cpk"> string</span>,
     <span class="ct">singer</span>: <span class="cpk">string</span>,
     <span class="ct">year</span>:<span class="cpk"> number</span>,
-    <span class="ct">authors?</span>: <span class="cpk">string[]</span>
+    <span class="ct">authors?</span>: <span class="cpk"><span class="cpk">string[]</span></span>
 }
 
 const <span class="cy">songOnlyYou</span>: <span class="cpe">Song</span> = {

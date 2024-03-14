@@ -46,6 +46,10 @@
             }
         }
 
+        .intscreenshot {
+            max-width: 700px;
+            float: right;
+        }
     </style>
 
     <div class="post-body-wrapper">
@@ -58,12 +62,60 @@
                     <ul class="hashtag-list">
                         <li class="table-of-contents-entry"><a href="#introduction">Introduction</a></li>
                         <li class="table-of-contents-entry"><a href="#hello">Hello World!</a></li>
+                        <li class="table-of-contents-entry"><a href="#cli">Command-Line Interface</a></li>
                         <li class="table-of-contents-entry"><a href="#datatypes">Data types</a></li>
-                        <li class="table-of-contents-entry"><a href="#hello">Hello World!</a></li>
-                        <li class="table-of-contents-entry"><a href="#hello">Hello World!</a></li>
-                        <li class="table-of-contents-entry"><a href="#hello">Hello World!</a></li>
-                        <li class="table-of-contents-entry"><a href="#hello">Hello World!</a></li>
-                        <li class="table-of-contents-entry"><a href="#hello">Hello World!</a></li>
+                        <li class="table-of-contents-entry"><a href="#variables">Declaring variables</a></li>
+                        <hr>
+                        <li class="ml1 mb1"><i>String literals</i></li>
+                        <li class="table-of-contents-entry"><a href="#escape">Character escape sequences <span
+                                    class="cpk">\</span></a></li>
+                        <li class="table-of-contents-entry"><a href="#at">Verbatim string literal <span
+                                    class="cpk">@</span></a></li>
+                        <li class="table-of-contents-entry"><a href="#unicode">Unicode escape characters <span
+                                    class="cpk">\u</span></a></li>
+                        <li class="table-of-contents-entry"><a href="#comparingStrings">Comparing strings</a></li>
+                        <li class="table-of-contents-entry"><a href="#stringConcat">String concatenation <span
+                                    class="cpk">+</span></a></li>
+                        <li class="table-of-contents-entry"><a href="#interpolation">String interpolation <span
+                                    class="cpk">$"{ } { }"</span></a></li>
+                        <li class="table-of-contents-entry"><a href="#StringBuilder">StringBuilder Type</a></li>
+                        <hr>
+                        <li class="ml1 mb1"><i>Operations on numbers</i></li>
+                        <li class="table-of-contents-entry"><a href="#add">Add or concatenate? <span
+                                    class="cpk">+</span></a></li>
+                        <li class="table-of-contents-entry"><a href="#math">Math operations</a></li>
+                        <li class="table-of-contents-entry"><a href="#decimals">Dividing decimals</a></li>
+                        <li class="table-of-contents-entry"><a href="#modulus">Modulus <span class="cpk">%</span></a>
+                        </li>
+                        <li class="table-of-contents-entry"><a href="#increment">Compound assignment operators <span
+                                    class="cpk">=+</span></a></li>
+
+                        <hr>
+                        <li class="table-of-contents-entry"><a href="#convertingtypes">Converting data types</a>
+                        </li>
+                        <li class="table-of-contents-entry"><a href="#datetime">Working with Date and Time</a></li>
+                        <li class="table-of-contents-entry"><a href="#if">If, else if, else</a></li>
+                        <li class="table-of-contents-entry"><a href="#switch">The Switch statement</a></li>
+                        <li class="table-of-contents-entry"><a href="#loops">Loop options</a></li>
+                        <li class="table-of-contents-entry"><a href="#referenceVariables">Reference variables</a></li>
+
+                        <hr>
+                        <li class="table-of-contents-entry"><a href="#methods">Methods</a></li>
+                        <li class="table-of-contents-entry"><a href="#classlibrary">Explore .NET Class Library</a></li>
+                        <li class="table-of-contents-entry"><a href="#state">Stateful vs stateless methods</a></li>
+                        <hr>
+                        <li class="table-of-contents-entry"><a href="#enums">Enumerations</a></li>
+                        <li class="table-of-contents-entry"><a href="#Struct">Struct</a></li>
+                        <hr>
+                        <li class="table-of-contents-entry"><a href="#arrays">Arrays</a></li>
+                        <li class="table-of-contents-entry ml1"><a href="#foreach">foreach</a></li>
+                        <li class="table-of-contents-entry"><a href="#Collections">Collections</a></li>
+                        <hr>
+                        <li class="table-of-contents-entry"><a href="#Namespaces">Namespaces</a></li>
+                        <li class="table-of-contents-entry"><a href="#static">Static</a></li>
+                        <li class="table-of-contents-entry"><a href="#nullable">Nullable object types</a></li>
+                        <li class="table-of-contents-entry"><a href="#record">Records</a></li>
+
                     </ul>
                 </div>
                 <div class="table-of-contents-image center">
@@ -101,92 +153,934 @@
                         class="cy">methods</span>. Methods are always followed by "()"- fancy term: <span
                         class="cy">method invocation operator</span>. Each method has only one job.</li>
                 <li>&rarr; <i>Hello World!</i> is a <span class="cy">literal string</span></li>
-                <li>&rarr; The period is the <span class="cy">member access operator</span> uset to navigate from a
+                <li>&rarr; The period is the <span class="cy">member access operator</span> used to navigate from a
                     class to its methods</li>
                 <li>&rarr; the semicolon is the <span class="cy">end of statement operator</span> and it indicates the
                     end of a command</li>
             </ul>
             </p>
+            <hr class="mt2 mb2">
+            <h2 id="cli">Command-Line Interface</h2>
+            <hr class="mt2 mb2">
+            <p class="ec">The structure of a CLI command consists of three parts:
+            <ol class="ec">
+                <li>the driver: <span class="cr">dotnet</span></li>
+                <li>the command: <span class="cy ">new</span> (new application) <span class="cy ">console</span> (type
+                    of application)</li>
+                <li>the command arguments: <span class="cb">-o ./new_project_folder_name</span></li>
+            </ol>
+            </p>
+            <p class="desc">This command will use a .NET program template to create a new console
+                application in the specified folder location:</p>
+            <pre><code><span class="cr">dotnet</span> <span class="cy ">new console</span> <span class="cb">-o ./new_project_folder_name</span></code></pre>
+
+            <p class="desc">To compile a build of your application, use the following command inside of your
+                project directory:</p>
+            <pre><code><span class="cr">dotnet</span> <span class="cy ">build</span></code></pre>
+            <p class="ec">This command will build the project and its dependencies into a set of binaries.
+            </p>
+
+            <p class="desc">To run/execute your application, enter the following command:</p>
+            <pre><code><span class="cr">dotnet</span> <span class="cy ">run</span></code></pre>
+
+            <hr class="mt2">
             <h2 class="mt2 mb2" id="datatypes">Data types</h2>
+            <div class="ec">Data types can be predefined - built into to the language or user-defined - users can create
+                them.</div>
+            <hr>
             <h3 class="mt2 mb1">Literal String</h2>
-<p class="ec"></p>
-<pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>("Hello :)");
+                <p class="ec"></p>
+                <pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>("Hello :)");
 <span class="cg">// Hello! :)</span>
-</code></pre>     
-            <h3 class="mt2 mb1">Char Literal</h2>
-                <p class="ec">A <span class="cy">char literal</span> is a single alphanumeric character surrounded by
-                    single quotes that we can use for presentation - not calculation.</p>
-<pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>('A');
-<span class="cg">// A</span>
 </code></pre>
 
-<h3 class="mt2 mb1">Integer literal</h3>
-<p class="ec">To display a whole number value in the console we use <span class="cy">int literals</span>. </p>
-<pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>(<span class="cb">123</span>)
+                <p class="ec">Members of string Type:</p>
+                <pre><code><span class="cpk">int</span> howLong = myString.<span class="co">Length</span>;
+<span class="cpk">string</span> upper = myString.<span class="co">ToUpper()</span>;
+<span class="cpk">string</span> lower = myString.<span class="co">ToLower()</span>;
+<span class="cpk">bool</span> hasHello = myString.<span class="co">Contains</span>("Hello");
+<span class="cpk">bool</span> startsWithA = myString.<span class="co">StartsWith</span>("A");
+<span class="cpk">bool</span> endsWithA = myString.<span class="co">EndsWith</span>("A");
+<span class="cpk">string</span> replace = myString.<span class="co">Replace</span>("a", "b");
+<span class="cpk">string</span> substring = myString.<span class="co">Substring</span>(1, 3);       <span class="cg">// first number: where to start from, second number: how many characters</span>
+<span class="cpk">bool</span> firstName = myString.<span class="co">Equals</span>("Lena"); </code>
+</pre>
+                <h3 class="mt2 mb1">Char Literal</h2>
+                    <p class="ec">A <span class="cy">char literal</span> is a single alphanumeric character surrounded
+                        by
+                        single quotes that we can use for presentation - not calculation.</p>
+                    <pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>('A');
+<span class="cg">// A</span>
+</code></pre>
+                    <p class="ec">Members of char Type:</p>
+                    <pre><code><span class="cpk">char</span> myChar = 'a';
+
+<span class="cpk">bool</span> isCharWhiteSpace = char.<span class="co">IsWhiteSpace</span>(myChar);         <span class="cg">// checking if myChar is an empty space</span>
+<span class="cpk">bool</span> isCharDigit = char.<span class="co">IsDigit</span>(myChar);                   <span class="cg">// checking if myChar is a digit</span>
+<span class="cpk">bool</span> isCharPunctuation = char.<span class="co">IsPunctuation</span>(myChar);        <span class="cg">// checking if myChar is a punctuation mark</span>
+</code></pre>
+
+                    <h3 class="mt2 mb1">Integer literal</h3>
+                    <p class="ec">To display a whole number value in the console we use <span class="cy">int
+                            literals</span>. </p>
+                    <pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>(<span class="cb">123</span>)
 <span class="cg">// 123</span>
 </code></pre>
 
+                    <p class="ec">Members of int Type:</p>
 
-<h3 class="mt2 mb1">Floating-point Literal</h2>
-<p class="ec">C# supports three data types to represent decimal numbers: float, double, and decimal. Each type supports varying degrees of precision.</p>
-<p class="ec">To create a float, we append the letter <b>F/f</b> (<span class="cy">literal suffix</span>) after the number. The literal suffix tells the compiler you wish to work with a value of float type. </p>
+                    <pre><code><span class="cpk">int</span> MaxValue = int.<span class="co">MaxValue</span>;         <span class="cg">// 2147483647</span>
+<span class="cpk">int</span> MinValue = int.<span class="co">MinValue</span>;         <span class="cg">// -2147483648</span></code></pre>
 
-<pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>(<span class="cb">0.25F</span>)
+
+                    <div class="ec mt2 mb2 intscreenshot"><img src="/assets/csharpint.png" width="100%" alt=""><br />
+                        <figcaption class="right"><i>Source:
+                                <a
+                                    href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/integral-numeric-types">
+                                    https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/integral-numeric-types</a></i>
+                        </figcaption>
+                    </div>
+
+                    <h3 class="mt2 mb1">Floating-point Literal</h2>
+                        <p class="ec">C# supports three data types to represent decimal numbers: float, double, and
+                            decimal. Each type supports varying degrees of precision.</p>
+                        <p class="ec">To create a float, we append the letter <b>F/f</b> (<span class="cy">literal
+                                suffix</span>) after the number. The literal suffix tells the compiler you wish to work
+                            with a value of float type. </p>
+
+                        <pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>(<span class="cb">0.25F</span>)
 <span class="cg">// 0.25</span></code></pre>
 
-<h3 class="mt2 mb1">Double literal</h3>
-<p class="ec">To create a <span class="cy">double literal</span>, we enter a decimal number. The compiler defaults to a double literal when a decimal number is entered without a literal suffix.</p>
+                        <h3 class="mt2 mb1">Double literal</h3>
+                        <p class="ec">To create a <span class="cy">double literal</span>, we enter a decimal number. The
+                            compiler defaults to a double literal when a decimal number is entered without a literal
+                            suffix.</p>
 
-<pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>(<span class="cb">2.625</span>)
+                        <pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>(<span class="cb">2.625</span>)
 <span class="cg">// 2.625</span></code></pre>
 
-<h3 class="mt2 mb1">Decimal literal</h3>
-<p class="ec">To create a <span class="cy">decimal literal</span>, append the literal suffix <b>m/M</b> after the number. This will tell the compiler that we will be working with decimal values.</p>
+                        <h3 class="mt2 mb1">Decimal literal</h3>
+                        <p class="ec">To create a <span class="cy">decimal literal</span>, append the literal suffix
+                            <b>m/M</b> after the number. This will tell the compiler that we will be working with
+                            decimal values.
+                        </p>
 
-<pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>(<span class="cb">12.39816m</span>)
+                        <pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>(<span class="cb">12.39816m</span>)
 <span class="cg">// 12.39816</span></code></pre>
 
-<h3 class="mt2 mb1">Boolean literals</h3>
-<p class="ec">We use a <span class="cy">bool literal</span> to print a value representing <i>true</i> or <i>false</i>.</p>
-<pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>(<span class="cb">true</span>)
+                        <h3 class="mt2 mb1">Boolean literals</h3>
+                        <p class="ec">We use a <span class="cy">bool literal</span> to print a value representing
+                            <i>true</i> or <i>false</i>.
+                        </p>
+                        <pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>(<span class="cb">true</span>)
 <span class="cg">// True</span></code></pre>
 
-<h2 class="mt3 mb1">Declaring variables</h2>
-<p class="ec">Variables are temporary storage containers for data. They can only hold values matching its specified data types.</p>
-<p class="ec">To create a new variable we need to declare its data type followed by its name. Then we can assign a value to that variable using the equals sign. The assignment happens from right to left.</p>
-<pre><code><span class="cpk">string</span> myName;
+
+                        <hr class="mt3">
+                        <h2 class="mt2 mb2" id="variables">Declaring variables</h2>
+                        <hr class="mb2">
+                        <p class="ec">Variables are temporary storage containers for data. They can only hold values
+                            matching its specified data types.</p>
+                        <p class="ec">To create a new variable we need to declare its data type followed by its name.
+                            Then we can assign a value to that variable using the equals sign. The assignment happens
+                            from right to left.</p>
+                        <pre><code><span class="cpk">string</span> myName;
 myName = "Lena";
 
 <span class="cpk">int</span> myAge = 99;
 </code></pre>
 
-<h3 class="mt2 mb1">Implicitly typed local variables</h3>
-<p class="ec">
-    The <span class="cy">var</span> keyword tells the C# compiler that the data type is implied by the assigned value. Once the type is implied, the variable cannot be reassigned to a different data type.
-</p>
-<p class="ec">Variables using the var keyword must be initialized.</p>
-<pre><code><span class="cpk">var</span> myAge = 99;
+                        <h3 class="mt2 mb1">Implicitly typed local variables</h3>
+                        <p class="ec">
+                            The <span class="cy">var</span> keyword tells the C# compiler that the data type is implied
+                            by the assigned value. Once the type is implied, the variable cannot be reassigned to a
+                            different data type.
+                        </p>
+                        <p class="ec">Variables using the var keyword must be initialized.</p>
+                        <pre><code><span class="cpk">var</span> myAge = 99;
+</code></pre>
+
+                        <h3 class="mt2 mb1">Byte(sbyte) and Short(ushort)</h3>
+                        <div class="ec">The byte type is used to store small 8-bit in features, of a value between 0 and
+                            255. </div>
+                        <div class="ec">The short type is used to store 16-bit integers.</div>
+
+
+                        <hr class="mt2 mb2">
+                        <h2>Working with string literals</h2>
+                        <hr class="mt2 mb2">
+                        <h3 class="mt2 mb1" id="escape">Character escape sequences</h3>
+
+                        <p class="ec">In C#, the escape character sequence begins with a backslash "\" followed by the
+                            character you're escaping, for example <span class="cpk">\n</span> for a new line, <span
+                                class="cpk">\t</span> for tab, or <span class="cpk">\"</span> to print the quotation
+                            mark.</p>
+                        <pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>("Hello<span class="cpk">\n</span>World!");
+<span class="cg">// Hello
+   World!</span></code></pre>
+
+                        <p class="ec">To print a single backslash, use <b>\\</b>.</p>
+
+                        <pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>("c:\\source\\repos");
+<span class="cg">// c:\source\repos</span></code></pre>
+
+
+                        <hr class="mt2 mb2">
+
+                        <h3 class="mt2 mb1" id="at">Verbatim string literal</h3>
+                        <p class="ec">To keep all whitespace and characters without the need to escape the backslash, we
+                            can use <span class="cpk">@</span>.</p>
+                        <pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>(<span class="cpk">@</span>"c:\source\repos
+         - we're keeping the white space");
+<span class="cg">// c:\source\repos
+    - we're keeping the white space</span></code></pre>
+
+
+
+                        <hr class="mt2 mb2">
+
+                        <h3 class="mt2 mb1" id="unicode">Unicode escape characters</h3>
+                        <p class="ec">We can use the <span class="cpk">\u</span> escape sequence, then a four-character
+                            code representing some character in Unicode (UTF-16).</p>
+
+                        <pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>("<span class="cpk">\u</span>3053<span class="cpk">\u</span>3093<span class="cpk">\u</span>306B<span class="cpk">\u</span>3061<span class="cpk">\u</span>306F World!");
+
+<span class="cg">// こんにちは World! (Kon'nichiwa World!)</span></code></pre>
+
+                        <h3 class="mt2 mb1" id="comparingStrings">Comparing strings</h3>
+                        <p class="ec">We can compare strings using Equals() method, but it's a case-sensitive
+                            method.<br>
+                            Here's a trick to compare strings regardless of letter-casing.</p>
+
+                        <pre><code><span class="cpk">bool</span> sameStrings = firstString.<span class="co">ToUpper()</span> == anotherString.<span class="co">ToUpper()</span>;</code></pre>
+
+
+                        <hr class="mt2 mb2">
+
+                        <h3 class="mt2 mb1" id="stringConcat">
+                            String concatenation</h3>
+                        <p class="ec">To concatenate two strings together, you use the string concatenation operator,
+                            which is the plus symbol <span class="cpk">+</span>.</p>
+
+                        <pre><code><span class="cpk">string</span> myName = "Lena";
+<span class="cpk">string</span> sayHello = "Hello";
+
+<span class="ct">Console</span>.<span class="co">WriteLine</span>(sayHello <span class="cpk">+</span> " " <span class="cpk">+</span> myName);
+
+<span class="cg">// Hello Lena</span>
+
+OR:
+
+<span class="cpk">string</span> string3 = String.<span class="co">Format</span>("This is a greeting for {1}: {0}, {1}!", sayHello, myName);
+<span class="ct">Console</span>.<span class="co">WriteLine</span>(string3);
+
+<span class="cg">// This is a greeting for Lena: Hello, Lena!</span>
+
+OR:
+
+<span class="cpk">string</span> myName = "Lena";
+<span class="cpk">string</span> sayHello = "Hello ";       <span class="cg">// notice the space added after Hello</span>
+
+<span class="ct">Console</span>.<span class="co">WriteLine</span>(String.<span class="co">Concat</span>(sayHello <span class="cpk">+</span> " " <span class="cpk">+</span> myName));
+
+<span class="cg">// Hello Lena</span></code></pre>
+
+
+
+                        <hr class="mt2 mb2">
+
+                        <h3 class="mt2 mb1" id="interpolation">String interpolation</h3>
+
+                        <p class="ec">String interpolation combines multiple values into a single literal string using
+                            <span class="cpk">$</span> and <span class="cpk">{ }</span>. This is how the string literal
+                            becomes a template.
+                        </p>
+
+                        <pre><code><span class="cpk">string</span> myName = "Lena";
+<span class="cpk">string</span> sayHello = "Hello";
+<span class="cpk">string</span> greeting = <span class="cpk">$</span>"<span class="cpk">{</span>sayHello<span class="cpk">}</span> <span class="cpk">{</span>myName<span class="cpk">}</span>";
+
+<span class="ct">Console</span>.<span class="co">WriteLine</span>(greeting);
+
+<span class="cg">// Hello Lena</span>
+</code></pre>
+
+                        <h3 class="mt2 mb1" id="StringBuilder">StringBuilder Type</h3>
+
+                        <p class="ec">StringBuilder doesn't create a new copy of a string every time, but changes the
+                            original one. It has quite a few methods to work with strings.</p>
+                        <pre><code>using System.Text;
+                            
+<span class="cpk">StringBuilder</span> string1 = <span class="cy">new</span> StringBuilder();
+
+string1.<span class="co">Append</span>("To-Do List: ");             <span class="cg">// on the same line</span>
+string1.<span class="co">AppendLine</span>("Read a chapter.");      <span class="cg">// adds a new line after</span>
+string1.<span class="co">AppendLine</span>("Do shopping.");         
+
+<span class="ct">Console</span>.<span class="co">WriteLine</span>(string1.ToString());
 </code></pre>
 
 
 
 
 
+                        <hr class="mt3">
+                        <h2 class="mt2 mb2" id="convertingtypes">Converting between data types</h2>
+
+                        <p class="ec">There are three ways if converting data types: implicit conversion, explitic
+                            conversion, helpers.</p>
+                        <p class="desc">Implicit conversion:</p>
+                        <pre><code><span class="cpk">int</span> a = 123541;
+<span class="cpk">long</span> l = a;
+</code></pre>
+                        <p class="desc">Explicit conversion:</p>
+                        <pre><code><span class="cpk">double</span> d = 123456789.0;
+<span class="cpk">int</span> a = <span class="cpk">(int)</span> d;
+
+<span class="cg">// because double contains more information than int, 
+and some part of the data will get lost in the conversion,
+we need to explicitly confirm the output data type</span>
+</code></pre>
 
 
 
 
 
+                        <hr class="mt2 mb2">
+                        <h2>Working with numeric values</h2>
+                        <hr class="mt2 mb2">
+
+                        <h3 class="mt2 mb1" id="add">Add two numeric values</h3>
+
+                        <pre><code><span class="cpk">int</span> firstNumber = 3;
+<span class="cpk">int</span> secondNumber = 14;
+<span class="ct">Console</span>.<span class="co">WriteLine</span>(firstNumber <span class="cpk">+</span> secondNumber);
+
+<span class="cg">// 17</span>
+</code></pre>
+
+                        <p class="ec">If we use the <span class="cpk">+</span> symbol with both string and integer
+                            values, it will carry out concatenation.</p>
+                        <p class="ec">We can use parentheses to clarify our intention of adding to the compiler, as any
+                            operations that happen inside of parentheses are always resolved first. Since both our
+                            variables are integers, the plus symbol will add both numbers together - NOT concatenate
+                            them.</p>
+                        <pre><code><span class="cpk">int</span> firstNumber = 3;
+<span class="cpk">int</span> secondNumber = 14;
+<span class="ct">Console</span>.<span class="co">WriteLine</span>(firstNumber + " is smaller than " + secondNumber + ". ");
+<span class="ct">Console</span>.<span class="co">WriteLine</span>(<u>firstNumber + secondNumber</u>);
+
+<span class="cg">// 3 is smaller than 14. 
+   17</span>
+</code></pre>
+
+
+                        <hr class="mt2 mb2">
+
+                        <h3 class="mt2 mb1" id="math">Math operations</h3>
+                        <p class="ec">We use:
+
+                            <span class="cpk">+</span> for addition,
+                            <span class="cpk">-</span> for subtraction,
+                            <span class="cpk">*</span> for multiplication,
+                            <span class="cpk">/</span> for division.
+
+                        </p>
+                        <pre><code><span class="cpk">int</span> sum = 7 + 5;
+<span class="cpk">int</span> difference = 7 - 5;
+<span class="cpk">int</span> product = 7 * 5;
+<span class="cpk">int</span> quotient = 7 / 5;
+
+
+<span class="ct">Console</span>.<span class="co">WriteLine</span>("Sum: " + sum);
+<span class="ct">Console</span>.<span class="co">WriteLine</span>("Difference: " + difference);
+<span class="ct">Console</span>.<span class="co">WriteLine</span>("Product: " + product);
+<span class="ct">Console</span>.<span class="co">WriteLine</span>("Quotient: " + quotient);
+<span class="cg">
+// Sum: 12
+   Difference: 2
+   Product: 35
+   Quotient: 1 (<span class="cpk"></span>int</span> cannot contain values after the decimal)</span></code></pre>
+
+
+                        <hr class="mt2 mb2">
+
+                        <h3 class="mt2 mb1" id="decimals"> Perform division using literal decimal data</h3>
+
+                        <p class="ec">To get the correct result, we need to use a data type that supports fractional
+                            digits after the decimal point like decimal. For this to work, the quotient and at least one
+                            of numbers being divided must be of type decimal.</p>
+
+                        <pre><code><span class="cpk">decimal</span> decimalQuotient = 7 / 5.0m;
+    OR
+<span class="cpk">decimal</span> decimalQuotient = 7.0m / 5.0m;
+    
+NOT <strike><span class="cpk">decimal</span> decimalQuotient = 7 / 5;</strike>
+
+
+<span class="ct">Console</span>.<span class="co">WriteLine</span>(decimalQuotient);
+<span class="cg">
+    // 1.4</code></pre>
+                        <hr class="mt2 mb2">
+
+                        <h3 class="mt2 mb1" id="modulus">Modulus</h3>
+                        <p class="ec">The modulus operator <span class="cpk">%</span> gives us the remainder of <span
+                                class="cpk">int</span> division. We can use it with <span class="cpk">$</span> and <span
+                                class="cpk">{ }</span>.</p>
+                        <pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>($"Modulus of 200 / 5 is {200 % 5}");
+<span class="ct">Console</span>.<span class="co">WriteLine</span>($"Modulus of 7 / 5 is {7 % 5}");
+
+<span class="cg">// Modulus of 200 / 5 is 0
+   Modulus of 7 / 5 is 2</span></code></pre>
+
+
+
+                        <hr class="mt2 mb2">
+
+                        <h3 class="mt2 mb1" id="increment">Compound assignment operators</h3>
+
+                        <p class="ec"> This <i>addition assignment operator</i> <span class="cpk">+=</span> adds and
+                            assigns the value on the right of the operator to the value on the left of the operator</p>
+
+                        <pre><code><span class="cpk">int</span> value = 0;     <span class="cg">// value is now 0.</span>
+value = value + 5; <span class="cg">// value is now 5.</span>
+value <b>+=</b> 5;        <span class="cg">// value is now 10.</span>
+value <b>-=</b> 4;        <span class="cg">// value is now 6.</span>
+</code></pre>
+                        <p class="ec">The <span class="cpk">++</span> operator increments the value of the variable by
+                            1.</p>
+
+                        <pre><code><span class="cpk">int</span> value = 3;     <span class="cg">// value is now 0.</span>
+value = value + 1; <span class="cg">// value is now 4.</span>
+value++;           <span class="cg">// value is now 5.</span>
+value--;           <span class="cg">// value is now 4.</span>
+</code></pre>
+
+                        <p class="ec">If we use the operator <span class="cpk">++</span> before the value (++value), the
+                            increment will happen before the value is retrieved. Likewise, value++ will increment the
+                            value after the value has been retrieved.</p>
+
+
+
+                        <hr class="mt2 mb2">
+                        <h2 id="datetime" class="mb2">Working with Date and Time</h2>
+                        <p class="ec">C# has two built-in data types to work with time and dates: <span
+                                class="cpk">DateTime</span> and <span class="cpk">TimeSpan</span>.</p>
+
+                        <p class="desc">This is a few examples of how to use them:</p>
+                        <pre><code>
+<span class="cpk">DateTime</span> myBirthDayIn2024 = new <span class="cpk">DateTime</span>(2024, 06, 01);      <span class="cg">//01 / 06 / 2024 00:00:00</span>
+<span class="cpk">DateTime</span> myBirthDayIn2025 = myBirthDayIn2024.<span class="co">AddYears</span>(1);    <span class="cg">//01 / 06 / 2025 00:00:00</span>
+
+<span class="cpk">DateTime</span> startTime = <span class="cpk">DateTime</span>.<span class="co">Now</span>;                            <span class="cg">//10/02/2024 21:56:25</span>
+<span class="cpk">TimeSpan</span> workTime = new <span class="cpk">TimeSpan</span>(8, 0, 0);
+<span class="cpk">DateTime</span> endTime = startTime.<span class="co">Add</span>(workTime);                    <span class="cg">//11/02/2024 05:56:25</span>
+
+<span class="ct">Console</span>.<span class="co">WriteLine</span>(startTime.<span class="co">ToLongDateString()</span>);            <span class="cg"> //10 February 2024</span>
+
+<span class="ct">Console</span>.<span class="co">WriteLine</span>(endTime.<span class="co">ToShortTimeString()</span>);             <span class="cg">//05:56</span>
+</code></pre>
+
+                        <hr class="mt2 mb2">
+                        <h2 class="mb2" id="if">If, else, else if</h2>
+                        <p class="ec">The curly braces can be omitted if there is only a single statement following
+                            <i>if</i>.
+                        </p>
+                        <p class="desc">Console example:</p>
+                        <pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>("Enter a first number:");
+string stringValue1 = <span class="ct">Console</span>.<span class="co">ReadLine</span>();
+<span class="ct">Console</span>.<span class="co">WriteLine</span>("Enter a second  number:");
+string stringValue2 = <span class="ct">Console</span>.<span class="co">ReadLine</span>();
+<span class="cpk">int</span> intValue1 = <span class="cpk">int</span>.Parse(stringValue1);
+<span class="cpk">int</span> intValue2 = <span class="cpk">int</span>.Parse(stringValue2);
+
+<span class="cy">if</span> (intValue1 == intValue2)
+{
+  <span class="ct">Console</span>.<span class="co">WriteLine</span>("The values are equal!");
+}
+<span class="cy">else if</span> (intValue1 < intValue2)
+{
+    <span class="ct">Console</span>.<span class="co">WriteLine</span>("The first value is smaller!");
+}
+<span class="cy">else</span>
+{
+  <span class="ct">Console</span>.<span class="co">WriteLine</span>("The second value is smaller!");
+}</code></pre>
+
+                        <hr class="mt2 mb2">
+                        <h2 class="mb2" id="switch">Switch</h2>
+
+                        <p class="ec"> The switch statement will not work with <span class="cpk">float</span> and <span
+                                class="cpk">double</span>.<br> Care labels use a pattern: constant or relational.<br>
+                            Each case must be unique.<Br>
+                            The first true statement will get executed.
+                        </p>
+                        <pre><code>
+<span class="ct">Console</span>.<span class="co">WriteLine</span>("Enter your age:");
+<span class="cpk">int</span> age = int.Parse(<span class="ct">Console</span>.<span class="co">ReadLine</span>());
+
+<span class="cb">switch</span> (age)
+{
+    <span class="cy">case</span> < 13:
+        <span class="ct">Console</span>.<span class="co">WriteLine</span>("You're a child.");
+        break;
+    <span class="cy">case</span> > 12:                                          <span class="cg">// two cases can share the same code</span>
+    <span class="cy">case</span> < 18:
+        <span class="ct">Console</span>.<span class="co">WriteLine</span>("You're a teenager.");
+        break;
+    <span class="cy">case</span> 25:
+        <span class="ct">Console</span>.<span class="co">WriteLine</span>("You're exactly 25 years old.");
+        break;
+    <span class="cy">case</span> > 65:
+        <span class="ct">Console</span>.<span class="co">WriteLine</span>("I'd never call you old, but we're all know that you're EXTREMELY mature. :)");
+        break;
+    <span class="cy">case</span>:
+        <span class="ct">Console</span>.<span class="co">WriteLine</span>("You're an adult.");
+        break;
+}</code></pre>
+
+
+                        <hr class="mt2 mb2">
+                        <h2 class="mb2" id="loops">Loop options</h2>
+                        <hr class="mt2 mb2">
+                        <h3 class="mb2" id="loops">While statement</h3>
+                        <p class="ec"></p>
+                        <pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>("Enter a number: ");
+<span class="cpk">int</span> startNumber = int.Parse(<span class="ct">Console</span>.<span class="co">ReadLine</span>());
+<span class="cpk">int</span> maxNumber = 5;
+
+<span class="cy">while</span> (startNumber <= maxNumber)
+{
+    <span class="ct">Console</span>.<span class="co">WriteLine</span>(startNumber);
+    startNumber++;
+}
+<span class="cg">// (if we enter 1)
+    1
+    2
+    3
+    4
+    5
+</span></code></pre>
+
+                        <hr class="mt2 mb2">
+                        <h3 class="mb2" id="loops">For loop</h3>
+                        <p class="ec">For loops use keywords <span class="cy">continue</span> and <span
+                                class="cy">break</span>. If put after a statement, the loop will either execute a
+                            statement at a particular point, or stop the loop once that point is met. </p>
+                        <p class="desc">Structure:</p>
+                        <pre><code><span class="cy">for</span> (initialization; Boolean; iterator)
+{
+    statements
+}</code></pre>
+                        <p class="desc">Example:</p>
+                        <pre><code><span class="cpk">int</span> sum = 0;
+
+<span class="cy">for</span> (<span class="cpk">int</span> i = 0; i &lt; 10; i++)
+{
+    sum = sum + i;
+}
+
+<span class="ct">Console</span>.<span class="co">WriteLine</span>(sum);
+</code></pre>
+
+
+                        <hr class="mt2 mb2">
+                        <h3 class="mb2" id="referenceVariables">Passing variables by reference</h3>
+                        <p class="ec">There are two kinds of types in C#: reference types (classes, interfaces and
+                            delegates) and value types (enumerations and structs). A variable of a reference type
+                            contains a reference to its data.
+                            A variable of a value type contains its data directly. Operations on one variable can affect
+                            the object referenced by the other variable. (source: https://learn.microsoft.com/)</p>
+
+                        <p class="ec">The <span class="cy bold">ref</span> keyword requires the variable to be
+                            initialized before entering the method. Without ref any changes to the variable made inside
+                            of the method will not change the variable itself.<br>
+                            In simple words: if arguments passed to a method are preceded by <span
+                                class="cy">ref</span>, they can be changed by this method.</p>
+                        <p class="ec">The <span class="cy bold">out</span> keyword requires the variable to be
+                            initialized inside of the method. Apart from this detail, the <i>out</i> keyword behaves
+                            just like <i>ref</i>.</p>
+
+                        <pre><code>
+static void Main(<span class="cpk">string[]</span> args)
+{
+    <span class="cpk">int</span> add;
+    <span class="cpk">int</span> mult;
+    AddAndMultiply(3, 4, out add, out multiply);
+
+    <span class="ct">Console</span>.<span class="co">WriteLine</span>(add);           //7
+    <span class="ct">Console</span>.<span class="co">WriteLine</span>(multiply);      //12
+}
+
+
+<span class="cpe">public</span> static void AddAndMultiply(<span class="cpk">int</span> a, <span class="cpk">int</span> b, out <span class="cpk">int</span> added, out <span class="cpk">int</span> multiplied)
+{
+    added = a + b;
+    multiplied = a * b;
+}
+    </code></pre>
+
+
+                        <hr class="mt2 mb2">
+                        <h2 id="methods">Methods</h2>
+                        <hr class="mt2 mb2">
+                        <p class="desc">Structure:</p>
+                        <pre><code><span class="cpe">access modifier</span> <span class="cpk">return type</span> <span class="co">MethodName</span> (Parameters)
+{
+    statements
+}
+</code></pre>
+                        <p class="desc">A few things to know about methods in C#:</p>
+
+                        <p class="ec">If the return type of a method is specified, the method MUST return a value of
+                            that type. A method that doesn't return anything is of type <span class="cpk">void</span>.
+                        </p>
+
+                        <p class="ec"><span class="cy">Method overload</span> happens when we use the same function
+                            multiple times. This is possible if the functions take different parameters or return
+                            different data types.</p>
+
+                        <p class="ec">The order of a method's parameters is not always important, as we name our
+                            parameters when calling a method.</p>
+                        <pre><code><span class="co">Method</span>(b: 3, a: 1);</code></pre>
+                        <p class="ec">We can give a method default parameters, which do not to be listed when calling
+                            this method:</p>
+                        <pre><code></code><span class="cpe"><span class="cpe">public</span> static</span> <span class="cpk">int</span> <span class="co">AddNumbers</span> (<span class="cpk">int</span> a, <span class="cpk">int</span> b, <span class="cpk">int</span> c = 4);</code></pre>
+
+
+
+                        <hr class="mt2 mb2">
+                        <h3 id="classlibrary" class="mb2">Explore .NET Class Library</h2>
+
+                            <p class="ec">.NET Class Library is a prewritten collection of coding resources (classes
+                                with
+                                methods) that we can use to build our applications.</p>
+                            <p class="ec">The format of calling methods of a class in the .NET Class Library is: <span
+                                    class="ct">ClassName</span>.<span class="co">MethodName</span>(), </p>
+
+                            <hr class="mt2 mb2">
+                            <h3 class="mb2" id="state">Stateful vs stateless methods</h3>
+                            <p class="ec">The term state is used to describe the condition of the execution environment
+                                at a
+                                specific moment in time.</p>
+                            <p class="ec"><span class="cpk">Stateless/static</span> methods work without changing any
+                                values
+                                stored in memory. The example would be <i><span class="ct">Console</span>.<span
+                                        class="co">WriteLine</span>()</i> as it doesn't impact the
+                                state of the application in any way or relies on any stored values.</p>
+                            <p class="ec">When calling a stateless method, there is no need to create a new instance of
+                                its
+                                class first.</p>
+                            <p class="ec"><span class="cpk">Stateful/instance</span> methods rely on values stored in
+                                memory
+                                by previous lines of code that have already been executed. They can modify the state of
+                                the
+                                application by updating values or storing new values in memory. They keep track of their
+                                state in variables defined on the class.</p>
+                            <p class="ec">When calling a stateful method, we need to create an instance of the class,
+                                and
+                                access the method on the object.</p>
+                            <p class="ec">A single class can support both stateful and stateless methods. However, when
+                                you
+                                need to call stateful methods, you must first create an instance of the class so that
+                                the
+                                method can access state.</p>
+
+                            <hr class="mt2 mb2">
+                            <h2 id="enums">Enumerations</h2>
+                            <hr class="mt2 mb2">
+
+                            <p class="ec">Enums are a special class that contains a set of named integer constants.</p>
+
+                            <pre><code><span class="cpe">public</span> <span class="cy">enum</span> <span class="cpk">Colors</span> {
+    Red,                  <span class="cg">// 0 (if no other value has been assigned)</span>
+    Green,                <span class="cg">// 1</span>
+    Blue,                 <span class="cg">// 2</span>
+    Brown,                <span class="cg">// 3</span>
+    Pink                  <span class="cg">// 4</span>
+}
+
+OR we can specify the integer values for our colors ourselves
+
+<span class="cpe">public</span> <span class="cy">enum</span> <span class="cpk">Colors</span> {
+    Red = 10,                  <span class="cg">// 10</span>
+    Green = 12,                <span class="cg">// 12</span>
+    Blue = 13,                 <span class="cg">// 13</span>
+    Brown = 24,                <span class="cg">// 24</span>
+    Pink = 35                  <span class="cg">// 35</span>
+}</code></pre>
+
+                            <p class="desc">Let's access one of the colour names:</p>
+                            <pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>(Colors.Red + "is my favourite colour.");          
+           <span class="cg">// Red is my favourite colour.</span></code></pre>
+                            <p class="desc">Let's access the integer values.</p>
+                            <pre><code><span class="ct">Console</span>.<span class="co">WriteLine</span>(Colors.Pink + "'s integer value is " + (<span class="cpk">int</span>)Colors.Pink);
+           <span class="cg">// Pink's integer value is 35</span></code></pre>
+
+
+                            <hr class="mt2 mb2">
+                            <h2 id="Struct">Struct</h2>
+                            <hr class="mt2 mb2">
+                            <p class="ec">Struct is a value type and represents a custom data structure. We can create
+                                it with a <i>new</i> keyword. Can contain methods and other members.</p>
+                            <pre><code><span class="cy">struct</span> <span class="cpk">WorkTask</span>
+{
+    <span class="cpe">public</span> <span class="cpk">string</span> description;
+    <span class="cpe">public</span> <span class="cpk">int</span> hours;
+
+    <span class="cpe">public</span> <span class="cpk">void</span> PerformWorkTask()
+    {
+        <span class="ct">Console</span>.<span class="co">WriteLine</span>($"Task: {description} has been performed. It took {hours} hours.")
+    }
+}
+           </code></pre>
+
+
+                            <pre><code><span class="cpk">WorkTask</span> task;
+
+task.description = "Preparing documents";
+task.hours = 2;
+task.PerformWorkTask();        <span class="cg"> //Task: Preparing documents has been performed. It took 2 hours.</span>
+</code></pre>
 
 
 
 
+                            <hr class="mt2 mb2">
+                            <h2 id="arrays">Lists of data</h2>
+                            <hr class="mt2 mb2">
+
+                            <h3 class="mb1 mt2 uppercase">Arrays </h3>
+                            <ul class="ml2">
+
+                                <li> * all variables must be of the same type,
+                                <li>
+                                <li>* accessed through index
+                                <li>
+                                <li>* are reference type, stored on the heap,
+                                <li>
+                                <li>* arrays are created when we use the keyword <i>new</i>
+                                <li>
+                                <li>* array size is set while initialization
+                                <li>
+                            </ul>
+                            <p class="desc">Initiating an array:</p>
+                            <pre><code><span class="cpk">string[]</span> booksToRead;
+<span class="cpk">string[]</span> booksToRead = new string[5];      <span class="cg">//we need to specify the size of array</span>
+DateTime[] readingTime;
+</code></pre>
+
+                            <p class="desc">Populating an array:</p>
+                            <pre><code><span class="cpk">string[]</span> booksToRead = new string[5] {"Title1", "Title 2", "Title 3", "Title 4", "Title 5"};
+
+<span class="cpk"></span>int[]</span> numbers = new <span class="cpk">int[]</span> {45, 99, 555};       <span class="cg"> //we can omit size value if we pass in an initializer</span>
+<span class="cpk">int[]</span> numbers = new <span class="cpk">int[]</span> {45, 99, 555};            OR      <span class="cpk">int[]</span> numbers = [45, 99, 555];</code></pre>
+                            <p class="desc">Let's access the elements of an array:</p>
+                            <pre><code>numbers[0] = 5;</code></pre>
+
+                            <h3 id="foreach" class="mt2 mb1"><span class="cy"></span>foreach</span> loop</h3>
+
+                            <pre><code><span class="cy">foreach</span> (<span class="cpk">int</span> num in numbers)
+{
+    var randomNum = new <span class="co">Random()</span>.<span class="co">Next</span>(30);
+    var together = num + randomNum;
+           
+     <span class="ct">Console</span>.<span class="co">WriteLine</span>(num + ", " + randomNum + ", " + together);
+}
+<span class="cg">
+                    //      5, 4, 9
+                            99, 26, 125
+                            555, 3, 558</span></code></pre>
+
+                            <h3 class="mb1">The Array Base Class</h3>
+                            <ul>
+                                <li>CopyTo() and Length<br>
+                                    <pre><code><span class="cpk">int[]</span> numbers = [1, -8, 23, 11];
+<span class="cpk">int</span> lentgh = numbers.<span class="co">Length</span>;
+
+<span class="cpk">int[]</span> numbersCopy = new int[lentgh];    <span class="cg">//we need an array to copy our array into</span>
+
+numbers.<span class="co">CopyTo</span>(numbersCopy, 0);         <span class="cg">//copy to numbersCopy, start with index 0 = copy everthing</span>
+
+<span class="cy">foreach</span> (<span class="cpk">int</span> num in numbersCopy)
+{
+    var randomNum = new <span class="co">Random()</span>.<span class="co">Next</span>(30);
+    var together = num + randomNum;
+    <span class="ct">Console</span>.<span class="co">WriteLine</span>(num + ", " + randomNum + ", " + together);
+}       <span class="cg">
+        //  -8, 5, -3
+            1, 14, 15
+            11, 12, 23
+            23, 17, 40</span></code></pre>
+                                </li>
+                                <li>Sort() and Reverse()<br>
+                                    <pre><code><span class="cpk">int[]</span> numbers = [1, -8, 23, 11];
+
+Array.<span class="co">Sort</span>(numbers);
+
+<span class="cy">foreach</span> (<span class="cpk">int</span> num in numbers)
+{
+    var randomNum = new <span class="co">Random()</span>.<span class="co">Next</span>(30);
+    var together = num + randomNum;
+    <span class="ct">Console</span>.<span class="co">WriteLine</span>(num + ", " + randomNum + ", " + together);
+}
+<span class="cg">       // Hello, World!
+            -8, 1, -7
+            1, 13, 14
+            11, 10, 21
+            23, 0, 23</span></code></pre>
+                                    </ol>
+
+                                    <Hr class="mt2 ">
+                                    <h3 class="mb1 mt2 uppercase" id="Collections">Collections </h3>
+                                    <ul class="ml2">
+                                        <p class="ec">
+                                        <ul>
+                                            <li>* i.e. List</li>
+                                            <li>* arrays have a lot of limitations, which collections do not</li>
+                                            <li>* we don't need to specify the size of a collection - it will change
+                                                dynamically</li>
+                                            <li>* we use <span class="cpe">List</span>&lt;T> to create a collection,
+                                                where T stands for type</li>
+                                            <li>* all elements of a List need to be of the same type</li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                        </p>
+                                        <pre><code><span class="cg">//creating a List</span>
+
+<span class="cpe">List</span>&lt;int> numbers = new <span class="cpe">List</span>&lt;int> { 1, 2, 3 };
+
+OR 
+
+<span class="cpe">List</span>&lt;int> numbers = new() { 1, 2, 3 };
+
+OR 
+
+<span class="cpe">List</span>&lt;int> numbers = new <span class="cpe">List</span>&lt;int>();
+<hr><span class="cg">//adding to a List</span>
+
+numbers.Add(78);
+<hr><span class="cg">//removing from a List</span>
+
+numbers.Remove(3);
+
+<hr><span class="cg">//accessing an element</span>
+
+<span class="cpk">int</span> selectedEl = numbers[2];
+<span class="ct">Console</span>.<span class="co">WriteLine</span>(selectedEl);          <span class="cg">//78</span>
+
+<hr><span class="cg">//checking the size</span>
+
+<span class="cpk">int</span> length = numbers.Count;
+<span class="ct">Console</span>.<span class="co">WriteLine</span>(length);              <span class="cg">//3</span>
+
+<hr><span class="cg">//inserting an element into a specific position</span>
+
+numbers.Insert(0, 3000);
+<span class="ct">Console</span>.<span class="co">WriteLine</span>(numbers);
+
+<hr><span class="cg">//let's remove everything from the numbers collection</span>
+
+numbers.Clear();
+<span class="ct">Console</span>.<span class="co">WriteLine</span>(numbers.Count);        //0</code></pre>
 
 
-                <h4 class="mt5" id="sources">Sources:</h4>
-                <p><a
-                        href="https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp">https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp</a>
-                </p>
+
+
+                                        <Hr class="mt2" id="Namespaces">
+                                        <h3 class="mb1 mt2 uppercase">Namespaces </h3>
+
+
+                                        <p class="ec">Namespaces are used to allow us to create multiple classes
+                                            with the same name. Without namespaces, every type, so every class,
+                                            should have a unique name for C# to uniquely be able to identify the
+                                            class.</p>
+
+                                        <pre><code>    namespace FurnitureShop
+    {
+        public class Employee {}
+    }
+
+    OR (as of C# 10)
+
+    namespace FurnitureShop;
+    public class Employee {}    
+</pre></code></pre>
+
+                                        <h3 class="mb1 mt2 uppercase" id="static">Static </h3>
+
+
+                                        <p class="ec">Defining a value as static means we define it on the class rather
+                                            than the object. A value that has been made static on the class level cannot
+                                            be changed on the object level - it remains the same for all the objects of
+                                            this class.
+
+                                        </p>
+
+                                        <h3 class="mb1 mt2 uppercase" id="nullable">Nullable object types </h3>
+                                        <p class="ec">To give a variable the possibility of being either null or have a
+                                            value, we add <span class="cy">?</span> as a suffix to the variable type.
+                                        </p>
+                                        <pre><code><span class="cpk">int?</span> a = 12;
+
+if (a.<span class="co">HasValue</span>)
+{
+    <span class="ct">Console</span>.<span class="co">WriteLine</span>("A has a value!");   
+} 
+else
+{
+    <span class="ct">Console</span>.<span class="co">WriteLine</span>("A is null!");   
+}</code></pre>
+
+
+                                        <h3 class="mb1 mt2 uppercase">Null coalescing operator</h3>
+
+                                        <pre><code><span class="cpk">int?</span> a = 12;
+
+int numberOfChairs = a <span class="cy">??</span> 12;           <span class="cg">// if a is null, make numberOfChairs 12</span>
+</code></pre>
+
+
+
+                                        <Hr class="mt2">
+                                        <h2 class="mb1 mt2 uppercase" id="record">Records</h2>
+
+                                        <p class="ec">
+                                            A record is a reference type that is <span class="cy">immutable</span>.<br>
+                                            Records can be used instead of classes. They are most commonly used when the
+                                            class contains only data, especially if that data should not be changed once
+                                            created.<br>
+                                            Records' syntax is concise - a huge advantage over classes.</p>
+                                        <p class="ec">
+                                            Also, two recors are not identical as long as each of them points to a
+                                            different object, even if they share values. However, we can perform a <span
+                                                class="cy">value check</span>, which will return <b>true</b>.
+                                        </p>
+
+                                        <p class="ec">Records can be created using a primary constructor.</p>
+
+
+
+                                        <pre><code>public record Account(string AccountNumber);</code></pre>
+                                        <p class="desc">Let's instantiate a record.</p>
+
+                                        <pre><code>Account newAccount = new("12365489");</code></pre>
+
+
+
+
+                                        <h4 class="mt5" id="sources">Sources:</h4>
+                                        <p><a
+                                                href="https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp">https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp</a>
+                                        </p>
+                                        <p><a
+                                                href="https://learn.microsoft.com/en-gb/training/modules/csharp-call-methods/3-call-methods">https://learn.microsoft.com/en-gb/training/modules/csharp-call-methods/3-call-methods</a>
+                                        </p>
+
+                                        <p><a
+                                                href="https://learn.microsoft.com/en-gb/training/">https://learn.microsoft.com/en-gb/training/</a>
+                                        </p>
 
     </div>
     </main>
